@@ -1,5 +1,4 @@
 import Mathlib.Data.Real.Irrational
-import Mathlib.Data.Setoid.Partition
 
 /-!
 # Rayleigh theorem on Beatty sequences
