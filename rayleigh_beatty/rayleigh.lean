@@ -7,11 +7,15 @@ import Mathlib.Data.Setoid.Partition
 Link to proof sketch: https://en.wikipedia.org/wiki/Beatty_sequence#Second_proof
 -/
 
+variable (r : ℝ)
+
 /-- The Beatty sequence for real number `r` is defined to be `B_r := {⌊r⌋, ⌊2r⌋, ⌊3r⌋, ...}`. -/
-def beattySequence (r : ℝ) : Set ℤ :=
+def beattySequence : Set ℤ :=
   { j | ∃ k : ℤ, k > 0 ∧ j = ⌊k * r⌋ }
 
-theorem irrational_s {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) :
+variable {r} (hr₁ : r > 1) (hr₂ : Irrational r) {j k : ℤ} (hj : j > 0)
+
+theorem irrational_s :
     r / (r - 1) > 1 ∧ Irrational (r / (r - 1)) := by
   constructor
   · apply (lt_div_iff (sub_pos.2 hr₁)).2
@@ -21,30 +25,29 @@ theorem irrational_s {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) :
     rw [Int.cast_one, add_div', one_mul, sub_add_cancel]
     exact ne_of_gt (sub_pos.2 hr₁)
 
-theorem irrational_aux {r : ℝ} (hr : Irrational r) {j k : ℤ} (hj : j ≠ 0) : (j : ℝ) ≠ k * r := by
+theorem irrational_aux (hj : j ≠ 0) : (j : ℝ) ≠ k * r := by
   intro h
   have hk : k ≠ 0 := by
     rintro rfl
     rw [Int.cast_zero, zero_mul, Int.cast_eq_zero] at h
     exact hj h
-  have := Irrational.int_mul hr hk
+  have := Irrational.int_mul hr₂ hk
   rw [← h] at this
   exact (Int.not_irrational j this).elim
 
-theorem no_collision_aux {r : ℝ} (hr₁ : r > 0) (hr₂ : Irrational r) {j k : ℤ} (hj : j > 0)
-    (h : j = ⌊k * r⌋) : j / r < k ∧ k < (j + 1) / r := by
+theorem no_collision_aux (h : j = ⌊k * r⌋) : j / r < k ∧ k < (j + 1) / r := by
+  have hr₁ := lt_trans zero_lt_one hr₁
   have ⟨h₁, h₂⟩ := Int.floor_eq_iff.1 h.symm
   have h₁ := lt_of_le_of_ne h₁ (irrational_aux hr₂ hj.ne.symm)
   exact ⟨(div_lt_iff hr₁).2 h₁, (lt_div_iff hr₁).2 h₂⟩
 
 /-- Let `1 < r ∈ ℝ ∖ ℚ` and `s = r / (r - 1)`. Suppose there are integers `j > 0`, `k`, `m` such
 that `j = ⌊k * r⌋ = ⌊m * s⌋` (i.e. a collision). Then this leads to a contradiction. -/
-theorem no_collision {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) :
-    ¬∃ (j k m : ℤ), j > 0 ∧ j = ⌊k * r⌋ ∧ j = ⌊m * (r / (r - 1))⌋ := by
+theorem no_collision : ¬∃ (j k m : ℤ), j > 0 ∧ j = ⌊k * r⌋ ∧ j = ⌊m * (r / (r - 1))⌋ := by
   intro ⟨j, k, m, hj, h₁, h₂⟩
   have ⟨hs₁, hs₂⟩ := irrational_s hr₁ hr₂
-  have ⟨h₁₁, h₁₂⟩ := no_collision_aux (lt_trans zero_lt_one hr₁) hr₂ hj h₁
-  have ⟨h₂₁, h₂₂⟩ := no_collision_aux (lt_trans zero_lt_one hs₁) hs₂ hj h₂
+  have ⟨h₁₁, h₁₂⟩ := no_collision_aux hr₁ hr₂ hj h₁
+  have ⟨h₂₁, h₂₂⟩ := no_collision_aux hs₁ hs₂ hj h₂
   have f (y : ℝ) : y / r + y / (r / (r - 1)) = y := by
     have : r ≠ 0 := ne_of_gt (lt_trans zero_lt_one hr₁)
     field_simp [mul_sub_left_distrib]
@@ -59,7 +62,7 @@ theorem no_collision {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) :
 
 /-- Let `1 < r ∈ ℝ ∖ ℚ` and `s = r / (r - 1)`. Suppose there is an integer `j > 0` where `B_r` and
 `B_s` both jump over `j` (i.e. an anti-collision). Then this leads to a contradiction. -/
-theorem no_anticollision {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) :
+theorem no_anticollision :
     ¬∃ (j k m : ℤ), j > 0 ∧ k * r < j ∧ j + 1 ≤ (k + 1) * r ∧
       m * (r / (r - 1)) < j ∧ j + 1 ≤ (m + 1) * (r / (r - 1)) := by
   have ⟨hs₁, hs₂⟩ := irrational_s hr₁ hr₂
@@ -94,8 +97,7 @@ theorem no_anticollision {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) :
 /-- Let `1 < r ∈ ℝ ∖ ℚ` and `0 < j ∈ ℤ`. Then either `j ∈ B_r` or `B_r` jumps over `j`.
 
 This is unfortunately not in the proof sketch. -/
-theorem hit_or_miss {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) {j : ℤ} (hj : j > 0) :
-    j ∈ beattySequence r ∨ (∃ k : ℤ, k * r < j ∧ j + 1 ≤ (k + 1) * r) := by
+theorem hit_or_miss : j ∈ beattySequence r ∨ (∃ k : ℤ, k * r < j ∧ j + 1 ≤ (k + 1) * r) := by
   have hr₀ : r > 0 := lt_trans zero_lt_one hr₁
   -- for both cases, the candidate is `k = ⌊(j + 1) / r⌋`
   have h₁ := Int.sub_floor_div_mul_nonneg (j + 1 : ℝ) hr₀
@@ -120,9 +122,9 @@ theorem hit_or_miss {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) {j : ℤ} (
       exact this
     · symm; rw [Int.floor_eq_iff]; exact ⟨h₂, h₁⟩
 
-/-- Rayleigh theorem on Beatty sequences. Let `1 < r ∈ ℝ ∖ ℚ` and `0 < j ∈ ℤ`.
-Then `j` is in exactly one of `B_r` or `B_(r / (r - 1))`. -/
-theorem rayleigh {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) {j : ℤ} (hj : j > 0) :
+/-- Rayleigh theorem on Beatty sequences. Let `r` be an irrational real number greater than 1.
+Then every positive integer is in exactly one of `B_r` or `B_(r / (r - 1))`. -/
+theorem rayleigh :
     (j ∈ beattySequence r ∧ j ∉ beattySequence (r / (r - 1))) ∨
     (j ∉ beattySequence r ∧ j ∈ beattySequence (r / (r - 1))) := by
   by_cases h₁ : j ∈ beattySequence r
