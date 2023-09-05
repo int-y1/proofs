@@ -6,11 +6,11 @@ import Mathlib.Data.Real.Irrational
 Link to proof sketch: https://en.wikipedia.org/wiki/Beatty_sequence#Second_proof
 -/
 
-variable (r : ℝ)
-
 /-- The Beatty sequence for real number `r` is defined to be `B_r := {⌊r⌋, ⌊2r⌋, ⌊3r⌋, ...}`. -/
-def beattySequence : Set ℤ :=
+def beattySequence (r : ℝ) : Set ℤ :=
   { j | ∃ k : ℤ, k > 0 ∧ j = ⌊k * r⌋ }
+
+namespace Beatty
 
 variable {r} (hr₁ : r > 1) (hr₂ : Irrational r) {j k : ℤ} (hj : j > 0)
 
@@ -121,20 +121,24 @@ theorem hit_or_miss : j ∈ beattySequence r ∨ (∃ k : ℤ, k * r < j ∧ j +
       exact this
     · symm; rw [Int.floor_eq_iff]; exact ⟨h₂, h₁⟩
 
+end Beatty
+
 /-- Rayleigh theorem on Beatty sequences. Let `r` be an irrational real number greater than 1.
 Then every positive integer is in exactly one of `B_r` or `B_(r / (r - 1))`. -/
-theorem rayleigh :
-    (j ∈ beattySequence r ∧ j ∉ beattySequence (r / (r - 1))) ∨
-    (j ∉ beattySequence r ∧ j ∈ beattySequence (r / (r - 1))) := by
+theorem rayleigh {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) : 
+    ∀ {j : ℤ}, j > 0 →
+      (j ∈ beattySequence r ∧ j ∉ beattySequence (r / (r - 1))) ∨
+      (j ∉ beattySequence r ∧ j ∈ beattySequence (r / (r - 1))) := by
+  intro j hj
   by_cases h₁ : j ∈ beattySequence r
   · by_cases h₂ : j ∈ beattySequence (r / (r - 1))
     · have ⟨k, _, h₃⟩ := h₁
       have ⟨m, _, h₄⟩ := h₂
-      exact (no_collision hr₁ hr₂ ⟨j, k, m, hj, h₃, h₄⟩).elim
+      exact (Beatty.no_collision hr₁ hr₂ ⟨j, k, m, hj, h₃, h₄⟩).elim
     · exact Or.inl ⟨h₁, h₂⟩
   · by_cases h₂ : j ∈ beattySequence (r / (r - 1))
     · exact Or.inr ⟨h₁, h₂⟩
-    · have ⟨hs₁, hs₂⟩ := irrational_s hr₁ hr₂
-      have ⟨k, h₁₁, h₁₂⟩ := (hit_or_miss hr₁ hr₂ hj).resolve_left h₁
-      have ⟨m, h₂₁, h₂₂⟩ := (hit_or_miss hs₁ hs₂ hj).resolve_left h₂
-      exact (no_anticollision hr₁ hr₂ ⟨j, k, m, hj, h₁₁, h₁₂, h₂₁, h₂₂⟩).elim
+    · have ⟨hs₁, hs₂⟩ := Beatty.irrational_s hr₁ hr₂
+      have ⟨k, h₁₁, h₁₂⟩ := (Beatty.hit_or_miss hr₁ hr₂ hj).resolve_left h₁
+      have ⟨m, h₂₁, h₂₂⟩ := (Beatty.hit_or_miss hs₁ hs₂ hj).resolve_left h₂
+      exact (Beatty.no_anticollision hr₁ hr₂ ⟨j, k, m, hj, h₁₁, h₁₂, h₂₁, h₂₂⟩).elim
