@@ -8,6 +8,9 @@ package «proofs» {
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git"
 
+require lean4export from git
+  "https://github.com/Kha/lean4export.git"
+
 @[default_target]
 lean_lib «Proofs» {
   -- add any library configuration options here
