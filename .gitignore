@@ -2,4 +2,4 @@
 /build
 /lake-packages/*
 
-/tao_analysis_i/*.pdf
+*.pdf
