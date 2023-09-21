@@ -3,6 +3,7 @@
 -- this is a failed attempt at formalizing the proof
 
 import Mathlib.Data.Int.Basic
+import Mathlib.Data.Int.Parity
 import Mathlib.Data.Int.Order.Basic
 import Mathlib.NumberTheory.PythagoreanTriples
 
@@ -22,7 +23,8 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hxy : ∃ z, Pythago
     have ⟨y', hy'⟩ := x.gcd_dvd_right y
     -- The proof skipped this important fact: `w / gcd(x, y)` is an integer.
     obtain ⟨w', rfl⟩ : (Int.gcd x y : ℤ) ∣ w := by
-      -- This should be provable from just `hxyw : x*y = 2*w*w`. This may require even-odd chasing.
+      have := hxyw ▸ mul_dvd_mul (x.gcd_dvd_left y) (x.gcd_dvd_right y)
+      -- Somehow prove that `a*a ∣ 2*b*b → a ∣ b`
       sorry
     nth_rw 1 [hy', hx'] at hxyz hxyw
     have h₀ : (Int.gcd x y : ℤ) ≠ 0 := by simp [(lt_trans zero_lt_one h).ne.symm]
@@ -61,12 +63,18 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hxy : ∃ z, Pythago
   simp_rw [← pow_two, sq_sub_sq, mul_assoc, mul_left_comm _ (2 : ℤ)] at hxyw
   have hxyw := mul_left_cancel₀ (by decide) hxyw
   simp_rw [← mul_assoc] at hxyw
+  have hrs_add_odd : Odd (r + s) := by
+    simp_rw [← Int.even_iff, ← Int.odd_iff] at hrs_01
+    rcases hrs_01 with ⟨hr, hs⟩ | ⟨hr, hs⟩
+    · simp only [Int.odd_add', hr, hs]
+    · simp only [Int.odd_add, hr, hs]
   have hrs_sub_add_co : Int.gcd (r - s) (r + s) = 1 := by
     rw [← Int.isCoprime_iff_gcd_eq_one, ← IsCoprime.add_mul_left_left_iff (z := 1), mul_one,
       sub_add_add_cancel, ← two_mul, IsCoprime.mul_left_iff]
-    -- Use `hrs_01` and `hrs_co`, respectively
+    -- Use `hrs_add_odd` and `hrs_co`, respectively
     constructor
-    · sorry -- Annoying casework, apparently
+    · rw [Int.odd_iff_not_even, Int.even_iff, ← Int.dvd_iff_emod_eq_zero] at hrs_add_odd
+      cases dvd_or_coprime 2 (r + s) Int.prime_two.irreducible <;> [contradiction; assumption]
     · nth_rw 2 [← mul_one r]
       exact IsCoprime.mul_add_left_right (Int.isCoprime_iff_gcd_eq_one.2 hrs_co) 1
   have ⟨⟨a, ha⟩, ⟨b, hb⟩, ⟨c, hc⟩, ⟨d, hd⟩⟩ :
@@ -78,6 +86,25 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hxy : ∃ z, Pythago
   have hcd_co : Int.gcd c d = 1 := by
     rw [← Int.isCoprime_iff_gcd_eq_one, ← IsCoprime.pow_iff (by decide : 0 < 2) (by decide : 0 < 2),
       pow_two, pow_two, ← hc, ← hd, Int.isCoprime_iff_gcd_eq_one, hrs_sub_add_co]
+  have hc_odd : Odd c := by
+    rwa [← and_self (Odd c), ← Int.odd_mul, ← hc, Int.odd_sub, ← Int.odd_add]
+  have hd_odd : Odd d := by
+    rwa [← and_self (Odd d), ← Int.odd_mul, ← hd]
+  have ⟨x, hx⟩ : Even (c + d) := by simp only [Int.even_add', hc_odd, hd_odd]
+  have ⟨y, hy⟩ : Even (d - c) := by simp only [Int.even_sub', hc_odd, hd_odd]
+  have x2_add_y2_eq_a2 : x * x + y * y = a * a := by
+    calc
+    _ = (x * x * 4 + y * y * 4) / 4 := by rw [← right_distrib, Int.mul_ediv_cancel _ (by decide)]
+    _ = (c * c * 2 + d * d * 2) / 4 := by
+      congr 1
+      have h₁ : (x + x) * (x + x) = (c + d) * (c + d) := by rw [hx]
+      have h₂ : (y + y) * (y + y) = (d - c) * (d - c) := by rw [hy]
+      linear_combination h₁+h₂
+    _ = r * 4 / 4 := by
+      rw [← right_distrib, ← hc, ← hd, sub_add_add_cancel, ← mul_two, mul_assoc]; rfl
+    _ = a * a := by rw [Int.mul_ediv_cancel _ (by decide), ha]
+  have hxy_co : Int.gcd x y = 1 := by
+    sorry
   sorry
 
 
