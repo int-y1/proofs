@@ -8,14 +8,12 @@ import Mathlib.Data.Int.Parity
 import Mathlib.Data.Int.Order.Basic
 import Mathlib.NumberTheory.PythagoreanTriples
 
-theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hxy : ∃ z, PythagoreanTriple x y z)
-    (hxyw : x * y = 2 * w * w) : x = 0 ∨ y = 0 := by
-  rw [or_iff_not_and_not]
-  intro ⟨hx₀, hy₀⟩
+theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 0)
+    (hxy : ∃ z, PythagoreanTriple x y z) (hxyw : x * y = 2 * w * w) : False := by
   -- Suppose `|w|` is minimal
-  have hw_min {x y w' : ℤ} (hxy : ∃ z, PythagoreanTriple x y z) (hxyw' : x * y = 2 * w' * w')
-      (h : w'.natAbs < w.natAbs) : x = 0 ∨ y = 0 :=
-    pythagorean_triangle_area_not_square hxy hxyw'
+  have hw_min {x y w' : ℤ} (hx : x > 0) (hy : y > 0) (hxy : ∃ z, PythagoreanTriple x y z)
+      (hxyw' : x * y = 2 * w' * w') (h : w'.natAbs < w.natAbs) : False :=
+    pythagorean_triangle_area_not_square hx hy hxy hxyw'
   -- Suppose `x` and `y` are coprime
   cases' (le_or_gt (Int.gcd x y) 1).symm with h h
   · have ⟨z, hxyz⟩ := hxy
@@ -32,22 +30,18 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hxy : ∃ z, Pythago
     rw [PythagoreanTriple.mul_iff _ h₀] at hxyz
     simp_rw [mul_left_comm, mul_assoc, ← mul_assoc (2 : ℤ)] at hxyw
     have hxyw := mul_left_cancel₀ h₀ (mul_left_cancel₀ h₀ hxyw)
-    have := hw_min ⟨z', hxyz⟩ hxyw <| by
-      rw [Int.natAbs_mul, Int.natAbs_ofNat]
-      refine lt_mul_left (Nat.zero_lt_of_ne_zero ?_) h
-      rw [ne_eq, Int.natAbs_eq_zero]
-      rintro rfl
-      rw [mul_zero, mul_eq_zero] at hxyw
-      rcases hxyw with (rfl | rfl)
-      · apply hx₀; rw [hx', mul_zero]
-      · apply hy₀; rw [hy', mul_zero]
-    rcases this with (rfl | rfl)
-    · apply hx₀; rw [hx', mul_zero]
-    · apply hy₀; rw [hy', mul_zero]
+    have hx'₀ : x' > 0 := pos_of_mul_pos_right (hx' ▸ hx₀) (Nat.cast_nonneg _)
+    have hy'₀ : y' > 0 := pos_of_mul_pos_right (hy' ▸ hy₀) (Nat.cast_nonneg _)
+    apply hw_min hx'₀ hy'₀ ⟨z', hxyz⟩ hxyw
+    rw [Int.natAbs_mul, Int.natAbs_ofNat]
+    refine lt_mul_left (Nat.zero_lt_of_ne_zero ?_) h
+    rw [ne_eq, Int.natAbs_eq_zero]
+    rintro rfl
+    simp_rw [mul_zero] at hxyw
+    rcases zero_eq_mul.1 hxyw.symm with rfl | rfl <;> contradiction
   cases' (Nat.le_and_le_add_one_iff.1 ⟨Nat.zero_le _, h⟩) with h hxy_co
   · have ⟨hx, hy⟩ := Int.gcd_eq_zero_iff.1 h
-    simp [hx] at hxyw
-    trivial
+    exact hx₀.ne.symm hx
   -- WLOG, take `x = r^2-s^2` and `y = 2rs` where `gcd(r, s) = 1`.
   have ⟨z, hxyz⟩ := hxy
   clear h hxy
@@ -56,7 +50,7 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hxy : ∃ z, Pythago
   clear hzrs
   wlog hxyrs : x = r ^ 2 - s ^ 2 ∧ y = 2 * r * s
   · have hxyrs := and_comm.1 (or_iff_not_imp_left.1 hxyrs' hxyrs)
-    refine this (mul_comm x y ▸ hxyw) hy₀ hx₀ hw_min (Int.gcd_comm x y ▸ hxy_co) z
+    refine this hy₀ hx₀ (mul_comm x y ▸ hxyw) hw_min (Int.gcd_comm x y ▸ hxy_co) z
       (pythagoreanTriple_comm.1 hxyz) r s (Or.inl hxyrs) hrs_co hrs_01 hxyrs
   clear hxyrs'
   simp_rw [pow_two] at hxyrs; revert hxyrs; rintro ⟨rfl, rfl⟩
@@ -144,4 +138,4 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hxy : ∃ z, Pythago
 
 
 
-termination_by _ w _ _ => w.natAbs
+termination_by _ w _ _ _ _ => w.natAbs
