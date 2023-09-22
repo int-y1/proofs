@@ -56,13 +56,32 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
   simp_rw [pow_two] at hxyrs; revert hxyrs; rintro ⟨rfl, rfl⟩
   -- Simplify `hxyw`
   simp_rw [← pow_two, sq_sub_sq, mul_assoc, mul_left_comm _ (2 : ℤ)] at hxyw
-  have hxyw := mul_left_cancel₀ (by decide) hxyw
+  replace hxyw := mul_left_cancel₀ (by decide) hxyw
   simp_rw [← mul_assoc] at hxyw
   have hrs_add_odd : Odd (r + s) := by
     simp_rw [← Int.even_iff, ← Int.odd_iff] at hrs_01
     rcases hrs_01 with ⟨hr, hs⟩ | ⟨hr, hs⟩
     · simp only [Int.odd_add', hr, hs]
     · simp only [Int.odd_add, hr, hs]
+  clear hrs_01
+  -- `r`, `s`, and `r-s` are positive
+  wlog hr₀ : r > 0
+  · rw [not_lt, le_iff_lt_or_eq] at hr₀
+    rcases hr₀ with hr₀ | rfl
+    · apply this hw_min z (-r) (-s)
+      rwa [Int.gcd_neg_right, Int.gcd_neg_left]
+      convert hx₀ using 1; ring
+      convert hy₀ using 1; ring
+      convert hxy_co using 1 <;> ring_nf
+      convert hxyz using 1 <;> ring_nf
+      convert hxyw using 1; ring_nf
+      convert hrs_add_odd.neg using 1; ring_nf
+      rwa [gt_iff_lt, Left.neg_pos_iff]
+    · simp at hy₀
+  have hs₀ : s > 0 := pos_of_mul_pos_right hy₀ (mul_pos zero_lt_two hr₀).le
+  have hrs₀ : r - s > 0 := by
+    rw [← pow_two, ← pow_two, sq_sub_sq] at hx₀
+    exact pos_of_mul_pos_right hx₀ (Int.add_lt_add hr₀ hs₀).le
   have hrs_sub_add_co : Int.gcd (r - s) (r + s) = 1 := by
     rw [← Int.isCoprime_iff_gcd_eq_one, ← IsCoprime.add_mul_left_left_iff (z := 1), mul_one,
       sub_add_add_cancel, ← two_mul, IsCoprime.mul_left_iff]
@@ -72,9 +91,10 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
       cases dvd_or_coprime 2 (r + s) Int.prime_two.irreducible <;> [contradiction; assumption]
     · nth_rw 2 [← mul_one r]
       exact IsCoprime.mul_add_left_right (Int.isCoprime_iff_gcd_eq_one.2 hrs_co) 1
-  have ⟨⟨a, ha⟩, ⟨b, hb⟩, ⟨c, hc⟩, ⟨d, hd⟩⟩ :
-      (∃ a, r = a * a) ∧ (∃ b, s = b * b) ∧ (∃ c, r - s = c * c) ∧ (∃ d, r + s = d * d) := by
-    -- This should be provable from `hxyw`, and the fact that `r+s`, `r-s`, `r`, `s` are relatively prime.
+  have ⟨⟨a, ha₀, ha⟩, ⟨b, hb₀, hb⟩, ⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩⟩ :
+      (∃ a, a > 0 ∧ r = a * a) ∧ (∃ b, b > 0 ∧ s = b * b) ∧
+      (∃ c, c > 0 ∧ r - s = c * c) ∧ (∃ d, d > 0 ∧ r + s = d * d) := by
+    -- This should be provable from `hxyw`, and the fact that `r+s`, `r-s`, `r`, `s` are positive and relatively prime.
     -- Relevant link: https://leanprover.zulipchat.com/#narrow/stream/113489-new-members/topic/squares/near/187825068
     -- Possibly relevant theorem: `Int.sq_of_gcd_eq_one`
     sorry
@@ -117,11 +137,7 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
     calc
     _ = (2 * w') * (2 * w') := by rw [← mul_assoc, hxy_b2, hw']
     _ = _ := by ring
-  suffices x = 0 ∨ y = 0 by
-    rcases this with (rfl | rfl)
-    · simp at hxy_b2; rcases hxy_b2; simp at hb; rcases hb; simp at *
-    · simp at hxy_b2; rcases hxy_b2; simp at hb; rcases hb; simp at *
-  refine hw_min ⟨a, x2_add_y2_eq_a2⟩ hxy_w' ?_
+  refine hw_min sorry sorry ⟨a, x2_add_y2_eq_a2⟩ hxy_w' ?_
   -- ← mul_lt_mul_left (by decide : 0 < 2)
   rw [Int.natAbs_lt_iff_sq_lt, pow_two, pow_two]
   apply lt_of_lt_of_le (b := s)
