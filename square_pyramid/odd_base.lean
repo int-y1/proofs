@@ -3,6 +3,7 @@
 -- this is a failed attempt at formalizing the proof
 
 import Mathlib.Data.Int.Basic
+import Mathlib.Data.Int.Lemmas
 import Mathlib.Data.Int.Parity
 import Mathlib.Data.Int.Order.Basic
 import Mathlib.NumberTheory.PythagoreanTriples
@@ -103,8 +104,35 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hxy : ∃ z, Pythago
     _ = r * 4 / 4 := by
       rw [← right_distrib, ← hc, ← hd, sub_add_add_cancel, ← mul_two, mul_assoc]; rfl
     _ = a * a := by rw [Int.mul_ediv_cancel _ (by decide), ha]
-  have hxy_co : Int.gcd x y = 1 := by
-    sorry
+  -- Note: The proof used `Int.gcd x y = 1` but this wasn't needed. A simpler approach is to
+  -- get the integer equality `2xy = b^2`, then get `2 ∣ b`, then get `xy = 2(b/2)(b/2)`.
+  have hxy_b2 : 2 * x * y = b * b := by
+    have : 2 * (2 * x * y) = 2 * (b * b) := by
+      calc
+      _ = (x + x) * (y + y) := by ring
+      _ = d * d - c * c := by rw [← hx, ← hy, add_comm, ← sq_sub_sq, pow_two, pow_two]
+      _ = _ := by rw [← hd, ← hc, add_sub_sub_cancel, hb, ← two_mul]
+    exact mul_left_cancel₀ (by decide) this
+  have ⟨w', hw'⟩ : 2 ∣ b := by
+    -- This follows from `hxy_b2 : 2xy = b^2`
+    apply Int.Prime.dvd_pow' (k := 2) Nat.prime_two
+    rw [pow_two, ← hxy_b2, mul_assoc]
+    exists x * y
+  have hxy_w' : x * y = 2 * w' * w' := by
+    apply mul_left_cancel₀ two_ne_zero
+    calc
+    _ = (2 * w') * (2 * w') := by rw [← mul_assoc, hxy_b2, hw']
+    _ = _ := by ring
+  suffices x = 0 ∨ y = 0 by
+    rcases this with (rfl | rfl)
+    · simp at hxy_b2; rcases hxy_b2; simp at hb; rcases hb; simp at *
+    · simp at hxy_b2; rcases hxy_b2; simp at hb; rcases hb; simp at *
+  refine hw_min ⟨a, x2_add_y2_eq_a2⟩ hxy_w' ?_
+  -- ← mul_lt_mul_left (by decide : 0 < 2)
+  rw [Int.natAbs_lt_iff_sq_lt, pow_two, pow_two]
+  apply lt_of_lt_of_le (b := s)
+  · rw [hb, ← hxy_b2, mul_assoc, hxy_w']
+  rw [← hxyw]
   sorry
 
 
