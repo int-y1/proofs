@@ -232,7 +232,43 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' hs_2s1_co.symm (mul_comm s _ ▸ hx4s.symm)
     replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
     rw [← hu] at hv
-    sorry
+    -- Do cases on `v^4 = 2 * (u^4 + 1)` mod 8
+    have : v ^ 4 % 8 = 2 * (u ^ 4 + 1) % 8 := by rw [hv]
+    have hu₀ : Even u → 2 * (u ^ 4 + 1) % 8 = 2 := by
+      rintro ⟨x, rfl⟩
+      suffices (2 + 8 * (4*x^4)) % 8 = 2 by convert this using 2; ring
+      simp only [Int.add_mul_emod_self_left]
+    have hu₁ : Odd u → 2 * (u ^ 4 + 1) % 8 = 4 := by
+      rintro ⟨x, rfl⟩
+      suffices (4 + 8 * (4*x^4 + 8*x^3 + 6*x^2 + 2*x)) % 8 = 4 by convert this using 2; ring
+      simp only [Int.add_mul_emod_self_left]
+    have hv₀ : Even v → v ^ 4 % 8 = 0 := by
+      rintro ⟨x, rfl⟩
+      suffices 8 * (2*x^4) % 8 = 0 by convert this using 2; ring
+      apply Int.mul_emod_right
+    have hv₁ : Odd v → v ^ 4 % 8 = 1 := by
+      rintro ⟨x, rfl⟩
+      suffices (1 + 8 * (2*x^4 + 4*x^3 + 3*x^2 + x)) % 8 = 1 by convert this using 2; ring
+      simp only [Int.add_mul_emod_self_left]
+    cases' u.even_or_odd with h₁ h₁ <;> cases' v.even_or_odd with h₂ h₂ <;>
+      [rw [hu₀ h₁, hv₀ h₂] at this; rw [hu₀ h₁, hv₁ h₂] at this;
+      rw [hu₁ h₁, hv₀ h₂] at this; rw [hu₁ h₁, hv₁ h₂] at this] <;> contradiction
+  have h2s_s1_co : IsCoprime (2 * s) (s + 1) := by
+    apply IsCoprime.mul_left
+    · cases' dvd_or_coprime 2 (s + 1) Int.prime_two.irreducible with h h
+      · exact (Int.odd_iff_not_even.1 hs.add_one (even_iff_two_dvd.2 h)).elim
+      · exact h
+    · have := IsCoprime.mul_add_left_right (isCoprime_one_right (x := s)) 1
+      rwa [mul_one] at this
+  -- Use `hx4s` and `h2s_s1_co` to get `2s = u^4` and `s+1 = v^4`
+  have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' h2s_s1_co hx4s.symm
+  replace hu := Int.eq_of_associated_of_nonneg hu (pow_bit0_nonneg u 2) (mul_pos (by decide) hs₀).le
+  have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' h2s_s1_co.symm (mul_comm (2*s) _ ▸ hx4s.symm)
+  replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
+  have ⟨w, hw⟩ : Even u := (Int.even_pow.1 ⟨s, two_mul s ▸ hu⟩).1
+  have ⟨a, ha⟩ : Odd (v ^ 2) := by
+    rw [Int.odd_pow' (by decide), ← Int.odd_pow' (by decide : 4 ≠ 0), hv]
+    exact hs.add_one
   sorry
 
 
