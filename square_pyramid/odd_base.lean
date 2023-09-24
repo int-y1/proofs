@@ -218,8 +218,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     rw [hys] at hxy
     linear_combination hxy
   cases' s.even_or_odd.symm with hs hs
-  · sorry
-    have hs_2s1_co : IsCoprime s (2 * (s + 1)) := by
+  · have hs_2s1_co : IsCoprime s (2 * (s + 1)) := by
       apply IsCoprime.mul_right
       · cases' dvd_or_coprime 2 s Int.prime_two.irreducible with h h
         · exact (Int.odd_iff_not_even.1 hs (even_iff_two_dvd.2 h)).elim
@@ -308,9 +307,12 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     exact (hs₀.ne hv.symm).elim
   have ⟨b, hb⟩ := exists_associated_pow_of_mul_eq_pow' ha2a1_co hwa
   replace hb := Int.eq_of_associated_of_nonneg hb (pow_bit0_nonneg b 2) ha₀.le
-  wlog hb₀ : b > 0
-  · sorry -- why is wlog so verbose
-  have ⟨c, hc⟩ := exists_associated_pow_of_mul_eq_pow' ha2a1_co.symm (mul_comm _ _ ▸ hwa)
+  wlog hb₀ : b > 0 generalizing b hb
+  · rw [not_lt, le_iff_lt_or_eq] at hb₀
+    rcases hb₀ with hb₀ | rfl
+    · exact this (-b) (by rwa [Even.neg_pow (by decide)]) (by rwa [gt_iff_lt, Left.neg_pos_iff])
+    · rw [zero_pow (by decide)] at hb; exact ha₀.ne hb
+  have ⟨c, hc⟩ := exists_associated_pow_of_mul_eq_pow' ha2a1_co.symm (mul_comm a _ ▸ hwa)
   replace hc := Int.eq_of_associated_of_nonneg hc (pow_bit0_nonneg c 2) (by positivity)
   have hbc : 2 * b ^ 4 + 1 = (c ^ 2) ^ 2 := by rw [hb, ← hc]; ring
   apply hx_min hbc hb₀
@@ -325,13 +327,17 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
         using 1 <;> ring
     _ ≤ s + 1 := by rw [← hv]; convert Int.le_self_sq _ using 1; ring
     _ < y := by rw [hys, add_lt_add_iff_right]; apply lt_mul_left hs₀; decide
-
-
-
-
-
-
-
-
-
 termination_by _ x _ _ _ => x.natAbs
+
+/-- Lemma 3. -/
+theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x > 0) :
+    x = 1 := by
+  sorry
+
+
+
+
+
+
+
+
