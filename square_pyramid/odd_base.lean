@@ -8,6 +8,22 @@ import Mathlib.Data.Int.Parity
 import Mathlib.Data.Int.Order.Basic
 import Mathlib.NumberTheory.PythagoreanTriples
 
+theorem pos_sq_of_coprime {a b c : ℤ} (h : IsCoprime a b) (heq : a * b = c ^ 2) (ha : a > 0)
+    (hb : b > 0): ∃ x y, x > 0 ∧ y > 0 ∧ a = x ^ 2 ∧ b = y ^ 2 := by
+  have ⟨x, hx⟩ := Int.sq_of_coprime h heq
+  rcases hx with rfl | rfl
+  case inr =>
+    rw [gt_iff_lt, neg_pos, ← not_le] at ha
+    exact (ha (sq_nonneg x)).elim
+  have ⟨y, hy⟩ := Int.sq_of_coprime h.symm (mul_comm _ b ▸ heq)
+  rcases hy with rfl | rfl
+  case inr =>
+    rw [gt_iff_lt, neg_pos, ← not_le] at hb
+    exact (hb (sq_nonneg y)).elim
+  exists |x|, |y|
+  simp [(sq_pos_iff _).1 ha, (sq_pos_iff _).1 hb]
+
+/-- Lemma 1. -/
 theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 0)
     (hxy : ∃ z, PythagoreanTriple x y z) (hxyw : x * y = 2 * w * w) : False := by
   -- Suppose `|w|` is minimal
@@ -72,7 +88,7 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
       rwa [Int.gcd_neg_right, Int.gcd_neg_left]
       convert hx₀ using 1; ring
       convert hy₀ using 1; ring
-      convert hxy_co using 1 <;> ring_nf
+      convert hxy_co using 1; ring_nf
       convert hxyz using 1 <;> ring_nf
       convert hxyw using 1; ring_nf
       convert hrs_add_odd.neg using 1; ring_nf
@@ -94,10 +110,24 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
   have ⟨⟨a, ha₀, ha⟩, ⟨b, hb₀, hb⟩, ⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩⟩ :
       (∃ a, a > 0 ∧ r = a * a) ∧ (∃ b, b > 0 ∧ s = b * b) ∧
       (∃ c, c > 0 ∧ r - s = c * c) ∧ (∃ d, d > 0 ∧ r + s = d * d) := by
-    -- This should be provable from `hxyw`, and the fact that `r+s`, `r-s`, `r`, `s` are positive and relatively prime.
-    -- Relevant link: https://leanprover.zulipchat.com/#narrow/stream/113489-new-members/topic/squares/near/187825068
-    -- Possibly relevant theorem: `Int.sq_of_gcd_eq_one`
-    sorry
+    -- Use `hxyw`. Also, use the fact that `r+s`, `r-s`, `r`, `s` are positive and pairwise coprime.
+    simp_rw [← pow_two] at hxyw ⊢
+    rw [Int.gcd_eq_one_iff_coprime] at hrs_co hrs_sub_add_co
+    have hpos₁ := add_pos hr₀ hs₀
+    have hpos₂ := mul_pos hpos₁ hrs₀
+    have hpos₃ := mul_pos hpos₂ hr₀
+    have ⟨abc, d, habc₀, hd₀, habc, hd⟩ :
+        ∃ x y, x > 0 ∧ y > 0 ∧ (r + s) * (r - s) * r = x ^ 2 ∧ s = y ^ 2 := by
+      refine pos_sq_of_coprime (IsCoprime.mul_left (IsCoprime.mul_left ?_ ?_) hrs_co) hxyw hpos₃ hs₀
+      convert hrs_co.add_mul_left_left 1; rw [mul_one]
+      convert hrs_co.add_mul_left_left (-1) using 1; ring
+    have ⟨ab, c, hab₀, hc₀, hab, hc⟩ :
+        ∃ x y, x > 0 ∧ y > 0 ∧ (r + s) * (r - s) = x ^ 2 ∧ r = y ^ 2 := by
+      refine pos_sq_of_coprime (IsCoprime.mul_left ?_ ?_) habc hpos₂ hr₀
+      convert hrs_co.symm.mul_add_left_left 1; rw [mul_one]
+      convert (hrs_co.symm.add_mul_left_left (-1)).neg_left using 1; ring
+    have ⟨a, b, ha₀, hb₀, ha, hb⟩ := pos_sq_of_coprime hrs_sub_add_co.symm hab hpos₁ hrs₀
+    exact ⟨⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩, ⟨b, hb₀, hb⟩, ⟨a, ha₀, ha⟩⟩
   have hcd_co : Int.gcd c d = 1 := by
     rw [← Int.isCoprime_iff_gcd_eq_one, ← IsCoprime.pow_iff (by decide : 0 < 2) (by decide : 0 < 2),
       pow_two, pow_two, ← hc, ← hd, Int.isCoprime_iff_gcd_eq_one, hrs_sub_add_co]
