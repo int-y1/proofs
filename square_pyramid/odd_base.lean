@@ -107,7 +107,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
     · rw [Int.odd_iff_not_even, Int.even_iff, ← Int.dvd_iff_emod_eq_zero] at hrs_add_odd
       cases dvd_or_coprime 2 (r + s) Int.prime_two.irreducible <;> [contradiction; assumption]
     · nth_rw 2 [← mul_one r]
-      exact IsCoprime.mul_add_left_right (Int.isCoprime_iff_gcd_eq_one.2 hrs_co) 1
+      exact (Int.isCoprime_iff_gcd_eq_one.2 hrs_co).mul_add_left_right 1
   have ⟨⟨a, _, ha⟩, ⟨b, hb₀, hb⟩, ⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩⟩ :
       (∃ a, a > 0 ∧ r = a * a) ∧ (∃ b, b > 0 ∧ s = b * b) ∧
       (∃ c, c > 0 ∧ r - s = c * c) ∧ (∃ d, d > 0 ∧ r + s = d * d) := by
@@ -119,7 +119,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
     have hpos₃ := mul_pos hpos₂ hr₀
     have ⟨abc, d, _, hd₀, habc, hd⟩ :
         ∃ x y, x > 0 ∧ y > 0 ∧ (r + s) * (r - s) * r = x ^ 2 ∧ s = y ^ 2 := by
-      refine pos_sq_of_coprime (IsCoprime.mul_left (IsCoprime.mul_left ?_ ?_) hrs_co) hxyw hpos₃ hs₀
+      refine pos_sq_of_coprime ((IsCoprime.mul_left ?_ ?_).mul_left hrs_co) hxyw hpos₃ hs₀
       convert hrs_co.add_mul_left_left 1; rw [mul_one]
       convert hrs_co.add_mul_left_left (-1) using 1; ring
     have ⟨ab, c, _, hc₀, hab, hc⟩ :
@@ -218,12 +218,13 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     rw [hys] at hxy
     linear_combination hxy
   cases' s.even_or_odd.symm with hs hs
-  · have hs_2s1_co : IsCoprime s (2 * (s + 1)) := by
+  · sorry
+    have hs_2s1_co : IsCoprime s (2 * (s + 1)) := by
       apply IsCoprime.mul_right
       · cases' dvd_or_coprime 2 s Int.prime_two.irreducible with h h
         · exact (Int.odd_iff_not_even.1 hs (even_iff_two_dvd.2 h)).elim
         · exact h.symm
-      · have := IsCoprime.mul_add_left_right (isCoprime_one_right (x := s)) 1
+      · have := (isCoprime_one_right (x := s)).mul_add_left_right 1
         rwa [mul_one] at this
     -- Use `hx4s` and `hs_2s1_co` to get `s = u^4` and `2(s+1) = v^4`
     rw [mul_comm 2, mul_assoc] at hx4s
@@ -258,7 +259,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     · cases' dvd_or_coprime 2 (s + 1) Int.prime_two.irreducible with h h
       · exact (Int.odd_iff_not_even.1 hs.add_one (even_iff_two_dvd.2 h)).elim
       · exact h
-    · have := IsCoprime.mul_add_left_right (isCoprime_one_right (x := s)) 1
+    · have := (isCoprime_one_right (x := s)).mul_add_left_right 1
       rwa [mul_one] at this
   -- Use `hx4s` and `h2s_s1_co` to get `2s = u^4` and `s+1 = v^4`
   have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' h2s_s1_co hx4s.symm
@@ -269,7 +270,61 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
   have ⟨a, ha⟩ : Odd (v ^ 2) := by
     rw [Int.odd_pow' (by decide), ← Int.odd_pow' (by decide : 4 ≠ 0), hv]
     exact hs.add_one
-  sorry
+  have hwa : 2 * w ^ 4 = a * (a + 1) := mul_left_cancel₀ (by decide : (8 : ℤ) ≠ 0) <| by
+    calc
+    _ = (w + w) ^ 4 := by ring
+    _ = 2 * (v ^ 4 - 1) := by rw [← hw, hu, hv, add_sub_cancel]
+    _ = 2 * (v ^ 2 - 1) * (v ^ 2 + 1) := by ring
+    _ = _ := by rw [ha]; ring
+  obtain ⟨a, rfl⟩ : Even a := by
+    by_contra h
+    rw [← Int.odd_iff_not_even] at h
+    obtain ⟨k, rfl⟩ := h
+    replace ha : v ^ 2 = 3 + 4 * k := by convert ha using 1; ring
+    replace ha : v ^ 2 % 4 = 3 := by rw [ha, Int.add_mul_emod_self_left]; rfl
+    rcases v.even_or_odd with ⟨v', rfl⟩ | ⟨v', rfl⟩
+    · replace ha : (4 * v' ^ 2) % 4 = 3 := by convert ha using 2; ring
+      rw [Int.mul_emod_right] at ha
+      contradiction
+    · replace ha : (1 + 4 * (v' ^ 2 + v')) % 4 = 3 := by convert ha using 2; ring
+      rw [Int.add_mul_emod_self_left] at ha
+      contradiction
+  replace ha : v ^ 2 = 4 * a + 1 := by rw [ha]; ring
+  replace hwa : a * (2 * a + 1) = w ^ 4 := mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) <| by
+    rw [hwa]; ring
+  have ha2a1_co : IsCoprime a (2 * a + 1) := isCoprime_one_right.mul_add_right_right _
+  have ha₀ : a ≥ 0 := by
+    by_contra h
+    rw [ge_iff_le, not_le, Int.lt_iff_add_one_le] at h 
+    replace h := sub_le_sub_right (mul_nonpos_of_nonneg_of_nonpos (by decide : (0 : ℤ) ≤ 4) h) 3
+    replace h : v ^ 2 ≤ -3 := by rw [ha]; convert h using 1; ring
+    have := le_trans (sq_nonneg v) h
+    contradiction
+  replace ha₀ : a > 0 := by
+    rcases lt_or_eq_of_le ha₀ with h | rfl
+    · exact h
+    replace hv : (v ^ 2) ^ 2 = s + 1 := by convert hv using 1; ring
+    rw [ha, mul_zero, zero_add, one_pow, self_eq_add_left] at hv 
+    exact (hs₀.ne hv.symm).elim
+  have ⟨b, hb⟩ := exists_associated_pow_of_mul_eq_pow' ha2a1_co hwa
+  replace hb := Int.eq_of_associated_of_nonneg hb (pow_bit0_nonneg b 2) ha₀.le
+  wlog hb₀ : b > 0
+  · sorry -- why is wlog so verbose
+  have ⟨c, hc⟩ := exists_associated_pow_of_mul_eq_pow' ha2a1_co.symm (mul_comm _ _ ▸ hwa)
+  replace hc := Int.eq_of_associated_of_nonneg hc (pow_bit0_nonneg c 2) (by positivity)
+  have hbc : 2 * b ^ 4 + 1 = (c ^ 2) ^ 2 := by rw [hb, ← hc]; ring
+  apply hx_min hbc hb₀
+  refine (lt_of_pow_lt_pow 4 hx.le ?_)
+  rw [← mul_lt_mul_left (by decide : (0 : ℤ) < 2), ← add_lt_add_iff_right 1, hbc, hxy, sq_lt_sq,
+    abs_of_nonneg (sq_nonneg c), abs_of_nonneg hy₀.le]
+  calc
+    _ ≤ 2 * a + 1 := by rw [← hc]; convert Int.le_self_sq _ using 1; ring
+    _ < v ^ 2 := by
+      rw [ha]
+      convert add_lt_add_right ((mul_lt_mul_left (by decide : (0 : ℤ) < 2)).2 ha₀) (2 * a + 1)
+        using 1 <;> ring
+    _ ≤ s + 1 := by rw [← hv]; convert Int.le_self_sq _ using 1; ring
+    _ < y := by rw [hys, add_lt_add_iff_right]; apply lt_mul_left hs₀; decide
 
 
 
