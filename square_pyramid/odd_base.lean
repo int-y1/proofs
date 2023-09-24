@@ -329,9 +329,60 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     _ < y := by rw [hys, add_lt_add_iff_right]; apply lt_mul_left hs₀; decide
 termination_by _ x _ _ _ => x.natAbs
 
+/-- Lemma 2, alternate form. -/
+theorem two_mul_pow_four_add_one_ne_sq' {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2) : x = 0 := by
+  by_contra h
+  cases' ne_iff_lt_or_gt.1 h with h h
+  · apply two_mul_pow_four_add_one_ne_sq (x := -x) (y := y)
+    rwa [Even.neg_pow (by decide)]
+    rwa [gt_iff_lt, Left.neg_pos_iff]
+  · exact two_mul_pow_four_add_one_ne_sq hxy h
+
 /-- Lemma 3. -/
 theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x > 0) :
     x = 1 := by
+  rcases y.even_or_odd with ⟨s, rfl⟩ | ⟨s, rfl⟩
+  · rw [← eq_sub_iff_add_eq'] at hxy
+    have : Even 1 := ⟨2 * s ^ 2 - 4 * x ^ 4, by rw [hxy]; ring⟩
+    contradiction
+  replace hxy : 2 * x ^ 4 = s * (s + 1) := by
+    apply mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0)
+    apply add_right_cancel (b := 1)
+    convert hxy using 1 <;> ring
+  wlog hs₀ : s ≥ 0 generalizing s hxy
+  · apply this (-s - 1) (by rw [hxy]; ring)
+    rw [ge_iff_le, not_le] at hs₀
+    rw [ge_iff_le, sub_nonneg, le_neg]
+    exact Int.le_sub_one_of_lt hs₀
+  rcases s.even_or_odd with ⟨s, rfl⟩ | ⟨s, rfl⟩
+  · replace hxy : s * (2 * s + 1) = x ^ 4 := by
+      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0); rw [hxy]; ring
+    replace hs₀ : s ≥ 0 := nonneg_of_mul_nonneg_right ((two_mul s).symm ▸ hs₀) (by decide)
+    have hs_2s1_co : IsCoprime s (2 * s + 1) := isCoprime_one_right.mul_add_right_right _
+    have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' hs_2s1_co hxy
+    replace hu := Int.eq_of_associated_of_nonneg hu (pow_bit0_nonneg u 2) hs₀
+    have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' hs_2s1_co.symm (mul_comm s _ ▸ hxy)
+    replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
+    replace hv : 2 * u ^ 4 + 1 = (v ^ 2) ^ 2 := by rw [hu, ← hv]; ring
+    rcases two_mul_pow_four_add_one_ne_sq' hv
+    rw [zero_pow (by decide)] at hu; rcases hu
+    symm at hxy; rw [zero_mul, pow_eq_zero_iff (by decide)] at hxy
+    exact (hx.ne hxy.symm).elim
+  replace hxy : (s + 1) * (2 * s + 1) = x ^ 4 := by
+    apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0); rw [hxy]; ring
+  replace hs₀ : s ≥ 0 := by
+    by_contra h
+    rw [ge_iff_le, not_le, Int.lt_iff_add_one_le] at h 
+    replace h := sub_le_sub_right (mul_nonpos_of_nonneg_of_nonpos (by decide : (0 : ℤ) ≤ 2) h) 1
+    replace h : 2 * s + 1 ≤ -1 := by convert h using 1; ring
+    have := le_trans hs₀ h
+    contradiction
+  have hs1_2s1_co : IsCoprime (s + 1) (2 * s + 1) := by
+    convert (isCoprime_one_right (x := s + 1)).neg_right.mul_add_right_right 2 using 1; ring
+  have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' hs1_2s1_co.symm (mul_comm (s + 1) _ ▸ hxy)
+  replace hu := Int.eq_of_associated_of_nonneg hu (pow_bit0_nonneg u 2) (by positivity)
+  have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' hs1_2s1_co hxy
+  replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
   sorry
 
 
