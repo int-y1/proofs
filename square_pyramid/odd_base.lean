@@ -1,11 +1,12 @@
 -- https://en.wikipedia.org/wiki/Cannonball_problem
 -- reference is doi:10.2307/2323911
--- this is a failed attempt at formalizing the proof
+-- this is an in-progress attempt at formalizing the proof
 
 import Mathlib.Data.Int.Basic
 import Mathlib.Data.Int.Lemmas
 import Mathlib.Data.Int.Parity
 import Mathlib.Data.Int.Order.Basic
+import Mathlib.Data.Int.SuccPred
 import Mathlib.NumberTheory.PythagoreanTriples
 
 theorem pos_sq_of_coprime {a b c : ℤ} (h : IsCoprime a b) (heq : a * b = c ^ 2) (ha : a > 0)
@@ -23,12 +24,15 @@ theorem pos_sq_of_coprime {a b c : ℤ} (h : IsCoprime a b) (heq : a * b = c ^ 2
   exists |x|, |y|
   simp [(sq_pos_iff _).1 ha, (sq_pos_iff _).1 hb]
 
+theorem sq_dvd_two_mul_sq {a b : ℤ} (h : a * a ∣ 2 * b * b) : a ∣ b := by
+  sorry
+
 /-- Lemma 1. -/
 theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 0)
     (hxy : ∃ z, PythagoreanTriple x y z) (hxyw : x * y = 2 * w * w) : False := by
   -- Suppose `|w|` is minimal
   have hw_min {x y w' : ℤ} (hx : x > 0) (hy : y > 0) (hxy : ∃ z, PythagoreanTriple x y z)
-      (hxyw' : x * y = 2 * w' * w') (h : w'.natAbs < w.natAbs) : False :=
+      (hxyw' : x * y = 2 * w' * w') (_h : w'.natAbs < w.natAbs) : False :=
     pythagorean_triangle_area_not_square hx hy hxy hxyw'
   -- Suppose `x` and `y` are coprime
   cases' (le_or_gt (Int.gcd x y) 1).symm with h h
@@ -37,10 +41,8 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
     have ⟨x', hx'⟩ := x.gcd_dvd_left y
     have ⟨y', hy'⟩ := x.gcd_dvd_right y
     -- The proof skipped this important fact: `w / gcd(x, y)` is an integer.
-    obtain ⟨w', rfl⟩ : (Int.gcd x y : ℤ) ∣ w := by
-      have := hxyw ▸ mul_dvd_mul (x.gcd_dvd_left y) (x.gcd_dvd_right y)
-      -- Somehow prove that `a*a ∣ 2*b*b → a ∣ b`
-      sorry
+    obtain ⟨w', rfl⟩ : (Int.gcd x y : ℤ) ∣ w :=
+      sq_dvd_two_mul_sq (hxyw ▸ mul_dvd_mul (x.gcd_dvd_left y) (x.gcd_dvd_right y))
     nth_rw 1 [hy', hx'] at hxyz hxyw
     have h₀ : (Int.gcd x y : ℤ) ≠ 0 := by simp [(lt_trans zero_lt_one h).ne.symm]
     rw [PythagoreanTriple.mul_iff _ h₀] at hxyz
@@ -56,8 +58,7 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
     simp_rw [mul_zero] at hxyw
     rcases zero_eq_mul.1 hxyw.symm with rfl | rfl <;> contradiction
   cases' (Nat.le_and_le_add_one_iff.1 ⟨Nat.zero_le _, h⟩) with h hxy_co
-  · have ⟨hx, hy⟩ := Int.gcd_eq_zero_iff.1 h
-    exact hx₀.ne.symm hx
+  · exact hx₀.ne.symm (Int.gcd_eq_zero_iff.1 h).1
   -- WLOG, take `x = r^2-s^2` and `y = 2rs` where `gcd(r, s) = 1`.
   have ⟨z, hxyz⟩ := hxy
   clear h hxy
@@ -107,7 +108,7 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
       cases dvd_or_coprime 2 (r + s) Int.prime_two.irreducible <;> [contradiction; assumption]
     · nth_rw 2 [← mul_one r]
       exact IsCoprime.mul_add_left_right (Int.isCoprime_iff_gcd_eq_one.2 hrs_co) 1
-  have ⟨⟨a, ha₀, ha⟩, ⟨b, hb₀, hb⟩, ⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩⟩ :
+  have ⟨⟨a, _, ha⟩, ⟨b, hb₀, hb⟩, ⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩⟩ :
       (∃ a, a > 0 ∧ r = a * a) ∧ (∃ b, b > 0 ∧ s = b * b) ∧
       (∃ c, c > 0 ∧ r - s = c * c) ∧ (∃ d, d > 0 ∧ r + s = d * d) := by
     -- Use `hxyw`. Also, use the fact that `r+s`, `r-s`, `r`, `s` are positive and pairwise coprime.
@@ -116,21 +117,18 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
     have hpos₁ := add_pos hr₀ hs₀
     have hpos₂ := mul_pos hpos₁ hrs₀
     have hpos₃ := mul_pos hpos₂ hr₀
-    have ⟨abc, d, habc₀, hd₀, habc, hd⟩ :
+    have ⟨abc, d, _, hd₀, habc, hd⟩ :
         ∃ x y, x > 0 ∧ y > 0 ∧ (r + s) * (r - s) * r = x ^ 2 ∧ s = y ^ 2 := by
       refine pos_sq_of_coprime (IsCoprime.mul_left (IsCoprime.mul_left ?_ ?_) hrs_co) hxyw hpos₃ hs₀
       convert hrs_co.add_mul_left_left 1; rw [mul_one]
       convert hrs_co.add_mul_left_left (-1) using 1; ring
-    have ⟨ab, c, hab₀, hc₀, hab, hc⟩ :
+    have ⟨ab, c, _, hc₀, hab, hc⟩ :
         ∃ x y, x > 0 ∧ y > 0 ∧ (r + s) * (r - s) = x ^ 2 ∧ r = y ^ 2 := by
       refine pos_sq_of_coprime (IsCoprime.mul_left ?_ ?_) habc hpos₂ hr₀
       convert hrs_co.symm.mul_add_left_left 1; rw [mul_one]
       convert (hrs_co.symm.add_mul_left_left (-1)).neg_left using 1; ring
     have ⟨a, b, ha₀, hb₀, ha, hb⟩ := pos_sq_of_coprime hrs_sub_add_co.symm hab hpos₁ hrs₀
     exact ⟨⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩, ⟨b, hb₀, hb⟩, ⟨a, ha₀, ha⟩⟩
-  have hcd_co : Int.gcd c d = 1 := by
-    rw [← Int.isCoprime_iff_gcd_eq_one, ← IsCoprime.pow_iff (by decide : 0 < 2) (by decide : 0 < 2),
-      pow_two, pow_two, ← hc, ← hd, Int.isCoprime_iff_gcd_eq_one, hrs_sub_add_co]
   have hc_odd : Odd c := by
     rwa [← and_self (Odd c), ← Int.odd_mul, ← hc, Int.odd_sub, ← Int.odd_add]
   have hd_odd : Odd d := by
@@ -167,13 +165,28 @@ theorem pythagorean_triangle_area_not_square {x y w : ℤ} (hx₀ : x > 0) (hy�
     calc
     _ = (2 * w') * (2 * w') := by rw [← mul_assoc, hxy_b2, hw']
     _ = _ := by ring
-  refine hw_min sorry sorry ⟨a, x2_add_y2_eq_a2⟩ hxy_w' ?_
+  refine hw_min ?_ ?_ ⟨a, x2_add_y2_eq_a2⟩ hxy_w' ?_
+  · have := add_pos hc₀ hd₀
+    rw [hx, ← two_mul] at this
+    exact pos_of_mul_pos_right this (by decide)
+  · have : 0 < (c + d) * (d - c) := by
+      calc
+      _ ≤ b ^ 2 + b ^ 2 := add_pos (sq_pos_of_pos hb₀) (sq_pos_of_pos hb₀)
+      _ = (r + s) - (r - s) := by rw [pow_two, ← hb, add_sub_sub_cancel]
+      _ = _ := by rw [hd, hc]; ring
+    replace := pos_of_mul_pos_right this (add_pos hc₀ hd₀).le
+    rw [hy, ← two_mul] at this
+    exact pos_of_mul_pos_right this (by decide)
   -- ← mul_lt_mul_left (by decide : 0 < 2)
   rw [Int.natAbs_lt_iff_sq_lt, pow_two, pow_two]
   apply lt_of_lt_of_le (b := s)
-  · rw [hb, ← hxy_b2, mul_assoc, hxy_w']
+  · have : w' > 0 := pos_of_mul_pos_right (hw' ▸ hb₀) (by decide)
+    convert lt_mul_left (mul_pos this this) (by decide : (1 : ℤ) < 4) using 1
+    rw [hb, ← hxy_b2, mul_assoc, hxy_w']
+    ring
   rw [← hxyw]
-  sorry
+  refine' le_mul_of_one_le_left hs₀.le (Int.pos_iff_one_le.1 _)
+  positivity
 
 
 
