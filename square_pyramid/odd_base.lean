@@ -189,6 +189,28 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
   positivity
 termination_by _ w _ _ _ _ => w.natAbs
 
+/-- Lemma 1, alternate form. -/
+theorem pythagoreanTriple_area_ne_sq' {x y w : ℤ} (hxy : ∃ z, PythagoreanTriple x y z)
+    (hxyw : x * y = 2 * w * w) : x = 0 ∨ y = 0 := by
+  by_contra h
+  rw [not_or] at h
+  obtain ⟨hx, hy⟩ := h
+  have hxy₀ := mul_le_mul_of_nonneg_left (sq_nonneg w) (by decide : (0 : ℤ) ≤ 2)
+  rw [mul_zero, pow_two, ← mul_assoc, ← hxyw] at hxy₀
+  cases' lt_or_gt_of_ne hx with hx hx
+  · cases' lt_or_gt_of_ne hy with hy hy
+    · refine pythagoreanTriple_area_ne_sq (x := -x) (y := -y) (w := w)
+        (by simpa) (by simpa) ?_ (by simpa)
+      obtain ⟨z, hz⟩ := hxy
+      exists z
+      rwa [PythagoreanTriple, neg_mul_neg, neg_mul_neg]
+    · have := lt_of_le_of_lt hxy₀ (mul_neg_of_neg_of_pos hx hy)
+      contradiction
+  · cases' lt_or_gt_of_ne hy with hy hy
+    · have := lt_of_le_of_lt hxy₀ (mul_neg_of_pos_of_neg hx hy)
+      contradiction
+    · exact pythagoreanTriple_area_ne_sq hx hy hxy hxyw
+
 /-- Lemma 2. -/
 theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2) (hx : x > 0) :
     False := by
@@ -413,8 +435,26 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
   have h₂ : (v ^ 2 - u) * (v ^ 2 + u) = 2 * w₁ * w₁ := by
     apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
     linear_combination hw₁
-  -- may need to extend lemma 1 in order to use it here
-  sorry
+  have hv4 : v ^ 4 = u ^ 2 := by
+    cases' pythagoreanTriple_area_ne_sq'
+      ⟨2 * w₂, by simp_rw [PythagoreanTriple, ← pow_two]; exact h₁⟩ h₂ with h h
+    · rw [sub_eq_zero] at h; rw [← h]; ring
+    · rw [add_comm, ← sub_neg_eq_add, sub_eq_zero] at h; rw [h]; ring
+  rw [hv4] at huv
+  -- Start solving.
+  replace huv : (u ^ 2 - 1) ^ 2 = 0 := by linear_combination huv
+  rw [sq_eq_zero_iff, sub_eq_zero] at huv
+  rw [← mul_one 1, ← huv] at hu
+  replace hu : 0 = 2 * s := by linear_combination hu
+  simp only [zero_eq_mul, false_or] at hu
+  rcases hu
+  replace hxy : (x ^ 2) ^ 2 = 1 := by linear_combination hxy.symm
+  rw [sq_eq_one_iff, sq_eq_one_iff] at hxy
+  rcases hxy with (rfl | rfl) | h
+  · rfl
+  · contradiction
+  · have := h ▸ sq_nonneg x
+    contradiction
 
 
 
