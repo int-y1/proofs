@@ -457,6 +457,8 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
   · have := h ▸ sq_nonneg x
     contradiction
 
+/-- Suppose `x` and `y` are coprime and `x * y` is 3 times a square. Also suppose `x ≥ 0`.
+Then `x % 3 ≠ 2`. -/
 theorem mul_eq_three_sq {x y w : ℤ} (hco : IsCoprime x y) (h : x * y = 3 * w ^ 2) (hx : x ≥ 0) :
     x % 3 ≠ 2 := by
   rcases Int.prime_three.dvd_or_dvd ⟨w ^ 2, h⟩ with ⟨k, rfl⟩ | ⟨k, rfl⟩
@@ -470,7 +472,7 @@ theorem mul_eq_three_sq {x y w : ℤ} (hco : IsCoprime x y) (h : x * y = 3 * w ^
 /-- Theorem 3½. `x = 24` is the only even solution to the cannonball problem when `x`. -/
 theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2) (hx : x > 0)
     (hx_even : Even x) : x = 24 := by
-  have : 3 ∣ x := by
+  have hx_div : 3 ∣ x := by
     obtain ⟨x', hx'⟩ := hx_even
     replace h : (x + 1) * ((2 * x + 1) * x') = 3 * y ^ 2 := by
       apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
@@ -488,6 +490,46 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
       exact hx3.add_right 1
     · absurd mul_eq_three_sq (hco12.symm.mul_right hco23) (mul_left_comm _ _ x' ▸ h) (by positivity)
       exact (hx3.mul_left 2).add_right 1
+  obtain ⟨x, rfl⟩ : 6 ∣ x := by
+    have : IsCoprime (2 : ℤ) 3 := (isCoprime_one_right (R := ℤ)).mul_add_right_right 1
+    exact this.mul_dvd hx_even.two_dvd hx_div
+  clear hx_even hx_div
+  replace h : x * (6 * x + 1) * (12 * x + 1) = y ^ 2 := by
+    apply mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0)
+    linear_combination h
+  replace hx := pos_of_mul_pos_right hx (by decide)
+  have hco12 : IsCoprime x (6 * x + 1) := isCoprime_one_right.mul_add_right_right _
+  have hco13 : IsCoprime x (12 * x + 1) := isCoprime_one_right.mul_add_right_right _
+  have hco23 : IsCoprime (6 * x + 1) (12 * x + 1) := by
+    convert (isCoprime_one_right (x := 6 * x + 1)).neg_right.mul_add_right_right 2 using 1; ring
+  have ⟨qp, r, hqp₀, hr₀, hqp, hr⟩ :=
+    pos_sq_of_coprime (hco13.mul_left hco23) h (by positivity) (by positivity)
+  have ⟨q, p, hq₀, hp₀, hq, hp⟩ := pos_sq_of_coprime hco12 hqp (by positivity) (by positivity)
+  clear qp hqp₀ hqp
+  have hqrp : 6 * q ^ 2 = (r + p) * (r - p) := by rw [← sq_sub_sq, ← hq, ← hr, ← hp]; ring
+  have hp_odd : Odd p :=
+    (Int.odd_pow' (by decide)).1 (hp ▸ ((by decide : Even (6 : ℤ)).mul_right x).add_one)
+  have hr_odd : Odd r :=
+    (Int.odd_pow' (by decide)).1 (hr ▸ ((by decide : Even (12 : ℤ)).mul_right x).add_one)
+  have hrp₁_even := hr_odd.add_odd hp_odd
+  have hrp₂_even := hr_odd.sub_odd hp_odd
+  have ⟨rp₁, hrp₁⟩ := hrp₁_even
+  have ⟨rp₂, hrp₂⟩ := hrp₂_even
+  rw [hrp₁, hrp₂] at hqrp
+  obtain ⟨q, rfl⟩ : Even q := by
+    have : Even (3 * q ^ 2) := by
+      exists rp₁ * rp₂
+      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
+      linear_combination hqrp
+    simpa [Int.even_mul, Int.even_pow'] using this
+  replace hq₀ := pos_of_mul_pos_right ((two_mul q).symm ▸ hq₀) (by decide)
+  replace hqrp : rp₁ * rp₂ = 6 * q ^ 2 :=
+    mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0) (by linear_combination -hqrp)
+  have : IsCoprime rp₁ rp₂ := by
+    rw [hp, hr, IsCoprime.pow_iff (by decide) (by decide)] at hco23
+    -- maybe use `hco23`, `hp_odd`, `hr_odd`
+    sorry
+  -- and then do cases on `rp₁` and `rp₂`
   sorry
 
 
