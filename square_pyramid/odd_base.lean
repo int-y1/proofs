@@ -527,8 +527,19 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0) (by linear_combination -hqrp)
   have : IsCoprime rp₁ rp₂ := by
     rw [hp, hr, IsCoprime.pow_iff (by decide) (by decide)] at hco23
-    -- maybe use `hco23`, `hp_odd`, `hr_odd`
-    sorry
+    -- Use `hco23`, `hp_odd`, `hr_odd`
+    -- Note: This is similar to `hrs_sub_add_co` in Lemma 1, but I don't know how to join the two.
+    have hr' : r = rp₁ + rp₂ := by
+      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
+      linear_combination hrp₁+hrp₂
+    have hp' : p = rp₁ - rp₂ := by
+      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
+      linear_combination hrp₁-hrp₂
+    rw [hr', hp', ← IsCoprime.add_mul_left_left_iff (z := 1), mul_one,
+      sub_add_add_cancel, ← two_mul, IsCoprime.mul_left_iff] at hco23
+    replace hco23 := hco23.2
+    convert hco23.mul_add_left_right (-1) using 1
+    ring
   -- and then do cases on `rp₁` and `rp₂`
   sorry
 
