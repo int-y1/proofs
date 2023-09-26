@@ -8,6 +8,7 @@ import Mathlib.Data.Int.Parity
 import Mathlib.Data.Int.Order.Basic
 import Mathlib.Data.Int.SuccPred
 import Mathlib.NumberTheory.PythagoreanTriples
+import Mathlib.Tactic.ModCases
 
 theorem pos_sq_of_coprime {a b c : ℤ} (h : IsCoprime a b) (heq : a * b = c ^ 2) (ha : a > 0)
     (hb : b > 0): ∃ x y, x > 0 ∧ y > 0 ∧ a = x ^ 2 ∧ b = y ^ 2 := by
@@ -456,7 +457,38 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
   · have := h ▸ sq_nonneg x
     contradiction
 
+theorem mul_eq_three_sq {x y w : ℤ} (hco : IsCoprime x y) (h : x * y = 3 * w ^ 2) (hx : x ≥ 0) :
+    x % 3 ≠ 2 := by
+  rcases Int.prime_three.dvd_or_dvd ⟨w ^ 2, h⟩ with ⟨k, rfl⟩ | ⟨k, rfl⟩
+  · rw [Int.mul_emod_right]; decide
+  replace h : x * k = w ^ 2 := mul_left_cancel₀ (by decide : (3 : ℤ) ≠ 0) (by linear_combination h)
+  have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' hco.of_mul_right_right h
+  replace hu := Int.eq_of_associated_of_nonneg hu (sq_nonneg u) hx
+  rw [← hu, pow_two]
+  mod_cases hu3 : u % 3 <;> rw [hu3.mul hu3] <;> decide
 
+/-- Theorem 3½. `x = 24` is the only even solution to the cannonball problem when `x`. -/
+theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2) (hx : x > 0)
+    (hx_even : Even x) : x = 24 := by
+  have : 3 ∣ x := by
+    obtain ⟨x', hx'⟩ := hx_even
+    replace h : (x + 1) * ((2 * x + 1) * x') = 3 * y ^ 2 := by
+      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
+      rw [hx'] at h ⊢
+      linear_combination h
+    have hco12 : IsCoprime (x + 1) (2 * x + 1) := by
+      convert (isCoprime_one_right (x := x + 1)).neg_right.mul_add_right_right 2 using 1; ring
+    have hco13 : IsCoprime (x + 1) x' := by
+      rw [hx']; convert (isCoprime_one_left (x := x')).mul_add_right_left 2 using 1; ring
+    have hco23 : IsCoprime (2 * x + 1) x' := by
+      rw [hx']; convert (isCoprime_one_left (x := x')).mul_add_right_left 4 using 1; ring
+    mod_cases hx3 : x % 3
+    · exact Int.modEq_zero_iff_dvd.1 hx3
+    · absurd mul_eq_three_sq (hco12.mul_right hco13) h (by positivity)
+      exact hx3.add_right 1
+    · absurd mul_eq_three_sq (hco12.symm.mul_right hco23) (mul_left_comm _ _ x' ▸ h) (by positivity)
+      exact (hx3.mul_left 2).add_right 1
+  sorry
 
 
 
