@@ -586,7 +586,40 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     · rw [sub_eq_iff_eq_add.1 h]; rfl
   · sorry
   · sorry
-  sorry
+  · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₁` case
+    obtain ⟨aa, rfl⟩ : 6 ∣ rp₂ :=
+      ((isCoprime_one_right (x := (2 : ℤ))).add_mul_left_right 1).mul_dvd h₂ h₃
+    replace hqrp : aa * rp₁ = q ^ 2 := by
+      apply mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0)
+      linear_combination hqrp
+    rw [hq, ← two_mul, mul_pow, ← hqrp]
+    replace hrp₂₀ : aa > 0 := pos_of_mul_pos_right hrp₂₀ (by decide)
+    have ⟨a, ha⟩ := exists_associated_pow_of_mul_eq_pow' hrp₁₂_co.of_mul_right_right.symm hqrp
+    rcases Int.eq_of_associated_of_nonneg ha (sq_nonneg a) (by positivity)
+    have ⟨b, hb⟩ :=
+      exists_associated_pow_of_mul_eq_pow' hrp₁₂_co.of_mul_right_right (mul_comm _ rp₁ ▸ hqrp)
+    replace hb := Int.eq_of_associated_of_nonneg hb (sq_nonneg b) (by positivity)
+    wlog hb₀ : b > 0 generalizing b
+    · rw [not_lt, le_iff_lt_or_eq] at hb₀
+      rcases hb₀ with hb₀ | rfl
+      · exact this (-b) (by rwa [Even.neg_pow (by decide)]) (by rwa [gt_iff_lt, Left.neg_pos_iff])
+      · rw [zero_pow (by decide)] at hb; exact (hrp₁₀.ne hb).elim
+    rcases hb
+    have hp2 : p = b ^ 2 - 6 * a ^ 2 := by
+      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
+      linear_combination hrp₁ - hrp₂
+    have h : 24 * a ^ 2 * b ^ 2 + 1 = (b ^ 2 - 6 * a ^ 2) ^ 2 := by
+      rw [mul_assoc, hqrp, ← hp2, ← hp, hq]; ring
+    replace h : 8 * b ^ 4 + 1 = (6 * a ^ 2 - 3 * b ^ 2) ^ 2 := by
+      rw [← eq_sub_iff_add_eq'] at h ⊢
+      linear_combination h
+    rcases eight_pow_four_add_one h hb₀
+    replace h : 0 = a ^ 2 * (a ^ 2 - 1) := by
+      apply mul_left_cancel₀ (by decide : (36 : ℤ) ≠ 0)
+      linear_combination h
+    rcases zero_eq_mul.1 h with h | h
+    · exact (hrp₂₀.ne h.symm).elim
+    · rw [sub_eq_iff_eq_add.1 h]; rfl
 
 
 
