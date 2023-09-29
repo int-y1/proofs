@@ -584,8 +584,51 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     rcases zero_eq_mul.1 h with h | h
     · exact (hrp₁₀.ne h.symm).elim
     · rw [sub_eq_iff_eq_add.1 h]; rfl
-  · sorry
-  · sorry
+  · obtain ⟨aa, rfl⟩ := h₃
+    obtain ⟨bb, rfl⟩ := h₂
+    replace hrp₂₀ : aa > 0 := pos_of_mul_pos_right hrp₂₀ (by decide)
+    replace hrp₁₀ : bb > 0 := pos_of_mul_pos_right hrp₁₀ (by decide)
+    replace hqrp : aa * bb = q ^ 2 :=
+      mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0) (by linear_combination hqrp)
+    replace hrp₁₂_co := hrp₁₂_co.of_mul_left_right.of_mul_right_right
+    have hp2 : p = 2 * bb - 3 * aa :=
+      mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hrp₁ - hrp₂)
+    have h : 24 * aa * bb + 1 = (2 * bb - 3 * aa) ^ 2 := by
+      rw [mul_assoc, hqrp, ← hp2, ← hp, hq]; ring
+    have ⟨a, ha⟩ := exists_associated_pow_of_mul_eq_pow' hrp₁₂_co.symm hqrp
+    rcases Int.eq_of_associated_of_nonneg ha (sq_nonneg a) (by positivity)
+    have ⟨b, hb⟩ := exists_associated_pow_of_mul_eq_pow' hrp₁₂_co (mul_comm _ bb ▸ hqrp)
+    rcases Int.eq_of_associated_of_nonneg hb (sq_nonneg b) (by positivity)
+    replace h : 2 * (2 * b) ^ 4 + 1 = (3 * a ^ 2 - 6 * b ^ 2) ^ 2 := by
+      rw [← eq_sub_iff_add_eq'] at h ⊢
+      linear_combination h
+    have := two_mul_pow_four_add_one_ne_sq' h
+    simp only [mul_eq_zero, false_or] at this
+    rcases this
+    contradiction
+  · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₂` case
+    obtain ⟨aa, rfl⟩ := h₃
+    obtain ⟨bb, rfl⟩ := h₂
+    replace hrp₁₀ : aa > 0 := pos_of_mul_pos_right hrp₁₀ (by decide)
+    replace hrp₂₀ : bb > 0 := pos_of_mul_pos_right hrp₂₀ (by decide)
+    replace hqrp : aa * bb = q ^ 2 :=
+      mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0) (by linear_combination hqrp)
+    replace hrp₁₂_co := hrp₁₂_co.of_mul_left_right.of_mul_right_right
+    have hp2 : p = 3 * aa - 2 * bb :=
+      mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hrp₁ - hrp₂)
+    have h : 24 * aa * bb + 1 = (3 * aa - 2 * bb) ^ 2 := by
+      rw [mul_assoc, hqrp, ← hp2, ← hp, hq]; ring
+    have ⟨a, ha⟩ := exists_associated_pow_of_mul_eq_pow' hrp₁₂_co hqrp
+    rcases Int.eq_of_associated_of_nonneg ha (sq_nonneg a) (by positivity)
+    have ⟨b, hb⟩ := exists_associated_pow_of_mul_eq_pow' hrp₁₂_co.symm (mul_comm _ bb ▸ hqrp)
+    rcases Int.eq_of_associated_of_nonneg hb (sq_nonneg b) (by positivity)
+    replace h : 2 * (2 * b) ^ 4 + 1 = (3 * a ^ 2 - 6 * b ^ 2) ^ 2 := by
+      rw [← eq_sub_iff_add_eq'] at h ⊢
+      linear_combination h
+    have := two_mul_pow_four_add_one_ne_sq' h
+    simp only [mul_eq_zero, false_or] at this
+    rcases this
+    contradiction
   · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₁` case
     obtain ⟨aa, rfl⟩ : 6 ∣ rp₂ :=
       ((isCoprime_one_right (x := (2 : ℤ))).add_mul_left_right 1).mul_dvd h₂ h₃
