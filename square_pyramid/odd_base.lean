@@ -515,6 +515,14 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
   have hrp₂_even := hr_odd.sub_odd hp_odd
   have ⟨rp₁, hrp₁⟩ := hrp₁_even
   have ⟨rp₂, hrp₂⟩ := hrp₂_even
+  have hrp₁₀ : rp₁ > 0 := by
+    refine pos_of_mul_pos_right ?_ (by decide : (0 : ℤ) ≤ 2)
+    rw [two_mul, ← hrp₁]
+    positivity
+  have hrp₂₀ : rp₂ > 0 := by
+    have := hqrp ▸ mul_pos (by decide) (sq_pos_of_pos hq₀)
+    have := hrp₂ ▸ pos_of_mul_pos_right this (by positivity : 0 ≤ r + p)
+    exact pos_of_mul_pos_right ((two_mul rp₂).symm ▸ this) (by decide : (0 : ℤ) ≤ 2)
   rw [hrp₁, hrp₂] at hqrp
   obtain ⟨q, rfl⟩ : Even q := by
     have : Even (3 * q ^ 2) := by
@@ -523,9 +531,9 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
       linear_combination hqrp
     simpa [Int.even_mul, Int.even_pow'] using this
   replace hq₀ := pos_of_mul_pos_right ((two_mul q).symm ▸ hq₀) (by decide)
-  replace hqrp : rp₁ * rp₂ = 6 * q ^ 2 :=
+  replace hqrp : rp₁ * rp₂ = 2 * (3 * q ^ 2) :=
     mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0) (by linear_combination -hqrp)
-  have : IsCoprime rp₁ rp₂ := by
+  have hrp₁₂_co : IsCoprime rp₁ rp₂ := by
     rw [hp, hr, IsCoprime.pow_iff (by decide) (by decide)] at hco23
     -- Use `hco23`, `hp_odd`, `hr_odd`
     -- Note: This is similar to `hrs_sub_add_co` in Lemma 1, but I don't know how to join the two.
@@ -541,6 +549,43 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     convert hco23.mul_add_left_right (-1) using 1
     ring
   -- and then do cases on `rp₁` and `rp₂`
+  rcases Int.prime_two.dvd_or_dvd ⟨_, hqrp⟩ with h₂ | h₂ <;>
+    rcases Int.prime_three.dvd_or_dvd ⟨_, mul_left_comm _ _ (q ^ 2) ▸ hqrp⟩ with h₃ | h₃
+  · obtain ⟨aa, rfl⟩ : 6 ∣ rp₁ :=
+      ((isCoprime_one_right (x := (2 : ℤ))).add_mul_left_right 1).mul_dvd h₂ h₃
+    replace hqrp : aa * rp₂ = q ^ 2 := by
+      apply mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0)
+      linear_combination hqrp
+    rw [hq, ← two_mul, mul_pow, ← hqrp]
+    replace hrp₁₀ : aa > 0 := pos_of_mul_pos_right hrp₁₀ (by decide)
+    have ⟨a, ha⟩ := exists_associated_pow_of_mul_eq_pow' hrp₁₂_co.of_mul_left_right hqrp
+    rcases Int.eq_of_associated_of_nonneg ha (sq_nonneg a) (by positivity)
+    have ⟨b, hb⟩ :=
+      exists_associated_pow_of_mul_eq_pow' hrp₁₂_co.of_mul_left_right.symm (mul_comm _ rp₂ ▸ hqrp)
+    replace hb := Int.eq_of_associated_of_nonneg hb (sq_nonneg b) (by positivity)
+    wlog hb₀ : b > 0 generalizing b
+    · rw [not_lt, le_iff_lt_or_eq] at hb₀
+      rcases hb₀ with hb₀ | rfl
+      · exact this (-b) (by rwa [Even.neg_pow (by decide)]) (by rwa [gt_iff_lt, Left.neg_pos_iff])
+      · rw [zero_pow (by decide)] at hb; exact (hrp₂₀.ne hb).elim
+    rcases hb
+    have hp2 : p = 6 * a ^ 2 - b ^ 2 := by
+      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
+      linear_combination hrp₁ - hrp₂
+    have h : 24 * a ^ 2 * b ^ 2 + 1 = (6 * a ^ 2 - b ^ 2) ^ 2 := by
+      rw [mul_assoc, hqrp, ← hp2, ← hp, hq]; ring
+    replace h : 8 * b ^ 4 + 1 = (6 * a ^ 2 - 3 * b ^ 2) ^ 2 := by
+      rw [← eq_sub_iff_add_eq'] at h ⊢
+      linear_combination h
+    rcases eight_pow_four_add_one h hb₀
+    replace h : 0 = a ^ 2 * (a ^ 2 - 1) := by
+      apply mul_left_cancel₀ (by decide : (36 : ℤ) ≠ 0)
+      linear_combination h
+    rcases zero_eq_mul.1 h with h | h
+    · exact (hrp₁₀.ne h.symm).elim
+    · rw [sub_eq_iff_eq_add.1 h]; rfl
+  · sorry
+  · sorry
   sorry
 
 
