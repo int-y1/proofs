@@ -26,7 +26,39 @@ theorem pos_sq_of_coprime {a b c : ℤ} (h : IsCoprime a b) (heq : a * b = c ^ 2
   simp [(sq_pos_iff _).1 ha, (sq_pos_iff _).1 hb]
 
 theorem sq_dvd_two_mul_sq {a b : ℤ} (h : a * a ∣ 2 * b * b) : a ∣ b := by
-  sorry
+  obtain ⟨k, hk⟩ := h
+  rcases k.even_or_odd with ⟨k, rfl⟩ | ⟨k, rfl⟩
+  · replace hk : b * b = a * a * k :=
+      mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hk)
+    have h : a * a ∣ b * b := ⟨k, hk⟩
+    rwa [← pow_two, ← pow_two, Int.pow_dvd_pow_iff (by decide)] at h
+  have ⟨a', ha'⟩ : Even a := by
+    have := Int.odd_iff_not_even.1 (odd_two_mul_add_one k)
+    cases' Int.even_mul.1 (hk ▸ (even_two_mul b).mul_right b) with h h
+    · rwa [Int.even_mul, or_self] at h
+    · exact (Int.odd_iff_not_even.1 (odd_two_mul_add_one k) h).elim
+  have ⟨b', hb'⟩ : Even b := by
+    rcases ha'
+    replace hk : b * b = a' * a' * (2 * k + 1) + a' * a' * (2 * k + 1) :=
+      mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hk)
+    have : Even (b * b) := ⟨_, hk⟩
+    rwa [Int.even_mul, or_self] at this
+  rcases eq_or_ne a 0 with rfl | ha₀
+  · rw [zero_dvd_iff]
+    simpa using hk
+  -- Infinite descent, use `sq_dvd_two_mul_sq` on `a/2` and `b/2`
+  have h' : a' * a' ∣ 2 * b' * b' := by
+    exists 2 * k + 1
+    rw [ha', hb'] at hk
+    exact mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0) (by linear_combination hk)
+  have : a'.natAbs < a.natAbs := by
+    simp_rw [ha', ← two_mul, mul_ne_zero_iff, true_and, ← Int.natAbs_pos] at ha₀
+    rw [ha', ← two_mul, Int.natAbs_mul, lt_mul_iff_one_lt_left ha₀]; decide
+  have ⟨k', hk'⟩ := sq_dvd_two_mul_sq h'
+  exists k'
+  rw [ha', hb']
+  linear_combination 2 * hk'
+termination_by _ a _ _ => a.natAbs
 
 /-- Lemma 1. -/
 theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 0)
