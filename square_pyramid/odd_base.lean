@@ -132,8 +132,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
     exact ⟨⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩, ⟨b, hb₀, hb⟩, ⟨a, ha₀, ha⟩⟩
   have hc_odd : Odd c := by
     rwa [← and_self (Odd c), ← Int.odd_mul, ← hc, Int.odd_sub, ← Int.odd_add]
-  have hd_odd : Odd d := by
-    rwa [← and_self (Odd d), ← Int.odd_mul, ← hd]
+  have hd_odd : Odd d := by rwa [← and_self (Odd d), ← Int.odd_mul, ← hd]
   have ⟨x, hx⟩ : Even (c + d) := by simp only [Int.even_add', hc_odd, hd_odd]
   have ⟨y, hy⟩ : Even (d - c) := by simp only [Int.even_sub', hc_odd, hd_odd]
   have x2_add_y2_eq_a2 : x * x + y * y = a * a := by
@@ -317,7 +316,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
   have ha2a1_co : IsCoprime a (2 * a + 1) := isCoprime_one_right.mul_add_right_right _
   have ha₀ : a ≥ 0 := by
     by_contra h
-    rw [ge_iff_le, not_le, Int.lt_iff_add_one_le] at h 
+    rw [ge_iff_le, not_le, Int.lt_iff_add_one_le] at h
     replace h := sub_le_sub_right (mul_nonpos_of_nonneg_of_nonpos (by decide : (0 : ℤ) ≤ 4) h) 3
     replace h : v ^ 2 ≤ -3 := by rw [ha]; convert h using 1; ring
     have := le_trans (sq_nonneg v) h
@@ -326,7 +325,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     rcases lt_or_eq_of_le ha₀ with h | rfl
     · exact h
     replace hv : (v ^ 2) ^ 2 = s + 1 := by convert hv using 1; ring
-    rw [ha, mul_zero, zero_add, one_pow, self_eq_add_left] at hv 
+    rw [ha, mul_zero, zero_add, one_pow, self_eq_add_left] at hv
     exact (hs₀.ne hv.symm).elim
   have ⟨b, hb⟩ := exists_associated_pow_of_mul_eq_pow' ha2a1_co hwa
   replace hb := Int.eq_of_associated_of_nonneg hb (pow_bit0_nonneg b 2) ha₀.le
@@ -362,8 +361,7 @@ theorem two_mul_pow_four_add_one_ne_sq' {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2
   · exact two_mul_pow_four_add_one_ne_sq hxy h
 
 /-- Lemma 3. -/
-theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x > 0) :
-    x = 1 := by
+theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x > 0) : x = 1 := by
   rcases y.even_or_odd with ⟨s, rfl⟩ | ⟨s, rfl⟩
   · rw [← eq_sub_iff_add_eq'] at hxy
     have : Even 1 := ⟨2 * s ^ 2 - 4 * x ^ 4, by rw [hxy]; ring⟩
@@ -395,7 +393,7 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
     apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0); rw [hxy]; ring
   replace hs₀ : s ≥ 0 := by
     by_contra h
-    rw [ge_iff_le, not_le, Int.lt_iff_add_one_le] at h 
+    rw [ge_iff_le, not_le, Int.lt_iff_add_one_le] at h
     replace h := sub_le_sub_right (mul_nonpos_of_nonneg_of_nonpos (by decide : (0 : ℤ) ≤ 2) h) 1
     replace h : 2 * s + 1 ≤ -1 := by convert h using 1; ring
     have := le_trans hs₀ h
@@ -433,9 +431,8 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
   have ⟨w₂, hw₂⟩ : ∃ w, 2 * (v ^ 4 + u ^ 2) = (2 * w) ^ 2 :=
     ⟨2*u'^2 + 2*u' + 1, by rw [left_distrib, ← huv, hu']; ring⟩
   have h₁ : (v ^ 2 - u) ^ 2 + (v ^ 2 + u) ^ 2 = (2 * w₂) ^ 2 := by rw [← hw₂]; ring
-  have h₂ : (v ^ 2 - u) * (v ^ 2 + u) = 2 * w₁ * w₁ := by
-    apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
-    linear_combination hw₁
+  have h₂ : (v ^ 2 - u) * (v ^ 2 + u) = 2 * w₁ * w₁ :=
+    mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hw₁)
   have hv4 : v ^ 4 = u ^ 2 := by
     cases' pythagoreanTriple_area_ne_sq'
       ⟨2 * w₂, by simp_rw [PythagoreanTriple, ← pow_two]; exact h₁⟩ h₂ with h h
@@ -494,9 +491,8 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     have : IsCoprime (2 : ℤ) 3 := (isCoprime_one_right (R := ℤ)).mul_add_right_right 1
     exact this.mul_dvd hx_even.two_dvd hx_div
   clear hx_even hx_div
-  replace h : x * (6 * x + 1) * (12 * x + 1) = y ^ 2 := by
-    apply mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0)
-    linear_combination h
+  replace h : x * (6 * x + 1) * (12 * x + 1) = y ^ 2 :=
+    mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0) (by linear_combination h)
   replace hx := pos_of_mul_pos_right hx (by decide)
   have hco12 : IsCoprime x (6 * x + 1) := isCoprime_one_right.mul_add_right_right _
   have hco13 : IsCoprime x (12 * x + 1) := isCoprime_one_right.mul_add_right_right _
@@ -525,24 +521,19 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     exact pos_of_mul_pos_right ((two_mul rp₂).symm ▸ this) (by decide : (0 : ℤ) ≤ 2)
   rw [hrp₁, hrp₂] at hqrp
   obtain ⟨q, rfl⟩ : Even q := by
-    have : Even (3 * q ^ 2) := by
-      exists rp₁ * rp₂
-      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
-      linear_combination hqrp
+    have : Even (3 * q ^ 2) :=
+      ⟨rp₁ * rp₂, mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hqrp)⟩
     simpa [Int.even_mul, Int.even_pow'] using this
-  replace hq₀ := pos_of_mul_pos_right ((two_mul q).symm ▸ hq₀) (by decide)
   replace hqrp : rp₁ * rp₂ = 2 * (3 * q ^ 2) :=
     mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0) (by linear_combination -hqrp)
   have hrp₁₂_co : IsCoprime rp₁ rp₂ := by
     rw [hp, hr, IsCoprime.pow_iff (by decide) (by decide)] at hco23
     -- Use `hco23`, `hp_odd`, `hr_odd`
     -- Note: This is similar to `hrs_sub_add_co` in Lemma 1, but I don't know how to join the two.
-    have hr' : r = rp₁ + rp₂ := by
-      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
-      linear_combination hrp₁+hrp₂
-    have hp' : p = rp₁ - rp₂ := by
-      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
-      linear_combination hrp₁-hrp₂
+    have hr' : r = rp₁ + rp₂ :=
+      mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hrp₁+hrp₂)
+    have hp' : p = rp₁ - rp₂ :=
+      mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hrp₁-hrp₂)
     rw [hr', hp', ← IsCoprime.add_mul_left_left_iff (z := 1), mul_one,
       sub_add_add_cancel, ← two_mul, IsCoprime.mul_left_iff] at hco23
     replace hco23 := hco23.2
@@ -553,9 +544,8 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     rcases Int.prime_three.dvd_or_dvd ⟨_, mul_left_comm _ _ (q ^ 2) ▸ hqrp⟩ with h₃ | h₃
   · obtain ⟨aa, rfl⟩ : 6 ∣ rp₁ :=
       ((isCoprime_one_right (x := (2 : ℤ))).add_mul_left_right 1).mul_dvd h₂ h₃
-    replace hqrp : aa * rp₂ = q ^ 2 := by
-      apply mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0)
-      linear_combination hqrp
+    replace hqrp : aa * rp₂ = q ^ 2 :=
+      mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0) (by linear_combination hqrp)
     rw [hq, ← two_mul, mul_pow, ← hqrp]
     replace hrp₁₀ : aa > 0 := pos_of_mul_pos_right hrp₁₀ (by decide)
     have ⟨a, ha⟩ := exists_associated_pow_of_mul_eq_pow' hrp₁₂_co.of_mul_left_right hqrp
@@ -569,18 +559,16 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
       · exact this (-b) (by rwa [Even.neg_pow (by decide)]) (by rwa [gt_iff_lt, Left.neg_pos_iff])
       · rw [zero_pow (by decide)] at hb; exact (hrp₂₀.ne hb).elim
     rcases hb
-    have hp2 : p = 6 * a ^ 2 - b ^ 2 := by
-      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
-      linear_combination hrp₁ - hrp₂
+    have hp2 : p = 6 * a ^ 2 - b ^ 2 :=
+      mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hrp₁ - hrp₂)
     have h : 24 * a ^ 2 * b ^ 2 + 1 = (6 * a ^ 2 - b ^ 2) ^ 2 := by
       rw [mul_assoc, hqrp, ← hp2, ← hp, hq]; ring
     replace h : 8 * b ^ 4 + 1 = (6 * a ^ 2 - 3 * b ^ 2) ^ 2 := by
       rw [← eq_sub_iff_add_eq'] at h ⊢
       linear_combination h
     rcases eight_pow_four_add_one h hb₀
-    replace h : 0 = a ^ 2 * (a ^ 2 - 1) := by
-      apply mul_left_cancel₀ (by decide : (36 : ℤ) ≠ 0)
-      linear_combination h
+    replace h : 0 = a ^ 2 * (a ^ 2 - 1) :=
+      mul_left_cancel₀ (by decide : (36 : ℤ) ≠ 0) (by linear_combination h)
     rcases zero_eq_mul.1 h with h | h
     · exact (hrp₁₀.ne h.symm).elim
     · rw [sub_eq_iff_eq_add.1 h]; rfl
@@ -632,9 +620,8 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
   · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₁` case
     obtain ⟨aa, rfl⟩ : 6 ∣ rp₂ :=
       ((isCoprime_one_right (x := (2 : ℤ))).add_mul_left_right 1).mul_dvd h₂ h₃
-    replace hqrp : aa * rp₁ = q ^ 2 := by
-      apply mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0)
-      linear_combination hqrp
+    replace hqrp : aa * rp₁ = q ^ 2 :=
+      mul_left_cancel₀ (by decide : (6 : ℤ) ≠ 0) (by linear_combination hqrp)
     rw [hq, ← two_mul, mul_pow, ← hqrp]
     replace hrp₂₀ : aa > 0 := pos_of_mul_pos_right hrp₂₀ (by decide)
     have ⟨a, ha⟩ := exists_associated_pow_of_mul_eq_pow' hrp₁₂_co.of_mul_right_right.symm hqrp
@@ -648,18 +635,16 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
       · exact this (-b) (by rwa [Even.neg_pow (by decide)]) (by rwa [gt_iff_lt, Left.neg_pos_iff])
       · rw [zero_pow (by decide)] at hb; exact (hrp₁₀.ne hb).elim
     rcases hb
-    have hp2 : p = b ^ 2 - 6 * a ^ 2 := by
-      apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
-      linear_combination hrp₁ - hrp₂
+    have hp2 : p = b ^ 2 - 6 * a ^ 2 :=
+      mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hrp₁ - hrp₂)
     have h : 24 * a ^ 2 * b ^ 2 + 1 = (b ^ 2 - 6 * a ^ 2) ^ 2 := by
       rw [mul_assoc, hqrp, ← hp2, ← hp, hq]; ring
     replace h : 8 * b ^ 4 + 1 = (6 * a ^ 2 - 3 * b ^ 2) ^ 2 := by
       rw [← eq_sub_iff_add_eq'] at h ⊢
       linear_combination h
     rcases eight_pow_four_add_one h hb₀
-    replace h : 0 = a ^ 2 * (a ^ 2 - 1) := by
-      apply mul_left_cancel₀ (by decide : (36 : ℤ) ≠ 0)
-      linear_combination h
+    replace h : 0 = a ^ 2 * (a ^ 2 - 1) :=
+      mul_left_cancel₀ (by decide : (36 : ℤ) ≠ 0) (by linear_combination h)
     rcases zero_eq_mul.1 h with h | h
     · exact (hrp₂₀.ne h.symm).elim
     · rw [sub_eq_iff_eq_add.1 h]; rfl
