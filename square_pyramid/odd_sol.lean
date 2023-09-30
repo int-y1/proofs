@@ -5,7 +5,7 @@
 import Mathlib.Data.Int.ModEq
 import Mathlib.NumberTheory.PellMatiyasevic
 import Mathlib.Data.Int.Parity
-import Mathlib.NumberTheory.LegendreSymbol.Basic
+import Mathlib.NumberTheory.LegendreSymbol.JacobiSymbol
 
 def u (n : ℕ) : ℤ := Pell.xz (by decide : 1 < 2) n
 def v (n : ℕ) : ℤ := Pell.yz (by decide : 1 < 2) n
@@ -113,16 +113,18 @@ theorem uv_mod_five : u n ≡ [1, 2, 2][n % 3]'(n.mod_lt zero_lt_three) [ZMOD 5]
     rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;> simp [h]
 
 /-- Lemma 8b. -/
-theorem five_not_dvd_u : ¬5 ∣ u n := by
-  rw [Int.dvd_iff_emod_eq_zero]
+theorem isCoprime_five_u : IsCoprime 5 (u n) := by
+  have prime_five : Prime (5 : ℤ) := Nat.prime_iff_prime_int.1 (by norm_num)
+  rw [Prime.coprime_iff_not_dvd prime_five, Int.dvd_iff_emod_eq_zero]
   have := (uv_mod_five (n := n)).1
   rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;>
     simp_rw [h] at this <;> dsimp [Int.ModEq] at this <;> rw [this] <;> decide
 
--- todo: failed to synthesize instance `Fact (Nat.Prime 5)`
 /-- Lemma 8c. -/
-theorem sq_mod_five_iff_three_dvd : legendreSym 5 (u n) ↔ 3 ∣ n := by
-  sorry
+theorem sq_mod_five_iff_three_dvd : jacobiSym (u n) 5 = 1 ↔ 3 ∣ n := by
+  have := (uv_mod_five (n := n)).1
+  rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;> rw [Nat.dvd_iff_mod_eq_zero, h] <;>
+    simp_rw [h] at this <;> dsimp [Int.ModEq] at this <;> rw [jacobiSym.mod_left' this] <;> decide
 
 
 
