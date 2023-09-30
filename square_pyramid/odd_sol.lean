@@ -4,6 +4,8 @@
 
 import Mathlib.Data.Int.ModEq
 import Mathlib.NumberTheory.PellMatiyasevic
+import Mathlib.Data.Int.Parity
+import Mathlib.NumberTheory.LegendreSymbol.Basic
 
 def u (n : ℕ) : ℤ := Pell.xz (by decide : 1 < 2) n
 def v (n : ℕ) : ℤ := Pell.yz (by decide : 1 < 2) n
@@ -30,12 +32,12 @@ theorem v_sub (h : n ≤ m) : v (m - n) = -u m * v n + u n * v m := by
   dsimp only [u, v]; rw [Pell.yz_sub (by decide) h]; ring
 
 /-- Lemma 5a. -/
-theorem u_add_two : u (m + 2) = 2 * u 1 * u (m + 1) - u m := by
-  rw [u_add, u_add]; change u m * 7 + 3 * v m * 4 = 2 * 2 * (u m * 2 + 3 * v m * 1) - u m; ring
+theorem u_add_two : u (m + 2) = 4 * u (m + 1) - u m := by
+  rw [u_add, u_add]; change u m * 7 + 3 * v m * 4 = 4 * (u m * 2 + 3 * v m * 1) - u m; ring
 
 /-- Lemma 5b. -/
-theorem v_add_two : v (m + 2) = 2 * u 1 * v (m + 1) - v m := by
-  rw [v_add, v_add]; change u m * 4 + 7 * v m = 2 * 2 * (u m * 1 + 2 * v m) - v m; ring
+theorem v_add_two : v (m + 2) = 4 * v (m + 1) - v m := by
+  rw [v_add, v_add]; change u m * 4 + 7 * v m = 4 * (u m * 1 + 2 * v m) - v m; ring
 
 /-- Lemma 6a. -/
 theorem u_two_mul : u (2 * m) = 2 * u m ^ 2 - 1 ∧ u (2 * m) = 6 * v m ^ 2 + 1 := by
@@ -76,6 +78,51 @@ theorem lemma7 (h : n ≤ 2 * r * m) :
     convert (this.mul_right (u n)).add (((hu r).2.mul_left 3).mul_right (v n)) using 1
     rw [mul_zero, zero_mul, add_zero]
 
+/-- Lemma 8a. -/
+theorem Even.u_odd (h : Even n) : Odd (u n) := by
+  have hn : ∀ n, u n ≡ [1, 0][n % 2]'(n.mod_lt zero_lt_two) [ZMOD 2] ∧
+      v n ≡ [0, 1][n % 2]'(n.mod_lt zero_lt_two) [ZMOD 2] := by
+    intro n
+    induction' n using Nat.strongRecOn with n h
+    match n with
+    | 0 | 1 => decide
+    | n + 2 =>
+      have ⟨hu₀, hv₀⟩ := h n (lt_add_of_pos_right _ zero_lt_two)
+      have ⟨hu₁, hv₁⟩ := h (n + 1) (lt_add_of_pos_right _ zero_lt_one)
+      simp_rw [u_add_two, v_add_two, Int.ModEq,
+        ((hu₁.mul_left 4).sub hu₀).eq, ((hv₁.mul_left 4).sub hv₀).eq, Nat.add_mod n]
+      rcases n.mod_two_eq_zero_or_one with h | h <;> simp [h]
+  simp_rw [Int.odd_iff, (hn n).1.eq, Nat.even_iff.1 h]; rfl
+
+theorem Nat.mod_three_eq_zero_or_one_or_two : n % 3 = 0 ∨ n % 3 = 1 ∨ n % 3 = 2 :=
+  match n % 3, n.mod_lt zero_lt_three with
+  | 0, _ => Or.inl rfl
+  | 1, _ => Or.inr (Or.inl rfl)
+  | 2, _ => Or.inr (Or.inr rfl)
+
+theorem uv_mod_five : u n ≡ [1, 2, 2][n % 3]'(n.mod_lt zero_lt_three) [ZMOD 5] ∧
+    v n ≡ [0, 1, 4][n % 3]'(n.mod_lt zero_lt_three) [ZMOD 5] := by
+  induction' n using Nat.strongRecOn with n h
+  match n with
+  | 0 | 1 => decide
+  | n + 2 =>
+    have ⟨hu₀, hv₀⟩ := h n (lt_add_of_pos_right _ zero_lt_two)
+    have ⟨hu₁, hv₁⟩ := h (n + 1) (lt_add_of_pos_right _ zero_lt_one)
+    simp_rw [u_add_two, v_add_two, Int.ModEq,
+      ((hu₁.mul_left 4).sub hu₀).eq, ((hv₁.mul_left 4).sub hv₀).eq, Nat.add_mod n]
+    rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;> simp [h]
+
+/-- Lemma 8b. -/
+theorem five_not_dvd_u : ¬5 ∣ u n := by
+  rw [Int.dvd_iff_emod_eq_zero]
+  have := (uv_mod_five (n := n)).1
+  rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;>
+    simp_rw [h] at this <;> dsimp [Int.ModEq] at this <;> rw [this] <;> decide
+
+-- todo: failed to synthesize instance `Fact (Nat.Prime 5)`
+/-- Lemma 8c. -/
+theorem sq_mod_five_iff_three_dvd : legendreSym 5 (u n) ↔ 3 ∣ n := by
+  sorry
 
 
 
