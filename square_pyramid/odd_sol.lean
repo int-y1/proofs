@@ -94,11 +94,9 @@ theorem Even.u_odd (h : Even n) : Odd (u n) := by
       rcases n.mod_two_eq_zero_or_one with h | h <;> simp [h]
   simp_rw [Int.odd_iff, (hn n).1.eq, Nat.even_iff.1 h]; rfl
 
-theorem Nat.mod_three_eq_zero_or_one_or_two : n % 3 = 0 ∨ n % 3 = 1 ∨ n % 3 = 2 :=
+theorem Nat.mod_three_eq_or : n % 3 = 0 ∨ n % 3 = 1 ∨ n % 3 = 2 :=
   match n % 3, n.mod_lt zero_lt_three with
-  | 0, _ => Or.inl rfl
-  | 1, _ => Or.inr (Or.inl rfl)
-  | 2, _ => Or.inr (Or.inr rfl)
+  | 0, _ | 1, _ | 2, _ => by trivial
 
 theorem uv_mod_five : u n ≡ [1, 2, 2][n % 3]'(n.mod_lt zero_lt_three) [ZMOD 5] ∧
     v n ≡ [0, 1, 4][n % 3]'(n.mod_lt zero_lt_three) [ZMOD 5] := by
@@ -110,14 +108,14 @@ theorem uv_mod_five : u n ≡ [1, 2, 2][n % 3]'(n.mod_lt zero_lt_three) [ZMOD 5]
     have ⟨hu₁, hv₁⟩ := h (n + 1) (lt_add_of_pos_right _ zero_lt_one)
     simp_rw [u_add_two, v_add_two, Int.ModEq,
       ((hu₁.mul_left 4).sub hu₀).eq, ((hv₁.mul_left 4).sub hv₀).eq, Nat.add_mod n]
-    rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;> simp [h]
+    rcases n.mod_three_eq_or with h | h | h <;> simp [h]
 
 /-- Lemma 8b. -/
 theorem isCoprime_five_u : IsCoprime 5 (u n) := by
   have prime_five : Prime (5 : ℤ) := Nat.prime_iff_prime_int.1 (by norm_num)
   rw [Prime.coprime_iff_not_dvd prime_five, Int.dvd_iff_emod_eq_zero]
   have := (uv_mod_five (n := n)).1
-  rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;>
+  rcases n.mod_three_eq_or with h | h | h <;>
     simp_rw [h] at this <;> dsimp [Int.ModEq] at this <;> rw [this] <;> decide
 
 /-- Lemma 8c. TODO: find a better way to cast `u n : ℤ` to ℕ, using `u n ≥ 0`. -/
@@ -125,15 +123,42 @@ theorem jacobiSym_five_iff_three_dvd (h : Even n) (hm : m = u n) : jacobiSym 5 m
   have hm_odd : Odd m := by rw [← Int.odd_coe_nat, hm]; exact h.u_odd
   have hj := jacobiSym.quadratic_reciprocity (by decide : Odd 5) hm_odd
   norm_num at hj
-  rw [hj, hm] 
+  rw [hj, hm]
   have hu := (uv_mod_five (n := n)).1
-  rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;> rw [Nat.dvd_iff_mod_eq_zero, h] <;>
+  rcases n.mod_three_eq_or with h | h | h <;> rw [Nat.dvd_iff_mod_eq_zero, h] <;>
     simp_rw [h] at hu <;> dsimp [Int.ModEq] at hu <;> rw [jacobiSym.mod_left' hu] <;> decide
+
+theorem Nat.mod_four_eq_or : n % 4 = 0 ∨ n % 4 = 1 ∨ n % 4 = 2 ∨ n % 4 = 3 :=
+  match n % 4, n.mod_lt zero_lt_four with
+  | 0, _ | 1, _ | 2, _ | 3, _ => by trivial
+
+theorem uv_mod_eight : u n ≡ [1, 2, 7, 2][n % 4]'(n.mod_lt zero_lt_four) [ZMOD 8] ∧
+    v n ≡ [0, 1, 4, 7][n % 4]'(n.mod_lt zero_lt_four) [ZMOD 8] := by
+  induction' n using Nat.strongRecOn with n h
+  match n with
+  | 0 | 1 => decide
+  | n + 2 =>
+    have ⟨hu₀, hv₀⟩ := h n (lt_add_of_pos_right _ zero_lt_two)
+    have ⟨hu₁, hv₁⟩ := h (n + 1) (lt_add_of_pos_right _ zero_lt_one)
+    simp_rw [u_add_two, v_add_two, Int.ModEq,
+      ((hu₁.mul_left 4).sub hu₀).eq, ((hv₁.mul_left 4).sub hv₀).eq, Nat.add_mod n]
+    rcases n.mod_four_eq_or with h | h | h | h <;> simp [h]
 
 /-- Lemma 9. TODO: find a better way to cast `u n : ℤ` to ℕ, using `u n ≥ 0`. -/
 theorem jacobiSym_neg_two_iff_four_dvd (h : Even n) (hm : m = u n) :
     jacobiSym (-2) m = 1 ↔ 4 ∣ n := by
-  sorry
+  rcases n.mod_four_eq_or with hn | hn | hn | hn
+  any_goals have := hn ▸ h.mod_even (by decide : Even 4); contradiction
+  all_goals
+  · have hm_odd : Odd m := by rw [← Int.odd_coe_nat, hm]; exact h.u_odd
+    have hu := (uv_mod_eight (n := n)).1
+    rw [jacobiSym.at_neg_two hm_odd, ZMod.χ₈'_nat_eq_if_mod_eight, Nat.dvd_iff_mod_eq_zero, hn]
+    simp_rw [hn, ← hm] at hu
+    dsimp [Int.ModEq] at hu
+    norm_cast at hu
+    rw [hu, Nat.odd_iff.1 hm_odd]
+    simp only [ite_true, ite_false]
+    try ring_nf -- todo: this is ugly. find a better tactic.
 
 
 
