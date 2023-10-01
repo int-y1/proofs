@@ -120,11 +120,20 @@ theorem isCoprime_five_u : IsCoprime 5 (u n) := by
   rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;>
     simp_rw [h] at this <;> dsimp [Int.ModEq] at this <;> rw [this] <;> decide
 
-/-- Lemma 8c. -/
-theorem sq_mod_five_iff_three_dvd : jacobiSym (u n) 5 = 1 ↔ 3 ∣ n := by
-  have := (uv_mod_five (n := n)).1
+/-- Lemma 8c. TODO: find a better way to cast `u n : ℤ` to ℕ, using `u n ≥ 0`. -/
+theorem jacobiSym_five_iff_three_dvd (h : Even n) (hm : m = u n) : jacobiSym 5 m = 1 ↔ 3 ∣ n := by
+  have hm_odd : Odd m := by rw [← Int.odd_coe_nat, hm]; exact h.u_odd
+  have hj := jacobiSym.quadratic_reciprocity (by decide : Odd 5) hm_odd
+  norm_num at hj
+  rw [hj, hm] 
+  have hu := (uv_mod_five (n := n)).1
   rcases n.mod_three_eq_zero_or_one_or_two with h | h | h <;> rw [Nat.dvd_iff_mod_eq_zero, h] <;>
-    simp_rw [h] at this <;> dsimp [Int.ModEq] at this <;> rw [jacobiSym.mod_left' this] <;> decide
+    simp_rw [h] at hu <;> dsimp [Int.ModEq] at hu <;> rw [jacobiSym.mod_left' hu] <;> decide
+
+/-- Lemma 9. TODO: find a better way to cast `u n : ℤ` to ℕ, using `u n ≥ 0`. -/
+theorem jacobiSym_neg_two_iff_four_dvd (h : Even n) (hm : m = u n) :
+    jacobiSym (-2) m = 1 ↔ 4 ∣ n := by
+  sorry
 
 
 
