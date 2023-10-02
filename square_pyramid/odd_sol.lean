@@ -118,8 +118,11 @@ theorem isCoprime_five_u : IsCoprime 5 (u n) := by
   rcases n.mod_three_eq_or with h | h | h <;>
     simp_rw [h] at this <;> dsimp [Int.ModEq] at this <;> rw [this] <;> decide
 
-/-- Lemma 8c. TODO: find a better way to cast `u n : ℤ` to ℕ, using `u n ≥ 0`. -/
-theorem jacobiSym_five_iff_three_dvd (h : Even n) (hm : m = u n) : jacobiSym 5 m = 1 ↔ 3 ∣ n := by
+/-- Lemma 8c. TODO: find a better way to cast `u n : ℤ` to ℕ, using `u n ≥ 0`.
+
+Note: The original statement is `jacobiSym 5 m = 1 ↔ 3 ∣ n`, but the proof uses the negative form,
+i.e. `jacobiSym 5 m = -1 ↔ ¬3 ∣ n`. -/
+theorem jacobiSym_five_iff_three_dvd (h : Even n) (hm : m = u n) : jacobiSym 5 m = -1 ↔ ¬3 ∣ n := by
   have hm_odd : Odd m := by rw [← Int.odd_coe_nat, hm]; exact h.u_odd
   have hj := jacobiSym.quadratic_reciprocity (by decide : Odd 5) hm_odd
   norm_num at hj
@@ -207,11 +210,31 @@ theorem lemma10 (h : ∃ M, u n = 4 * M ^ 2 + 3) : u n = 7 := by
     have : 2 ≤ 2 * k' * 2 ^ s := Nat.mul_le_mul (Nat.mul_le_mul_left 2 hk'_odd.pos) s.one_le_two_pow
     have ⟨h₁, h₂⟩ := lemma7 this
     rcases hn' with rfl | rfl <;> [exact h₁; exact h₂]
-  replace h_mod_2s : 4 * M ^ 2 ≡ -10 [ZMOD u (2 ^ s)] := by
+  replace h_mod_2s : (2 * M) * (2 * M) ≡ -10 [ZMOD u (2 ^ s)] := by
     rw [huM, hk'_odd.neg_one_pow] at h_mod_2s
     convert h_mod_2s.sub_right 3 using 1
-    rw [add_sub_cancel]
-  sorry
+    ring
+  have ⟨m, hm⟩ : ∃ m : ℕ, m = u (2 ^ s) := ⟨Pell.xn _ _, rfl⟩
+  have h2s_even : Even (2 ^ s) := by
+    rw [← Nat.sub_add_cancel (le_trans (by decide : 1 ≤ 2) hs2)]; exists 2 ^ (s - 1); ring
+  have hj_neg_two : jacobiSym (-2) m = 1 := by
+    rw [jacobiSym_neg_two_iff_four_dvd h2s_even hm, ← Nat.sub_add_cancel hs2]
+    exists 2 ^ (s - 2); ring
+  have hj_five : jacobiSym 5 m = -1 := by
+    rw [jacobiSym_five_iff_three_dvd h2s_even hm]
+    intro h
+    have := Nat.prime_three.dvd_of_dvd_pow h
+    contradiction
+  have hj_neg_ten : jacobiSym (-10) m = -1 := by
+    rw [(by decide : -10 = -2 * 5), jacobiSym.mul_left (-2) 5 m, hj_neg_two, hj_five]; rfl
+  -- Note: The paper claims that `jacobiSym (4*M^2) (u 2^s) = 1`, but I had 2 problems proving it:
+  -- 1. `jacobiSym.sq_one'` proves this. This appears to be the only relevant theorem in mathlib.
+  -- 2. `jacobiSym.sq_one'` requires `Int.gcd (2*M) (u 2^s) = 1`, but there's no easy proof of this.
+  -- Instead, I proved the easier claim that `jacobiSym (4*M^2) (u 2^s) ≥ 0`.
+  have hj_neg_ten' : jacobiSym (-10) m ≥ 0 := by
+    rw [jacobiSym.mod_left' (hm.symm ▸ h_mod_2s.symm), jacobiSym.mul_left, ← pow_two]
+    exact sq_nonneg _
+  simp only [hj_neg_ten] at hj_neg_ten'
 
 
 
