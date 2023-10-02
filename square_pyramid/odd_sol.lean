@@ -160,6 +160,33 @@ theorem jacobiSym_neg_two_iff_four_dvd (h : Even n) (hm : m = u n) :
     simp only [ite_true, ite_false]
     try ring_nf -- todo: this is ugly. find a better tactic.
 
+/-- Lemma 10. -/
+theorem lemma10 (h : ∃ M, u n = 4 * M ^ 2 + 3) : u n = 7 := by
+  obtain ⟨M, huM⟩ := h
+  have hu_mod_eight : u n ≡ 3 [ZMOD 8] ∨ u n ≡ 7 [ZMOD 8] := by
+    rcases (M ^ 2).even_or_odd with ⟨k, hk⟩ | ⟨k, hk⟩ <;> rw [huM, hk] <;>
+      [left; right] <;> ring_nf <;> rw [mul_comm] <;> exact Int.modEq_add_fac_self
+  replace hu_mod_eight : u n ≡ 7 [ZMOD 8] := by
+    refine' (or_iff_right fun h ↦ _).1 hu_mod_eight
+    have hu := (uv_mod_eight (n := n)).1.eq
+    rcases n.mod_four_eq_or with hn | hn | hn | hn <;> simp [h.eq, hn] at hu
+  have ⟨k, hnk⟩ : ∃ k, n = 8 * k - 2 ∨ n = 8 * k + 2 := by
+    have hn_mod_four : n % 4 = 2 := by
+      have hu := (uv_mod_eight (n := n)).1.eq
+      rcases n.mod_four_eq_or with h | h | h | h <;> [skip; skip; exact h; skip] <;>
+        dsimp [Int.ModEq] at hu_mod_eight <;> simp [hu_mod_eight, h] at hu
+    have := hn_mod_four ▸ n.div_add_mod 4
+    rcases (n / 4).even_or_odd with ⟨k, hk⟩ | ⟨k, hk⟩
+    · exists k; right; rw [← this, hk]; ring
+    · exists k + 1; left; rw [left_distrib, Nat.add_sub_assoc (by decide), ← this, hk]; ring
+  rcases k.eq_zero_or_pos with rfl | hk₀
+  · rcases hnk with rfl | rfl
+    · -- `n = 8*0-2 = 0`. This is an unfortunate artifact of subtraction in ℕ.
+      -- Luckily, this artifact didn't matter much, because `hu_mod_eight` has a contradiction.
+      contradiction
+    · rfl -- `n = 8*0+2 = 2`
+  -- todo: `n = 2 * k' * 2 ^ s` where `Odd k'` and `s ≥ 2`
+  sorry
 
 
 
