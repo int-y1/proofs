@@ -160,6 +160,18 @@ theorem jacobiSym_neg_two_iff_four_dvd (h : Even n) (hm : m = u n) :
     simp only [ite_true, ite_false]
     try ring_nf -- todo: this is ugly. find a better tactic.
 
+theorem Nat.odd_mul_two_pow (n : ℕ) (h : n > 0) : ∃ k' s, Odd k' ∧ n = k' * 2 ^ s := by
+  rcases n.even_or_odd.symm with ⟨k, rfl⟩ | ⟨k, hk⟩
+  · exists 2 * k + 1, 0
+    simp
+  rcases k.eq_zero_or_pos with rfl | hk₀
+  · rcases hk; contradiction
+  have : k < n := hk.symm ▸ add_lt_add_left hk₀ k
+  have ⟨k', s, hks⟩ : ∃ k' s, Odd k' ∧ k = k' * 2 ^ s := k.odd_mul_two_pow hk₀
+  refine ⟨k', s + 1, hks.1, ?_⟩
+  rw [hk, hks.2]
+  ring
+
 /-- Lemma 10. -/
 theorem lemma10 (h : ∃ M, u n = 4 * M ^ 2 + 3) : u n = 7 := by
   obtain ⟨M, huM⟩ := h
@@ -185,7 +197,20 @@ theorem lemma10 (h : ∃ M, u n = 4 * M ^ 2 + 3) : u n = 7 := by
       -- Luckily, this artifact didn't matter much, because `hu_mod_eight` has a contradiction.
       contradiction
     · rfl -- `n = 8*0+2 = 2`
-  -- todo: `n = 2 * k' * 2 ^ s` where `Odd k'` and `s ≥ 2`
+  have ⟨k', s, hk'_odd, hs2, hn'⟩ :
+      ∃ k' s, Odd k' ∧ s ≥ 2 ∧ (n = 2 * k' * 2 ^ s - 2 ∨ n = 2 * k' * 2 ^ s + 2) := by
+    obtain ⟨k', s, hk'_odd, rfl⟩ := k.odd_mul_two_pow hk₀
+    refine ⟨k', s + 2, hk'_odd, Nat.le_add_left _ _, ?_⟩
+    convert hnk using 3 <;> ring_nf
+  clear hu_mod_eight k hnk hk₀
+  have h_mod_2s : u n ≡ (-1) ^ k' * 7 [ZMOD u (2 ^ s)] := by
+    have : 2 ≤ 2 * k' * 2 ^ s := Nat.mul_le_mul (Nat.mul_le_mul_left 2 hk'_odd.pos) s.one_le_two_pow
+    have ⟨h₁, h₂⟩ := lemma7 this
+    rcases hn' with rfl | rfl <;> [exact h₁; exact h₂]
+  replace h_mod_2s : 4 * M ^ 2 ≡ -10 [ZMOD u (2 ^ s)] := by
+    rw [huM, hk'_odd.neg_one_pow] at h_mod_2s
+    convert h_mod_2s.sub_right 3 using 1
+    rw [add_sub_cancel]
   sorry
 
 
