@@ -6,6 +6,7 @@ import Mathlib.Data.Int.ModEq
 import Mathlib.NumberTheory.PellMatiyasevic
 import Mathlib.Data.Int.Parity
 import Mathlib.NumberTheory.LegendreSymbol.JacobiSymbol
+import SquarePyramid.even_sol
 
 def u (n : ℕ) : ℤ := Pell.xz (by decide : 1 < 2) n
 def v (n : ℕ) : ℤ := Pell.yz (by decide : 1 < 2) n
@@ -236,5 +237,22 @@ theorem lemma10 (h : ∃ M, u n = 4 * M ^ 2 + 3) : u n = 7 := by
     exact sq_nonneg _
   simp only [hj_neg_ten] at hj_neg_ten'
 
+/-- Theorem 11. `x = 1` is the only odd solution to the cannonball problem. -/
+theorem cannonball_odd_1 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2) (hx : x > 0)
+    (hx_odd : Odd x) : x = 1 := by
+  have ⟨a, ha⟩ := hx_odd.add_odd odd_one
+  replace h : x * (a * (2 * x + 1)) = 3 * y ^ 2 := by
+    apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
+    rw [ha] at h
+    linear_combination h
+  have hco12 : IsCoprime x a := by
+    convert (isCoprime_one_left (x := a)).neg_left.mul_add_right_left 2 using 1
+    linear_combination ha
+  have hco13 : IsCoprime x (2 * x + 1) := isCoprime_one_right.mul_add_right_right _
+  have hco23 : IsCoprime a (2 * x + 1) := by
+    convert (isCoprime_one_right (x := a)).neg_right.mul_add_right_right 4 using 1
+    linear_combination 2 * ha
+  have hx3 := mul_eq_three_sq (hco12.mul_right hco13) h hx.le
+  sorry
 
 

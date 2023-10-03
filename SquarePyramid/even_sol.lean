@@ -498,7 +498,7 @@ theorem mul_eq_three_sq {x y w : ℤ} (hco : IsCoprime x y) (h : x * y = 3 * w ^
   rw [← hu, pow_two]
   mod_cases hu3 : u % 3 <;> rw [hu3.mul hu3] <;> decide
 
-/-- Theorem 3½. `x = 24` is the only even solution to the cannonball problem when `x`. -/
+/-- Theorem 3½. `x = 24` is the only even solution to the cannonball problem. -/
 theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2) (hx : x > 0)
     (hx_even : Even x) : x = 24 := by
   have hx_div : 3 ∣ x := by

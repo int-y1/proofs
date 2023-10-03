@@ -15,3 +15,8 @@ require lean4export from git
 lean_lib «Proofs» {
   -- add any library configuration options here
 }
+
+@[default_target]
+lean_lib «SquarePyramid» {
+  -- add any library configuration options here
+}
