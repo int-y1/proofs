@@ -240,19 +240,63 @@ theorem lemma10 (h : ∃ M, u n = 4 * M ^ 2 + 3) : u n = 7 := by
 /-- Theorem 11. `x = 1` is the only odd solution to the cannonball problem. -/
 theorem cannonball_odd_1 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2) (hx : x > 0)
     (hx_odd : Odd x) : x = 1 := by
-  have ⟨a, ha⟩ := hx_odd.add_odd odd_one
-  replace h : x * (a * (2 * x + 1)) = 3 * y ^ 2 := by
+  have ⟨vv, hvv⟩ := hx_odd.add_odd odd_one
+  have hvv₀ : vv > 0 := by
+    refine pos_of_mul_pos_left ?_ (by decide : (0 : ℤ) ≤ 2)
+    rw [mul_two, ← hvv]
+    positivity
+  replace h : x * (vv * (2 * x + 1)) = 3 * y ^ 2 := by
     apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
-    rw [ha] at h
+    rw [hvv] at h
     linear_combination h
-  have hco12 : IsCoprime x a := by
-    convert (isCoprime_one_left (x := a)).neg_left.mul_add_right_left 2 using 1
-    linear_combination ha
+  have hco12 : IsCoprime x vv := by
+    convert (isCoprime_one_left (x := vv)).neg_left.mul_add_right_left 2 using 1
+    linear_combination hvv
   have hco13 : IsCoprime x (2 * x + 1) := isCoprime_one_right.mul_add_right_right _
-  have hco23 : IsCoprime a (2 * x + 1) := by
-    convert (isCoprime_one_right (x := a)).neg_right.mul_add_right_right 4 using 1
-    linear_combination 2 * ha
+  have hco23 : IsCoprime vv (2 * x + 1) := by
+    convert (isCoprime_one_right (x := vv)).neg_right.mul_add_right_right 4 using 1
+    linear_combination 2 * hvv
   have hx3 := mul_eq_three_sq (hco12.mul_right hco13) h hx.le
+  have hvv3 : vv % 3 ≠ 2 :=
+    mul_eq_three_sq (hco12.symm.mul_right hco23) (mul_left_comm x _ _ ▸ h) hvv₀.le
+  replace hx3 : x ≡ 1 [ZMOD 3] := by
+    mod_cases x % 3
+    · absurd hvv3
+      change vv ≡ 2 [ZMOD 3]
+      apply Int.ModEq.cancel_right_div_gcd (c := 2) zero_lt_three
+      rw [mul_two, ← hvv]
+      exact H.add_right 1
+    · exact H
+    · absurd hx3
+      exact H
+  have ⟨ww, hww⟩ : 3 ∣ 2 * x + 1 := Int.modEq_zero_iff_dvd.1 ((hx3.mul_left 2).add_right 1)
+  have hww₀ : ww > 0 := by
+    refine pos_of_mul_pos_right ?_ (by decide : (0 : ℤ) ≤ 3)
+    rw [← hww]
+    positivity
+  clear hvv3 hx3
+  replace hco13 := (hww ▸ hco13).of_mul_right_right
+  replace hco23 := (hww ▸ hco23).of_mul_right_right
+  replace h : x * (vv * ww) = y ^ 2 := by
+    apply mul_left_cancel₀ (by decide : (3 : ℤ) ≠ 0)
+    rw [hww] at h
+    linear_combination h
+  -- Make squares. `x = u^2`, `x+1 = 2v^2`, `2x+1 = 3w^2`
+  have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' (hco12.mul_right hco13) h
+  rcases Int.eq_of_associated_of_nonneg hu (sq_nonneg u) hx.le
+  have ⟨v, hv⟩ :=
+    exists_associated_pow_of_mul_eq_pow' (hco12.symm.mul_right hco23) (mul_left_comm _ vv _ ▸ h)
+  rcases Int.eq_of_associated_of_nonneg hv (sq_nonneg v) hvv₀.le
+  have ⟨w, hw⟩ := exists_associated_pow_of_mul_eq_pow' (hco13.mul_left hco23).symm
+    (mul_left_comm _ ww _ ▸ mul_comm _ ww ▸ h)
+  rcases Int.eq_of_associated_of_nonneg hw (sq_nonneg w) hww₀.le
+  clear hu hv hw
+  -- Final stretch
+  have h₁ : 6 * w ^ 2 + 1 = 4 * u ^ 2 + 3 := by linear_combination -2 * hww
+  have h₂ : (6 * w ^ 2 + 1) ^ 2 - 3 * (4 * v * w) ^ 2 = 1 := by
+    calc
+    _ = 1 + (4 - 8 * (v ^ 2 + v ^ 2)) * (3 * w ^ 2) + 4 * (3 * w ^ 2) ^ 2 := by ring
+    _ = _ := by rw [← hvv, ← hww]; ring
   sorry
 
 
