@@ -205,7 +205,6 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
     replace := pos_of_mul_pos_right this (add_pos hc₀ hd₀).le
     rw [hy, ← two_mul] at this
     exact pos_of_mul_pos_right this (by decide)
-  -- ← mul_lt_mul_left (by decide : 0 < 2)
   rw [Int.natAbs_lt_iff_sq_lt, pow_two, pow_two]
   apply lt_of_lt_of_le (b := s)
   · have : w' > 0 := pos_of_mul_pos_right (hw' ▸ hb₀) (by decide)
@@ -434,25 +433,7 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
   replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
   have huv : u ^ 4 + 1 = 2 * v ^ 4 := by rw [hu, hv]; ring
   have ⟨u', hu'⟩ : Odd u := (Int.odd_pow' (by decide)).1 ⟨s, hu⟩
-  have ⟨v', hv'⟩ : Odd v := by -- todo: check if `Odd v` is needed anywhere
-    by_contra h
-    rw [← Int.even_iff_not_odd] at h
-    obtain ⟨a, rfl⟩ := h
-    -- Do cases on `v^4 = 2 * (u^4 + 1)` mod 4. This is ugly, but I don't know how to shorten it.
-    have : (u ^ 4 + 1) % 4 = 2 * (a + a) ^ 4 % 4 := by rw [huv]
-    have ha : 2 * (a + a) ^ 4 % 4 = 0 := by
-      suffices 4 * (8*a^4) % 4 = 0 by convert this using 2; ring
-      apply Int.mul_emod_right
-    rw [ha] at this
-    have hu₀ : Even u → (u ^ 4 + 1) % 4 = 1 := by
-      rintro ⟨x, rfl⟩
-      suffices (1 + 4 * (4*x^4)) % 4 = 1 by convert this using 2; ring
-      simp only [Int.add_mul_emod_self_left]
-    have hu₁ : Odd u → (u ^ 4 + 1) % 4 = 2 := by
-      rintro ⟨x, rfl⟩
-      suffices (2 + 4 * (4*x^4 + 8*x^3 + 6*x^2 + 2*x)) % 4 = 2 by convert this using 2; ring
-      simp only [Int.add_mul_emod_self_left]
-    cases' u.even_or_odd with h₁ h₁ <;> [rw [hu₀ h₁] at this; rw [hu₁ h₁] at this] <;> contradiction
+  -- Note: `Odd v` isn't needed.
   -- Directly show that `(v^4 - u^2)/2` and `(v^4 + u^2)/2` are squares
   have ⟨w₁, hw₁⟩ : ∃ w, 2 * (v ^ 4 - u ^ 2) = (2 * w) ^ 2 :=
     ⟨2*u'^2 + 2*u', by rw [mul_sub_left_distrib, ← huv, hu']; ring⟩
