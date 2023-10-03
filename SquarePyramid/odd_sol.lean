@@ -297,6 +297,24 @@ theorem cannonball_odd_1 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2)
     calc
     _ = 1 + (4 - 8 * (v ^ 2 + v ^ 2)) * (3 * w ^ 2) + 4 * (3 * w ^ 2) ^ 2 := by ring
     _ = _ := by rw [← hvv, ← hww]; ring
-  sorry
-
-
+  have ⟨x, hx⟩ : ∃ x : ℕ, x = 6 * w ^ 2 + 1 := by
+    exists (6 * w ^ 2 + 1).natAbs
+    rw [Int.coe_natAbs, abs_eq_self]
+    positivity
+  replace h₂ : x * x - 3 * (4 * v * w).natAbs * (4 * v * w).natAbs = 1 := by
+    rw [← pow_two, mul_assoc, ← pow_two, ← Int.cast_eq_cast_iff_Nat, Nat.cast_sub]
+    · norm_num [hx]
+      exact h₂
+    · rw [← Nat.cast_le (α := ℤ)]
+      norm_num [hx]
+      rw [sub_eq_iff_eq_add.1 h₂, le_add_iff_nonneg_left]
+      decide
+  have ⟨n, hxn, hyn⟩ := Pell.eq_pell (by decide : 1 < 2) h₂
+  have hM : ∃ M, _root_.u n = 4 * M ^ 2 + 3 := by
+    exists u
+    rw [← h₁, ← hx, hxn]; rfl
+  -- Solve for `u^2`
+  rw [hxn, h₁] at hx
+  change _root_.u n = 4 * u ^ 2 + 3 at hx
+  rw [lemma10 hM] at hx
+  exact mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0) (by linear_combination -hx)

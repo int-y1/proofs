@@ -680,9 +680,3 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     rcases zero_eq_mul.1 h with h | h
     · exact (hrp₂₀.ne h.symm).elim
     · rw [sub_eq_iff_eq_add.1 h]; rfl
-
-
-
-
-
-
