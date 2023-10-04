@@ -9,13 +9,15 @@ Square numbers are of the form `x^2`, and square pyramidal numbers are of the fo
 `1^2 + 2^2 + ... + x^2 = x * (x+1) * (2x+1) / 6`.
 
 This file shows that the only positive integer solutions to `x * (x+1) * (2x+1) = 6y^2` are
-`(x, y) = (1, 1), (24, 70)`. This shows that 1 and 4900 are the only solutions to the cannonball
-problem.
+`(x, y) = (1, 1), (24, 70)`. As a corollary, 1 and 4900 are the only positive integers that are both
+square and square pyramidal.
 
-## Main statement
+## Main statements
 
 * `cannonball`: The only positive integer solutions to the cannonball problem are `(1, 1)` and
   `(24, 70)`.
+* `cannonball'`: 1 and 4900 are the only positive integers that are both square and square
+  pyramidal.
 
 ## References
 
@@ -41,3 +43,13 @@ theorem cannonball {x y : ℤ} (hx : x > 0) (hy : y > 0) :
       rw [mul_left_cancel_iff_of_pos (by decide), sq_eq_sq (by decide) hy.le] at h
       exact Or.inr ⟨rfl, h.symm⟩
   · rcases h with ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩ <;> rfl
+
+/-- 1 and 4900 are the only positive integers that are both square and square pyramidal. -/
+theorem cannonball' {n : ℤ} (hn : n > 0) :
+    ((∃ y, y > 0 ∧ n = y ^ 2) ∧ (∃ x, x > 0 ∧ x * (x + 1) * (2 * x + 1) = 6 * n)) ↔
+    n = 1 ∨ n = 4900 := by
+  refine ⟨fun ⟨⟨y, hy₀, hy⟩, ⟨x, hx₀, hx⟩⟩ ↦ ?_, fun h ↦ ?_⟩
+  · rcases (cannonball hx₀ hy₀).1 (hy ▸ hx) with ⟨-, rfl⟩ | ⟨-, rfl⟩ <;> simp [hy]
+  · rcases h with rfl | rfl
+    · exact ⟨⟨1, by decide, rfl⟩, ⟨1, by decide, rfl⟩⟩
+    · exact ⟨⟨70, by decide, rfl⟩, ⟨24, by decide, rfl⟩⟩
