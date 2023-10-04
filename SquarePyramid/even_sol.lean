@@ -6,6 +6,7 @@ import Mathlib.Data.Int.SuccPred
 import Mathlib.NumberTheory.PythagoreanTriples
 import Mathlib.Tactic.ModCases
 
+/-- A version of `Int.sq_of_coprime` that uses positivity. -/
 theorem pos_sq_of_coprime {a b c : ℤ} (h : IsCoprime a b) (heq : a * b = c ^ 2) (ha : a > 0)
     (hb : b > 0): ∃ x y, x > 0 ∧ y > 0 ∧ a = x ^ 2 ∧ b = y ^ 2 := by
   have ⟨x, hx⟩ := Int.sq_of_coprime h heq
@@ -21,6 +22,7 @@ theorem pos_sq_of_coprime {a b c : ℤ} (h : IsCoprime a b) (heq : a * b = c ^ 2
   exists |x|, |y|
   simp [(sq_pos_iff _).1 ha, (sq_pos_iff _).1 hb]
 
+/-- If `a^2 ∣ 2b^2` then `a ∣ b`. -/
 theorem sq_dvd_two_mul_sq {a b : ℤ} (h : a * a ∣ 2 * b * b) : a ∣ b := by
   obtain ⟨k, hk⟩ := h
   rcases k.even_or_odd with ⟨k, rfl⟩ | ⟨k, rfl⟩
@@ -56,7 +58,7 @@ theorem sq_dvd_two_mul_sq {a b : ℤ} (h : a * a ∣ 2 * b * b) : a ∣ b := by
   linear_combination 2 * hk'
 termination_by _ a _ _ => a.natAbs
 
-/-- Lemma 1. -/
+/-- Lemma 1. The area of a Pythagorean triangle is never a square. -/
 theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 0)
     (hxy : ∃ z, PythagoreanTriple x y z) (hxyw : x * y = 2 * w * w) : False := by
   -- Suppose `|w|` is minimal
@@ -238,7 +240,7 @@ theorem pythagoreanTriple_area_ne_sq' {x y w : ℤ} (hxy : ∃ z, PythagoreanTri
       contradiction
     · exact pythagoreanTriple_area_ne_sq hx hy hxy hxyw
 
-/-- Lemma 2. -/
+/-- Lemma 2. There are no positive integer solutions to `2x^4 + 1 = y^2`. -/
 theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2) (hx : x > 0) :
     False := by
   wlog hy₀ : y > 0
@@ -281,7 +283,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' hs_2s1_co.symm (mul_comm s _ ▸ hx4s.symm)
     replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
     rw [← hu] at hv
-    -- Do cases on `v^4 = 2 * (u^4 + 1)` mod 8. This is ugly, but I don't know how to shorten it.
+    -- Do cases on `v^4 = 2 * (u^4 + 1)` mod 8. This is ugly. TODO: Figure out how to shorten this.
     have : v ^ 4 % 8 = 2 * (u ^ 4 + 1) % 8 := by rw [hv]
     have hu₀ : Even u → 2 * (u ^ 4 + 1) % 8 = 2 := by
       rintro ⟨x, rfl⟩
@@ -378,7 +380,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     _ < y := by rw [hys, add_lt_add_iff_right]; apply lt_mul_left hs₀; decide
 termination_by _ x _ _ _ => x.natAbs
 
-/-- Lemma 2, alternate form. -/
+/-- Lemma 2, alternate form. The integer solution to `2x^4 + 1 = y^2` is `x = 0`. -/
 theorem two_mul_pow_four_add_one_ne_sq' {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2) : x = 0 := by
   by_contra h
   cases' ne_iff_lt_or_gt.1 h with h h
@@ -387,7 +389,7 @@ theorem two_mul_pow_four_add_one_ne_sq' {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2
     rwa [gt_iff_lt, Left.neg_pos_iff]
   · exact two_mul_pow_four_add_one_ne_sq hxy h
 
-/-- Lemma 3. -/
+/-- Lemma 3. The positive integer solution to `8x^4 + 1 = y^2` is `x = 1`. -/
 theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x > 0) : x = 1 := by
   rcases y.even_or_odd with ⟨s, rfl⟩ | ⟨s, rfl⟩
   · rw [← eq_sub_iff_add_eq'] at hxy
@@ -475,7 +477,7 @@ theorem mul_eq_three_sq {x y w : ℤ} (hco : IsCoprime x y) (h : x * y = 3 * w ^
   rw [← hu, pow_two]
   mod_cases hu3 : u % 3 <;> rw [hu3.mul hu3] <;> decide
 
-/-- Theorem 3½. `x = 24` is the only even solution to the cannonball problem. -/
+/-- Theorem 3½. `x = 24` is the only positive even solution to the cannonball problem. -/
 theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2) (hx : x > 0)
     (hx_even : Even x) : x = 24 := by
   have hx_div : 3 ∣ x := by
@@ -603,7 +605,7 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     simp only [mul_eq_zero, false_or] at this
     rcases this
     contradiction
-  · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₂` case
+  · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₂` case. TODO: Combine cases.
     obtain ⟨aa, rfl⟩ := h₃
     obtain ⟨bb, rfl⟩ := h₂
     replace hrp₁₀ : aa > 0 := pos_of_mul_pos_right hrp₁₀ (by decide)
@@ -626,7 +628,7 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     simp only [mul_eq_zero, false_or] at this
     rcases this
     contradiction
-  · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₁` case
+  · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₁` case. TODO: Combine cases.
     obtain ⟨aa, rfl⟩ : 6 ∣ rp₂ :=
       ((isCoprime_one_right (x := (2 : ℤ))).add_mul_left_right 1).mul_dvd h₂ h₃
     replace hqrp : aa * rp₁ = q ^ 2 :=
