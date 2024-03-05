@@ -50,13 +50,14 @@ theorem sq_dvd_two_mul_sq {a b : ℤ} (h : a * a ∣ 2 * b * b) : a ∣ b := by
     rw [ha', hb'] at hk
     exact mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0) (by linear_combination hk)
   have : a'.natAbs < a.natAbs := by
-    simp_rw [ha', ← two_mul, mul_ne_zero_iff, true_and, ← Int.natAbs_pos] at ha₀
+    simp_rw [ha', ← two_mul, mul_ne_zero_iff, ne_eq, OfNat.ofNat_ne_zero, not_false_eq_true,
+      true_and, ← Int.natAbs_pos] at ha₀
     rw [ha', ← two_mul, Int.natAbs_mul, lt_mul_iff_one_lt_left ha₀]; decide
   have ⟨k', hk'⟩ := sq_dvd_two_mul_sq h'
   exists k'
   rw [ha', hb']
   linear_combination 2 * hk'
-termination_by _ a _ _ => a.natAbs
+termination_by a.natAbs
 
 /-- Lemma 1. The area of a Pythagorean triangle is never a square. -/
 theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 0)
@@ -69,11 +70,11 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
   cases' (le_or_gt (Int.gcd x y) 1).symm with h h
   · have ⟨z, hxyz⟩ := hxy
     rcases hxyz.gcd_dvd with ⟨z', rfl⟩
-    have ⟨x', hx'⟩ := x.gcd_dvd_left y
-    have ⟨y', hy'⟩ := x.gcd_dvd_right y
+    have ⟨x', hx'⟩ := x.gcd_dvd_left (b := y)
+    have ⟨y', hy'⟩ := x.gcd_dvd_right (b := y)
     -- The proof skipped this important fact: `w / gcd(x, y)` is an integer.
     obtain ⟨w', rfl⟩ : (Int.gcd x y : ℤ) ∣ w :=
-      sq_dvd_two_mul_sq (hxyw ▸ mul_dvd_mul (x.gcd_dvd_left y) (x.gcd_dvd_right y))
+      sq_dvd_two_mul_sq (hxyw ▸ mul_dvd_mul (x.gcd_dvd_left (b := y)) (x.gcd_dvd_right (b := y)))
     nth_rw 1 [hy', hx'] at hxyz hxyw
     have h₀ : (Int.gcd x y : ℤ) ≠ 0 := by simp [(lt_trans zero_lt_one h).ne.symm]
     rw [PythagoreanTriple.mul_iff _ h₀] at hxyz
@@ -117,7 +118,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
   · rw [not_lt, le_iff_lt_or_eq] at hr₀
     rcases hr₀ with hr₀ | rfl
     · apply this hw_min z (-r) (-s)
-      rwa [Int.gcd_neg_right, Int.gcd_neg_left]
+      rwa [Int.gcd_neg, Int.neg_gcd]
       convert hx₀ using 1; ring
       convert hy₀ using 1; ring
       convert hxy_co using 1; ring_nf
@@ -216,7 +217,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
   rw [← hxyw]
   refine' le_mul_of_one_le_left hs₀.le (Int.pos_iff_one_le.1 _)
   positivity
-termination_by _ w _ _ _ _ => w.natAbs
+termination_by w.natAbs
 
 /-- Lemma 1, alternate form. -/
 theorem pythagoreanTriple_area_ne_sq' {x y w : ℤ} (hxy : ∃ z, PythagoreanTriple x y z)
@@ -261,8 +262,8 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     rcases (le_iff_lt_or_eq.1 hy₀) with h | rfl
     · exact h
     rw [hys] at hxy
-    simp only [mul_zero, zero_add, one_pow, add_left_eq_self, mul_eq_zero, zero_lt_four,
-      pow_eq_zero_iff, false_or] at hxy
+    simp only [mul_zero, zero_add, one_pow, add_left_eq_self, mul_eq_zero, OfNat.ofNat_ne_zero,
+      ne_eq, not_false_eq_true, pow_eq_zero_iff, false_or] at hxy
     exact hxy ▸ hx
   have hx4s : x ^ 4 = 2 * s * (s + 1) := by
     apply mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0)
@@ -288,11 +289,11 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     have hu₀ : Even u → 2 * (u ^ 4 + 1) % 8 = 2 := by
       rintro ⟨x, rfl⟩
       suffices (2 + 8 * (4*x^4)) % 8 = 2 by convert this using 2; ring
-      simp only [Int.add_mul_emod_self_left]
+      rw [Int.add_mul_emod_self_left]; rfl
     have hu₁ : Odd u → 2 * (u ^ 4 + 1) % 8 = 4 := by
       rintro ⟨x, rfl⟩
       suffices (4 + 8 * (4*x^4 + 8*x^3 + 6*x^2 + 2*x)) % 8 = 4 by convert this using 2; ring
-      simp only [Int.add_mul_emod_self_left]
+      rw [Int.add_mul_emod_self_left]; rfl
     have hv₀ : Even v → v ^ 4 % 8 = 0 := by
       rintro ⟨x, rfl⟩
       suffices 8 * (2*x^4) % 8 = 0 by convert this using 2; ring
@@ -300,7 +301,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     have hv₁ : Odd v → v ^ 4 % 8 = 1 := by
       rintro ⟨x, rfl⟩
       suffices (1 + 8 * (2*x^4 + 4*x^3 + 3*x^2 + x)) % 8 = 1 by convert this using 2; ring
-      simp only [Int.add_mul_emod_self_left]
+      rw [Int.add_mul_emod_self_left]; rfl
     cases' u.even_or_odd with h₁ h₁ <;> cases' v.even_or_odd with h₂ h₂ <;>
       [rw [hu₀ h₁, hv₀ h₂] at this; rw [hu₀ h₁, hv₁ h₂] at this;
       rw [hu₁ h₁, hv₀ h₂] at this; rw [hu₁ h₁, hv₁ h₂] at this] <;> contradiction
@@ -367,7 +368,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
   replace hc := Int.eq_of_associated_of_nonneg hc (pow_bit0_nonneg c 2) (by positivity)
   have hbc : 2 * b ^ 4 + 1 = (c ^ 2) ^ 2 := by rw [hb, ← hc]; ring
   apply hx_min hbc hb₀
-  refine (lt_of_pow_lt_pow 4 hx.le ?_)
+  refine (lt_of_pow_lt_pow_left 4 hx.le ?_)
   rw [← mul_lt_mul_left (by decide : (0 : ℤ) < 2), ← add_lt_add_iff_right 1, hbc, hxy, sq_lt_sq,
     abs_of_nonneg (sq_nonneg c), abs_of_nonneg hy₀.le]
   calc
@@ -378,7 +379,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
         using 1 <;> ring
     _ ≤ s + 1 := by rw [← hv]; convert Int.le_self_sq _ using 1; ring
     _ < y := by rw [hys, add_lt_add_iff_right]; apply lt_mul_left hs₀; decide
-termination_by _ x _ _ _ => x.natAbs
+termination_by x.natAbs
 
 /-- Lemma 2, alternate form. The integer solution to `2x^4 + 1 = y^2` is `x = 0`. -/
 theorem two_mul_pow_four_add_one_ne_sq' {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2) : x = 0 := by
@@ -455,7 +456,7 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
   rw [sq_eq_zero_iff, sub_eq_zero] at huv
   rw [← mul_one 1, ← huv] at hu
   replace hu : 0 = 2 * s := by linear_combination hu
-  simp only [zero_eq_mul, false_or] at hu
+  simp only [zero_eq_mul, OfNat.ofNat_ne_zero, false_or] at hu
   rcases hu
   replace hxy : (x ^ 2) ^ 2 = 1 := by linear_combination hxy.symm
   rw [sq_eq_one_iff, sq_eq_one_iff] at hxy
@@ -534,7 +535,7 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
   obtain ⟨q, rfl⟩ : Even q := by
     have : Even (3 * q ^ 2) :=
       ⟨rp₁ * rp₂, mul_left_cancel₀ (by decide : (2 : ℤ) ≠ 0) (by linear_combination hqrp)⟩
-    simpa [Int.even_mul, Int.even_pow'] using this
+    simpa [Int.even_mul, (by decide : Even (3 : ℤ) = False), Int.even_pow'] using this
   replace hqrp : rp₁ * rp₂ = 2 * (3 * q ^ 2) :=
     mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0) (by linear_combination -hqrp)
   have hrp₁₂_co : IsCoprime rp₁ rp₂ := by
@@ -602,7 +603,7 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
       rw [← eq_sub_iff_add_eq'] at h ⊢
       linear_combination h
     have := two_mul_pow_four_add_one_ne_sq' h
-    simp only [mul_eq_zero, false_or] at this
+    simp only [mul_eq_zero, OfNat.ofNat_ne_zero, false_or] at this
     rcases this
     contradiction
   · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₂` case. TODO: Combine cases.
@@ -625,7 +626,7 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
       rw [← eq_sub_iff_add_eq'] at h ⊢
       linear_combination h
     have := two_mul_pow_four_add_one_ne_sq' h
-    simp only [mul_eq_zero, false_or] at this
+    simp only [mul_eq_zero, OfNat.ofNat_ne_zero, false_or] at this
     rcases this
     contradiction
   · -- Essentially a copy-paste of the `2 ∣ rp₁` `3 ∣ rp₁` case. TODO: Combine cases.

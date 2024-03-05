@@ -1,4 +1,5 @@
 import Mathlib.Init.Logic
+import Mathlib.Tactic.Cases
 
 inductive XNat where
   -- Axiom 2.1

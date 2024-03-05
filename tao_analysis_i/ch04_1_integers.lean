@@ -24,7 +24,7 @@ example : 3 — 5 = 2 — 4 := Quotient.sound rfl
 example : 3 — 5 ≠ 2 — 3 := by
   intro h
   have := Quotient.exact h
-  simp only [HasEquiv.Equiv, Setoid.r] at this
+  simp only [HasEquiv.Equiv, Setoid.r, Nat.succ.injEq] at this
 
 /-- Definition 4.1.2. Sum of two integers. -/
 instance : Add XInt := by

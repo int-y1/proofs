@@ -113,7 +113,7 @@ theorem uv_mod_five : u n ≡ [1, 2, 2][n % 3]'(n.mod_lt zero_lt_three) [ZMOD 5]
 
 /-- Helper for lemma 8. -/
 theorem isCoprime_five_u : IsCoprime 5 (u n) := by
-  have prime_five : Prime (5 : ℤ) := Nat.prime_iff_prime_int.1 (by norm_num)
+  have prime_five : Prime (5 : ℤ) := Nat.prime_iff_prime_int.1 Nat.prime_five
   rw [Prime.coprime_iff_not_dvd prime_five, Int.dvd_iff_emod_eq_zero]
   have := (uv_mod_five (n := n)).1
   rcases n.mod_three_eq_or with h | h | h <;>
@@ -167,8 +167,7 @@ theorem jacobiSym_neg_two_iff_four_dvd (h : Even n) (hm : m = u n) :
     dsimp [Int.ModEq] at hu
     norm_cast at hu
     rw [hu, Nat.odd_iff.1 hm_odd]
-    simp only [ite_true, ite_false]
-    try ring_nf -- todo: this is ugly. find a better tactic.
+    simp -- good enough.
 
 /-- Given a positive integer `n`, you can write `n = k' * 2^s` where `k'` is odd. -/
 theorem Nat.odd_mul_two_pow (n : ℕ) (h : n > 0) : ∃ k' s, Odd k' ∧ n = k' * 2 ^ s := by
@@ -240,7 +239,7 @@ theorem lemma10 (h : ∃ M, u n = 4 * M ^ 2 + 3) : u n = 7 := by
   have hj_neg_ten' : jacobiSym (-10) m ≥ 0 := by
     rw [jacobiSym.mod_left' (hm.symm ▸ h_mod_2s.symm), jacobiSym.mul_left, ← pow_two]
     exact sq_nonneg _
-  simp only [hj_neg_ten] at hj_neg_ten'
+  simp only [hj_neg_ten, Left.nonneg_neg_iff, Int.reduceLE] at hj_neg_ten'
 
 /-- Theorem 11. `x = 1` is the only odd solution to the cannonball problem. -/
 theorem cannonball_odd_1 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2) (hx : x > 0)

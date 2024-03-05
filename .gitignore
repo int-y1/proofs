@@ -1,6 +1,6 @@
 /.cache/*
 /build
-/lake-packages/*
+/.lake/*
 *.olean
 
 *.pdf
