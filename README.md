@@ -28,7 +28,8 @@ This is my attempt at formalizing a "Finite automata reduction" certificate chec
 * The goal of [bbchallenge](https://bbchallenge.org/story) is to prove that the 5th busy beaver number is 47176870.
 * As part of bbchallenge, many people have written *deciders*. A decider takes as input a Turing machine and outputs either *halt*, *non-halt*, or *undecided*. Some deciders also output an easily-checkable certificate.
 * One decider is named "Finite automata reduction" (FAR). This is a powerful decider that leaves ~10 Turing machines undecided. This decider also outputs easily-checkable certificates.
-  * Side note: Most of the ~10 undecided machines were [formally proven in Coq](https://github.com/meithecatte/busycoq/tree/master) to not halt.
+  * Side note 1: A lot of FAR certificates were created in an ad hoc way. This matters for certificate creators, but not for certificate checkers.
+  * Side note 2: Most of the ~10 undecided machines were [formally proven in Coq](https://github.com/meithecatte/busycoq/tree/master) to not halt.
 * There are FAR certificate checkers, but they have not been formally verified.
 
 Goals:
