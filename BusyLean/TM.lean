@@ -93,16 +93,11 @@ lemma Nat.repeat_add (f : α → α) (n m : ℕ) (a : α) :
   | 0 => rw [zero_add]; rfl
   | n+1 => rw [Nat.add_right_comm, Nat.repeat, Nat.repeat_add]; rfl
 
-/- todo: why can't i find this in mathlib4?
-lemma Nat.repeat_succ_eq_right (f : α → α) (n : ℕ) (a : α) :
-    Nat.repeat f (n+1) a = Nat.repeat f n (f a) := by
-  rw [Nat.repeat_add]; rfl
--/
-
 
 /-!
 ## 1 hypothesis and 1 goal
 -/
+variable {tm} {c c₁ c₂ c₃}
 
 lemma step_stepNat (h : c₁ [tm]⊢ c₂) : c₁ [tm]⊢^{1} c₂ := h
 
@@ -156,27 +151,27 @@ lemma stepNat_succ_stepNat_step (n : ℕ) (h : c₁ [tm]⊢^{n+1} c₃) :
     | some c₂' => rw [h₂, Option.some_bind] at h; exists c₂'
 
 /-- todo: golf this proof, it's pretty ugly -/
-lemma stepNat_add (c₁ c₃ : Q × Tape Sym) (n m : ℕ) (h : c₁ [tm]⊢^{n+m} c₃) :
+lemma stepNat_add {c₁ c₃ : Q × Tape Sym} (n m : ℕ) (h : c₁ [tm]⊢^{n+m} c₃) :
     ∃ c₂, (c₁ [tm]⊢^{n} c₂) ∧ (c₂ [tm]⊢^{m} c₃) := by
   match m with
   | 0 => exists c₃
   | m+1 =>
     rw [← Nat.add_assoc] at h
-    have ⟨c₄, h₄₁, h₄₃⟩ := stepNat_succ_stepNat_step tm c₁ c₃ (n+m) h
-    have ⟨c₂', h₄₁, h₄₂⟩ := stepNat_add c₁ c₄ n m h₄₁
+    have ⟨c₄, h₄₁, h₄₃⟩ := stepNat_succ_stepNat_step (n+m) h
+    have ⟨c₂', h₄₁, h₄₂⟩ := stepNat_add _ _ h₄₁
     refine' ⟨c₂', h₄₁, _⟩
     rwa [Nat.add_comm, stepNat, Nat.repeat_add, ← stepNat, h₄₂, Nat.repeat, Nat.repeat,
       Option.some_bind]
 
 lemma stepNat_succ_step_stepNat (n : ℕ) (h : c₁ [tm]⊢^{n+1} c₃) :
     ∃ c₂, (c₁ [tm]⊢ c₂) ∧ (c₂ [tm]⊢^{n} c₃) :=
-  stepNat_add tm c₁ c₃ 1 n (add_comm 1 n ▸ h)
+  stepNat_add 1 n (add_comm 1 n ▸ h)
 
 /-- When using `stepNat_add`, it is often more convenient to have the arithmetic show up as a
 separate goal, to be easily discharged. -/
-lemma stepNat_add₂ (c₁ c₃ : Q × Tape Sym) (n k₁ k₂ : ℕ) (h₁ : c₁ [tm]⊢^{n} c₃) (h₂ : n = k₁ + k₂) :
+lemma stepNat_add₂ {c₁ c₃ : Q × Tape Sym} (n k₁ k₂ : ℕ) (h₁ : c₁ [tm]⊢^{n} c₃) (h₂ : n = k₁ + k₂) :
     ∃ c₂, (c₁ [tm]⊢^{k₁} c₂) ∧ (c₂ [tm]⊢^{k₂} c₃) :=
-  stepNat_add tm c₁ c₃ k₁ k₂ (h₂ ▸ h₁)
+  stepNat_add k₁ k₂ (h₂ ▸ h₁)
 
 
 /-!
@@ -192,12 +187,12 @@ lemma stepNat_deterministic (n : ℕ) (h₁ : c [tm]⊢^{n} c₁) (h₂ : c [tm]
 lemma stepStar_trans (h₁ : c₁ [tm]⊢* c₂) (h₂ : c₂ [tm]⊢* c₃) : c₁ [tm]⊢* c₃ := by
   obtain ⟨n, h₁⟩ := h₁
   obtain ⟨m, h₂⟩ := h₂
-  exact ⟨n+m, stepNat_trans _ _ _ _ _ _ h₁ h₂⟩
+  exact ⟨n+m, stepNat_trans _ _ h₁ h₂⟩
 
 lemma stepPlus_trans (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : c₂ [tm]⊢⁺ c₃) : c₁ [tm]⊢⁺ c₃ := by
   obtain ⟨n, h₁⟩ := h₁
   obtain ⟨m, h₂⟩ := h₂
-  exact ⟨n+m, by simp [h₁], stepNat_trans _ _ _ _ _ _ h₁.2 h₂.2⟩
+  exact ⟨n+m, by simp [h₁], stepNat_trans _ _ h₁.2 h₂.2⟩
 
 
 /-!
@@ -209,49 +204,97 @@ lemma step_haltsIn_succ (n : ℕ) (h₁ : c₁ [tm]⊢ c₂) (h₂ : haltsIn tm 
   obtain ⟨c₃, h₂₁, h₂₂⟩ := h₂
   refine' ⟨c₃, _, h₂₂⟩
   rw [Nat.add_comm]
-  exact stepNat_trans _ _ _ _ _ _ h₁ h₂₁
+  exact stepNat_trans _ _ h₁ h₂₁
 
 lemma stepNat_haltsIn_add (n m : ℕ) (h₁ : c₁ [tm]⊢^{m} c₂) (h₂ : haltsIn tm c₂ n) :
     haltsIn tm c₁ (n+m) := by
   obtain ⟨c₃, h₂₁, h₂₂⟩ := h₂
   refine' ⟨c₃, _, h₂₂⟩
   rw [Nat.add_comm]
-  exact stepNat_trans _ _ _ _ _ _ h₁ h₂₁
+  exact stepNat_trans _ _ h₁ h₂₁
 
 lemma step_halts (h₁ : c₁ [tm]⊢ c₂) (h₂ : halts tm c₂) : halts tm c₁ := by
   obtain ⟨n, h₂⟩ := h₂
-  exact ⟨n+1, step_haltsIn_succ _ _ _ _ h₁ h₂⟩
+  exact ⟨n+1, step_haltsIn_succ _ h₁ h₂⟩
 
 lemma stepNat_halts (n : ℕ) (h₁ : c₁ [tm]⊢^{n} c₂) (h₂ : halts tm c₂) : halts tm c₁ := by
   obtain ⟨m, h₂⟩ := h₂
-  exact ⟨m+n, stepNat_haltsIn_add _ _ _ _ _ h₁ h₂⟩
+  exact ⟨m+n, stepNat_haltsIn_add _ _ h₁ h₂⟩
 
 lemma stepStar_halts (h₁ : c₁ [tm]⊢* c₂) (h₂ : halts tm c₂) : halts tm c₁ := by
   obtain ⟨n, h₂⟩ := h₂
   obtain ⟨m, h₁⟩ := h₁
-  exact ⟨n+m, stepNat_haltsIn_add _ _ _ _ _ h₁ h₂⟩
+  exact ⟨n+m, stepNat_haltsIn_add _ _ h₁ h₂⟩
 
 lemma stepPlus_halts (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : halts tm c₂) : halts tm c₁ :=
-  stepStar_halts _ _ _ (stepPlus_stepStar _ _ _ h₁) h₂
+  stepStar_halts (stepPlus_stepStar h₁) h₂
 
 lemma stepStar_stepPlus_stepPlus (h₁ : c₁ [tm]⊢* c₂) (h₂ : c₂ [tm]⊢⁺ c₃) : c₁ [tm]⊢⁺ c₃ := by
   obtain ⟨n, h₁⟩ := h₁
   obtain ⟨m, h₂₁, h₂₂⟩ := h₂
-  exact ⟨n+m, by simp [h₂₁], stepNat_trans _ _ _ _ _ _ h₁ h₂₂⟩
+  exact ⟨n+m, by simp [h₂₁], stepNat_trans _ _ h₁ h₂₂⟩
 
 lemma step_stepPlus_stepPlus (h₁ : c₁ [tm]⊢ c₂) (h₂ : c₂ [tm]⊢⁺ c₃) : c₁ [tm]⊢⁺ c₃ :=
-  stepStar_stepPlus_stepPlus _ _ _ _ (step_stepStar _ _ _ h₁) h₂
+  stepStar_stepPlus_stepPlus (step_stepStar h₁) h₂
 
 lemma stepStar_step_stepPlus (h₁ : c₁ [tm]⊢* c₂) (h₂ : c₂ [tm]⊢ c₃) : c₁ [tm]⊢⁺ c₃ :=
-  stepStar_stepPlus_stepPlus _ _ _ _ h₁ (step_stepPlus _ _ _ h₂)
+  stepStar_stepPlus_stepPlus h₁ (step_stepPlus h₂)
 
 lemma stepPlus_stepStar_stepPlus (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : c₂ [tm]⊢* c₃) : c₁ [tm]⊢⁺ c₃ := by
   obtain ⟨n, h₁₁, h₁₂⟩ := h₁
   obtain ⟨m, h₂⟩ := h₂
-  exact ⟨n+m, by simp [h₁₁], stepNat_trans _ _ _ _ _ _ h₁₂ h₂⟩
+  exact ⟨n+m, by simp [h₁₁], stepNat_trans _ _ h₁₂ h₂⟩
 
 lemma step_stepStar_stepPlus (h₁ : c₁ [tm]⊢ c₂) (h₂ : c₂ [tm]⊢* c₃) : c₁ [tm]⊢⁺ c₃ :=
-  stepPlus_stepStar_stepPlus _ _ _ _ (step_stepPlus _ _ _ h₁) h₂
+  stepPlus_stepStar_stepPlus (step_stepPlus h₁) h₂
 
 lemma stepPlus_step_stepPlus (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : c₂ [tm]⊢ c₃) : c₁ [tm]⊢⁺ c₃ :=
-  stepPlus_stepStar_stepPlus _ _ _ _ h₁ (step_stepStar _ _ _ h₂)
+  stepPlus_stepStar_stepPlus h₁ (step_stepStar h₂)
+
+-- todo: find a nicer proof
+lemma stepPlus_split_step_stepStar (h : c₁ [tm]⊢⁺ c₃) : ∃ c₂, (c₁ [tm]⊢ c₂) ∧ (c₂ [tm]⊢* c₃) := by
+  obtain ⟨n, h₁, h₂⟩ := h
+  obtain ⟨n, rfl⟩ := Nat.exists_eq_add_of_lt h₁
+  rw [zero_add, add_comm] at h₂
+  have ⟨c₂', h₃, h₄⟩ := stepNat_add _ _ h₂
+  exact ⟨c₂', h₃, n, h₄⟩
+
+-- todo: find a nicer proof
+lemma stepPlus_split_stepStar_step (h : c₁ [tm]⊢⁺ c₃) : ∃ c₂, (c₁ [tm]⊢* c₂) ∧ (c₂ [tm]⊢ c₃) := by
+  obtain ⟨n, h₁, h₂⟩ := h
+  obtain ⟨n, rfl⟩ := Nat.exists_eq_add_of_lt h₁
+  rw [zero_add] at h₂
+  have ⟨c₂', h₃, h₄⟩ := stepNat_add _ _ h₂
+  exact ⟨c₂', ⟨n, h₃⟩, h₄⟩
+
+
+/-!
+## Misc
+-/
+
+lemma stepPlus_step (h : c₁ [tm]⊢⁺ c₂) : ∃ c, c₁ [tm]⊢ c := by
+  have ⟨c', hc', _⟩ := stepPlus_split_step_stepStar h
+  exact ⟨c', hc'⟩
+
+lemma halted_not_stepPlus (h : halted tm c₁) : ¬ c₁ [tm]⊢⁺ c₂ := by
+  intro h'
+  have ⟨c', h'⟩ := stepPlus_step h'
+  rw [h] at h'
+  contradiction
+
+lemma haltsIn_gt_not_stepNat (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : k > n) : ¬ c₁ [tm]⊢^{k} c₂ := by
+  obtain ⟨m, hm⟩ := Nat.exists_eq_add_of_le h₂.le
+  intro h₃
+  have ⟨c', h₄, h₅⟩ := stepNat_add₂ _ _ _ h₃ hm
+  obtain ⟨c'', h₄', h₅'⟩ := h₁
+  rw [h₄', Option.some.injEq] at h₄; rcases h₄
+  exact halted_not_stepPlus h₅' ⟨m, Nat.pos_of_lt_add_right (hm ▸ h₂), h₅⟩
+
+lemma haltsIn_stepNat_le (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : c₁ [tm]⊢^{k} c₂) : k ≤ n :=
+  le_of_not_lt fun h ↦ haltsIn_gt_not_stepNat _ _ h₁ h h₂
+
+lemma haltsIn_le_stepNat (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : k ≤ n) : ∃ c, c₁ [tm]⊢^{k} c := by
+  obtain ⟨c₃, h₁, _⟩ := h₁
+  obtain ⟨l, rfl⟩ := Nat.exists_eq_add_of_le h₂
+  have ⟨c₂, hc₂, _⟩ := stepNat_add _ _ h₁
+  exact ⟨c₂, hc₂⟩
