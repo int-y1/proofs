@@ -53,7 +53,7 @@ def step : (Q × Tape Sym) → Option (Q × Tape Sym) :=
     | some ⟨s', d, q'⟩ => some ⟨q', Tape.move d (l {{s'}} r)⟩
 
 /-- `step`. The small-step semantics of Turing machines. -/
-notation c " [" tm "]⊢ " c' => step tm c = some c'
+notation3 c " [" tm "]⊢ " c' => step tm c = some c'
 
 /-- Executes `n` steps. -/
 def stepNat : (n : ℕ) → (Q × Tape Sym) → Option (Q × Tape Sym) :=
@@ -62,13 +62,13 @@ def stepNat : (n : ℕ) → (Q × Tape Sym) → Option (Q × Tape Sym) :=
 /-- `stepNat` executes `n` steps.
 
 Unfortunately, the parser needs a character between `n` and `c'`. I picked `}`. -/
-notation c " [" tm "]⊢^{" n "} " c' => stepNat tm n c = some c'
+notation3 c " [" tm "]⊢^{" n "} " c' => stepNat tm n c = some c'
 
 /-- `stepStar` executes an unspecified number of steps (the "eventually reaches" relation). -/
-notation c " [" tm "]⊢* " c' => ∃ n, c [tm]⊢^{n} c'
+notation3 c " [" tm "]⊢* " c' => ∃ n, c [tm]⊢^{n} c'
 
 /-- `stepPlus` executes an unspecified, but non-zero number of steps. -/
-notation c " [" tm "]⊢⁺ " c' => ∃ n > 0, c [tm]⊢^{n} c'
+notation3 c " [" tm "]⊢⁺ " c' => ∃ n > 0, c [tm]⊢^{n} c'
 
 /-- The Turing machine has halted if `step tm c` returns `none`. -/
 def halted : Prop := step tm c = none
@@ -118,17 +118,20 @@ lemma stepStar_stepPlus (h₁ : c₁ [tm]⊢* c₂) (h₂ : c₁ ≠ c₂) : c�
   contradiction
 
 lemma stepPlus_stepStar (h : c₁ [tm]⊢⁺ c₂) : c₁ [tm]⊢* c₂ := by
-  obtain ⟨n, _, h⟩ := h; exists n
+  obtain ⟨n, -, h⟩ := h; exists n
 
-lemma halted_not_step (h : halted tm c₁) : ¬ c₁ [tm]⊢ c₂ := by
+lemma halted_not_step (h : halted tm c₁) : ¬c₁ [tm]⊢ c₂ := by
   rw [h]; simp
 
-lemma not_halted_step (h : ¬ halted tm c₁) : ∃ c₂, c₁ [tm]⊢ c₂ := by
+lemma not_halted_step (h : ¬halted tm c₁) : ∃ c₂, c₁ [tm]⊢ c₂ := by
   match h' : step tm c₁ with
   | none => rw [halted] at h; contradiction
   | some c₂' => exists c₂'
 
 lemma halted_halts (h : halted tm c) : halts tm c := by exists 0, c
+
+lemma haltsIn_stepNat (n : ℕ) (h₁ : haltsIn tm c₁ n) : ∃ c, c₁ [tm]⊢^{n} c := by
+  obtain ⟨c₂, h₂, -⟩ := h₁; exact ⟨c₂, h₂⟩
 
 
 /-!
@@ -172,6 +175,11 @@ separate goal, to be easily discharged. -/
 lemma stepNat_add₂ {c₁ c₃ : Q × Tape Sym} (n k₁ k₂ : ℕ) (h₁ : c₁ [tm]⊢^{n} c₃) (h₂ : n = k₁ + k₂) :
     ∃ c₂, (c₁ [tm]⊢^{k₁} c₂) ∧ (c₂ [tm]⊢^{k₂} c₃) :=
   stepNat_add k₁ k₂ (h₂ ▸ h₁)
+
+lemma stepNat_le_stepNat (n k : ℕ) (h₁ : c₁ [tm]⊢^{n} c₂) (h₂ : k ≤ n) : ∃ c, c₁ [tm]⊢^{k} c := by
+  obtain ⟨l, rfl⟩ := Nat.exists_eq_add_of_le h₂
+  have ⟨c₂, hc₂, _⟩ := stepNat_add _ _ h₁
+  exact ⟨c₂, hc₂⟩
 
 
 /-!
@@ -276,25 +284,67 @@ lemma stepPlus_step (h : c₁ [tm]⊢⁺ c₂) : ∃ c, c₁ [tm]⊢ c := by
   have ⟨c', hc', _⟩ := stepPlus_split_step_stepStar h
   exact ⟨c', hc'⟩
 
-lemma halted_not_stepPlus (h : halted tm c₁) : ¬ c₁ [tm]⊢⁺ c₂ := by
+lemma halted_not_stepPlus (h : halted tm c₁) : ¬c₁ [tm]⊢⁺ c₂ := by
   intro h'
   have ⟨c', h'⟩ := stepPlus_step h'
   rw [h] at h'
   contradiction
 
-lemma haltsIn_gt_not_stepNat (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : k > n) : ¬ c₁ [tm]⊢^{k} c₂ := by
+lemma haltsIn_gt_not_stepNat (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : k > n) : ¬c₁ [tm]⊢^{k} c₂ := by
   obtain ⟨m, hm⟩ := Nat.exists_eq_add_of_le h₂.le
   intro h₃
   have ⟨c', h₄, h₅⟩ := stepNat_add₂ _ _ _ h₃ hm
   obtain ⟨c'', h₄', h₅'⟩ := h₁
-  rw [h₄', Option.some.injEq] at h₄; rcases h₄
+  rcases h₄' ▸ h₄
   exact halted_not_stepPlus h₅' ⟨m, Nat.pos_of_lt_add_right (hm ▸ h₂), h₅⟩
 
 lemma haltsIn_stepNat_le (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : c₁ [tm]⊢^{k} c₂) : k ≤ n :=
   le_of_not_lt fun h ↦ haltsIn_gt_not_stepNat _ _ h₁ h h₂
 
 lemma haltsIn_le_stepNat (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : k ≤ n) : ∃ c, c₁ [tm]⊢^{k} c := by
-  obtain ⟨c₃, h₁, _⟩ := h₁
-  obtain ⟨l, rfl⟩ := Nat.exists_eq_add_of_le h₂
-  have ⟨c₂, hc₂, _⟩ := stepNat_add _ _ h₁
-  exact ⟨c₂, hc₂⟩
+  have ⟨c, hc⟩ := haltsIn_stepNat _ h₁
+  exact stepNat_le_stepNat _ _ hc h₂
+
+/-- Stronger form of `haltsIn_stepNat_le`. -/
+lemma haltsIn_stepNat_sub (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : c₁ [tm]⊢^{k} c₂) :
+    haltsIn tm c₂ (n-k) := by
+  have ⟨c₃, h₄, h₅⟩ := h₁
+  rw [← Nat.sub_add_cancel (haltsIn_stepNat_le _ _ h₁ h₂), add_comm] at h₄
+  have ⟨c₂', h₂', h₆⟩ := stepNat_add _ _ h₄
+  rcases h₂' ▸ h₂
+  exists c₃
+
+lemma stepNat_not_halts_not_halts (n : ℕ) (h₁ : c₁ [tm]⊢^{n} c₂) (h₂ : ¬halts tm c₂) :
+    ¬halts tm c₁ :=
+  fun ⟨m, hm⟩ ↦ h₂ ⟨m-n, haltsIn_stepNat_sub _ _ hm h₁⟩
+
+lemma step_not_halts_not_halts (h₁ : c₁ [tm]⊢ c₂) (h₂ : ¬halts tm c₂) : ¬halts tm c₁ :=
+  stepNat_not_halts_not_halts 1 h₁ h₂
+
+lemma stepStar_not_halts_not_halts (h₁ : c₁ [tm]⊢* c₂) (h₂ : ¬halts tm c₂) : ¬halts tm c₁ :=
+  let ⟨n, h₁⟩ := h₁; stepNat_not_halts_not_halts n h₁ h₂
+
+lemma stepPlus_not_halts_not_halts (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : ¬halts tm c₂) : ¬halts tm c₁ :=
+  let ⟨n, _, h₁⟩ := h₁; stepNat_not_halts_not_halts n h₁ h₂
+
+lemma progress_nonhalt' (P : Q × Tape Sym → Prop) (h : ∀ c, P c → ∃ c', P c' ∧ c [tm]⊢⁺ c') :
+    ∀ k c, P c → ¬haltsIn tm c k := by
+  intro k
+  induction' k using Nat.strongInductionOn with k IH
+  intro c hPc hcHalt
+  have ⟨c', hc', ⟨l, hl0, hcl⟩⟩ := h c hPc
+  refine' IH (k-l) _ c' hc' _
+  · have hlk := (haltsIn_stepNat_le _ _ hcHalt hcl)
+    exact Nat.sub_lt (hlk.trans_lt' hl0) hl0
+  · exact haltsIn_stepNat_sub _ _ hcHalt hcl
+
+lemma progress_nonhalt (P : Q × Tape Sym → Prop) (h₁ : ∀ c, P c → ∃ c', P c' ∧ c [tm]⊢⁺ c')
+    (h₂ : P c) : ¬halts tm c :=
+  fun ⟨k, hHalt⟩ ↦ progress_nonhalt' P h₁ k c h₂ hHalt
+
+lemma progress_nonhalt_simple {A : Type w} (C : A → Q × Tape Sym) (i₀ : A)
+    (h : ∀ i, ∃ i', (C i) [tm]⊢⁺ C i') : ¬halts tm (C i₀) := by
+  refine' progress_nonhalt (fun c ↦ ∃ i, c = C i) _ ⟨i₀, rfl⟩
+  intro c ⟨i, hi⟩
+  have ⟨i', hi'⟩ := h i
+  exact ⟨C i', ⟨i', rfl⟩, hi ▸ hi'⟩
