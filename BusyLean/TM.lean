@@ -31,7 +31,7 @@ variable (c c₁ c₂ c₃ : Q × Tape Sym)
 
 /-- We define a notation for tapes, evocative of a Turing machine's head hovering over a particular
 symbol. -/
-local notation l " {{" s "}} " r => ⟨s, l, r⟩ -- Tape Sym
+notation l " {{" s "}} " r => ⟨s, l, r⟩ -- Tape Sym
 
 --infixl:67 " << " => fun s a ↦ ListBlank.cons a s
 notation:67 s:67 " << " a:68 => ListBlank.cons a s -- ListBlank Sym
@@ -41,10 +41,8 @@ example (a b c d e : Sym) : Tape Sym :=
   (ListBlank.mk [] << a << b) {{c}} (d >> e >> ListBlank.mk [])
 
 -- For the directed head formulation, we use the following:
-set_option quotPrecheck false in
-local notation l " <{{" q "}} " r => (q, (ListBlank.tail l) {{ListBlank.head l}} r) -- Q × Tape Sym
-set_option quotPrecheck false in
-local notation l " {{" q "}}> " r => (q, l {{ListBlank.head r}} (ListBlank.tail r)) -- Q × Tape Sym
+notation3 l " <{{" q "}} " r => (q, (⟨ListBlank.head l, ListBlank.tail l, r⟩ : Tape _)) -- Q × Tape Sym
+notation3 l " {{" q "}}> " r => (q, (⟨ListBlank.head r, l, ListBlank.tail r⟩ : Tape _)) -- Q × Tape Sym
 
 /-- The small-step semantics of Turing machines. -/
 def step : (Q × Tape Sym) → Option (Q × Tape Sym) :=
