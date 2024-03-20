@@ -38,11 +38,11 @@ notation:67 s:67 " << " a:68 => ListBlank.cons a s -- ListBlank Sym
 infixr:67 " >> " => ListBlank.cons -- ListBlank Sym
 
 example (a b c d e : Sym) : Tape Sym :=
-  (ListBlank.mk [] << a << b) {{c}} (d >> e >> ListBlank.mk [])
+  (default << a << b) {{c}} (d >> e >> default)
 
 -- For the directed head formulation, we use the following:
-notation3 l " <{{" q "}} " r => (q, (⟨ListBlank.head l, ListBlank.tail l, r⟩ : Tape _)) -- Q × Tape Sym
-notation3 l " {{" q "}}> " r => (q, (⟨ListBlank.head r, l, ListBlank.tail r⟩ : Tape _)) -- Q × Tape Sym
+notation3 l " <{{" q "}} " r => (q, (⟨ListBlank.head l, ListBlank.tail l, r⟩ : Tape _))
+notation3 l " {{" q "}}> " r => (q, (⟨ListBlank.head r, l, ListBlank.tail r⟩ : Tape _))
 
 /-- The small-step semantics of Turing machines. -/
 def step : (Q × Tape Sym) → Option (Q × Tape Sym) :=
@@ -72,7 +72,7 @@ notation3 c " [" tm "]⊢⁺ " c' => ∃ n > 0, c [tm]⊢^{n} c'
 def halted : Prop := step tm c = none
 
 /-- The initial configuration of the machine. -/
-def c₀ : Q × Tape Sym := ⟨default, (ListBlank.mk []) {{default}} (ListBlank.mk [])⟩
+def c₀ : Q × Tape Sym := default
 
 /-- A Turing machine halts if it eventually reaches a halting configuration. -/
 def haltsIn (n : ℕ) := ∃ c', (c [tm]⊢^{n} c') ∧ halted tm c'

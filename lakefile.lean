@@ -20,3 +20,8 @@ lean_lib «Proofs» {
 lean_lib «SquarePyramid» {
   -- add any library configuration options here
 }
+
+@[default_target]
+lean_lib BusyLean {
+  -- add any library configuration options here
+}
