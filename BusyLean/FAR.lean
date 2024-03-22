@@ -1,5 +1,6 @@
 import Mathlib.Computability.TuringMachine
 import Mathlib.Data.List.DropRight
+import BusyLean.TM
 import BusyLean.BooleanMatrix
 
 /-!
@@ -32,16 +33,19 @@ def toList (l : ListBlank Sym) : List Sym := l.liftOn truncateList <| by
   · rfl
   · contradiction
 
--- todo: prove these 2 theorems to show that `ListBlank.toList` is correct
 --theorem mk_truncateList_eq_mk (l : List Sym) :
 --    ListBlank.mk (truncateList l) = ListBlank.mk l := sorry
 
+-- todo: prove this theorem to show that `ListBlank.toList` is the inverse of `ListBlank.mk`
 --theorem toList_mk (lb : ListBlank Sym) : ListBlank.mk lb.toList = lb := sorry
 
 end Turing.ListBlank
 
 def toWord : List (Q ⊕ Sym) :=
-  (c.2.left.toList.map Sum.inr).reverse ++
-  Sum.inr c.2.head ::
+  (c.2.left.tail.toList.map Sum.inr).reverse ++
+  Sum.inr c.2.left.head ::
   Sum.inl c.1 ::
+  Sum.inr c.2.head ::
   (c.2.right.toList.map Sum.inr)
+
+--#eval toWord (Q := Fin 5) (Sym := Fin 2) (default {{4}}> 0 >> 0 >> 1 >> 1 >> default)
