@@ -7,18 +7,16 @@ import BusyLean.BB52
 Original source: https://github.com/meithecatte/busycoq/blob/master/verify/Skelet10.v
 -/
 
-variable (Q := State)
-variable (Sym := Symbol)
-
+section
 open State
-
-def tm : TM := fun ⟨q, s⟩ ↦
+def tm : TM52 := fun ⟨q, s⟩ ↦
   match q, s with
   | A, 0 => some (1, R, B)  | A, 1 => some (0, R, A)
   | B, 0 => some (0, L, C)  | B, 1 => some (1, R, A)
   | C, 0 => some (1, R, E)  | C, 1 => some (1, L, D)
   | D, 0 => some (1, L, C)  | D, 1 => some (0, L, D)
   | E, 0 => none            | E, 1 => some (0, R, B)
+end section
 
 notation c " ⊢ " c' => c [tm]⊢ c'
 notation c " ⊢* " c' => c [tm]⊢* c'
@@ -73,6 +71,75 @@ def Z (n : Dorf) : Side :=
   | zO n' => (0 : Symbol) >> Z n'
   | zIO n' => 1 >> 0 >> Z n'
 
+-- todo: move this elsewhere
+macro "finish" : tactic =>
+  `(tactic| exists 0 <;> fail)
+macro "step" : tactic =>
+  `(tactic| (try refine stepPlus_stepStar ?_) <;>
+    refine step_stepStar_stepPlus (by (try simp only [Turing.ListBlank.head_cons]); rfl) ?_ <;>
+    simp only [Turing.Tape.move, Turing.ListBlank.head_cons, Turing.ListBlank.tail_cons])
+macro "execute" : tactic =>
+  `(tactic| repeat (any_goals (first | finish | step)))
+
 lemma incr_right (n : Dorf) (l : Side) : ((l << 1) {{B}}> Z n) ⊢* l <{{D}} Z (zI n) := by
-  induction n
-  sorry
+  revert l; induction' n with _ _ _ IH <;> intro l
+  · execute
+  · simp_rw [Z]
+    execute
+  · simp_rw [Z]
+    execute
+    apply stepStar_trans (IH _)
+    execute
+
+/-- Left Side Counter -/
+def T (n : Dorf) : Side :=
+  match n with
+  | zend => default
+  | zO n' => T n' << 0 << 0
+  | zIO n' => T n' << 1 << 0 << 1 << 0
+
+/-- `L` was already taken, use `L'` instead -/
+def L' (n : Dorf) : Side :=
+  match n with
+  | zend => default
+  | zO n' => T n'
+  | zIO n' => T n' << 1 << 0
+
+lemma incr_left (n : Dorf) (r : Side) : (T n <{{D}} 1 >> 1 >> r) ⊢* (T (zI n) {{A}}> r) := by
+  revert r; induction' n with _ _ _ IH <;> intro l
+  · execute
+  · simp_rw [T]
+    execute
+  · simp_rw [T]
+    execute
+    apply stepStar_trans (IH _)
+    execute
+
+/-- Complete Behavior -/
+def D (n : Dorf) := L' n <{{D}} Z (incr n)
+
+lemma incr_D (n : Dorf) : D n ⊢⁺ D (incr n) := by
+  unfold D
+  cases' n with n n
+  · execute
+  · cases' n with n n
+    · execute
+    · simp only [Z, L', T, incr, zI]
+      execute
+      apply stepStar_trans (incr_right _ _)
+      execute
+    · simp only [Z, L', T, incr, zI]
+      execute
+      apply stepStar_trans (incr_left _ _)
+      execute
+  · simp only [Z, L', incr]
+    execute
+    apply stepStar_trans (incr_left _ _)
+    execute
+    apply stepStar_trans (incr_right _ _)
+    execute
+
+theorem nonhalt : ¬halts tm c₀ := by
+  apply stepStar_not_halts_not_halts (c₂ := D zend) (by execute)
+  apply progress_nonhalt_simple D
+  exact fun n ↦ ⟨incr n, incr_D n⟩

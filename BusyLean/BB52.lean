@@ -33,4 +33,4 @@ notation3 l " {{D}}> " r => (D, (⟨ListBlank.head r, l, ListBlank.tail r⟩ : T
 notation3 l " {{E}}> " r => (E, (⟨ListBlank.head r, l, ListBlank.tail r⟩ : Tape _))
 
 notation3 "Side" => ListBlank Symbol
-notation3 "TM" => @TM State Symbol
+notation3 "TM52" => @TM State Symbol
