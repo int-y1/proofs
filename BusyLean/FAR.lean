@@ -41,11 +41,40 @@ def toList (l : ListBlank Sym) : List Sym := l.liftOn truncateList <| by
 
 end Turing.ListBlank
 
+/-- Word-representation of a configuration. -/
 def toWord : List (Q ⊕ Sym) :=
-  (c.2.left.tail.toList.map Sum.inr).reverse ++
-  Sum.inr c.2.left.head ::
-  Sum.inl c.1 ::
-  Sum.inr c.2.head ::
-  (c.2.right.toList.map Sum.inr)
+  (c.2.left.tail.toList.map .inr).reverse ++
+  .inr c.2.left.head ::
+  .inl c.1 ::
+  .inr c.2.head ::
+  (c.2.right.toList.map .inr)
 
 --#eval toWord (Q := Fin 5) (Sym := Fin 2) (default {{4}}> 0 >> 0 >> 1 >> 1 >> default)
+
+/-- A nondeterministic finite automaton with `n` states, represented using `n × n` boolean matrices
+and `1 × n` boolean vectors. -/
+structure BooleanNFA {n : ℕ} where
+  /-- Initial states of the NFA. -/
+  q₀ : Matrix (Fin 1) (Fin n) Two
+  /-- Transition matrices of the NFA. If `T γ i j = 1`, then the NFA transitions from `i` to `j`
+  when reading `γ`. -/
+  T : Q ⊕ Sym → Matrix (Fin n) (Fin n) Two
+  /-- Accepting states of the NFA. -/
+  a : Matrix (Fin 1) (Fin n) Two
+
+open Matrix
+
+/-- todo: statement is wrong. fix the statement. -/
+theorem foo {n : ℕ} (tm : @TM Q Sym) (b : @BooleanNFA Q Sym n) (s : Matrix (Fin 1) (Fin n) Two)
+    (h₁ : b.q₀ * (b.T (.inr default)) = b.q₀)
+    (h₂ : (b.T (.inr default)) * b.aᵀ = b.aᵀ)
+    (h₃ : s * b.aᵀ = 1)
+    (h₄ : ∀ i : Sym, s * (b.T (.inr i)) ≥ s)
+    (h₅ : ∀ f r, match tm ⟨f, r⟩ with
+      | none => True -- todo: replace `True` with the actual condition
+      | some (w, L, t) => ∀ i : Sym,
+        b.T (.inr i) * b.T (.inl f) * b.T (.inr r) ≥ b.T (.inl t) * b.T (.inr i) * b.T (.inr w)
+      | some (w, R, t) => b.T (.inl f) * b.T (.inr r) ≥ b.T (.inr w) * b.T (.inl t)
+    )
+    (h₆ : b.q₀ * b.T (.inl default) * b.aᵀ = 0) : True := by
+  trivial

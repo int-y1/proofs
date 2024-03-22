@@ -59,7 +59,7 @@ instance instOrderedCommSemiringTwo : OrderedCommSemiring Two := {
     fin_cases c <;> simp [h]
 }
 
-instance : LE (Matrix n n Two) := ⟨fun M N ↦ ∀ (i j : n), LE.le (α := Fin 2) (M i j) (N i j)⟩
+instance : LE (Matrix m n Two) := ⟨fun M N ↦ ∀ i j, LE.le (α := Fin 2) (M i j) (N i j)⟩
 
 /-- `M_{n,n}(Two)` is an ordered semiring. -/
 instance instOrderedSemiringMatrixFinTwo : OrderedSemiring (Matrix (Fin n) (Fin n) Two) := {
@@ -84,7 +84,7 @@ instance instOrderedSemiringMatrixFinTwo : OrderedSemiring (Matrix (Fin n) (Fin 
 
 instance : DecidableEq Two := instDecidableEqFin _
 
-instance : DecidableRel (α := Matrix (Fin n) (Fin n) Two) (· ≤ ·) :=
+instance : DecidableRel (α := Matrix (Fin m) (Fin n) Two) (· ≤ ·) :=
   fun _ _ ↦ Fintype.decidableForallFintype
 
 --def mat1 : Matrix (Fin 3) (Fin 3) Two := !![1,1,0;0,0,0;0,0,0]
