@@ -9,7 +9,7 @@ import BusyLean.BooleanMatrix
 wip
 -/
 
-open Turing
+open Turing Matrix
 
 variable {Q : Type u} {Sym : Type v} [Inhabited Q] [DecidableEq Sym] [Inhabited Sym] (tm : @TM Q Sym)
   (c c₁ c₂ c₃ : Q × Tape Sym)
@@ -41,19 +41,25 @@ def toList (l : ListBlank Sym) : List Sym := l.liftOn truncateList <| by
 
 end Turing.ListBlank
 
+instance : Coe Q (Q ⊕ Sym) := ⟨.inl⟩
+instance : Coe Sym (Q ⊕ Sym) := ⟨.inr⟩
+instance : Coe (List Sym) (List (Q ⊕ Sym)) := ⟨fun l ↦ l.map (↑)⟩
+
 /-- Word-representation of a configuration. -/
 def toWord : List (Q ⊕ Sym) :=
-  (c.2.left.tail.toList.map .inr).reverse ++
-  .inr c.2.left.head ::
-  .inl c.1 ::
-  .inr c.2.head ::
-  (c.2.right.toList.map .inr)
+  c.2.left.tail.toList.reverse ++
+  (c.2.left.head : Q ⊕ Sym) ::
+  c.1 ::
+  c.2.head ::
+  c.2.right.toList
 
 --#eval toWord (Q := Fin 5) (Sym := Fin 2) (default {{4}}> 0 >> 0 >> 1 >> 1 >> default)
 
+variable {n : ℕ}
+
 /-- A nondeterministic finite automaton with `n` states, represented using `n × n` boolean matrices
 and `1 × n` boolean vectors. -/
-structure BooleanNFA {n : ℕ} where
+structure BooleanNFA where
   /-- Initial states of the NFA. -/
   q₀ : Matrix (Fin 1) (Fin n) Two
   /-- Transition matrices of the NFA. If `T γ i j = 1`, then the NFA transitions from `i` to `j`
@@ -62,19 +68,21 @@ structure BooleanNFA {n : ℕ} where
   /-- Accepting states of the NFA. -/
   a : Matrix (Fin 1) (Fin n) Two
 
-open Matrix
+def BooleanNFA.TStar (b : @BooleanNFA Q Sym n) (w : List (Q ⊕ Sym)) : Matrix (Fin n) (Fin n) Two :=
+  match w with
+  | [] => 1
+  | a::w => b.T a * b.TStar w
 
 /-- todo: statement is wrong. fix the statement. -/
 theorem foo {n : ℕ} (tm : @TM Q Sym) (b : @BooleanNFA Q Sym n) (s : Matrix (Fin 1) (Fin n) Two)
-    (h₁ : b.q₀ * (b.T (.inr default)) = b.q₀)
-    (h₂ : (b.T (.inr default)) * b.aᵀ = b.aᵀ)
+    (h₁ : b.q₀ * (b.T (default : Sym)) = b.q₀)
+    (h₂ : (b.T (default : Sym)) * b.aᵀ = b.aᵀ)
     (h₃ : s * b.aᵀ = 1)
-    (h₄ : ∀ i : Sym, s * (b.T (.inr i)) ≥ s)
+    (h₄ : ∀ i : Sym, s * (b.T i) ≥ s)
     (h₅ : ∀ f r, match tm ⟨f, r⟩ with
-      | none => True -- todo: replace `True` with the actual condition
-      | some (w, L, t) => ∀ i : Sym,
-        b.T (.inr i) * b.T (.inl f) * b.T (.inr r) ≥ b.T (.inl t) * b.T (.inr i) * b.T (.inr w)
-      | some (w, R, t) => b.T (.inl f) * b.T (.inr r) ≥ b.T (.inr w) * b.T (.inl t)
+      | none => ∀ u : List Sym, b.q₀ * b.TStar u * b.T f * b.T r ≥ s
+      | some (w, L, t) => ∀ i : Sym, b.T i * b.T f * b.T r ≥ b.T t * b.T i * b.T w
+      | some (w, R, t) => b.T f * b.T r ≥ b.T w * b.T t
     )
-    (h₆ : b.q₀ * b.T (.inl default) * b.aᵀ = 0) : True := by
-  trivial
+    (h₆ : b.q₀ * b.T (default : Q) * b.aᵀ = 0) : ¬halts tm c₀ := by
+  sorry
