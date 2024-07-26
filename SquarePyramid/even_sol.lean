@@ -1,7 +1,4 @@
-import Mathlib.Data.Int.Basic
-import Mathlib.Data.Int.Lemmas
-import Mathlib.Data.Int.Parity
-import Mathlib.Data.Int.Order.Basic
+import Mathlib.Algebra.Order.Ring.Basic
 import Mathlib.Data.Int.SuccPred
 import Mathlib.NumberTheory.PythagoreanTriples
 import Mathlib.Tactic.ModCases
@@ -20,7 +17,7 @@ theorem pos_sq_of_coprime {a b c : ℤ} (h : IsCoprime a b) (heq : a * b = c ^ 2
     rw [gt_iff_lt, neg_pos, ← not_le] at hb
     exact (hb (sq_nonneg y)).elim
   exists |x|, |y|
-  simp [(sq_pos_iff _).1 ha, (sq_pos_iff _).1 hb]
+  simp [sq_pos_iff.1 ha, sq_pos_iff.1 hb]
 
 /-- If `a^2 ∣ 2b^2` then `a ∣ b`. -/
 theorem sq_dvd_two_mul_sq {a b : ℤ} (h : a * a ∣ 2 * b * b) : a ∣ b := by
@@ -215,7 +212,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
     rw [hb, ← hxy_b2, mul_assoc, hxy_w']
     ring
   rw [← hxyw]
-  refine' le_mul_of_one_le_left hs₀.le (Int.pos_iff_one_le.1 _)
+  apply le_mul_of_one_le_left hs₀.le (Int.pos_iff_one_le.1 _)
   positivity
 termination_by w.natAbs
 
@@ -280,9 +277,9 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     -- Use `hx4s` and `hs_2s1_co` to get `s = u^4` and `2(s+1) = v^4`
     rw [mul_comm 2, mul_assoc] at hx4s
     have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' hs_2s1_co hx4s.symm
-    replace hu := Int.eq_of_associated_of_nonneg hu (pow_bit0_nonneg u 2) hs₀.le
+    replace hu := Int.eq_of_associated_of_nonneg hu (Even.pow_nonneg ⟨2, rfl⟩ u) hs₀.le
     have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' hs_2s1_co.symm (mul_comm s _ ▸ hx4s.symm)
-    replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
+    replace hv := Int.eq_of_associated_of_nonneg hv (Even.pow_nonneg ⟨2, rfl⟩ v) (by positivity)
     rw [← hu] at hv
     -- Do cases on `v^4 = 2 * (u^4 + 1)` mod 8. This is ugly. TODO: Figure out how to shorten this.
     have : v ^ 4 % 8 = 2 * (u ^ 4 + 1) % 8 := by rw [hv]
@@ -314,9 +311,10 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
       rwa [mul_one] at this
   -- Use `hx4s` and `h2s_s1_co` to get `2s = u^4` and `s+1 = v^4`
   have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' h2s_s1_co hx4s.symm
-  replace hu := Int.eq_of_associated_of_nonneg hu (pow_bit0_nonneg u 2) (mul_pos (by decide) hs₀).le
+  replace hu :=
+    Int.eq_of_associated_of_nonneg hu (Even.pow_nonneg ⟨2, rfl⟩ u) (mul_pos (by decide) hs₀).le
   have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' h2s_s1_co.symm (mul_comm (2*s) _ ▸ hx4s.symm)
-  replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
+  replace hv := Int.eq_of_associated_of_nonneg hv (Even.pow_nonneg ⟨2, rfl⟩ v) (by positivity)
   have ⟨w, hw⟩ : Even u := (Int.even_pow.1 ⟨s, two_mul s ▸ hu⟩).1
   have ⟨a, ha⟩ : Odd (v ^ 2) := by
     rw [Int.odd_pow' (by decide), ← Int.odd_pow' (by decide : 4 ≠ 0), hv]
@@ -324,7 +322,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
   have hwa : 2 * w ^ 4 = a * (a + 1) := mul_left_cancel₀ (by decide : (8 : ℤ) ≠ 0) <| by
     calc
     _ = (w + w) ^ 4 := by ring
-    _ = 2 * (v ^ 4 - 1) := by rw [← hw, hu, hv, add_sub_cancel]
+    _ = 2 * (v ^ 4 - 1) := by rw [← hw, hu, hv, add_sub_cancel_right]
     _ = 2 * (v ^ 2 - 1) * (v ^ 2 + 1) := by ring
     _ = _ := by rw [ha]; ring
   obtain ⟨a, rfl⟩ : Even a := by
@@ -358,14 +356,14 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     rw [ha, mul_zero, zero_add, one_pow, self_eq_add_left] at hv
     exact (hs₀.ne hv.symm).elim
   have ⟨b, hb⟩ := exists_associated_pow_of_mul_eq_pow' ha2a1_co hwa
-  replace hb := Int.eq_of_associated_of_nonneg hb (pow_bit0_nonneg b 2) ha₀.le
+  replace hb := Int.eq_of_associated_of_nonneg hb (Even.pow_nonneg ⟨2, rfl⟩ b) ha₀.le
   wlog hb₀ : b > 0 generalizing b hb
   · rw [not_lt, le_iff_lt_or_eq] at hb₀
     rcases hb₀ with hb₀ | rfl
     · exact this (-b) (by rwa [Even.neg_pow (by decide)]) (by rwa [gt_iff_lt, Left.neg_pos_iff])
     · rw [zero_pow (by decide)] at hb; exact ha₀.ne hb
   have ⟨c, hc⟩ := exists_associated_pow_of_mul_eq_pow' ha2a1_co.symm (mul_comm a _ ▸ hwa)
-  replace hc := Int.eq_of_associated_of_nonneg hc (pow_bit0_nonneg c 2) (by positivity)
+  replace hc := Int.eq_of_associated_of_nonneg hc (Even.pow_nonneg ⟨2, rfl⟩ c) (by positivity)
   have hbc : 2 * b ^ 4 + 1 = (c ^ 2) ^ 2 := by rw [hb, ← hc]; ring
   apply hx_min hbc hb₀
   refine (lt_of_pow_lt_pow_left 4 hx.le ?_)
@@ -394,7 +392,7 @@ theorem two_mul_pow_four_add_one_ne_sq' {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2
 theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x > 0) : x = 1 := by
   rcases y.even_or_odd with ⟨s, rfl⟩ | ⟨s, rfl⟩
   · rw [← eq_sub_iff_add_eq'] at hxy
-    have : Even 1 := ⟨2 * s ^ 2 - 4 * x ^ 4, by rw [hxy]; ring⟩
+    have : Even (1 : ℤ) := ⟨2 * s ^ 2 - 4 * x ^ 4, by rw [hxy]; ring⟩
     contradiction
   replace hxy : 2 * x ^ 4 = s * (s + 1) := by
     apply mul_left_cancel₀ (by decide : (4 : ℤ) ≠ 0)
@@ -411,9 +409,9 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
     replace hs₀ : s ≥ 0 := nonneg_of_mul_nonneg_right ((two_mul s).symm ▸ hs₀) (by decide)
     have hs_2s1_co : IsCoprime s (2 * s + 1) := isCoprime_one_right.mul_add_right_right _
     have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' hs_2s1_co hxy
-    replace hu := Int.eq_of_associated_of_nonneg hu (pow_bit0_nonneg u 2) hs₀
+    replace hu := Int.eq_of_associated_of_nonneg hu (Even.pow_nonneg ⟨2, rfl⟩ u) hs₀
     have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' hs_2s1_co.symm (mul_comm s _ ▸ hxy)
-    replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
+    replace hv := Int.eq_of_associated_of_nonneg hv (Even.pow_nonneg ⟨2, rfl⟩ v) (by positivity)
     replace hv : 2 * u ^ 4 + 1 = (v ^ 2) ^ 2 := by rw [hu, ← hv]; ring
     rcases two_mul_pow_four_add_one_ne_sq' hv
     rw [zero_pow (by decide)] at hu; rcases hu
@@ -431,9 +429,9 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
   have hs1_2s1_co : IsCoprime (s + 1) (2 * s + 1) := by
     convert (isCoprime_one_right (x := s + 1)).neg_right.mul_add_right_right 2 using 1; ring
   have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' hs1_2s1_co.symm (mul_comm (s + 1) _ ▸ hxy)
-  replace hu := Int.eq_of_associated_of_nonneg hu (pow_bit0_nonneg u 2) (by positivity)
+  replace hu := Int.eq_of_associated_of_nonneg hu (Even.pow_nonneg ⟨2, rfl⟩ u) (by positivity)
   have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' hs1_2s1_co hxy
-  replace hv := Int.eq_of_associated_of_nonneg hv (pow_bit0_nonneg v 2) (by positivity)
+  replace hv := Int.eq_of_associated_of_nonneg hv (Even.pow_nonneg ⟨2, rfl⟩ v) (by positivity)
   have huv : u ^ 4 + 1 = 2 * v ^ 4 := by rw [hu, hv]; ring
   have ⟨u', hu'⟩ : Odd u := (Int.odd_pow' (by decide)).1 ⟨s, hu⟩
   -- Note: `Odd v` isn't needed.

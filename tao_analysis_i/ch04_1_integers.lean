@@ -242,7 +242,7 @@ example : (5 : XInt) > (-3 : XInt) := by
   · simp only [HasEquiv.Equiv, Setoid.r]
   · intro h
     have := Quotient.exact h
-    simp only [HasEquiv.Equiv, Setoid.r] at this
+    simp only [HasEquiv.Equiv, Setoid.r, Nat.add_zero] at this
 
 variable (a b c : XInt)
 
@@ -267,7 +267,7 @@ theorem gt_iff_sub_eq_pos_nat : a > b ↔ ∃ n : Nat, n > 0 ∧ n = a - b := by
     · intro h
       rw [h, add_neg_self] at h₂
       have := Quotient.exact h₂
-      simp [HasEquiv.Equiv, Setoid.r] at this
+      simp only [HasEquiv.Equiv, Setoid.r, Nat.add_zero] at this
       rw [this] at h₁
       exact Nat.lt_irrefl _ h₁
 
@@ -368,8 +368,7 @@ theorem naive_ind_counterexample :
   · exists -1
     intro ⟨n, h⟩
     have := Quotient.exact h
-    simp [HasEquiv.Equiv, Setoid.r] at this
-    exact Nat.succ_ne_zero n this.symm
+    simp only [HasEquiv.Equiv, Setoid.r, Nat.add_zero] at this
 
 /-- Exercise 4.1.9. -/
 theorem square_ge_zero : x * x ≥ 0 := by

@@ -125,7 +125,7 @@ end Beatty
 
 /-- Rayleigh theorem on Beatty sequences. Let `r` be an irrational real number greater than 1.
 Then every positive integer is in exactly one of `B_r` or `B_(r / (r - 1))`. -/
-theorem rayleigh {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) : 
+theorem rayleigh {r : ℝ} (hr₁ : r > 1) (hr₂ : Irrational r) :
     ∀ {j : ℤ}, j > 0 →
       (j ∈ beattySequence r ∧ j ∉ beattySequence (r / (r - 1))) ∨
       (j ∉ beattySequence r ∧ j ∈ beattySequence (r / (r - 1))) := by

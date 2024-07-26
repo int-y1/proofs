@@ -11,8 +11,8 @@ wip
 
 open Turing Matrix
 
-variable {Q : Type u} {Sym : Type v} [Inhabited Q] [DecidableEq Sym] [Inhabited Sym] (tm : @TM Q Sym)
-  (c c₁ c₂ c₃ : Q × Tape Sym)
+variable {Q : Type u} {Sym : Type v} [Inhabited Q] [DecidableEq Sym] [Inhabited Sym]
+  (tm : @TM Q Sym) (c c₁ c₂ c₃ : Q × Tape Sym)
 
 namespace Turing.ListBlank
 

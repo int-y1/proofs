@@ -131,8 +131,8 @@ theorem jacobiSym_five_iff_three_dvd (h : Even n) (hm : m = u n) : jacobiSym 5 m
   norm_num at hj
   rw [hj, hm]
   have hu := (uv_mod_five (n := n)).1
-  rcases n.mod_three_eq_or with h | h | h <;> rw [Nat.dvd_iff_mod_eq_zero, h] <;>
-    simp_rw [h] at hu <;> dsimp [Int.ModEq] at hu <;> rw [jacobiSym.mod_left' hu] <;> decide
+  rcases n.mod_three_eq_or with h | h | h <;> simp_rw [Nat.dvd_iff_mod_eq_zero, h] at hu ⊢ <;>
+    rw [jacobiSym.mod_left' hu] <;> simp <;> rfl
 
 /-- `n % 4` is either 0 or 1 or 2 or 3. -/
 theorem Nat.mod_four_eq_or : n % 4 = 0 ∨ n % 4 = 1 ∨ n % 4 = 2 ∨ n % 4 = 3 :=
@@ -189,7 +189,7 @@ theorem lemma10 (h : ∃ M, u n = 4 * M ^ 2 + 3) : u n = 7 := by
     rcases (M ^ 2).even_or_odd with ⟨k, hk⟩ | ⟨k, hk⟩ <;> rw [huM, hk] <;>
       [left; right] <;> ring_nf <;> rw [mul_comm] <;> exact Int.modEq_add_fac_self
   replace hu_mod_eight : u n ≡ 7 [ZMOD 8] := by
-    refine' (or_iff_right fun h ↦ _).1 hu_mod_eight
+    refine (or_iff_right fun h ↦ ?_).1 hu_mod_eight
     have hu := (uv_mod_eight (n := n)).1.eq
     rcases n.mod_four_eq_or with hn | hn | hn | hn <;> simp [h.eq, hn] at hu
   have ⟨k, hnk⟩ : ∃ k, n = 8 * k - 2 ∨ n = 8 * k + 2 := by
@@ -303,10 +303,10 @@ theorem cannonball_odd_1 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2)
     _ = _ := by rw [← hvv, ← hww]; ring
   have ⟨x, hx⟩ : ∃ x : ℕ, x = 6 * w ^ 2 + 1 := by
     exists (6 * w ^ 2 + 1).natAbs
-    rw [Int.coe_natAbs, abs_eq_self]
+    rw [Int.natCast_natAbs, abs_eq_self]
     positivity
   replace h₂ : x * x - 3 * (4 * v * w).natAbs * (4 * v * w).natAbs = 1 := by
-    rw [← pow_two, mul_assoc, ← pow_two, ← Int.cast_eq_cast_iff_Nat, Nat.cast_sub]
+    rw [← pow_two, mul_assoc, ← pow_two, ← Int.natCast_inj, Nat.cast_sub]
     · norm_num [hx]
       exact h₂
     · rw [← Nat.cast_le (α := ℤ)]

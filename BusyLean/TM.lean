@@ -1,5 +1,4 @@
 import Mathlib.Computability.TuringMachine
-import Init.Data.Nat.Basic
 
 /-!
 # Turing machines
@@ -110,7 +109,7 @@ lemma stepNat_step (h : c₁ [tm]⊢^{1} c₂) : c₁ [tm]⊢ c₂ := h
 -- The hypothesis that `c₁ ≠ c₂` doesn't really count.
 lemma stepStar_stepPlus (h₁ : c₁ [tm]⊢* c₂) (h₂ : c₁ ≠ c₂) : c₁ [tm]⊢⁺ c₂ := by
   obtain ⟨n, h₁⟩ := h₁
-  refine' ⟨n, Nat.zero_lt_of_ne_zero _, h₁⟩
+  refine ⟨n, Nat.zero_lt_of_ne_zero ?_, h₁⟩
   rintro rfl
   rw [stepNat, Nat.repeat, Option.some.injEq] at h₁
   contradiction
@@ -160,7 +159,7 @@ lemma stepNat_add {c₁ c₃ : Q × Tape Sym} (n m : ℕ) (h : c₁ [tm]⊢^{n+m
     rw [← Nat.add_assoc] at h
     have ⟨c₄, h₄₁, h₄₃⟩ := stepNat_succ_stepNat_step (n+m) h
     have ⟨c₂', h₄₁, h₄₂⟩ := stepNat_add _ _ h₄₁
-    refine' ⟨c₂', h₄₁, _⟩
+    refine ⟨c₂', h₄₁, ?_⟩
     rwa [Nat.add_comm, stepNat, Nat.repeat_add, ← stepNat, h₄₂, Nat.repeat, Nat.repeat,
       Option.some_bind]
 
@@ -198,7 +197,7 @@ lemma stepStar_trans (h₁ : c₁ [tm]⊢* c₂) (h₂ : c₂ [tm]⊢* c₃) : c
 lemma stepPlus_trans (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : c₂ [tm]⊢⁺ c₃) : c₁ [tm]⊢⁺ c₃ := by
   obtain ⟨n, h₁⟩ := h₁
   obtain ⟨m, h₂⟩ := h₂
-  exact ⟨n+m, by simp [h₁], stepNat_trans _ _ h₁.2 h₂.2⟩
+  exact ⟨n+m, Nat.add_pos_left h₁.1 _, stepNat_trans _ _ h₁.2 h₂.2⟩
 
 
 /-!
@@ -208,14 +207,14 @@ lemma stepPlus_trans (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : c₂ [tm]⊢⁺ c₃)
 lemma step_haltsIn_succ (n : ℕ) (h₁ : c₁ [tm]⊢ c₂) (h₂ : haltsIn tm c₂ n) :
     haltsIn tm c₁ (n+1) := by
   obtain ⟨c₃, h₂₁, h₂₂⟩ := h₂
-  refine' ⟨c₃, _, h₂₂⟩
+  refine ⟨c₃, ?_, h₂₂⟩
   rw [Nat.add_comm]
   exact stepNat_trans _ _ h₁ h₂₁
 
 lemma stepNat_haltsIn_add (n m : ℕ) (h₁ : c₁ [tm]⊢^{m} c₂) (h₂ : haltsIn tm c₂ n) :
     haltsIn tm c₁ (n+m) := by
   obtain ⟨c₃, h₂₁, h₂₂⟩ := h₂
-  refine' ⟨c₃, _, h₂₂⟩
+  refine ⟨c₃, ?_, h₂₂⟩
   rw [Nat.add_comm]
   exact stepNat_trans _ _ h₁ h₂₁
 
@@ -238,7 +237,7 @@ lemma stepPlus_halts (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : halts tm c₂) : halt
 lemma stepStar_stepPlus_stepPlus (h₁ : c₁ [tm]⊢* c₂) (h₂ : c₂ [tm]⊢⁺ c₃) : c₁ [tm]⊢⁺ c₃ := by
   obtain ⟨n, h₁⟩ := h₁
   obtain ⟨m, h₂₁, h₂₂⟩ := h₂
-  exact ⟨n+m, by simp [h₂₁], stepNat_trans _ _ h₁ h₂₂⟩
+  exact ⟨n+m, Nat.add_pos_right _ h₂₁, stepNat_trans _ _ h₁ h₂₂⟩
 
 lemma step_stepPlus_stepPlus (h₁ : c₁ [tm]⊢ c₂) (h₂ : c₂ [tm]⊢⁺ c₃) : c₁ [tm]⊢⁺ c₃ :=
   stepStar_stepPlus_stepPlus (step_stepStar h₁) h₂
@@ -249,7 +248,7 @@ lemma stepStar_step_stepPlus (h₁ : c₁ [tm]⊢* c₂) (h₂ : c₂ [tm]⊢ c�
 lemma stepPlus_stepStar_stepPlus (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : c₂ [tm]⊢* c₃) : c₁ [tm]⊢⁺ c₃ := by
   obtain ⟨n, h₁₁, h₁₂⟩ := h₁
   obtain ⟨m, h₂⟩ := h₂
-  exact ⟨n+m, by simp [h₁₁], stepNat_trans _ _ h₁₂ h₂⟩
+  exact ⟨n+m, Nat.add_pos_left h₁₁ _, stepNat_trans _ _ h₁₂ h₂⟩
 
 lemma step_stepStar_stepPlus (h₁ : c₁ [tm]⊢ c₂) (h₂ : c₂ [tm]⊢* c₃) : c₁ [tm]⊢⁺ c₃ :=
   stepPlus_stepStar_stepPlus (step_stepPlus h₁) h₂
@@ -331,7 +330,7 @@ lemma progress_nonhalt' (P : Q × Tape Sym → Prop) (h : ∀ c, P c → ∃ c',
   induction' k using Nat.strongInductionOn with k IH
   intro c hPc hcHalt
   have ⟨c', hc', ⟨l, hl0, hcl⟩⟩ := h c hPc
-  refine' IH (k-l) _ c' hc' _
+  refine IH (k-l) ?_ c' hc' ?_
   · have hlk := (haltsIn_stepNat_le _ _ hcHalt hcl)
     exact Nat.sub_lt (hlk.trans_lt' hl0) hl0
   · exact haltsIn_stepNat_sub _ _ hcHalt hcl
@@ -342,7 +341,7 @@ lemma progress_nonhalt (P : Q × Tape Sym → Prop) (h₁ : ∀ c, P c → ∃ c
 
 lemma progress_nonhalt_simple {A : Type w} (C : A → Q × Tape Sym) (i₀ : A)
     (h : ∀ i, ∃ i', (C i) [tm]⊢⁺ C i') : ¬halts tm (C i₀) := by
-  refine' progress_nonhalt (fun c ↦ ∃ i, c = C i) _ ⟨i₀, rfl⟩
+  refine progress_nonhalt (fun c ↦ ∃ i, c = C i) ?_ ⟨i₀, rfl⟩
   intro c ⟨i, hi⟩
   have ⟨i', hi'⟩ := h i
   exact ⟨C i', ⟨i', rfl⟩, hi ▸ hi'⟩

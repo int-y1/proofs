@@ -1,5 +1,5 @@
 import Mathlib.Data.Matrix.Notation
-import Mathlib.Algebra.Order.Ring.Defs
+import Mathlib.Algebra.Order.BigOperators.Group.Finset
 
 /-!
 # Boolean matrices
@@ -32,6 +32,7 @@ instance instOrderedCommSemiringTwo : OrderedCommSemiring Two := {
   add_assoc := fun _ _ _ ↦ by simp_rw [HAdd.hAdd, Add.add, max_assoc]
   zero_add := fun _ ↦ by simp_rw [HAdd.hAdd, Add.add]; simp
   add_zero := fun _ ↦ by simp_rw [HAdd.hAdd, Add.add]; simp
+  nsmul := nsmulRec
   add_comm := fun _ _ ↦ by simp_rw [HAdd.hAdd, Add.add, max_comm]
   left_distrib := fun _ _ _ ↦ by
     simp_rw [HAdd.hAdd, Add.add, HMul.hMul, Mul.mul, min_max_distrib_left]
