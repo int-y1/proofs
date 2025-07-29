@@ -1,4 +1,4 @@
-import Mathlib.Init.Logic
+import Mathlib.Logic.ExistsUnique
 import Mathlib.Tactic.Cases
 
 inductive XNat where

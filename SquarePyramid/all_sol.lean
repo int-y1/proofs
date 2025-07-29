@@ -37,10 +37,10 @@ theorem cannonball {x y : ℤ} (hx : x > 0) (hy : y > 0) :
   refine ⟨fun h ↦ ?_, fun h ↦ ?_⟩
   · rcases cannonball_aux h hx with rfl | rfl
     · change 6 * 1 ^ 2 = 6 * y ^ 2 at h
-      rw [mul_left_cancel_iff_of_pos (by decide), sq_eq_sq (by decide) hy.le] at h
+      rw [mul_left_cancel_iff_of_pos (by decide), sq_eq_sq₀ (by decide) hy.le] at h
       exact Or.inl ⟨rfl, h.symm⟩
     · change 6 * 70 ^ 2 = 6 * y ^ 2 at h
-      rw [mul_left_cancel_iff_of_pos (by decide), sq_eq_sq (by decide) hy.le] at h
+      rw [mul_left_cancel_iff_of_pos (by decide), sq_eq_sq₀ (by decide) hy.le] at h
       exact Or.inr ⟨rfl, h.symm⟩
   · rcases h with ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩ <;> rfl
 

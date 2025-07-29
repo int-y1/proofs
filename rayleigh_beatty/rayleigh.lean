@@ -4,6 +4,9 @@ import Mathlib.Data.Real.Irrational
 # Rayleigh theorem on Beatty sequences
 
 Link to proof sketch: https://en.wikipedia.org/wiki/Beatty_sequence#Second_proof
+
+This file compiled under v4.10.0-rc2, but it is broken now. The maintained version is at:
+https://github.com/leanprover-community/mathlib4/blob/master/Mathlib/NumberTheory/Rayleigh.lean
 -/
 
 /-- The Beatty sequence for real number `r` is defined to be `B_r := {⌊r⌋, ⌊2r⌋, ⌊3r⌋, ...}`. -/

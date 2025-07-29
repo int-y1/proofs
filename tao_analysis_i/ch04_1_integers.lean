@@ -24,7 +24,7 @@ example : 3 — 5 = 2 — 4 := Quotient.sound rfl
 example : 3 — 5 ≠ 2 — 3 := by
   intro h
   have := Quotient.exact h
-  simp only [HasEquiv.Equiv, Setoid.r, Nat.succ.injEq] at this
+  simp [HasEquiv.Equiv, Setoid.r] at this
 
 /-- Definition 4.1.2. Sum of two integers. -/
 instance : Add XInt := by
@@ -242,7 +242,7 @@ example : (5 : XInt) > (-3 : XInt) := by
   · simp only [HasEquiv.Equiv, Setoid.r]
   · intro h
     have := Quotient.exact h
-    simp only [HasEquiv.Equiv, Setoid.r, Nat.add_zero] at this
+    simp [HasEquiv.Equiv, Setoid.r] at this
 
 variable (a b c : XInt)
 
@@ -368,7 +368,7 @@ theorem naive_ind_counterexample :
   · exists -1
     intro ⟨n, h⟩
     have := Quotient.exact h
-    simp only [HasEquiv.Equiv, Setoid.r, Nat.add_zero] at this
+    simp [HasEquiv.Equiv, Setoid.r] at this
 
 /-- Exercise 4.1.9. -/
 theorem square_ge_zero : x * x ≥ 0 := by

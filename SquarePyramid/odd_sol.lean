@@ -132,7 +132,8 @@ theorem jacobiSym_five_iff_three_dvd (h : Even n) (hm : m = u n) : jacobiSym 5 m
   rw [hj, hm]
   have hu := (uv_mod_five (n := n)).1
   rcases n.mod_three_eq_or with h | h | h <;> simp_rw [Nat.dvd_iff_mod_eq_zero, h] at hu ⊢ <;>
-    rw [jacobiSym.mod_left' hu] <;> simp <;> rfl
+    -- TODO: `jacobiSym 2 5` wasn't simplified to `-1`. Figure out why.
+    rw [jacobiSym.mod_left' hu] <;> simp <;> exact jacobiSym.at_two (by decide)
 
 /-- `n % 4` is either 0 or 1 or 2 or 3. -/
 theorem Nat.mod_four_eq_or : n % 4 = 0 ∨ n % 4 = 1 ∨ n % 4 = 2 ∨ n % 4 = 3 :=

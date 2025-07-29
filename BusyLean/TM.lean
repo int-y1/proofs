@@ -18,8 +18,9 @@ variable {Sym : Type v}   -- The type of tape symbols
 --variable {q₀ : Q}
 --variable {s₀ : Sym}
 --instance : Inhabited Sym := ⟨s₀⟩
-variable [Inhabited Q]    -- The fact that `Q` is nonempty. Use `default` to get the inhabitant.
-                          -- By convention, the starting state is used as the inhabitant.
+--variable [Inhabited Q]    -- The fact that `Q` is nonempty. Use `default` to get the inhabitant.
+--                          -- By convention, the starting state is used as the inhabitant.
+--                          -- Most lemmas in this file didn't use `[Inhabited Q]`. Omit it.
 variable [Inhabited Sym]  -- The fact that `Sym` is nonempty. Use `default` to get the inhabitant.
                           -- By convention, the blank symbol is used as the inhabitant.
 
@@ -71,7 +72,7 @@ notation3 c " [" tm "]⊢⁺ " c' => ∃ n > 0, c [tm]⊢^{n} c'
 def halted : Prop := step tm c = none
 
 /-- The initial configuration of the machine. -/
-def c₀ : Q × Tape Sym := default
+def c₀ [Inhabited Q] : Q × Tape Sym := default
 
 /-- A Turing machine halts if it eventually reaches a halting configuration. -/
 def haltsIn (n : ℕ) := ∃ c', (c [tm]⊢^{n} c') ∧ halted tm c'
@@ -147,8 +148,8 @@ lemma stepNat_succ_stepNat_step (n : ℕ) (h : c₁ [tm]⊢^{n+1} c₃) :
   | n+1 =>
     rw [Nat.add_comm, stepNat, Nat.repeat_add, ← stepNat, Nat.repeat, Nat.repeat] at h
     match h₂ : stepNat tm (n + 1) c₁ with
-    | none => rw [h₂, Option.none_bind] at h; contradiction
-    | some c₂' => rw [h₂, Option.some_bind] at h; exists c₂'
+    | none => rw [h₂, Option.bind_none] at h; contradiction
+    | some c₂' => rw [h₂, Option.bind_some] at h; exists c₂'
 
 /-- todo: golf this proof, it's pretty ugly -/
 lemma stepNat_add {c₁ c₃ : Q × Tape Sym} (n m : ℕ) (h : c₁ [tm]⊢^{n+m} c₃) :
@@ -161,7 +162,7 @@ lemma stepNat_add {c₁ c₃ : Q × Tape Sym} (n m : ℕ) (h : c₁ [tm]⊢^{n+m
     have ⟨c₂', h₄₁, h₄₂⟩ := stepNat_add _ _ h₄₁
     refine ⟨c₂', h₄₁, ?_⟩
     rwa [Nat.add_comm, stepNat, Nat.repeat_add, ← stepNat, h₄₂, Nat.repeat, Nat.repeat,
-      Option.some_bind]
+      Option.bind_some]
 
 lemma stepNat_succ_step_stepNat (n : ℕ) (h : c₁ [tm]⊢^{n+1} c₃) :
     ∃ c₂, (c₁ [tm]⊢ c₂) ∧ (c₂ [tm]⊢^{n} c₃) :=
@@ -296,7 +297,7 @@ lemma haltsIn_gt_not_stepNat (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : k > 
   exact halted_not_stepPlus h₅' ⟨m, Nat.pos_of_lt_add_right (hm ▸ h₂), h₅⟩
 
 lemma haltsIn_stepNat_le (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : c₁ [tm]⊢^{k} c₂) : k ≤ n :=
-  le_of_not_lt fun h ↦ haltsIn_gt_not_stepNat _ _ h₁ h h₂
+  le_of_not_gt fun h ↦ haltsIn_gt_not_stepNat _ _ h₁ h h₂
 
 lemma haltsIn_le_stepNat (n k : ℕ) (h₁ : haltsIn tm c₁ n) (h₂ : k ≤ n) : ∃ c, c₁ [tm]⊢^{k} c := by
   have ⟨c, hc⟩ := haltsIn_stepNat _ h₁
@@ -327,7 +328,7 @@ lemma stepPlus_not_halts_not_halts (h₁ : c₁ [tm]⊢⁺ c₂) (h₂ : ¬halts
 lemma progress_nonhalt' (P : Q × Tape Sym → Prop) (h : ∀ c, P c → ∃ c', P c' ∧ c [tm]⊢⁺ c') :
     ∀ k c, P c → ¬haltsIn tm c k := by
   intro k
-  induction' k using Nat.strongInductionOn with k IH
+  induction' k using Nat.strongRecOn with k IH
   intro c hPc hcHalt
   have ⟨c', hc', ⟨l, hl0, hcl⟩⟩ := h c hPc
   refine IH (k-l) ?_ c' hc' ?_

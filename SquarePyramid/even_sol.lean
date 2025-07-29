@@ -1,17 +1,19 @@
 import Mathlib.Algebra.Order.Ring.Basic
+import Mathlib.Data.Int.Lemmas
 import Mathlib.Data.Int.SuccPred
 import Mathlib.NumberTheory.PythagoreanTriples
+import Mathlib.Tactic.LinearCombination
 import Mathlib.Tactic.ModCases
 
-/-- A version of `Int.sq_of_coprime` that uses positivity. -/
+/-- A version of `Int.sq_of_isCoprime` that uses positivity. -/
 theorem pos_sq_of_coprime {a b c : ℤ} (h : IsCoprime a b) (heq : a * b = c ^ 2) (ha : a > 0)
     (hb : b > 0): ∃ x y, x > 0 ∧ y > 0 ∧ a = x ^ 2 ∧ b = y ^ 2 := by
-  have ⟨x, hx⟩ := Int.sq_of_coprime h heq
+  have ⟨x, hx⟩ := Int.sq_of_isCoprime h heq
   rcases hx with rfl | rfl
   case inr =>
     rw [gt_iff_lt, neg_pos, ← not_le] at ha
     exact (ha (sq_nonneg x)).elim
-  have ⟨y, hy⟩ := Int.sq_of_coprime h.symm (mul_comm _ b ▸ heq)
+  have ⟨y, hy⟩ := Int.sq_of_isCoprime h.symm (mul_comm _ b ▸ heq)
   rcases hy with rfl | rfl
   case inr =>
     rw [gt_iff_lt, neg_pos, ← not_le] at hb
@@ -28,10 +30,10 @@ theorem sq_dvd_two_mul_sq {a b : ℤ} (h : a * a ∣ 2 * b * b) : a ∣ b := by
     have h : a * a ∣ b * b := ⟨k, hk⟩
     rwa [← pow_two, ← pow_two, Int.pow_dvd_pow_iff (by decide)] at h
   have ⟨a', ha'⟩ : Even a := by
-    have := Int.odd_iff_not_even.1 (odd_two_mul_add_one k)
+    have := Int.not_even_iff_odd.2 (odd_two_mul_add_one k)
     cases' Int.even_mul.1 (hk ▸ (even_two_mul b).mul_right b) with h h
     · rwa [Int.even_mul, or_self] at h
-    · exact (Int.odd_iff_not_even.1 (odd_two_mul_add_one k) h).elim
+    · exact (Int.not_even_iff_odd.2 (odd_two_mul_add_one k) h).elim
   have ⟨b', hb'⟩ : Even b := by
     rcases ha'
     replace hk : b * b = a' * a' * (2 * k + 1) + a' * a' * (2 * k + 1) :=
@@ -80,7 +82,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
     have hx'₀ : x' > 0 := pos_of_mul_pos_right (hx' ▸ hx₀) (Nat.cast_nonneg _)
     have hy'₀ : y' > 0 := pos_of_mul_pos_right (hy' ▸ hy₀) (Nat.cast_nonneg _)
     apply hw_min hx'₀ hy'₀ ⟨z', hxyz⟩ hxyw
-    rw [Int.natAbs_mul, Int.natAbs_ofNat]
+    rw [Int.natAbs_mul, Int.natAbs_natCast]
     refine lt_mul_left (Nat.zero_lt_of_ne_zero ?_) h
     rw [ne_eq, Int.natAbs_eq_zero]
     rintro rfl
@@ -133,8 +135,8 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
       sub_add_add_cancel, ← two_mul, IsCoprime.mul_left_iff]
     -- Use `hrs_add_odd` and `hrs_co`, respectively
     constructor
-    · rw [Int.odd_iff_not_even, Int.even_iff, ← Int.dvd_iff_emod_eq_zero] at hrs_add_odd
-      cases dvd_or_coprime 2 (r + s) Int.prime_two.irreducible <;> [contradiction; assumption]
+    · rw [← Int.not_even_iff_odd, Int.even_iff, ← Int.dvd_iff_emod_eq_zero] at hrs_add_odd
+      cases dvd_or_isCoprime 2 (r + s) Int.prime_two.irreducible <;> [contradiction; assumption]
     · nth_rw 2 [← mul_one r]
       exact (Int.isCoprime_iff_gcd_eq_one.2 hrs_co).mul_add_left_right 1
   have ⟨⟨a, _, ha⟩, ⟨b, hb₀, hb⟩, ⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩⟩ :
@@ -142,7 +144,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
       (∃ c, c > 0 ∧ r - s = c * c) ∧ (∃ d, d > 0 ∧ r + s = d * d) := by
     -- Use `hxyw`. Also, use the fact that `r+s`, `r-s`, `r`, `s` are positive and pairwise coprime.
     simp_rw [← pow_two] at hxyw ⊢
-    rw [Int.gcd_eq_one_iff_coprime] at hrs_co hrs_sub_add_co
+    rw [← Int.isCoprime_iff_gcd_eq_one] at hrs_co hrs_sub_add_co
     have hpos₁ := add_pos hr₀ hs₀
     have hpos₂ := mul_pos hpos₁ hrs₀
     have hpos₃ := mul_pos hpos₂ hr₀
@@ -212,7 +214,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
     rw [hb, ← hxy_b2, mul_assoc, hxy_w']
     ring
   rw [← hxyw]
-  apply le_mul_of_one_le_left hs₀.le (Int.pos_iff_one_le.1 _)
+  apply le_mul_of_one_le_left hs₀.le (Order.one_le_iff_pos.2 _)
   positivity
 termination_by w.natAbs
 
@@ -241,15 +243,26 @@ theorem pythagoreanTriple_area_ne_sq' {x y w : ℤ} (hxy : ∃ z, PythagoreanTri
 /-- Lemma 2. There are no positive integer solutions to `2x^4 + 1 = y^2`. -/
 theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2) (hx : x > 0) :
     False := by
+  /-
   wlog hy₀ : y > 0
   · rw [gt_iff_lt, not_lt, le_iff_lt_or_eq] at hy₀
     rcases hy₀ with hy₀ | rfl
     · exact this (x := x) (y := -y) (by rwa [Even.neg_pow even_two]) hx (Left.neg_pos_iff.2 hy₀)
-    · exact Int.even_iff_not_odd.1 even_zero ⟨x ^ 4, hxy.symm⟩
+    · exact Int.not_odd_iff_even.2 Even.zero ⟨x ^ 4, hxy.symm⟩
+  -/
+  -- TODO: The old code used `wlog` and `termination_by x.natAbs`.
+  -- But now, `wlog` causes an issue with `hx_min` and termination. Prove `y > 0` in another way.
+  have hy₀ : y > 0 := by
+    by_contra hy₀
+    rcases le_iff_lt_or_eq.1 (not_lt.1 hy₀) with h | rfl
+    · have hterminate : (if 0 < y then 1 else 0) < if y < 0 then 1 else 0 := by
+        simp [h, h.le]
+      exact two_mul_pow_four_add_one_ne_sq (x := x) (y := -y) (by rwa [Even.neg_pow even_two]) hx
+    · exact Int.not_odd_iff_even.2 Even.zero ⟨x ^ 4, hxy.symm⟩
   -- Suppose `x` is minimal
   have hx_min {x' y : ℤ} (hx'y : 2 * x' ^ 4 + 1 = y ^ 2) (hx' : x' > 0) (h : x' < x) : False := by
-    have : Int.natAbs x' < Int.natAbs x := by
-      rwa [Int.eq_natAbs_of_zero_le hx.le, Int.eq_natAbs_of_zero_le hx'.le, Nat.cast_lt] at h
+    have : x'.natAbs < x.natAbs := by
+      rwa [Int.eq_natAbs_of_nonneg hx.le, Int.eq_natAbs_of_nonneg hx'.le, Nat.cast_lt] at h
     exact two_mul_pow_four_add_one_ne_sq hx'y hx'
   have ⟨s, hys⟩ : Odd y := by
     rw [← Int.odd_pow' (by decide : 2 ≠ 0), ← hxy]
@@ -259,7 +272,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     rcases (le_iff_lt_or_eq.1 hy₀) with h | rfl
     · exact h
     rw [hys] at hxy
-    simp only [mul_zero, zero_add, one_pow, add_left_eq_self, mul_eq_zero, OfNat.ofNat_ne_zero,
+    simp only [mul_zero, zero_add, one_pow, add_eq_right, mul_eq_zero, OfNat.ofNat_ne_zero,
       ne_eq, not_false_eq_true, pow_eq_zero_iff, false_or] at hxy
     exact hxy ▸ hx
   have hx4s : x ^ 4 = 2 * s * (s + 1) := by
@@ -269,8 +282,8 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
   cases' s.even_or_odd.symm with hs hs
   · have hs_2s1_co : IsCoprime s (2 * (s + 1)) := by
       apply IsCoprime.mul_right
-      · cases' dvd_or_coprime 2 s Int.prime_two.irreducible with h h
-        · exact (Int.odd_iff_not_even.1 hs (even_iff_two_dvd.2 h)).elim
+      · cases' dvd_or_isCoprime 2 s Int.prime_two.irreducible with h h
+        · exact (Int.not_even_iff_odd.2 hs (even_iff_two_dvd.2 h)).elim
         · exact h.symm
       · have := (isCoprime_one_right (x := s)).mul_add_left_right 1
         rwa [mul_one] at this
@@ -304,8 +317,8 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
       rw [hu₁ h₁, hv₀ h₂] at this; rw [hu₁ h₁, hv₁ h₂] at this] <;> contradiction
   have h2s_s1_co : IsCoprime (2 * s) (s + 1) := by
     apply IsCoprime.mul_left
-    · cases' dvd_or_coprime 2 (s + 1) Int.prime_two.irreducible with h h
-      · exact (Int.odd_iff_not_even.1 hs.add_one (even_iff_two_dvd.2 h)).elim
+    · cases' dvd_or_isCoprime 2 (s + 1) Int.prime_two.irreducible with h h
+      · exact (Int.not_even_iff_odd.2 hs.add_one (even_iff_two_dvd.2 h)).elim
       · exact h
     · have := (isCoprime_one_right (x := s)).mul_add_left_right 1
       rwa [mul_one] at this
@@ -327,7 +340,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     _ = _ := by rw [ha]; ring
   obtain ⟨a, rfl⟩ : Even a := by
     by_contra h
-    rw [← Int.odd_iff_not_even] at h
+    rw [Int.not_even_iff_odd] at h
     obtain ⟨k, rfl⟩ := h
     replace ha : v ^ 2 = 3 + 4 * k := by convert ha using 1; ring
     replace ha : v ^ 2 % 4 = 3 := by rw [ha, Int.add_mul_emod_self_left]; rfl
@@ -353,7 +366,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     rcases lt_or_eq_of_le ha₀ with h | rfl
     · exact h
     replace hv : (v ^ 2) ^ 2 = s + 1 := by convert hv using 1; ring
-    rw [ha, mul_zero, zero_add, one_pow, self_eq_add_left] at hv
+    rw [ha, mul_zero, zero_add, one_pow, right_eq_add] at hv
     exact (hs₀.ne hv.symm).elim
   have ⟨b, hb⟩ := exists_associated_pow_of_mul_eq_pow' ha2a1_co hwa
   replace hb := Int.eq_of_associated_of_nonneg hb (Even.pow_nonneg ⟨2, rfl⟩ b) ha₀.le
@@ -366,7 +379,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
   replace hc := Int.eq_of_associated_of_nonneg hc (Even.pow_nonneg ⟨2, rfl⟩ c) (by positivity)
   have hbc : 2 * b ^ 4 + 1 = (c ^ 2) ^ 2 := by rw [hb, ← hc]; ring
   apply hx_min hbc hb₀
-  refine (lt_of_pow_lt_pow_left 4 hx.le ?_)
+  refine (lt_of_pow_lt_pow_left₀ 4 hx.le ?_)
   rw [← mul_lt_mul_left (by decide : (0 : ℤ) < 2), ← add_lt_add_iff_right 1, hbc, hxy, sq_lt_sq,
     abs_of_nonneg (sq_nonneg c), abs_of_nonneg hy₀.le]
   calc
@@ -377,7 +390,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
         using 1 <;> ring
     _ ≤ s + 1 := by rw [← hv]; convert Int.le_self_sq _ using 1; ring
     _ < y := by rw [hys, add_lt_add_iff_right]; apply lt_mul_left hs₀; decide
-termination_by x.natAbs
+termination_by (x.natAbs, if y < 0 then 1 else 0)
 
 /-- Lemma 2, alternate form. The integer solution to `2x^4 + 1 = y^2` is `x = 0`. -/
 theorem two_mul_pow_four_add_one_ne_sq' {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2) : x = 0 := by

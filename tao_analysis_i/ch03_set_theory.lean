@@ -1,6 +1,6 @@
 import Mathlib.Logic.Basic
 
-/-- This definition was copied from `Set` in `Mathlib.Init.Set`.
+/-- This definition was copied from `Set` in `Mathlib.Data.Set.Defs`.
 There are differences between `XSet` and mathematical sets. -/
 def XSet (α : Type u) := α → Prop
 
@@ -10,7 +10,7 @@ variable (A B : XSet α)
 
 /-- This instance makes `∈` and `∉` available. -/
 instance : Membership α (XSet α) :=
-  ⟨fun x A ↦ A x⟩
+  ⟨fun A x ↦ A x⟩
 
 -- Note: Axiom 3.1 allows expressions like `A ∈ B ∨ B ∈ A`.
 -- But this goes against `XSet`'s design, because writing `A ∈ B ∨ B ∈ A` results in a type error.
@@ -48,7 +48,3 @@ def singleton (a : α) : XSet α := fun y ↦ y = a
 /-- Axiom 3.4 -/
 theorem ex_singleton (a : α) : ∃ A : XSet α, ∀ y, y ∈ A ↔ y = a :=
   ⟨singleton a, fun _ ↦ ⟨id, id⟩⟩
-
-
-
-

@@ -5,7 +5,7 @@ Random proofs in Lean 4.
 This is my attempt at formalizing Terence Tao's Analysis I.
 I gave up in the middle of chapter 4 because setoids were not fun to work with.
 
-This project can compile under Lean 4.10.0-rc2.
+This project can compile under Lean 4.22.0-rc4.
 
 ## rayleigh_beatty
 
@@ -13,16 +13,16 @@ This is my attempt at formalizing [Wikipedia's proof of Rayleigh's theorem](http
 
 I submitted a [pull request](https://github.com/leanprover-community/mathlib4/pull/7027) to mathlib4 and it was merged after some fairly heavy modifications. The mathlib4 docs are available [here](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/Rayleigh.html).
 
-This project can compile under Lean 4.10.0-rc2.
+This project can compile under Lean 4.10.0-rc2 and is not maintained anymore. See mathlib4 for the maintained version.
 
 ## SquarePyramid
 
 This is my attempt at formalizing Anglin's proof of the [cannonball problem](https://en.wikipedia.org/wiki/Cannonball_problem). My attempt was successful and I created a summary PDF ([link](SquarePyramid/cannonball_summary.pdf)).
 
-This project can compile under Lean 4.10.0-rc2.
+This project can compile under Lean 4.22.0-rc4.
 
 ## BusyLean
 
 Formalizing some math from [bbchallenge](https://bbchallenge.org/story) and [busycoq](https://github.com/meithecatte/busycoq).
 
-This project can compile under Lean 4.10.0-rc2.
+This project can compile under Lean 4.22.0-rc4.
