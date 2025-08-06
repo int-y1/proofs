@@ -226,8 +226,8 @@ theorem reach_25 : c₀ ⊢* (A 25 0 0) := by
   refine stepStar_trans (step_A_0_1_c _) ?_
   finish
 
-/-- A(a,b,c) ⊢* A(a,b%2,c+3*(b%2)) -/
-theorem step_A_a_b2_c_fast (a b c : Nat) : (A a b c) ⊢* (A a (b % 2) (c + 3 * (b / 2))) := by
+/-- A(a,b,c) ⊢* A(a,b%2,c+3*(b/2)) -/
+lemma step_A_a_b2_c_fast (a b c : Nat) : (A a b c) ⊢* (A a (b % 2) (c + 3 * (b / 2))) := by
   match b with
   | 0 => finish
   | 1 => finish
@@ -238,58 +238,47 @@ theorem step_A_a_b2_c_fast (a b c : Nat) : (A a b c) ⊢* (A a (b % 2) (c + 3 * 
     ring_nf
     finish
 
+/-- A(a+1,0,c) ⊢* A(a,c%2,2+3*(c/2)) -/
+theorem step_A_a1_0_c_fast (a c : Nat) : (A (a + 1) 0 c) ⊢* (A a (c % 2) (2 + 3 * (c / 2))) := by
+  refine stepStar_trans (step_A_a1_0_c _ _) ?_
+  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_
+  finish
+
+/-- A(a+1,1,c) ⊢* A(a,c%2,6+3*(c/2)) -/
+theorem step_A_a1_1_c_fast (a c : Nat) : (A (a + 1) 1 c) ⊢* (A a (c % 2) (6 + 3 * (c / 2))) := by
+  refine stepStar_trans (step_A_a1_1_c _ _) ?_
+  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_
+  finish
+
 /-- c₀ ⊢* A(227097,0,0) -/
 theorem reach_227097 : c₀ ⊢* (A 227097 0 0) := by
   refine stepStar_trans reach_25 ?_
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_0_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
-  refine stepStar_trans (step_A_a1_1_c _ _) ?_
-  refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_; ring_nf
+  -- alternate between `step_A_a1_0_c_fast` and `step_A_a1_1_c_fast` randomly
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
+  refine stepStar_trans (step_A_a1_1_c_fast _ _) ?_; ring_nf
   refine stepStar_trans (step_A_0_1_c _) ?_
   finish
 
