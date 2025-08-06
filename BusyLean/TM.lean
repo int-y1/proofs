@@ -33,12 +33,15 @@ variable (c c₁ c₂ c₃ : Q × Tape Sym)
 symbol. -/
 notation l " {{" s "}} " r => ⟨s, l, r⟩ -- Tape Sym
 
---infixl:67 " << " => fun s a ↦ ListBlank.cons a s
-notation:67 s:67 " << " a:68 => ListBlank.cons a s -- ListBlank Sym
-infixr:67 " >> " => ListBlank.cons -- ListBlank Sym
+-- Read `Init.Notation` for default priorities.
+notation:67 s:67 " << " a:68 => ListBlank.cons a s -- No conflict.
+infixr:67 " >> " => ListBlank.cons -- Conflicts with HAndThen.
+notation:67 s:67 " <+ " l:68 => ListBlank.append l s -- No conflict. WARNING: `l` is reversed.
+infixr:67 " +> " => ListBlank.append -- No conflict.
 
-example (a b c d e : Sym) : Tape Sym :=
-  (default << a << b) {{c}} (d >> e >> default)
+/-- `0^∞ b a c {d} e f g 0^∞`. WARNING: `<+ l` appends the reverse of `l`. -/
+example (a b c d e f g : Sym) : Tape Sym :=
+  (default <+ [a, b] << c) {{d}} ([e, f] +> g >> default)
 
 -- For the directed head formulation, we use the following:
 notation3 l " <{{" q "}} " r => (q, (⟨ListBlank.head l, ListBlank.tail l, r⟩ : Tape _))
