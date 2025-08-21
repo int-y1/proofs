@@ -18,9 +18,9 @@ def tm : TM52 := fun ⟨q, s⟩ ↦
   | E, 0 => none            | E, 1 => some (0, R, B)
 end section
 
-notation c " ⊢ " c' => c [tm]⊢ c'
-notation c " ⊢* " c' => c [tm]⊢* c'
-notation c " ⊢⁺ " c' => c [tm]⊢⁺ c'
+local notation3:50 c:60 " ⊢ " c':60 => c [tm]⊢ c'
+local notation3:50 c:60 " ⊢* " c':60 => c [tm]⊢* c'
+local notation3:50 c:60 " ⊢⁺ " c':60 => c [tm]⊢⁺ c'
 
 inductive Dorf
   | zend : Dorf
@@ -81,7 +81,7 @@ macro "step" : tactic =>
 macro "execute" : tactic =>
   `(tactic| repeat (any_goals (first | finish | step)))
 
-lemma incr_right (n : Dorf) (l : Side) : ((l << 1) {{B}}> Z n) ⊢* l <{{D}} Z (zI n) := by
+lemma incr_right (n : Dorf) (l : Side) : l << 1 {{B}}> Z n ⊢* l <{{D}} Z (zI n) := by
   revert l; induction' n with _ _ _ IH <;> intro l
   · execute
   · simp_rw [Z]
@@ -105,7 +105,7 @@ def L' (n : Dorf) : Side :=
   | zO n' => T n'
   | zIO n' => T n' << 1 << 0
 
-lemma incr_left (n : Dorf) (r : Side) : (T n <{{D}} 1 >> 1 >> r) ⊢* (T (zI n) {{A}}> r) := by
+lemma incr_left (n : Dorf) (r : Side) : T n <{{D}} 1 >> 1 >> r ⊢* T (zI n) {{A}}> r := by
   revert r; induction' n with _ _ _ IH <;> intro l
   · execute
   · simp_rw [T]

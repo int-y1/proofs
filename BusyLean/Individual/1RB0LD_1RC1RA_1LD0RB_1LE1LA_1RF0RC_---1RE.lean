@@ -23,9 +23,9 @@ end section
 
 open Symbol
 
-notation c " ⊢ " c' => c [tm]⊢ c'
-notation c " ⊢* " c' => c [tm]⊢* c'
-notation c " ⊢⁺ " c' => c [tm]⊢⁺ c'
+local notation3:50 c:60 " ⊢ " c':60 => c [tm]⊢ c'
+local notation3:50 c:60 " ⊢* " c':60 => c [tm]⊢* c'
+local notation3:50 c:60 " ⊢⁺ " c':60 => c [tm]⊢⁺ c'
 
 -- todo: move this elsewhere
 macro "finish" : tactic =>
@@ -38,12 +38,12 @@ macro "execute" : tactic =>
   `(tactic| repeat (any_goals (first | finish | step)))
 
 def A (a b c : Nat) :=
-  (default <+ [(1 : Symbol)]^a << 0 <+ [(1 : Symbol), 0]^b << 0 <+ [(1 : Symbol), 1]^(c + 1))
+  default <+ [(1 : Symbol)]^a << 0 <+ [(1 : Symbol), 0]^b << 0 <+ [(1 : Symbol), 1]^(c + 1)
     {{B}}> default
 
 /-- 11^n <{A} ⊢* <{A} 10^n -/
 lemma step_11A_A10 (l r : Side) (n : Nat) :
-    ((l <+ [(1 : Symbol), 1]^n) <{{A}} r) ⊢* (l <{{A}} [(1 : Symbol), 0]^n +> r) := by
+    l <+ [(1 : Symbol), 1]^n <{{A}} r ⊢* l <{{A}} [(1 : Symbol), 0]^n +> r := by
   revert l r
   induction' n with n ih <;> intros l r
   · finish
@@ -54,7 +54,7 @@ lemma step_11A_A10 (l r : Side) (n : Nat) :
 
 /-- {B}> 10^n ⊢* 11^n {B}> -/
 lemma step_B10_11B (l r : Side) (n : Nat) :
-    (l {{B}}> [(1 : Symbol), 0]^n +> r) ⊢* ((l <+ [(1 : Symbol), 1]^n) {{B}}> r) := by
+    l {{B}}> [(1 : Symbol), 0]^n +> r ⊢* l <+ [(1 : Symbol), 1]^n {{B}}> r := by
   revert l r
   induction' n with n ih <;> intros l r
   · finish
@@ -65,7 +65,7 @@ lemma step_B10_11B (l r : Side) (n : Nat) :
 
 /-- {F}> 10^n ⊢* 11^n {F}> -/
 lemma step_F10_11F (l r : Side) (n : Nat) :
-    (l {{F}}> [(1 : Symbol), 0]^n +> r) ⊢* ((l <+ [(1 : Symbol), 1]^n) {{F}}> r) := by
+    l {{F}}> [(1 : Symbol), 0]^n +> r ⊢* l <+ [(1 : Symbol), 1]^n {{F}}> r := by
   revert l r
   induction' n with n ih <;> intros l r
   · finish
@@ -76,7 +76,7 @@ lemma step_F10_11F (l r : Side) (n : Nat) :
 
 /-- {C}> 10^n ⊢* 01^n {C}> -/
 lemma step_C10_01C (l r : Side) (n : Nat) :
-    (l {{C}}> [(1 : Symbol), 0]^n +> r) ⊢* ((l <+ [(1 : Symbol), 0]^n) {{C}}> r) := by
+    l {{C}}> [(1 : Symbol), 0]^n +> r ⊢* l <+ [(1 : Symbol), 0]^n {{C}}> r := by
   revert l r
   induction' n with n ih <;> intros l r
   · finish
@@ -86,7 +86,7 @@ lemma step_C10_01C (l r : Side) (n : Nat) :
   step; step; finish
 
 /-- A(a,b+2,c) ⊢* A(a,b,c+3) -/
-theorem step_A_a_b2_c (a b c : Nat) : (A a (b + 2) c) ⊢* (A a b (c + 3)) := by
+theorem step_A_a_b2_c (a b c : Nat) : A a (b + 2) c ⊢* A a b (c + 3) := by
   simp only [A]
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
@@ -104,7 +104,7 @@ theorem step_A_a_b2_c (a b c : Nat) : (A a (b + 2) c) ⊢* (A a b (c + 3)) := by
   finish
 
 /-- A(a+1,0,c) ⊢* A(a,c,2) -/
-theorem step_A_a1_0_c (a c : Nat) : (A (a + 1) 0 c) ⊢* (A a c 2) := by
+theorem step_A_a1_0_c (a c : Nat) : A (a + 1) 0 c ⊢* A a c 2 := by
   simp only [A]
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
@@ -122,13 +122,13 @@ theorem step_A_a1_0_c (a c : Nat) : (A (a + 1) 0 c) ⊢* (A a c 2) := by
   simp_rw [Turing.ListBlank.append_assoc, Turing.ListBlank.append]
   step; step; step; step; step; step
   have h (s : Side) (n : Nat) :
-      ([(1 : Symbol), 0]^(n + 1) +> s) = ([(1 : Symbol), 0]^n +> 1 >> 0 >> s) := by
+      [(1 : Symbol), 0]^(n + 1) +> s = [(1 : Symbol), 0]^n +> 1 >> 0 >> s := by
     rw [list_pow_add, Turing.ListBlank.append_assoc]; rfl
   rw [← h]
   finish
 
 /-- A(a+1,1,c) ⊢* A(a,c+4,0) -/
-lemma step_A_a1_1_c_v1 (a c : Nat) : (A (a + 1) 1 c) ⊢* (A a (c + 4) 0) := by
+lemma step_A_a1_1_c_v1 (a c : Nat) : A (a + 1) 1 c ⊢* A a (c + 4) 0 := by
   simp only [A]
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
@@ -149,14 +149,14 @@ lemma step_A_a1_1_c_v1 (a c : Nat) : (A (a + 1) 1 c) ⊢* (A a (c + 4) 0) := by
   --rw [add_comm, list_pow_add, (by simp [(· ^ ·)] : [(1 : Symbol), 0] ^ 1 = [(1 : Symbol), 0])]
   --simp_rw [Turing.ListBlank.append_assoc, Turing.ListBlank.append]
   have h (s : Side) (n : Nat) :
-      ([(1 : Symbol), 0]^(n + 1) +> s) = ([(1 : Symbol), 0]^n +> 1 >> 0 >> s) := by
+      [(1 : Symbol), 0]^(n + 1) +> s = [(1 : Symbol), 0]^n +> 1 >> 0 >> s := by
     rw [list_pow_add, Turing.ListBlank.append_assoc]; rfl
   rw [← h, ← h]
   simp [(· ^ ·)]
   finish
 
 /-- A(a+1,1,c) ⊢* A(a,c,6) -/
-theorem step_A_a1_1_c (a c : Nat) : (A (a + 1) 1 c) ⊢* (A a c 6) := by
+theorem step_A_a1_1_c (a c : Nat) : A (a + 1) 1 c ⊢* A a c 6 := by
   refine stepStar_trans (step_A_a1_1_c_v1 _ _) ?_
   refine stepStar_trans (step_A_a_b2_c _ _ _) ?_
   refine stepStar_trans (step_A_a_b2_c _ _ _) ?_
@@ -165,8 +165,8 @@ theorem step_A_a1_1_c (a c : Nat) : (A (a + 1) 1 c) ⊢* (A a c 6) := by
 /-- A(0,0,c) halts -/
 theorem step_A_0_0_c (c : Nat) : halts tm (A 0 0 c) := by
   refine' stepStar_halts
-    (c₂ := ((default << 1 << 1 << 1 <+ [(1 : Symbol), 1]^(c + 1) << 1 << 1) {{F}}> default)) _
-    (by exists 0, ((default << 1 << 1 << 1 <+ [(1 : Symbol), 1]^(c + 1) << 1 << 1) {{F}}> default))
+    (c₂ := default << 1 << 1 << 1 <+ [(1 : Symbol), 1]^(c + 1) << 1 << 1 {{F}}> default) _
+    (by exists 0, default << 1 << 1 << 1 <+ [(1 : Symbol), 1]^(c + 1) << 1 << 1 {{F}}> default)
   simp only [A]
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
@@ -182,7 +182,7 @@ theorem step_A_0_0_c (c : Nat) : halts tm (A 0 0 c) := by
   step; step; finish
 
 /-- A(0,1,c) ⊢* A(2c+9,0,0) -/
-theorem step_A_0_1_c (c : Nat) : (A 0 1 c) ⊢* (A (2 * c + 9) 0 0) := by
+theorem step_A_0_1_c (c : Nat) : A 0 1 c ⊢* A (2 * c + 9) 0 0 := by
   simp only [A]
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
@@ -212,10 +212,10 @@ theorem step_A_0_1_c (c : Nat) : (A 0 1 c) ⊢* (A (2 * c + 9) 0 0) := by
   finish
 
 /-- c₀ ⊢* A(3,0,0) -/
-theorem reach_3 : c₀ ⊢* (A 3 0 0) := by execute
+theorem reach_3 : c₀ ⊢* A 3 0 0 := by execute
 
 /-- c₀ ⊢* A(25,0,0) -/
-theorem reach_25 : c₀ ⊢* (A 25 0 0) := by
+theorem reach_25 : c₀ ⊢* A 25 0 0 := by
   refine stepStar_trans reach_3 ?_
   refine stepStar_trans (step_A_a1_0_c _ _) ?_
   refine stepStar_trans (step_A_a1_0_c _ _) ?_
@@ -227,7 +227,7 @@ theorem reach_25 : c₀ ⊢* (A 25 0 0) := by
   finish
 
 /-- A(a,b,c) ⊢* A(a,b%2,c+3*(b/2)) -/
-lemma step_A_a_b2_c_fast (a b c : Nat) : (A a b c) ⊢* (A a (b % 2) (c + 3 * (b / 2))) := by
+lemma step_A_a_b2_c_fast (a b c : Nat) : A a b c ⊢* A a (b % 2) (c + 3 * (b / 2)) := by
   match b with
   | 0 => finish
   | 1 => finish
@@ -239,19 +239,19 @@ lemma step_A_a_b2_c_fast (a b c : Nat) : (A a b c) ⊢* (A a (b % 2) (c + 3 * (b
     finish
 
 /-- A(a+1,0,c) ⊢* A(a,c%2,2+3*(c/2)) -/
-theorem step_A_a1_0_c_fast (a c : Nat) : (A (a + 1) 0 c) ⊢* (A a (c % 2) (2 + 3 * (c / 2))) := by
+theorem step_A_a1_0_c_fast (a c : Nat) : A (a + 1) 0 c ⊢* A a (c % 2) (2 + 3 * (c / 2)) := by
   refine stepStar_trans (step_A_a1_0_c _ _) ?_
   refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_
   finish
 
 /-- A(a+1,1,c) ⊢* A(a,c%2,6+3*(c/2)) -/
-theorem step_A_a1_1_c_fast (a c : Nat) : (A (a + 1) 1 c) ⊢* (A a (c % 2) (6 + 3 * (c / 2))) := by
+theorem step_A_a1_1_c_fast (a c : Nat) : A (a + 1) 1 c ⊢* A a (c % 2) (6 + 3 * (c / 2)) := by
   refine stepStar_trans (step_A_a1_1_c _ _) ?_
   refine stepStar_trans (step_A_a_b2_c_fast _ _ _) ?_
   finish
 
 /-- c₀ ⊢* A(227097,0,0) -/
-theorem reach_227097 : c₀ ⊢* (A 227097 0 0) := by
+theorem reach_227097 : c₀ ⊢* A 227097 0 0 := by
   refine stepStar_trans reach_25 ?_
   -- alternate between `step_A_a1_0_c_fast` and `step_A_a1_1_c_fast` randomly
   refine stepStar_trans (step_A_a1_0_c_fast _ _) ?_; ring_nf

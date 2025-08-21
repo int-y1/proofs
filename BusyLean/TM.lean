@@ -4,6 +4,13 @@ import Mathlib.Computability.TuringMachine
 # Turing machines
 
 Original source: https://github.com/meithecatte/busycoq/blob/master/verify/TM.v
+
+Notation precedences:
+* 65: Left tape (`Turing.ListBlank Sym`). Right tape (`Turing.ListBlank Sym`).
+      This is the same precedence as `++` from `Init.Notation`.
+* 60: Configuration (`Turing.Tape Sym`).
+* 50: `step*` notations, such as `* [tm]⊢ *`.
+      This is the same precedence as `=` from `Init.Notation`.
 -/
 
 open Turing
@@ -31,21 +38,20 @@ variable (c c₁ c₂ c₃ : Q × Tape Sym)
 
 /-- We define a notation for tapes, evocative of a Turing machine's head hovering over a particular
 symbol. -/
-notation l " {{" s "}} " r => ⟨s, l, r⟩ -- Tape Sym
+notation3:60 l:65 " {{" s "}} " r:65 => Tape.mk s l r
 
--- Read `Init.Notation` for default priorities.
-notation:67 s:67 " << " a:68 => ListBlank.cons a s -- No conflict.
-infixr:67 " >> " => ListBlank.cons -- Conflicts with HAndThen.
-notation:67 s:67 " <+ " l:68 => ListBlank.append l s -- No conflict. WARNING: `l` is reversed.
-infixr:67 " +> " => ListBlank.append -- No conflict.
+-- Use precedence 65. This is the same precedence as `++` from `Init.Notation`.
+notation3:65 s:65 " << " a:66 => ListBlank.cons a s -- No conflict.
+notation3:65 a:66 " >> " s:65 => ListBlank.cons a s -- Conflicts with HAndThen.
+notation3:65 s:65 " <+ " l:66 => ListBlank.append l s -- No conflict. WARNING: `l` is reversed.
+notation3:65 l:66 " +> " s:65 => ListBlank.append l s -- No conflict.
 
 /-- `0^∞ b a c {d} e f g 0^∞`. WARNING: `<+ l` appends the reverse of `l`. -/
-example (a b c d e f g : Sym) : Tape Sym :=
-  (default <+ [a, b] << c) {{d}} ([e, f] +> g >> default)
+example (a b c d e f g : Sym) : Tape Sym := default <+ [a, b] << c {{d}} [e, f] +> g >> default
 
 -- For the directed head formulation, we use the following:
-notation3 l " <{{" q "}} " r => (q, (⟨ListBlank.head l, ListBlank.tail l, r⟩ : Tape _))
-notation3 l " {{" q "}}> " r => (q, (⟨ListBlank.head r, l, ListBlank.tail r⟩ : Tape _))
+notation3:60 l:65 " <{{" q "}} " r:65 => (q, ListBlank.tail l {{ListBlank.head l}} r)
+notation3:60 l:65 " {{" q "}}> " r:65 => (q, l {{ListBlank.head r}} ListBlank.tail r)
 
 /-- The small-step semantics of Turing machines. -/
 def step : (Q × Tape Sym) → Option (Q × Tape Sym) :=
@@ -54,7 +60,7 @@ def step : (Q × Tape Sym) → Option (Q × Tape Sym) :=
     | some ⟨s', d, q'⟩ => some ⟨q', Tape.move d (l {{s'}} r)⟩
 
 /-- `step`. The small-step semantics of Turing machines. -/
-notation3 c " [" tm "]⊢ " c' => step tm c = some c'
+notation3:50 c:60 " [" tm "]⊢ " c':60 => step tm c = some c'
 
 /-- Executes `n` steps. -/
 def stepNat : (n : ℕ) → (Q × Tape Sym) → Option (Q × Tape Sym) :=
@@ -63,13 +69,13 @@ def stepNat : (n : ℕ) → (Q × Tape Sym) → Option (Q × Tape Sym) :=
 /-- `stepNat` executes `n` steps.
 
 Unfortunately, the parser needs a character between `n` and `c'`. I picked `}`. -/
-notation3 c " [" tm "]⊢^{" n "} " c' => stepNat tm n c = some c'
+notation3:50 c:60 " [" tm "]⊢^{" n:65 "} " c':60 => stepNat tm n c = some c'
 
 /-- `stepStar` executes an unspecified number of steps (the "eventually reaches" relation). -/
-notation3 c " [" tm "]⊢* " c' => ∃ n, c [tm]⊢^{n} c'
+notation3:50 c:60 " [" tm "]⊢* " c':60 => ∃ n, c [tm]⊢^{n} c'
 
 /-- `stepPlus` executes an unspecified, but non-zero number of steps. -/
-notation3 c " [" tm "]⊢⁺ " c' => ∃ n > 0, c [tm]⊢^{n} c'
+notation3:50 c:60 " [" tm "]⊢⁺ " c':60 => ∃ n > 0, c [tm]⊢^{n} c'
 
 /-- The Turing machine has halted if `step tm c` returns `none`. -/
 def halted : Prop := step tm c = none
