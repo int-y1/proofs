@@ -364,7 +364,7 @@ lemma progress_nonhalt_simple {A : Type w} (C : A → Q × Tape Sym) (i₀ : A)
 macro "finish" : tactic => `(tactic| (
   exists 0 <;> fail))
 macro "step" : tactic => `(tactic| (
-  try apply stepPlus_stepStar
+  try refine stepPlus_stepStar ?_ -- Use `refine`. `apply` is bad, it adds `.h` to the case name.
   try simp only [ListBlank.head_cons]
   apply step_stepStar_stepPlus rfl
   simp only [Tape.move, ListBlank.head_cons, ListBlank.tail_cons]))

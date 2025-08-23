@@ -118,7 +118,7 @@ theorem Nat.mod_three_eq_or : n % 3 = 0 ∨ n % 3 = 1 ∨ n % 3 = 2 :=
   | 0, _ | 1, _ | 2, _ => by trivial
 
 /-- Do cases on `A(n,ls)`. -/
-lemma step_An_1101 (n : Nat) (ls : List Symbol) (hn : n ≥ 4) :
+theorem step_An_1101 (n : Nat) (ls : List Symbol) (hn : n ≥ 4) :
     A n ls ⊢* ([
       default << 1 << 1 <+ [S1, S0]^(4*(n/3)-1) << 0 {{A}}> ls +> default,
       default << 1 << 1 <+ [S1, S0]^(4*(n/3)-1) << 0 << 0 {{E}}> ls +> default,
@@ -170,7 +170,7 @@ macro "stepHalt" : tactic => `(tactic| (
 
 set_option maxHeartbeats 1000000 in
 /-- This takes a while to compute. It's pretty unoptimized. -/
-lemma halts_A1975700577069254261393123959451562008800234946348086 :
+theorem halts_A1975700577069254261393123959451562008800234946348086 :
     halts tm (A 1975700577069254261393123959451562008800234946348086 []) := by
   apply stepStar_halts (c₂ := A 7488166283129708930486796847462680979065226437987146331898837006603604720521272903526417758309106 [0, 1, 0, 1, 1, 0, 1, 1])
   · A_step 13
@@ -284,6 +284,176 @@ lemma halts_A1975700577069254261393123959451562008800234946348086 :
   apply stepStar_halts (step_An_1101 _ _ (by decide))
   simp_rw [List.getElem_cons_succ, List.getElem_cons_zero]
   simp only [Nat.reduceDiv, Nat.reduceMul]
+  rw [list2_append_eq', list2_append_eq']
+  simp_rw [Turing.ListBlank.append]
+  iterate 113 stepHalt
+  exists 0
+  simp_rw [haltsIn, stepNat, Nat.repeat, Option.some.injEq, exists_eq_left']
+  rfl
+
+lemma two_four_pow3_pow8_eq (i j k : Nat) :
+    2 * (4 * (3 ^ i * (8 ^ j * k))) = 3 ^ i * (8 ^ (j + 1) * k) := by
+  simp_rw [← mul_assoc, Nat.reduceMul]
+  rw [mul_comm 8, mul_assoc _ 8, Nat.pow_add_one']
+
+macro "A_step2" n:num : tactic => `(tactic| (
+  rw [Nat.pow_add_one', mul_assoc]
+  apply stepStar_trans (step_An_1101 _ _ (by simp))
+  simp_rw [Nat.mul_add_mod, List.getElem_cons_succ, List.getElem_cons_zero,
+    Nat.mul_add_div zero_lt_three, Nat.reduceDiv, mul_add, Nat.reduceMul]
+  try rw [Nat.add_sub_assoc (by decide) _]; simp_rw [Nat.reduceSub]
+  rw [list2_append_eq', list2_append_eq']
+  simp_rw [Turing.ListBlank.append]
+  iterate $n step
+  apply stepStar_trans (step_01C_C11 _ _ _)
+  step
+  step
+  simp_rw [list11_eq_list1 _, mul_add, two_four_pow3_pow8_eq, Nat.reduceMul,
+    ← list1_append_eq, ← list1_append_eq', add_assoc, Nat.reduceAdd]
+  repeat' (nth_rw 2 [default_tail])
+  nth_rw 3 [← nil_append_default]
+  repeat' rw [← Turing.ListBlank.append]
+  rw [← A]))
+
+set_option maxHeartbeats 1000000 in
+/-- Why is this so slow and memory hungry? `A_step2` is split into groups of 10 to avoid excessive
+memory use (e.g. >10GB). -/
+theorem halts_A_mod_3_pow_108 (k : Nat) :
+    halts tm (A (3 ^ 108 * k + 1975700577069254261393123959451562008800234946348086) []) := by
+  apply stepStar_halts (c₂ := A (3 ^ 98 * (8 ^ 10 * k) + 35925965576050291197954676646168812866911688985763244505) [0, 1, 0, 1, 0, 1, 0, 1, 1])
+  · nth_rw 1 [(by simp : k = 8 ^ 0 * k)]
+    A_step2 13
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 17
+    A_step2 21
+    A_step2 5
+    A_step2 27
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 88 * (8 ^ 20 * k) + 653274599173389056319717515476765122857837155218448003942322) [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1])
+  · A_step2 35
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 31
+    A_step2 21
+    A_step2 5
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 78 * (8 ^ 30 * k) + 11879087870908968104360314522392758770461111276045783640742261386) [0, 1, 1, 1, 0, 1, 0, 1, 1, 1])
+  · A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 17
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 68 * (8 ^ 40 * k) + 216008289352335720339610602524813115320952275950623503089297980541682) [0, 1, 0, 1, 1, 0, 1, 1, 1])
+  · A_step2 21
+    A_step2 21
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 58 * (8 ^ 50 * k) + 3927875740627220359664132971002588353805172690412603331883223229967369354) [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0])
+  · A_step2 5
+    A_step2 31
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 21
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 48 * (8 ^ 60 * k) + 71424147101329785314496471805836819044114607618056461822634921267834080686730) [0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1])
+  · A_step2 21
+    A_step2 5
+    A_step2 27
+    A_step2 39
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 38 * (8 ^ 70 * k) + 1298770410781319861625359536628288369435308900216028055554241136144906066587587722) [0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1])
+  · A_step2 31
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 17
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 28 * (8 ^ 80 * k) + 23616726952692910182205306669292505610517611280824263889413609179834777358573759023858) [0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1])
+  · A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 21
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 18 * (8 ^ 90 * k) + 429444486360386240087203819295254784395458238425633310167425409595064063059982219052239602) [0, 1, 0, 0, 1, 0, 1, 0, 1, 1])
+  · A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 31
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 8 * (8 ^ 100 * k) + 7808980780222260203826248505306665087325883016528076661998155848237077485933315200811517542561) [0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1])
+  · A_step2 17
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 21
+    A_step2 21
+    finish
+  apply stepStar_halts (c₂ := A (3 ^ 1 * (8 ^ 107 * k) + 7488166283129708930486796847462680979065226437987146331898837006603604720521272903526417758309106) [0, 1, 0, 1, 1, 0, 1, 1] )
+  · A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    A_step2 5
+    A_step2 21
+    A_step2 5
+    finish
+  apply stepStar_halts (step_An_1101 _ _ (by simp))
+  simp_rw [Nat.pow_one, Nat.mul_add_mod, List.getElem_cons_succ, List.getElem_cons_zero,
+    Nat.mul_add_div zero_lt_three, Nat.reduceDiv, mul_add, Nat.reduceMul]
+  try rw [Nat.add_sub_assoc (by decide) _]; simp_rw [Nat.reduceSub]
   rw [list2_append_eq', list2_append_eq']
   simp_rw [Turing.ListBlank.append]
   iterate 113 stepHalt
