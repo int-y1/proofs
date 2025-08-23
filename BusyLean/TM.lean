@@ -95,7 +95,7 @@ def halts := ∃ n, haltsIn tm c n
 
 /-- todo: why can't i find this in mathlib4? -/
 lemma Nat.repeat_add (f : α → α) (n m : ℕ) (a : α) :
-    Nat.repeat f (n+m) a = Nat.repeat f n (Nat.repeat f m a) := by
+    (n+m).repeat f a = n.repeat f (m.repeat f a) := by
   match n with
   | 0 => rw [zero_add]; rfl
   | n+1 => rw [Nat.add_right_comm, Nat.repeat, Nat.repeat_add]; rfl
@@ -355,3 +355,17 @@ lemma progress_nonhalt_simple {A : Type w} (C : A → Q × Tape Sym) (i₀ : A)
   intro c ⟨i, hi⟩
   have ⟨i', hi'⟩ := h i
   exact ⟨C i', ⟨i', rfl⟩, hi ▸ hi'⟩
+
+
+/-!
+## Tactics
+-/
+
+macro "finish" : tactic =>
+  `(tactic| exists 0 <;> fail)
+macro "step" : tactic =>
+  `(tactic| (try refine stepPlus_stepStar ?_) <;>
+    refine step_stepStar_stepPlus (by (try simp only [ListBlank.head_cons]); rfl) ?_ <;>
+    simp only [Tape.move, ListBlank.head_cons, ListBlank.tail_cons])
+macro "execute" : tactic =>
+  `(tactic| repeat (any_goals (first | finish | step)))
