@@ -45,11 +45,18 @@ def list_nat_repeat (l : List α) (n : Nat) := match n with
 
 instance instHPowListNat : HPow (List Symbol) Nat (List Symbol) := ⟨list_nat_repeat⟩
 
+@[simp]
+theorem list_pow_zero (l : List Symbol) : l^0 = [] := by rfl
+
+@[simp]
+theorem list_pow_one (l : List Symbol) : l^1 = l := by
+  simp_rw [HPow.hPow, list_nat_repeat, List.append_eq, List.append_nil]
+
 theorem list_pow_add (l : List Symbol) (n m : Nat) : l^(n + m) = l^n ++ l^m := match m with
   | 0 => by
-    simp_rw [HPow.hPow, add_zero, list_nat_repeat, List.append_nil]
+    rw [list_pow_zero, List.append_nil, add_zero]
   | m + 1 => by
     rw [add_comm m 1, ← add_assoc, add_comm 1 m, list_pow_add]
-    simp only [HPow.hPow, list_nat_repeat, List.append_eq, List.append_assoc]
+    simp_rw [HPow.hPow, list_nat_repeat, List.append_eq, List.append_assoc]
     rw [← List.append_assoc, ← List.append_assoc, List.append_cancel_right_eq]
     induction' n with n ih <;> [simp; simpa]

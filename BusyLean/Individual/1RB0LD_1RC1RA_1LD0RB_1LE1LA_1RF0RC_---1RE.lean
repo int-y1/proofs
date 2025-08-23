@@ -37,13 +37,11 @@ macro "step" : tactic =>
 macro "execute" : tactic =>
   `(tactic| repeat (any_goals (first | finish | step)))
 
-def A (a b c : Nat) :=
-  default <+ [(1 : Symbol)]^a << 0 <+ [(1 : Symbol), 0]^b << 0 <+ [(1 : Symbol), 1]^(c + 1)
-    {{B}}> default
+def A (a b c : Nat) := default <+ [S1]^a << 0 <+ [S1, S0]^b << 0 <+ [S1, S1]^(c + 1) {{B}}> default
 
 /-- 11^n <{A} ⊢* <{A} 10^n -/
 lemma step_11A_A10 (l r : Side) (n : Nat) :
-    l <+ [(1 : Symbol), 1]^n <{{A}} r ⊢* l <{{A}} [(1 : Symbol), 0]^n +> r := by
+    l <+ [S1, S1]^n <{{A}} r ⊢* l <{{A}} [S1, S0]^n +> r := by
   revert l r
   induction' n with n ih <;> intros l r
   · finish
@@ -54,7 +52,7 @@ lemma step_11A_A10 (l r : Side) (n : Nat) :
 
 /-- {B}> 10^n ⊢* 11^n {B}> -/
 lemma step_B10_11B (l r : Side) (n : Nat) :
-    l {{B}}> [(1 : Symbol), 0]^n +> r ⊢* l <+ [(1 : Symbol), 1]^n {{B}}> r := by
+    l {{B}}> [S1, S0]^n +> r ⊢* l <+ [S1, S1]^n {{B}}> r := by
   revert l r
   induction' n with n ih <;> intros l r
   · finish
@@ -65,7 +63,7 @@ lemma step_B10_11B (l r : Side) (n : Nat) :
 
 /-- {F}> 10^n ⊢* 11^n {F}> -/
 lemma step_F10_11F (l r : Side) (n : Nat) :
-    l {{F}}> [(1 : Symbol), 0]^n +> r ⊢* l <+ [(1 : Symbol), 1]^n {{F}}> r := by
+    l {{F}}> [S1, S0]^n +> r ⊢* l <+ [S1, S1]^n {{F}}> r := by
   revert l r
   induction' n with n ih <;> intros l r
   · finish
@@ -76,7 +74,7 @@ lemma step_F10_11F (l r : Side) (n : Nat) :
 
 /-- {C}> 10^n ⊢* 01^n {C}> -/
 lemma step_C10_01C (l r : Side) (n : Nat) :
-    l {{C}}> [(1 : Symbol), 0]^n +> r ⊢* l <+ [(1 : Symbol), 0]^n {{C}}> r := by
+    l {{C}}> [S1, S0]^n +> r ⊢* l <+ [S1, S0]^n {{C}}> r := by
   revert l r
   induction' n with n ih <;> intros l r
   · finish
@@ -112,17 +110,15 @@ theorem step_A_a1_0_c (a c : Nat) : A (a + 1) 0 c ⊢* A a c 2 := by
   refine stepStar_trans (step_B10_11B _ _ _) ?_
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
-  rw [(by simp [(· ^ ·)] : [(1 : Symbol), 0] ^ 0 = []),
-    add_comm, list_pow_add, (by simp [(· ^ ·)] : [(1 : Symbol)] ^ 1 = [(1 : Symbol)])]
+  rw [list_pow_zero, add_comm, list_pow_add, list_pow_one]
   simp_rw [Turing.ListBlank.append_assoc, Turing.ListBlank.append]
   step; step; step; step; step
   refine stepStar_trans (step_C10_01C _ _ _) ?_
   step; step; step; step; step; step; step; step; step
-  rw [add_comm, list_pow_add, (by simp [(· ^ ·)] : [(1 : Symbol), 0] ^ 1 = [(1 : Symbol), 0])]
+  rw [add_comm, list_pow_add, list_pow_one]
   simp_rw [Turing.ListBlank.append_assoc, Turing.ListBlank.append]
   step; step; step; step; step; step
-  have h (s : Side) (n : Nat) :
-      [(1 : Symbol), 0]^(n + 1) +> s = [(1 : Symbol), 0]^n +> 1 >> 0 >> s := by
+  have h (s : Side) (n : Nat) : [S1, S0]^(n + 1) +> s = [S1, S0]^n +> 1 >> 0 >> s := by
     rw [list_pow_add, Turing.ListBlank.append_assoc]; rfl
   rw [← h]
   finish
@@ -136,8 +132,7 @@ lemma step_A_a1_1_c_v1 (a c : Nat) : A (a + 1) 1 c ⊢* A a (c + 4) 0 := by
   refine stepStar_trans (step_B10_11B _ _ _) ?_
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
-  rw [(by simp [(· ^ ·)] : [(1 : Symbol), 0] ^ 1 = [(1 : Symbol), 0]),
-    add_comm, list_pow_add, (by simp [(· ^ ·)] : [(1 : Symbol)] ^ 1 = [(1 : Symbol)])]
+  rw [list_pow_one, add_comm, list_pow_add, list_pow_one]
   simp_rw [Turing.ListBlank.append_assoc, Turing.ListBlank.append]
   step; step; step; step; step
   refine stepStar_trans (step_B10_11B _ _ _) ?_
@@ -146,10 +141,7 @@ lemma step_A_a1_1_c_v1 (a c : Nat) : A (a + 1) 1 c ⊢* A a (c + 4) 0 := by
   step; step; step; step; step; step; step; step; step
   refine stepStar_trans (step_C10_01C _ _ _) ?_
   step; step; step; step; step
-  --rw [add_comm, list_pow_add, (by simp [(· ^ ·)] : [(1 : Symbol), 0] ^ 1 = [(1 : Symbol), 0])]
-  --simp_rw [Turing.ListBlank.append_assoc, Turing.ListBlank.append]
-  have h (s : Side) (n : Nat) :
-      [(1 : Symbol), 0]^(n + 1) +> s = [(1 : Symbol), 0]^n +> 1 >> 0 >> s := by
+  have h (s : Side) (n : Nat) : [S1, S0]^(n + 1) +> s = [S1, S0]^n +> 1 >> 0 >> s := by
     rw [list_pow_add, Turing.ListBlank.append_assoc]; rfl
   rw [← h, ← h]
   simp [(· ^ ·)]
@@ -165,8 +157,8 @@ theorem step_A_a1_1_c (a c : Nat) : A (a + 1) 1 c ⊢* A a c 6 := by
 /-- A(0,0,c) halts -/
 theorem step_A_0_0_c (c : Nat) : halts tm (A 0 0 c) := by
   refine' stepStar_halts
-    (c₂ := default << 1 << 1 << 1 <+ [(1 : Symbol), 1]^(c + 1) << 1 << 1 {{F}}> default) _
-    (by exists 0, default << 1 << 1 << 1 <+ [(1 : Symbol), 1]^(c + 1) << 1 << 1 {{F}}> default)
+    (c₂ := default << 1 << 1 << 1 <+ [S1, S1]^(c + 1) << 1 << 1 {{F}}> default) _
+    (by exists 0, default << 1 << 1 << 1 <+ [S1, S1]^(c + 1) << 1 << 1 {{F}}> default)
   simp only [A]
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
@@ -174,8 +166,7 @@ theorem step_A_0_0_c (c : Nat) : halts tm (A 0 0 c) := by
   refine stepStar_trans (step_B10_11B _ _ _) ?_
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
-  rw [(by simp [(· ^ ·)] : [(1 : Symbol), 0] ^ 0 = []),
-    (by simp [(· ^ ·)] : [(1 : Symbol)] ^ 0 = [])]
+  rw [list_pow_zero, list_pow_zero]
   simp_rw [Turing.ListBlank.append]
   step; step; step; step; step
   refine stepStar_trans (step_F10_11F _ _ _) ?_
@@ -190,9 +181,7 @@ theorem step_A_0_1_c (c : Nat) : A 0 1 c ⊢* A (2 * c + 9) 0 0 := by
   refine stepStar_trans (step_B10_11B _ _ _) ?_
   step; step; step
   refine stepStar_trans (step_11A_A10 _ _ _) ?_
-  rw [(by simp [(· ^ ·)] : [(1 : Symbol), 0] ^ 0 = []),
-    (by simp [(· ^ ·)] : [(1 : Symbol)] ^ 0 = []),
-    (by simp [(· ^ ·)] : [(1 : Symbol), 0] ^ 1 = [(1 : Symbol), 0])]
+  rw [list_pow_zero, list_pow_zero, list_pow_one]
   simp_rw [Turing.ListBlank.append]
   step; step; step; step; step
   refine stepStar_trans (step_B10_11B _ _ _) ?_
@@ -201,7 +190,7 @@ theorem step_A_0_1_c (c : Nat) : A 0 1 c ⊢* A (2 * c + 9) 0 0 := by
   step; step; step; step; step; step; step; step; step
   refine stepStar_trans (step_F10_11F _ _ _) ?_
   step; step; step; step; step; step; step; step; step; step
-  have h (n : Nat) : [(1 : Symbol), 1]^n = [(1 : Symbol)]^(2 * n) := by
+  have h (n : Nat) : [S1, S1]^n = [S1]^(2 * n) := by
     induction' n with n ih
     · rfl
     simp_rw [mul_add, list_pow_add, ih]
