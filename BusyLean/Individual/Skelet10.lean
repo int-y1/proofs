@@ -71,25 +71,15 @@ def Z (n : Dorf) : Side :=
   | zO n' => (0 : Symbol) >> Z n'
   | zIO n' => 1 >> 0 >> Z n'
 
--- todo: move this elsewhere
-macro "finish" : tactic =>
-  `(tactic| exists 0 <;> fail)
-macro "step" : tactic =>
-  `(tactic| (try refine stepPlus_stepStar ?_) <;>
-    refine step_stepStar_stepPlus (by (try simp only [Turing.ListBlank.head_cons]); rfl) ?_ <;>
-    simp only [Turing.Tape.move, Turing.ListBlank.head_cons, Turing.ListBlank.tail_cons])
-macro "execute" : tactic =>
-  `(tactic| repeat (any_goals (first | finish | step)))
-
 lemma incr_right (n : Dorf) (l : Side) : l << 1 {{B}}> Z n ⊢* l <{{D}} Z (zI n) := by
   revert l; induction' n with _ _ _ IH <;> intro l
-  · execute
+  · execute 2
   · simp_rw [Z]
-    execute
+    execute 2
   · simp_rw [Z]
-    execute
+    step; step
     apply stepStar_trans (IH _)
-    execute
+    execute 2
 
 /-- Left Side Counter -/
 def T (n : Dorf) : Side :=
@@ -107,13 +97,13 @@ def L' (n : Dorf) : Side :=
 
 lemma incr_left (n : Dorf) (r : Side) : T n <{{D}} 1 >> 1 >> r ⊢* T (zI n) {{A}}> r := by
   revert r; induction' n with _ _ _ IH <;> intro l
-  · execute
+  · execute 5
   · simp_rw [T]
-    execute
+    execute 5
   · simp_rw [T]
-    execute
+    iterate 4 step
     apply stepStar_trans (IH _)
-    execute
+    execute 4
 
 /-- Complete Behavior -/
 def D (n : Dorf) := L' n <{{D}} Z (incr n)
@@ -121,25 +111,25 @@ def D (n : Dorf) := L' n <{{D}} Z (incr n)
 lemma incr_D (n : Dorf) : D n ⊢⁺ D (incr n) := by
   unfold D
   cases' n with n n
-  · execute
+  · execute 8
   · cases' n with n n
-    · execute
+    · execute 8
     · simp only [Z, L', T, incr, zI]
-      execute
+      iterate 5 step
       apply stepStar_trans (incr_right _ _)
-      execute
+      execute 1
     · simp only [Z, L', T, incr, zI]
-      execute
+      iterate 4 step
       apply stepStar_trans (incr_left _ _)
-      execute
+      execute 5
   · simp only [Z, L', incr]
-    execute
+    step; step
     apply stepStar_trans (incr_left _ _)
-    execute
+    step
     apply stepStar_trans (incr_right _ _)
-    execute
+    finish
 
 theorem nonhalt : ¬halts tm c₀ := by
-  apply stepStar_not_halts_not_halts (c₂ := D zend) (by execute)
+  apply stepStar_not_halts_not_halts (c₂ := D zend) (by execute 3)
   apply progress_nonhalt_simple D
   exact fun n ↦ ⟨incr n, incr_D n⟩

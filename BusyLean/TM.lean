@@ -361,11 +361,13 @@ lemma progress_nonhalt_simple {A : Type w} (C : A → Q × Tape Sym) (i₀ : A)
 ## Tactics
 -/
 
-macro "finish" : tactic =>
-  `(tactic| exists 0 <;> fail)
-macro "step" : tactic =>
-  `(tactic| (try refine stepPlus_stepStar ?_) <;>
-    refine step_stepStar_stepPlus (by (try simp only [ListBlank.head_cons]); rfl) ?_ <;>
-    simp only [Tape.move, ListBlank.head_cons, ListBlank.tail_cons])
-macro "execute" : tactic =>
-  `(tactic| repeat (any_goals (first | finish | step)))
+macro "finish" : tactic => `(tactic| (
+  exists 0 <;> fail))
+macro "step" : tactic => `(tactic| (
+  try apply stepPlus_stepStar
+  try simp only [ListBlank.head_cons]
+  apply step_stepStar_stepPlus rfl
+  simp only [Tape.move, ListBlank.head_cons, ListBlank.tail_cons]))
+macro "execute" n:num : tactic => `(tactic| (
+  iterate $n step
+  finish))
