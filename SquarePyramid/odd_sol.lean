@@ -177,7 +177,7 @@ theorem Nat.odd_mul_two_pow (n : ℕ) (h : n > 0) : ∃ k' s, Odd k' ∧ n = k' 
     simp
   rcases k.eq_zero_or_pos with rfl | hk₀
   · rcases hk; contradiction
-  have : k < n := hk.symm ▸ add_lt_add_left hk₀ k
+  have : k < n := hk.symm ▸ Nat.add_lt_add_left hk₀ k
   have ⟨k', s, hks⟩ : ∃ k' s, Odd k' ∧ k = k' * 2 ^ s := k.odd_mul_two_pow hk₀
   refine ⟨k', s + 1, hks.1, ?_⟩
   rw [hk, hks.2]
@@ -308,11 +308,12 @@ theorem cannonball_odd_1 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2)
     positivity
   replace h₂ : x * x - 3 * (4 * v * w).natAbs * (4 * v * w).natAbs = 1 := by
     rw [← pow_two, mul_assoc, ← pow_two, ← Int.natCast_inj, Nat.cast_sub]
-    · norm_num [hx]
+    · norm_num [hx, mul_pow]
+      simp only [mul_pow] at h₂
       exact h₂
     · rw [← Nat.cast_le (α := ℤ)]
-      norm_num [hx]
-      rw [sub_eq_iff_eq_add.1 h₂, le_add_iff_nonneg_left]
+      norm_num [hx, mul_pow]
+      simp_rw [sub_eq_iff_eq_add.1 h₂, mul_pow, Int.reducePow, le_add_iff_nonneg_left]
       decide
   have ⟨n, hxn, hyn⟩ := Pell.eq_pell (by decide : 1 < 2) h₂
   have hM : ∃ M, _root_.u n = 4 * M ^ 2 + 3 := by

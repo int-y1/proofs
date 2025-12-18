@@ -8,6 +8,7 @@ import BusyLean.TMAcceleration
 Define `A(n,ls) := 0^inf <F 1^n 0 ls 0^inf`. This file proves the following results:
 
 * `A(9,nil)` is reached.
+* `A(3 ^ 108 * k + 1975700577069254261393123959451562008800234946348086, nil)` leads to halting.
 
 -/
 

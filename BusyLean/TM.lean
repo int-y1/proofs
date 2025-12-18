@@ -1,4 +1,5 @@
 import Mathlib.Computability.TuringMachine
+import Mathlib.Tactic.Cases
 
 /-!
 # Turing machines

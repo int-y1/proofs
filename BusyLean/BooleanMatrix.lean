@@ -1,5 +1,6 @@
-import Mathlib.Data.Matrix.Notation
 import Mathlib.Algebra.Order.BigOperators.Group.Finset
+import Mathlib.LinearAlgebra.Matrix.Notation
+import Mathlib.Tactic.Cases
 
 /-!
 # Boolean matrices
@@ -56,12 +57,12 @@ instance instIsOrderedRingTwo : IsOrderedRing Two := {
     fin_cases c <;> simp [h]
     fin_cases a <;> simp
   zero_le_one := by unfold Two; simp
-  mul_le_mul_of_nonneg_left := fun a b c h _ ↦ by
+  mul_le_mul_of_nonneg_left := fun a _ b c h ↦ by
     unfold Two at *; simp_rw [HMul.hMul, Mul.mul]
-    fin_cases c <;> simp [h]
-  mul_le_mul_of_nonneg_right := fun a b c h _ ↦ by
+    fin_cases c <;> simp at h <;> simp [h]
+  mul_le_mul_of_nonneg_right := fun a _ b c h ↦ by
     unfold Two at *; simp_rw [HMul.hMul, Mul.mul]
-    fin_cases c <;> simp [h]
+    fin_cases c <;> simp at h <;> simp [h]
 }
 
 instance : LE (Matrix m n Two) := ⟨fun M N ↦ ∀ i j, (M i j) ≤ (N i j)⟩
@@ -81,16 +82,16 @@ instance instIsOrderedRingMatrixFinTwo : IsOrderedRing (Matrix (Fin n) (Fin n) T
   zero_le_one := fun i j ↦ by
     rw [Matrix.zero_apply, Matrix.one_apply]
     cases' eq_or_ne i j with h h <;> simp [h]
-  mul_le_mul_of_nonneg_left := fun L M N h₁ h₂ i j ↦ by
+  mul_le_mul_of_nonneg_left := fun L h₁ M N h₂ i j ↦ by
     simp_rw [Matrix.mul_apply]
-    apply Finset.sum_le_sum (f := fun k => N i k * L k j)
+    apply Finset.sum_le_sum (f := fun k => L i k * M k j)
     intro k _
-    exact mul_le_mul_of_nonneg_left (h₁ _ _) (h₂ _ _)
-  mul_le_mul_of_nonneg_right := fun L M N h₁ h₂ i j ↦ by
+    exact mul_le_mul_of_nonneg_left (h₂ _ _) (h₁ _ _)
+  mul_le_mul_of_nonneg_right := fun L h₁ M N h₂ i j ↦ by
     simp_rw [Matrix.mul_apply]
-    apply Finset.sum_le_sum (f := fun k => L i k * N k j)
+    apply Finset.sum_le_sum (f := fun k => M i k * L k j)
     intro k _
-    exact mul_le_mul_of_nonneg_right (h₁ _ _) (h₂ _ _)
+    exact mul_le_mul_of_nonneg_right (h₂ _ _) (h₁ _ _)
 }
 
 instance : DecidableEq Two := instDecidableEqFin _

@@ -2,6 +2,7 @@ import Mathlib.Algebra.Order.Ring.Basic
 import Mathlib.Data.Int.Lemmas
 import Mathlib.Data.Int.SuccPred
 import Mathlib.NumberTheory.PythagoreanTriples
+import Mathlib.Tactic.Cases
 import Mathlib.Tactic.LinearCombination
 import Mathlib.Tactic.ModCases
 
@@ -380,13 +381,13 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
   have hbc : 2 * b ^ 4 + 1 = (c ^ 2) ^ 2 := by rw [hb, ← hc]; ring
   apply hx_min hbc hb₀
   refine (lt_of_pow_lt_pow_left₀ 4 hx.le ?_)
-  rw [← mul_lt_mul_left (by decide : (0 : ℤ) < 2), ← add_lt_add_iff_right 1, hbc, hxy, sq_lt_sq,
+  rw [← Int.mul_lt_mul_left (by decide : (0 : ℤ) < 2), ← add_lt_add_iff_right 1, hbc, hxy, sq_lt_sq,
     abs_of_nonneg (sq_nonneg c), abs_of_nonneg hy₀.le]
   calc
     _ ≤ 2 * a + 1 := by rw [← hc]; convert Int.le_self_sq _ using 1; ring
     _ < v ^ 2 := by
       rw [ha]
-      convert add_lt_add_right ((mul_lt_mul_left (by decide : (0 : ℤ) < 2)).2 ha₀) (2 * a + 1)
+      convert add_lt_add_right ((Int.mul_lt_mul_left (by decide : (0 : ℤ) < 2)).2 ha₀) (2 * a + 1)
         using 1 <;> ring
     _ ≤ s + 1 := by rw [← hv]; convert Int.le_self_sq _ using 1; ring
     _ < y := by rw [hys, add_lt_add_iff_right]; apply lt_mul_left hs₀; decide
