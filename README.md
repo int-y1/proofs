@@ -26,3 +26,9 @@ This project can compile under Lean 4.27.0-rc1.
 Formalizing some math from [bbchallenge](https://bbchallenge.org/story) and [busycoq](https://github.com/meithecatte/busycoq).
 
 This project can compile under Lean 4.27.0-rc1.
+
+## BBfLean
+
+BBf = Busy Beaver function for Fractran programs. See the [wiki](https://wiki.bbchallenge.org/wiki/Fractran) for more details.
+
+This project can compile under Lean 4.27.0-rc1.

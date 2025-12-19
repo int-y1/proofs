@@ -25,3 +25,8 @@ lean_lib «SquarePyramid» {
 lean_lib BusyLean {
   -- add any library configuration options here
 }
+
+@[default_target]
+lean_lib BBfLean {
+  -- add any library configuration options here
+}
