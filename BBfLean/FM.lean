@@ -328,8 +328,9 @@ macro "finish" : tactic => `(tactic| (
   exists 0 <;> fail))
 macro "step" : tactic => `(tactic| (
   try refine stepPlus_stepStar ?_ -- Use `refine`. `apply` is bad, it adds `.h` to the case name.
-  apply step_stepStar_stepPlus rfl
-  simp only [Nat.succ_eq_add_one, Nat.reduceAdd]))
+  -- TODO: Make `step` work in more cases. But `(by simp only [fm]; rfl)` doesn't work.
+  apply step_stepStar_stepPlus (by rfl)
+  try simp only [Nat.succ_eq_add_one, Nat.reduceAdd]))
 macro "execute" n:num : tactic => `(tactic| (
   iterate $n step
   finish))
