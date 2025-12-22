@@ -326,11 +326,10 @@ lemma progress_nonhalt_simple {A : Type w} (C : A → Q) (i₀ : A)
 
 macro "finish" : tactic => `(tactic| (
   exists 0 <;> fail))
-macro "step" : tactic => `(tactic| (
+macro "step" fm:ident : tactic => `(tactic| (
   try refine stepPlus_stepStar ?_ -- Use `refine`. `apply` is bad, it adds `.h` to the case name.
-  -- TODO: Make `step` work in more cases. But `(by simp only [fm]; rfl)` doesn't work.
-  apply step_stepStar_stepPlus (by rfl)
+  apply step_stepStar_stepPlus (by (try unfold $fm); (try simp only); rfl)
   try simp only [Nat.succ_eq_add_one, Nat.reduceAdd]))
-macro "execute" n:num : tactic => `(tactic| (
-  iterate $n step
+macro "execute" fm:ident n:num : tactic => `(tactic| (
+  iterate $n step $fm
   finish))

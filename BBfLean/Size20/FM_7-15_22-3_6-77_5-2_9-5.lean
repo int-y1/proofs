@@ -23,10 +23,10 @@ lemma step_stepNat_trans (n : ℕ) (h₁ : c₁ [fm]⊢ c₂) (h₂ : c₂ [fm]�
   exact stepNat_trans (c₂ := c₂) 1 n h₁ h₂
 
 theorem fm_final : c₀ [fm]⊢^{746} ⟨0, 0, 0, 42, 0⟩ := by
-  iterate 200 (apply step_stepNat_trans _ rfl; simp only [Nat.succ_eq_add_one, Nat.reduceAdd])
-  iterate 200 (apply step_stepNat_trans _ rfl; simp only [Nat.succ_eq_add_one, Nat.reduceAdd])
-  iterate 200 (apply step_stepNat_trans _ rfl; simp only [Nat.succ_eq_add_one, Nat.reduceAdd])
-  iterate 146 (apply step_stepNat_trans _ rfl; simp only [Nat.succ_eq_add_one, Nat.reduceAdd])
+  iterate 200 (refine step_stepNat_trans _ rfl ?_; simp only [Nat.succ_eq_add_one, Nat.reduceAdd])
+  iterate 200 (refine step_stepNat_trans _ rfl ?_; simp only [Nat.succ_eq_add_one, Nat.reduceAdd])
+  iterate 200 (refine step_stepNat_trans _ rfl ?_; simp only [Nat.succ_eq_add_one, Nat.reduceAdd])
+  iterate 146 (refine step_stepNat_trans _ rfl ?_; simp only [Nat.succ_eq_add_one, Nat.reduceAdd])
   rfl
 
 theorem fm_haltsIn_746 : haltsIn fm c₀ 746 := by

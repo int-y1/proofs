@@ -22,12 +22,11 @@ theorem ac_to_ce : ⟨a, 0, c, 0, 0⟩ [fm]⊢* ⟨0, 0, c+2*a, 0, a⟩ := by
     intro k; induction' k with k h <;> intro a c e
     · exists 0
     rw [← Nat.add_assoc]
-    step
+    step fm
     apply stepStar_trans (h a (c + 2) (e + 1))
-    simp only [Nat.mul_add, Nat.add_assoc, Nat.add_comm 1 k, Nat.add_comm 2]
-    finish
+    ring_nf; finish
   have h := many_step a 0 c 0
-  simp at h
+  rw [zero_add] at h
   exact h
 
 theorem ce_to_cd : ⟨0, 0, c, 0, e⟩ [fm]⊢* ⟨0, 0, c, e, 0⟩ := by
@@ -35,45 +34,38 @@ theorem ce_to_cd : ⟨0, 0, c, 0, e⟩ [fm]⊢* ⟨0, 0, c, e, 0⟩ := by
     intro k; induction' k with k h <;> intro c d e
     · exists 0
     rw [← Nat.add_assoc]
-    refine stepPlus_stepStar ?_
-    apply step_stepStar_stepPlus (by simp only [fm]; rfl)
+    step fm
     apply stepStar_trans (h c (d + 1) e)
-    simp only [Nat.add_assoc, Nat.add_comm 1 k]
-    finish
+    ring_nf; finish
   have h := many_step e c 0 0
-  simp at h
+  rw [zero_add] at h
   exact h
 
 theorem cd_to_ac : ⟨0, 0, c+d+2, d, 0⟩ [fm]⊢⁺ ⟨d+2, 0, c, 0, 0⟩ := by
-  apply step_stepStar_stepPlus (by simp only [fm]; rfl)
-  simp only [Nat.reduceAdd]
+  step fm
   have many_step : ∀ k a c d, ⟨a, 1, c+k, d+k, 0⟩ [fm]⊢* ⟨a+k, 1, c, d, 0⟩ := by
     intro k; induction' k with k h <;> intro a c d
     · exists 0
     rw [← Nat.add_assoc, ← Nat.add_assoc]
-    step
-    step
+    step fm
+    step fm
     apply stepStar_trans (h (a+1) c d)
-    rw [Nat.add_comm k 1, ← Nat.add_assoc]
-    finish
+    ring_nf; finish
   have h := many_step d 0 (c+1) 0
-  simp [Nat.add_right_comm] at h
+  simp only [Nat.add_right_comm, zero_add] at h
   apply stepStar_trans h
-  step
+  step fm
   finish
 
-theorem ac_to_ac : ⟨a+2, 0, c+2, 0, 0⟩ [fm]⊢⁺ ⟨a+2+2, 0, c+a+2, 0, 0⟩ := by
+theorem ac_to_ac : ⟨a+2, 0, c, 0, 0⟩ [fm]⊢⁺ ⟨a+4, 0, c+a, 0, 0⟩ := by
   apply stepStar_stepPlus_stepPlus ac_to_ce
   apply stepStar_stepPlus_stepPlus ce_to_cd
-  have aa : c + 2 + 2 * (a + 2) = (c + a + 2) + (a + 2) + 2 := by ring
-  rw [aa]
   apply stepStar_stepPlus_stepPlus _ cd_to_ac
-  finish
+  ring_nf; finish
 
 theorem nonhalt : ¬halts fm c₀ := by
-  apply stepStar_not_halts_not_halts (c₂ := ⟨5+2, 0, 1+2, 0, 0⟩) (by execute 42)
-  apply progress_nonhalt_simple (fm := fm) (A := ℕ × ℕ) (fun ⟨a, c⟩ ↦ ⟨a+2, 0, c+2, 0, 0⟩) ⟨5, 1⟩
+  apply stepStar_not_halts_not_halts (c₂ := ⟨5, 0, 0, 0, 0⟩) (by execute fm 20)
+  apply progress_nonhalt_simple (fm := fm) (A := ℕ × ℕ) (fun ⟨a, c⟩ ↦ ⟨a+2, 0, c, 0, 0⟩) ⟨3, 0⟩
   intro ⟨a, c⟩
   exists ⟨a+2, c+a⟩
-  simp only
   apply ac_to_ac
