@@ -23,7 +23,7 @@ theorem ac_to_ce : ⟨a, 0, c, 0, 0⟩ [fm]⊢* ⟨0, 0, c+2*a, 0, a⟩ := by
     · exists 0
     rw [← Nat.add_assoc]
     step fm
-    apply stepStar_trans (h a (c + 2) (e + 1))
+    apply stepStar_trans (h _ _ _)
     ring_nf; finish
   have h := many_step a 0 c 0
   rw [zero_add] at h
@@ -35,7 +35,7 @@ theorem ce_to_cd : ⟨0, 0, c, 0, e⟩ [fm]⊢* ⟨0, 0, c, e, 0⟩ := by
     · exists 0
     rw [← Nat.add_assoc]
     step fm
-    apply stepStar_trans (h c (d + 1) e)
+    apply stepStar_trans (h _ _ _)
     ring_nf; finish
   have h := many_step e c 0 0
   rw [zero_add] at h
@@ -49,7 +49,7 @@ theorem cd_to_ac : ⟨0, 0, c+d+2, d, 0⟩ [fm]⊢⁺ ⟨d+2, 0, c, 0, 0⟩ := b
     rw [← Nat.add_assoc, ← Nat.add_assoc]
     step fm
     step fm
-    apply stepStar_trans (h (a+1) c d)
+    apply stepStar_trans (h _ _ _)
     ring_nf; finish
   have h := many_step d 0 (c+1) 0
   simp only [Nat.add_right_comm, zero_add] at h
