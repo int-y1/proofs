@@ -3,6 +3,15 @@ import BBfLean.FM
 /-!
 # [7/15, 22/3, 6/77, 5/2, 9/5]
 
+Vector representation:
+```
+ 0 -1 -1  1  0
+ 1 -1  0  0  1
+ 1  1  0 -1 -1
+-1  0  1  0  0
+ 0  2 -1  0  0
+```
+
 This is a sz20 machine that halts in 746 steps.
 -/
 

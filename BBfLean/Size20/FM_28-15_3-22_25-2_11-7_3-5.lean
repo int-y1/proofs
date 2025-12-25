@@ -4,6 +4,15 @@ import Mathlib.Tactic.Ring
 /-!
 # [28/15, 3/22, 25/2, 11/7, 3/5]
 
+Vector representation:
+```
+ 2 -1 -1  1  0
+-1  1  0  0 -1
+-1  0  2  0  0
+ 0  0  0 -1  1
+ 0  1 -1  0  0
+```
+
 This is a sz20 machine that doesn't halt.
 -/
 
