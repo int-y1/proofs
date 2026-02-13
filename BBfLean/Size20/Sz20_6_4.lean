@@ -2,7 +2,7 @@ import BBfLean.FM
 import Mathlib.Tactic.Ring
 
 /-!
-# [5/6, 44/35, 49/2, 3/11, 5/7]
+# sz20_6 #4: [5/6, 44/35, 49/2, 3/11, 5/7]
 
 Vector representation:
 ```
@@ -13,7 +13,7 @@ Vector representation:
  0  0  1 -1  0
 ```
 
-This is a sz20 machine that doesn't halt.
+This Fractran program doesn't halt.
 -/
 
 def Q := ℕ × ℕ × ℕ × ℕ × ℕ
