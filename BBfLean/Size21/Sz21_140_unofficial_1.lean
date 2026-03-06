@@ -24,6 +24,8 @@ Launch an agent team having an expert mathematician, an expert computer scientis
 See this post for more details: https://tristan.st/blog/opus_4_6_formal_proofs#fractran-lean4
 -/
 
+namespace Sz21_140_unofficial_1
+
 def Q := ℕ × ℕ × ℕ × ℕ × ℕ
 def c₀ : Q := ⟨1, 0, 0, 0, 0⟩
 def fm : Q → Option Q := fun q ↦ match q with

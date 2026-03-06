@@ -10,6 +10,8 @@ https://wiki.bbchallenge.org/wiki/1RB0LD_1RC1RA_1LD0RB_1LE1LA_1RF0RC_---1RE
 This file proves the forward rules of this TM, as shown in the wiki.
 -/
 
+namespace «1RB0LD_1RC1RA_1LD0RB_1LE1LA_1RF0RC_---1RE»
+
 section
 open State
 def tm : TM62 := fun ⟨q, s⟩ ↦

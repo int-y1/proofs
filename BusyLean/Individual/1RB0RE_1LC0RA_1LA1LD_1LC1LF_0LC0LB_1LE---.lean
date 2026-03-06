@@ -12,6 +12,8 @@ Define `A(n,ls) := 0^inf <F 1^n 0 ls 0^inf`. This file proves the following resu
 
 -/
 
+namespace «1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---»
+
 section
 open State
 def tm : TM62 := fun ⟨q, s⟩ ↦
@@ -114,7 +116,7 @@ lemma step_An4_110100E (n : Nat) (ls : List Symbol) :
   apply stepStar_trans (step_1101B111_1101B_repeat _ _ _)
   execute 2
 
-theorem Nat.mod_three_eq_or : n % 3 = 0 ∨ n % 3 = 1 ∨ n % 3 = 2 :=
+theorem mod_three_eq_or (n : Nat) : n % 3 = 0 ∨ n % 3 = 1 ∨ n % 3 = 2 :=
   match n % 3, n.mod_lt zero_lt_three with
   | 0, _ | 1, _ | 2, _ => by trivial
 
@@ -126,7 +128,7 @@ theorem step_An_1101 (n : Nat) (ls : List Symbol) (hn : n ≥ 4) :
       default << 1 << 1 <+ [S1, S0]^(4*(n/3)+3) {{B}}> ls +> default
     ][n % 3]'(n.mod_lt zero_lt_three)) := by
   nth_rw 1 [← n.div_add_mod 3]
-  rcases n.mod_three_eq_or with h | h | h <;>
+  rcases mod_three_eq_or n with h | h | h <;>
     simp only [h, List.getElem_cons_succ, List.getElem_cons_zero]
   · have hn3 : n/3 ≥ 1 := (Nat.one_le_div_iff (zero_lt_three)).2 (le_trans (by decide) hn)
     rw [← Nat.sub_add_cancel hn3, mul_add]

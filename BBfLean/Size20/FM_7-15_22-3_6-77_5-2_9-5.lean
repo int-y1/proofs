@@ -15,6 +15,8 @@ Vector representation:
 This is a sz20 machine that halts in 746 steps.
 -/
 
+namespace «FM_7-15_22-3_6-77_5-2_9-5»
+
 def Q := ℕ × ℕ × ℕ × ℕ × ℕ
 def c₀ : Q := ⟨1, 0, 0, 0, 0⟩
 def fm : Q → Option Q := fun q ↦ match q with

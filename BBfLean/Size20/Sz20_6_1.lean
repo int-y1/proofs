@@ -16,6 +16,8 @@ Vector representation:
 This Fractran program doesn't halt.
 -/
 
+namespace Sz20_6_1
+
 def Q := ℕ × ℕ × ℕ × ℕ × ℕ
 def c₀ : Q := ⟨1, 0, 0, 0, 0⟩
 def fm : Q → Option Q := fun q ↦ match q with

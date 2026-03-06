@@ -17,6 +17,8 @@ TODO: After finishing the proof, replace this paragraph with one of:
 * This Fractran program halts.
 -/
 
+namespace Sz21_140_unofficial_120
+
 def Q := ℕ × ℕ × ℕ × ℕ × ℕ
 def c₀ : Q := ⟨1, 0, 0, 0, 0⟩
 def fm : Q → Option Q := fun q ↦ match q with

@@ -7,6 +7,8 @@ import BusyLean.BB52
 Original source: https://github.com/meithecatte/busycoq/blob/master/verify/Skelet10.v
 -/
 
+namespace Skelet10
+
 section
 open State
 def tm : TM52 := fun ⟨q, s⟩ ↦

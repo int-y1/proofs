@@ -1,4 +1,8 @@
-Random proofs in Lean 4.
+Random proofs in Lean 4. For a list of maintained files, see:
+
+* `BBfLean/BBfLean.lean`
+* `BusyLean/BusyLean.lean`
+* `SquarePyramid/SquarePyramid.lean`
 
 ## tao_analysis_i
 
