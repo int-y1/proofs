@@ -32,16 +32,16 @@ instance : Mul Two := ⟨min (α := Fin 2)⟩
 
 instance instCommSemiringTwo : CommSemiring Two := {
   add_assoc := fun _ _ _ ↦ by simp_rw [HAdd.hAdd, Add.add, max_assoc]
-  zero_add := fun _ ↦ by simp_rw [HAdd.hAdd, Add.add]; simp
-  add_zero := fun _ ↦ by simp_rw [HAdd.hAdd, Add.add]; simp
+  zero_add := fun _ ↦ by rfl
+  add_zero := fun _ ↦ by simp_rw [HAdd.hAdd, Add.add]; rw [max_comm]; rfl
   nsmul := nsmulRec
   add_comm := fun _ _ ↦ by simp_rw [HAdd.hAdd, Add.add, max_comm]
   left_distrib := fun _ _ _ ↦ by
     simp_rw [HAdd.hAdd, Add.add, HMul.hMul, Mul.mul, min_max_distrib_left]
   right_distrib := fun _ _ _ ↦ by
     simp_rw [HAdd.hAdd, Add.add, HMul.hMul, Mul.mul, min_max_distrib_right]
-  zero_mul := fun _ ↦ by simp_rw [HMul.hMul, Mul.mul]; simp
-  mul_zero := fun _ ↦ by simp_rw [HMul.hMul, Mul.mul]; simp
+  zero_mul := fun _ ↦ by rfl
+  mul_zero := fun _ ↦ by simp_rw [HMul.hMul, Mul.mul]; rw [min_comm]; rfl
   mul_assoc := fun _ _ _ ↦ by simp_rw [HMul.hMul, Mul.mul, min_assoc]
   one_mul := fun a ↦ by unfold Two at *; fin_cases a <;> simp
   mul_one := fun a ↦ by unfold Two at *; fin_cases a <;> simp
@@ -49,20 +49,20 @@ instance instCommSemiringTwo : CommSemiring Two := {
 }
 
 instance instPartialOrderTwo : PartialOrder Two :=
-  PartialOrder.lift (fun (x : Fin 2) ↦ (x : Two)) (by simp [Function.Injective])
+  PartialOrder.lift (fun (x : Fin 2) ↦ (x : Two)) (by unfold Function.Injective; intros; assumption)
 
 instance instIsOrderedRingTwo : IsOrderedRing Two := {
   add_le_add_left := fun a b h c ↦ by
     unfold Two at *; simp_rw [HAdd.hAdd, Add.add]
     fin_cases c <;> simp [h]
-    fin_cases a <;> simp
+    fin_cases a <;> apply le_max_right
   zero_le_one := by unfold Two; simp
   mul_le_mul_of_nonneg_left := fun a _ b c h ↦ by
     unfold Two at *; simp_rw [HMul.hMul, Mul.mul]
-    fin_cases c <;> simp at h <;> simp [h]
+    fin_cases c <;> exact min_le_min_left _ h
   mul_le_mul_of_nonneg_right := fun a _ b c h ↦ by
     unfold Two at *; simp_rw [HMul.hMul, Mul.mul]
-    fin_cases c <;> simp at h <;> simp [h]
+    fin_cases c <;> exact min_le_min_right _ h
 }
 
 instance : LE (Matrix m n Two) := ⟨fun M N ↦ ∀ i j, (M i j) ≤ (N i j)⟩

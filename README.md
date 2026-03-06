@@ -5,7 +5,7 @@ Random proofs in Lean 4.
 This is my attempt at formalizing Terence Tao's Analysis I.
 I gave up in the middle of chapter 4 because setoids were not fun to work with.
 
-This project can compile under Lean 4.27.0-rc1.
+This project can compile under Lean 4.27.0-rc1, but is not maintained anymore.
 
 ## rayleigh_beatty
 
@@ -19,16 +19,16 @@ This project can compile under Lean 4.10.0-rc2, but is not maintained anymore. S
 
 This is my attempt at formalizing Anglin's proof of the [cannonball problem](https://en.wikipedia.org/wiki/Cannonball_problem). My attempt was successful and I created a summary PDF ([link](SquarePyramid/cannonball_summary.pdf)).
 
-This project can compile under Lean 4.27.0-rc1.
+This project can compile under Lean 4.29.0-rc4.
 
 ## BusyLean
 
 Formalizing some math from [bbchallenge](https://bbchallenge.org/story) and [busycoq](https://github.com/meithecatte/busycoq).
 
-This project can compile under Lean 4.27.0-rc1.
+This project can compile under Lean 4.29.0-rc4.
 
 ## BBfLean
 
 BBf = Busy Beaver function for Fractran programs. See the [wiki](https://wiki.bbchallenge.org/wiki/Fractran) for more details.
 
-This project can compile under Lean 4.27.0-rc1.
+This project can compile under Lean 4.29.0-rc4.

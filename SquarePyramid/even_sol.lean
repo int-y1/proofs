@@ -121,9 +121,9 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
       rwa [Int.gcd_neg, Int.neg_gcd]
       convert hx₀ using 1; ring
       convert hy₀ using 1; ring
-      convert hxy_co using 1; ring_nf
-      convert hxyz using 1 <;> ring_nf
-      convert hxyw using 1; ring_nf
+      convert hxy_co using 1; simp only [mul_assoc, neg_mul_neg]
+      convert hxyz using 1 <;> ring
+      convert hxyw using 1; ring
       convert hrs_add_odd.neg using 1; ring_nf
       rwa [gt_iff_lt, Left.neg_pos_iff]
     · simp at hy₀
