@@ -93,8 +93,8 @@ theorem phase_bd : ∀ c : ℕ, ∀ a d,
     refine ⟨e', ?_, by omega, by omega⟩
     apply stepPlus_trans
     · have hb := phase_b_round a c d
-      convert hb using 2 <;> first | ring | rfl
-    · convert he' using 2 <;> first | ring | rfl
+      convert hb using 2
+    · convert he' using 2; first | ring_nf
 
 -- Full transition from canonical form
 -- ⟨a+e+1, 0, 0, 0, e⟩ →⁺ ⟨a+3*e+1, 0, 0, 0, e'⟩
@@ -109,7 +109,7 @@ theorem full_trans : ∀ e : ℕ, ∀ a,
   · have h := e_to_c e (a+e+1) 0 0
     simp only [Nat.zero_add] at h
     exact h
-  · convert he' using 2 <;> first | ring | rfl
+  · convert he' using 2
 
 theorem nonhalt : ¬halts fm c₀ := by
   -- c₀ = (1,0,0,0,0) reaches (5,0,0,0,4) in 14 steps.

@@ -1,4 +1,4 @@
-import Mathlib.Computability.TuringMachine
+import Mathlib.Computability.TuringMachine.StackTuringMachine
 import Mathlib.Tactic.Cases
 
 /-!
