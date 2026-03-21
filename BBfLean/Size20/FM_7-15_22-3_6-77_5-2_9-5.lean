@@ -13,6 +13,8 @@ Vector representation:
 ```
 
 This is a sz20 machine that halts in 746 steps.
+
+Author: int-y1
 -/
 
 namespace «FM_7-15_22-3_6-77_5-2_9-5»

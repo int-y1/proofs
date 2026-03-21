@@ -14,6 +14,8 @@ Vector representation:
 ```
 
 This Fractran program doesn't halt.
+
+Author: int-y1
 -/
 
 namespace Sz20_6_5
