@@ -30,7 +30,7 @@ def fm : Q → Option Q := fun q ↦ match q with
   | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
   | _ => none
 
--- R4 repeated: convert e to c
+-- R4 repeated: e → c
 theorem e_to_c : ⟨a, 0, c, 0, e+k⟩ [fm]⊢* ⟨a, 0, c+k, 0, e⟩ := by
   have many_step : ∀ k c, ⟨a, 0, c, 0, e+k⟩ [fm]⊢* ⟨a, 0, c+k, 0, e⟩ := by
     intro k; induction' k with k h <;> intro c
@@ -41,7 +41,7 @@ theorem e_to_c : ⟨a, 0, c, 0, e+k⟩ [fm]⊢* ⟨a, 0, c+k, 0, e⟩ := by
     ring_nf; finish
   exact many_step k c
 
--- R2 repeated: convert d to b (when c = 0)
+-- R2 repeated: d → b
 theorem r2_chain : ⟨a+k, b, 0, d+k, e⟩ [fm]⊢* ⟨a, b+2*k, 0, d, e⟩ := by
   have many_step : ∀ k a b, ⟨a+k, b, 0, d+k, e⟩ [fm]⊢* ⟨a, b+2*k, 0, d, e⟩ := by
     intro k; induction' k with k h <;> intro a b
@@ -52,7 +52,7 @@ theorem r2_chain : ⟨a+k, b, 0, d+k, e⟩ [fm]⊢* ⟨a, b+2*k, 0, d, e⟩ := b
     ring_nf; finish
   exact many_step k a b
 
--- R3 repeated: convert b to a (when c = 0, d = 0)
+-- R3 repeated: b → a
 theorem r3_chain : ⟨a, b+k, 0, 0, e⟩ [fm]⊢* ⟨a+2*k, b, 0, 0, e⟩ := by
   have many_step : ∀ k a, ⟨a, b+k, 0, 0, e⟩ [fm]⊢* ⟨a+2*k, b, 0, 0, e⟩ := by
     intro k; induction' k with k h <;> intro a
@@ -63,18 +63,12 @@ theorem r3_chain : ⟨a, b+k, 0, 0, e⟩ [fm]⊢* ⟨a+2*k, b, 0, 0, e⟩ := by
     ring_nf; finish
   exact many_step k a
 
--- Generalized processing lemma:
--- (a+C+D, B, C, D, E) →* (a + 2*C + 4*D + 2*B, 0, 0, 0, C + E)
--- By induction on C:
---   Base C=0: r2_chain then r3_chain
---   Case C+1, B≥1: R1 step, then IH(C)
---   Case C+1, B=0, D≥1: R2 step, R1 step, then IH(C)
+-- Generalized processing lemma
 theorem processing_gen : ∀ C, ∀ a B D E,
     B + D ≥ 1 ∨ C = 0 →
     ⟨a+C+D, B, C, D, E⟩ [fm]⊢* ⟨a + 2*C + 4*D + 2*B, 0, 0, 0, C + E⟩ := by
   intro C; induction' C with C ih <;> intro a B D E _
-  · -- Base: C = 0
-    simp only [Nat.zero_add]
+  · simp only [Nat.zero_add]
     have h1 : ⟨a+D, B, 0, 0+D, E⟩ [fm]⊢* ⟨a, B+2*D, 0, 0, E⟩ := r2_chain
     rw [Nat.zero_add] at h1
     apply stepStar_trans h1
@@ -82,38 +76,34 @@ theorem processing_gen : ∀ C, ∀ a B D E,
     rw [Nat.zero_add] at h2
     apply stepStar_trans h2
     ring_nf; finish
-  · -- Case C+1
-    rcases (show B ≥ 1 ∨ (B = 0 ∧ D ≥ 1) from by omega) with hB | ⟨rfl, hD⟩
-    · -- Sub-case B ≥ 1: R1 step
+  · rcases (show B ≥ 1 ∨ (B = 0 ∧ D ≥ 1) from by omega) with hB | ⟨rfl, hD⟩
+    · -- Sub-case B >= 1: R1 step
       obtain ⟨B', rfl⟩ : ∃ B', B = B' + 1 := ⟨B - 1, by omega⟩
       rw [show a + (C + 1) + D = a + C + D + 1 from by ring]
       step fm
       apply stepStar_trans (ih a B' (D+1) (E+1) (by omega))
       ring_nf; finish
-    · -- Sub-case B = 0, D ≥ 1: R2 step, then R1 step
+    · -- Sub-case B = 0, D >= 1: R2 step then R1 step
       obtain ⟨D', rfl⟩ : ∃ D', D = D' + 1 := ⟨D - 1, by omega⟩
       rw [show a + (C + 1) + (D' + 1) = (a + C + D') + 1 + 1 from by ring]
-      step fm  -- R2
-      step fm  -- R1
+      step fm
+      step fm
       apply stepStar_trans (ih a 1 (D'+1) (E+1) (by omega))
       ring_nf; finish
 
--- Main phase 2 transition:
--- (a+c+1, 0, c, 0, 0) →⁺ (a+2*c+2, 0, 0, 0, c+1)
+-- Main phase 2 transition
 theorem main_trans : ⟨a+c+1, 0, c, 0, 0⟩ [fm]⊢⁺ ⟨a+2*c+2, 0, 0, 0, c+1⟩ := by
   rw [show a + c + 1 = (a + c) + 1 from by ring]
-  step fm  -- R5
+  step fm
   have h := processing_gen c a 1 0 1 (by omega)
   rw [show a + c + 0 = a + c from by ring] at h
   apply stepStar_trans h
   ring_nf; finish
 
--- Full transition combining e_to_c and main_trans:
--- (a+e+1, 0, 0, 0, e) →⁺ (a+2*e+2, 0, 0, 0, e+1)
+-- Full transition combining e_to_c and main_trans
 theorem full_trans : ⟨a+e+1, 0, 0, 0, e⟩ [fm]⊢⁺ ⟨a+2*e+2, 0, 0, 0, e+1⟩ := by
   apply stepStar_stepPlus_stepPlus
-  · -- e_to_c: (a+e+1, 0, 0, 0, e) →* (a+e+1, 0, e, 0, 0)
-    have h := @e_to_c (a+e+1) 0 0 e
+  · have h := @e_to_c (a+e+1) 0 0 e
     rw [Nat.zero_add] at h
     exact h
   · exact main_trans
