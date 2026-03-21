@@ -16,9 +16,6 @@ Vector representation:
 
 This Fractran program doesn't halt.
 
-Canonical form: (0, 0, c+1, 0, e+1) with c ≤ 3e+2.
-Transition: (c, e) → (3c+2, e+c+2).
-
 Author: Claude Opus 4.6
 -/
 

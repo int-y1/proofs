@@ -15,9 +15,6 @@ Vector representation:
 
 This Fractran program doesn't halt.
 
-The canonical form is (0, b, 0, d, 0) with 2d ≥ b + 3.
-The recurrence is b' = 2b + 3, d' = b + d + 2.
-
 Author: Claude Opus 4.6
 -/
 

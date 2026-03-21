@@ -15,12 +15,6 @@ Vector representation:
 
 This Fractran program doesn't halt.
 
-The canonical state is (n+1, 0, 0, 2n, 0) with n ≥ 1, transitioning n → n+1.
-The transition decomposes into two halves through intermediate (n+1, 0, 0, 2n+1, 1):
-
-First half:  R3→e, R4→c, R5, R1/R2 chain, R2×2, drain_odd
-Second half: R3→e, R4→c, R5, R1/R2 chain, R2×2, drain_even
-
 Author: Claude Opus 4.6
 -/
 

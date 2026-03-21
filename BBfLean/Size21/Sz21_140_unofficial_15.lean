@@ -15,8 +15,6 @@ Vector representation:
 
 This Fractran program doesn't halt.
 
-Canonical form: (0, 0, d+3, d, 0) with d → 2d+1 (exponential growth).
-
 Author: Claude Opus 4.6
 -/
 
