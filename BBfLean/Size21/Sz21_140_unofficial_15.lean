@@ -30,198 +30,145 @@ def fm : Q → Option Q := fun q ↦ match q with
   | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d, e⟩
   | _ => none
 
--- R4 chain: d → e
-theorem r4_chain : ∀ k, ∀ c d e, ⟨0, 0, c, d + k, e⟩ [fm]⊢* ⟨0, 0, c, d, e + k⟩ := by
+-- R4 repeated: convert d to e
+theorem d_to_e : ∀ k c d e, ⟨0, 0, c, d+k, e⟩ [fm]⊢* ⟨0, 0, c, d, e+k⟩ := by
   intro k; induction' k with k h <;> intro c d e
   · exists 0
-  rw [show d + (k + 1) = (d + k) + 1 from by ring]
+  rw [← Nat.add_assoc]
   step fm
   apply stepStar_trans (h _ _ _)
   ring_nf; finish
 
--- R3 chain: a → c
-theorem r3_chain : ∀ k, ∀ a c d, ⟨a + k, 0, c, d, 0⟩ [fm]⊢* ⟨a, 0, c + 3 * k, d, 0⟩ := by
+-- R3 repeated: convert a to c (when b=0, e=0)
+theorem a_to_c : ∀ k a c d, ⟨a+k, 0, c, d, 0⟩ [fm]⊢* ⟨a, 0, c+3*k, d, 0⟩ := by
   intro k; induction' k with k h <;> intro a c d
   · exists 0
-  rw [show a + (k + 1) = (a + k) + 1 from by ring]
+  rw [← Nat.add_assoc]
   step fm
   apply stepStar_trans (h _ _ _)
   ring_nf; finish
 
--- R1R1R2 chain
-theorem r1r1r2_chain : ∀ k, ∀ X c D e,
-    ⟨X, 2, c + 2 * k, D, e + k⟩ [fm]⊢* ⟨X + k, 2, c, D + 2 * k, e⟩ := by
-  intro k; induction' k with k ih <;> intro X c D e
-  · ring_nf; exists 0
-  rw [show c + 2 * (k + 1) = (c + 2 * k + 1) + 1 from by ring,
-      show e + (k + 1) = (e + k) + 1 from by ring,
-      show (2 : ℕ) = 1 + 1 from rfl]
-  step fm
-  rw [show c + 2 * k + 1 = (c + 2 * k) + 1 from by ring,
-      show (1 : ℕ) = 0 + 1 from rfl]
-  step fm
-  rw [show (e + k) + 1 = (e + k) + 1 from rfl]
-  step fm
-  apply stepStar_trans (ih (X + 1) c (D + 2) e)
-  ring_nf; finish
-
--- R2 drain
-theorem r2_drain : ∀ k, ∀ a b D, ⟨a + k, b, 0, D, k⟩ [fm]⊢* ⟨a, b + 2 * k, 0, D, 0⟩ := by
-  intro k; induction' k with k ih <;> intro a b D
+-- R2,R1,R1 chain: (a+1, 0, c+2*k, d, e+k) ->* (a+k+1, 0, c, d+2*k, e)
+theorem r2r1r1_chain : ∀ k a c d e, ⟨a+1, 0, c+2*k, d, e+k⟩ [fm]⊢* ⟨a+k+1, 0, c, d+2*k, e⟩ := by
+  intro k; induction' k with k h <;> intro a c d e
   · exists 0
-  rw [show a + (k + 1) = (a + k) + 1 from by ring]
-  step fm
-  apply stepStar_trans (ih _ _ _)
+  rw [show c + 2 * (k + 1) = (c + 2) + 2 * k from by ring,
+      show e + (k + 1) = (e + k) + 1 from by ring]
+  step fm  -- R2: (a, 2, (c+2)+2*k, d, e+k)
+  rw [show (c + 2) + 2 * k = ((c + 1) + 2 * k) + 1 from by ring]
+  step fm  -- R1: (a+1, 1, (c+1)+2*k, d+1, e+k)
+  rw [show (c + 1) + 2 * k = (c + 2 * k) + 1 from by ring]
+  step fm  -- R1: (a+2, 0, c+2*k, d+2, e+k)
+  apply stepStar_trans (h _ _ _ _)
   ring_nf; finish
 
--- R1 step helper
-theorem r1_step (A B C D E : ℕ) :
-    ⟨A, B+1, C+1, D, E⟩ [fm]⊢ ⟨A+1, B, C, D+1, E⟩ := by
-  show fm ⟨A, B+1, C+1, D, E⟩ = some ⟨A+1, B, C, D+1, E⟩
-  simp [fm]
+-- R2 repeated when c=0: (a+k, b, 0, d, e+k) ->* (a, b+2*k, 0, d, e)
+theorem r2_chain : ∀ k a b d e, ⟨a+k, b, 0, d, e+k⟩ [fm]⊢* ⟨a, b+2*k, 0, d, e⟩ := by
+  intro k; induction' k with k h <;> intro a b d e
+  · exists 0
+  rw [show a + (k + 1) = (a + k) + 1 from by ring,
+      show e + (k + 1) = (e + k) + 1 from by ring]
+  step fm  -- R2: (a+k, b+2, 0, d, e+k)
+  apply stepStar_trans (h _ _ _ _)
+  ring_nf; finish
 
--- R2 step helper
-theorem r2_step (A C D E : ℕ) :
-    ⟨A+1, 0, C, D, E+1⟩ [fm]⊢ ⟨A, 2, C, D, E⟩ := by
-  show fm ⟨A+1, 0, C, D, E+1⟩ = some ⟨A, 2, C, D, E⟩
-  simp [fm]
-
--- R3 step helper
-theorem r3_step (A C D : ℕ) :
-    ⟨A+1, 0, C, D, 0⟩ [fm]⊢ ⟨A, 0, C+3, D, 0⟩ := by
-  show fm ⟨A+1, 0, C, D, 0⟩ = some ⟨A, 0, C+3, D, 0⟩
-  simp [fm]
-
--- General tail
-theorem gen_tail : ∀ b, ∀ A D,
-    ⟨A + 1, b, 0, D, 0⟩ [fm]⊢* ⟨0, 0, 3 * A + 2 * b + 3, D + b, 0⟩ := by
-  intro b; induction' b using Nat.strongRecOn with b ih; intro A D
+-- Tail cleanup: (a+1, b, 0, d, 0) ->* (0, 0, 2*b+3*(a+1), d+b, 0)
+theorem tail_cleanup : ∀ b, ∀ a d, ⟨a+1, b, 0, d, 0⟩ [fm]⊢* ⟨0, 0, 2*b+3*(a+1), d+b, 0⟩ := by
+  intro b; induction' b using Nat.strongRecOn with b ih; intro a d
   rcases b with _ | _ | _ | b
-  · have h := r3_chain (A + 1) 0 0 D
-    simp only [Nat.zero_add] at h
-    refine stepStar_trans h ?_; ring_nf; finish
-  · apply stepStar_trans (c₂ := ⟨A + 1, 0, 2, D + 1, 0⟩)
-    · have h1 : ⟨A + 1, 0 + 1, 0, D, 0⟩ [fm]⊢ ⟨A, 0 + 1, 3, D, 0⟩ := by
-        show fm ⟨A + 1, 0 + 1, 0, D, 0⟩ = some ⟨A, 0 + 1, 3, D, 0⟩; simp [fm]
-      rw [show (0 + 1 : ℕ) = 1 from rfl] at h1
-      apply stepStar_trans (step_stepStar h1)
-      exact step_stepStar (r1_step A 0 2 D 0)
-    have h := r3_chain (A + 1) 0 2 (D + 1)
-    simp only [Nat.zero_add] at h
-    refine stepStar_trans h ?_; ring_nf; finish
-  · apply stepStar_trans (c₂ := ⟨A + 2, 0, 1, D + 2, 0⟩)
-    · have h1 : ⟨A + 1, 1 + 1, 0, D, 0⟩ [fm]⊢ ⟨A, 1 + 1, 3, D, 0⟩ := by
-        show fm ⟨A + 1, 1 + 1, 0, D, 0⟩ = some ⟨A, 1 + 1, 3, D, 0⟩; simp [fm]
-      rw [show (1 + 1 : ℕ) = 2 from rfl] at h1
-      apply stepStar_trans (step_stepStar h1)
-      apply stepStar_trans (step_stepStar (r1_step A 1 2 D 0))
-      exact step_stepStar (r1_step (A + 1) 0 1 (D + 1) 0)
-    have h := r3_chain (A + 2) 0 1 (D + 2)
-    simp only [Nat.zero_add] at h
-    refine stepStar_trans h ?_; ring_nf; finish
-  · rw [show b + 1 + 1 + 1 = b + 3 from by ring]
-    apply stepStar_trans (c₂ := ⟨A + 3, b, 0, D + 3, 0⟩)
-    · apply stepStar_trans (c₂ := ⟨A, b + 3, 3, D, 0⟩)
-      · have : ⟨A + 1, (b + 2) + 1, 0, D, 0⟩ [fm]⊢ ⟨A, (b + 2) + 1, 3, D, 0⟩ := by
-          show fm ⟨A + 1, (b + 2) + 1, 0, D, 0⟩ = some ⟨A, (b + 2) + 1, 3, D, 0⟩; simp [fm]
-        rw [show (b + 2) + 1 = b + 3 from by ring] at this
-        exact step_stepStar this
-      apply stepStar_trans (c₂ := ⟨A + 1, b + 2, 2, D + 1, 0⟩)
-      · exact step_stepStar (r1_step A (b + 2) 2 D 0)
-      apply stepStar_trans (c₂ := ⟨A + 2, b + 1, 1, D + 2, 0⟩)
-      · exact step_stepStar (r1_step (A + 1) (b + 1) 1 (D + 1) 0)
-      exact step_stepStar (r1_step (A + 2) b 0 (D + 2) 0)
-    have h := ih b (by omega) (A + 2) (D + 3)
-    rw [show A + 2 + 1 = A + 3 from by ring] at h
-    refine stepStar_trans h ?_; ring_nf; finish
-
--- Rest of transition for odd d=2m+1
-theorem rest_odd (m : ℕ) :
-    ⟨0, 1, 2 * m + 3, 0, 2 * m + 1⟩ [fm]⊢* ⟨0, 0, 4 * m + 6, 4 * m + 3, 0⟩ := by
-  apply stepStar_trans (c₂ := ⟨0, 2, 2 * m + 2, 1, 2 * m⟩)
-  · rw [show 2 * m + 3 = (2 * m + 2) + 1 from by ring,
-        show (1 : ℕ) = 0 + 1 from rfl]
-    apply stepStar_trans (step_stepStar (r1_step 0 0 (2 * m + 2) 0 (2 * m + 1)))
-    rw [show 2 * m + 1 = (2 * m) + 1 from by ring]
-    exact step_stepStar (r2_step 0 (2 * m + 2) 1 (2 * m))
-  -- R1R1R2 chain: m rounds
-  apply stepStar_trans (c₂ := ⟨m, 2, 2, 2 * m + 1, m⟩)
-  · have h := r1r1r2_chain m 0 2 1 m
-    simp only [Nat.zero_add] at h
-    rw [show 2 + 2 * m = 2 * m + 2 from by ring,
-        show m + m = 2 * m from by ring,
-        show 1 + 2 * m = 2 * m + 1 from by ring] at h
+  · -- b=0: just a_to_c
+    have h := a_to_c (a+1) 0 0 d
+    simp only [Nat.zero_add, (by ring : 0 + 3 * (a + 1) = 3 * (a + 1))] at h
+    simp only [(by omega : 2 * 0 + 3 * (a + 1) = 3 * (a + 1)),
+               (by omega : d + 0 = d)]
     exact h
-  apply stepStar_trans (c₂ := ⟨m + 2, 0, 0, 2 * m + 3, m⟩)
-  · apply stepStar_trans (step_stepStar (r1_step m 1 1 (2 * m + 1) m))
-    exact step_stepStar (r1_step (m + 1) 0 0 (2 * m + 2) m)
-  -- R2 drain
-  apply stepStar_trans (c₂ := ⟨2, 2 * m, 0, 2 * m + 3, 0⟩)
-  · have h := r2_drain m 2 0 (2 * m + 3)
-    simp only [Nat.zero_add] at h
-    rw [show 2 + m = m + 2 from by ring] at h; exact h
-  -- Tail
-  have h := gen_tail (2 * m) 1 (2 * m + 3)
-  rw [show (1 : ℕ) + 1 = 2 from by ring,
-      show 3 * 1 + 2 * (2 * m) + 3 = 4 * m + 6 from by ring,
-      show 2 * m + 3 + 2 * m = 4 * m + 3 from by ring] at h; exact h
-
--- Rest of transition for even d=2m+2
-theorem rest_even (m : ℕ) :
-    ⟨0, 1, 2 * m + 4, 0, 2 * m + 2⟩ [fm]⊢* ⟨0, 0, 4 * m + 8, 4 * m + 5, 0⟩ := by
-  apply stepStar_trans (c₂ := ⟨0, 2, 2 * m + 3, 1, 2 * m + 1⟩)
-  · rw [show 2 * m + 4 = (2 * m + 3) + 1 from by ring,
-        show (1 : ℕ) = 0 + 1 from rfl]
-    apply stepStar_trans (step_stepStar (r1_step 0 0 (2 * m + 3) 0 (2 * m + 2)))
-    rw [show 2 * m + 2 = (2 * m + 1) + 1 from by ring]
-    exact step_stepStar (r2_step 0 (2 * m + 3) 1 (2 * m + 1))
-  -- R1R1R2 chain: m rounds
-  apply stepStar_trans (c₂ := ⟨m, 2, 3, 2 * m + 1, m + 1⟩)
-  · have h := r1r1r2_chain m 0 3 1 (m + 1)
-    simp only [Nat.zero_add] at h
-    rw [show 3 + 2 * m = 2 * m + 3 from by ring,
-        show m + 1 + m = 2 * m + 1 from by ring,
-        show 1 + 2 * m = 2 * m + 1 from by ring] at h; exact h
-  apply stepStar_trans (c₂ := ⟨m + 2, 0, 1, 2 * m + 3, m + 1⟩)
-  · apply stepStar_trans (step_stepStar (r1_step m 1 2 (2 * m + 1) (m + 1)))
-    exact step_stepStar (r1_step (m + 1) 0 1 (2 * m + 2) (m + 1))
-  apply stepStar_trans (c₂ := ⟨m + 1, 2, 1, 2 * m + 3, m⟩)
-  · rw [show m + 2 = (m + 1) + 1 from by ring, show m + 1 = m + 1 from rfl]
-    exact step_stepStar (r2_step (m + 1) 1 (2 * m + 3) m)
-  apply stepStar_trans (c₂ := ⟨m + 2, 1, 0, 2 * m + 4, m⟩)
-  · exact step_stepStar (r1_step (m + 1) 1 0 (2 * m + 3) m)
-  -- R2 drain
-  apply stepStar_trans (c₂ := ⟨2, 2 * m + 1, 0, 2 * m + 4, 0⟩)
-  · have h := r2_drain m 2 1 (2 * m + 4)
-    rw [show 2 + m = m + 2 from by ring, show 1 + 2 * m = 2 * m + 1 from by ring] at h
+  · -- b=1: R3, R1, then a_to_c
+    step fm; step fm
+    show ⟨a+1, 0, 2, d+1, 0⟩ [fm]⊢* ⟨0, 0, 2+3*(a+1), d+1, 0⟩
+    have h := a_to_c (a+1) 0 2 (d+1)
+    simp only [Nat.zero_add] at h; exact h
+  · -- b=2: R3, R1, R1, then a_to_c
+    step fm; step fm; step fm
+    show ⟨a+2, 0, 1, d+2, 0⟩ [fm]⊢* ⟨0, 0, 4+3*(a+1), d+2, 0⟩
+    have h := a_to_c (a+2) 0 1 (d+2)
+    simp only [Nat.zero_add, (by ring : 1 + 3 * (a + 2) = 4 + 3 * (a + 1))] at h
     exact h
-  -- Tail
-  have h := gen_tail (2 * m + 1) 1 (2 * m + 4)
-  rw [show (1 : ℕ) + 1 = 2 from by ring,
-      show 3 * 1 + 2 * (2 * m + 1) + 3 = 4 * m + 8 from by ring,
-      show 2 * m + 4 + (2 * m + 1) = 4 * m + 5 from by ring] at h; exact h
+  · -- b+3: R3, R1, R1, R1, then IH
+    step fm; step fm; step fm; step fm
+    show ⟨a+3, b, 0, d+3, 0⟩ [fm]⊢* ⟨0, 0, 2*(b+3)+3*(a+1), d+(b+3), 0⟩
+    have h := ih b (by omega) (a+2) (d+3)
+    simp only [(by ring : (a+2)+1 = a+3),
+               (by ring : 2*b+3*((a+2)+1) = 2*(b+3)+3*(a+1)),
+               (by ring : (d+3)+b = d+(b+3))] at h
+    exact h
 
--- Main transition: (0, 0, d+3, d, 0) → (0, 0, 2*d+4, 2*d+1, 0)
-theorem main_trans (d : ℕ) : ⟨0, 0, d + 3, d, 0⟩ [fm]⊢⁺ ⟨0, 0, 2 * d + 4, 2 * d + 1, 0⟩ := by
-  rcases d with _ | d
-  · execute fm 3
-  · apply stepStar_stepPlus_stepPlus (c₂ := ⟨0, 0, d + 4, 0, d + 1⟩)
-    · have h := r4_chain (d + 1) (d + 4) 0 0
-      simp only [Nat.zero_add] at h; exact h
-    apply step_stepStar_stepPlus (c₂ := ⟨0, 1, d + 3, 0, d + 1⟩)
-    · show fm ⟨0, 0, (d + 3) + 1, 0, d + 1⟩ = some ⟨0, 1, d + 3, 0, d + 1⟩
-      simp [fm]
-    -- Parity split
-    rcases Nat.even_or_odd d with ⟨m, hm⟩ | ⟨m, hm⟩
-    · subst hm
-      have h := rest_odd m
-      convert h using 2; ring_nf
-    · subst hm
-      have h := rest_even m
-      convert h using 2; ring_nf
+-- Main transition for odd n: n = 2*m+1
+theorem main_trans_odd (m : ℕ) : ⟨0, 0, 2*m+4, 2*m+1, 0⟩ [fm]⊢⁺ ⟨0, 0, 4*m+6, 4*m+3, 0⟩ := by
+  apply stepStar_stepPlus_stepPlus
+  · have h := d_to_e (2*m+1) (2*m+4) 0 0
+    simp only [Nat.zero_add] at h; exact h
+  step fm; step fm
+  -- Now: (1, 0, 2*m+2, 1, 2*m+1)
+  apply stepStar_trans (c₂ := ⟨m+2, 0, 0, 2*m+3, m⟩)
+  · have h := r2r1r1_chain (m+1) 0 0 1 m
+    simp only [Nat.zero_add, (by ring : 0 + 2 * (m + 1) = 2 * m + 2),
+               (by ring : m + (m + 1) = 2 * m + 1),
+               (by ring : 1 + 2 * (m + 1) = 2 * m + 3)] at h
+    exact h
+  apply stepStar_trans (c₂ := ⟨2, 2*m, 0, 2*m+3, 0⟩)
+  · have h := r2_chain m 2 0 (2*m+3) 0
+    simp only [Nat.zero_add, (by ring : 2 + m = m + 2)] at h; exact h
+  have h := tail_cleanup (2*m) 1 (2*m+3)
+  simp only [(by ring : 1 + 1 = 2),
+             (by ring : 2 * (2 * m) + 3 * 2 = 4 * m + 6),
+             (by ring : 2 * m + 3 + 2 * m = 4 * m + 3)] at h
+  exact h
+
+-- Main transition for even n >= 2: n = 2*(m+1)
+theorem main_trans_even (m : ℕ) : ⟨0, 0, 2*m+5, 2*m+2, 0⟩ [fm]⊢⁺ ⟨0, 0, 4*m+8, 4*m+5, 0⟩ := by
+  apply stepStar_stepPlus_stepPlus
+  · have h := d_to_e (2*m+2) (2*m+5) 0 0
+    simp only [Nat.zero_add] at h; exact h
+  step fm; step fm
+  -- Now: (1, 0, 2*m+3, 1, 2*m+2)
+  apply stepStar_trans (c₂ := ⟨m+2, 0, 1, 2*m+3, m+1⟩)
+  · have h := r2r1r1_chain (m+1) 0 1 1 (m+1)
+    simp only [Nat.zero_add, (by ring : 1 + 2 * (m + 1) = 2 * m + 3),
+               (by ring : m + 1 + (m + 1) = 2 * m + 2)] at h
+    exact h
+  -- Phase 4: R2, R1
+  step fm; step fm
+  -- Now: (m+2, 1, 0, 2*m+4, m)
+  apply stepStar_trans (c₂ := ⟨2, 2*m+1, 0, 2*m+4, 0⟩)
+  · have h := r2_chain m 2 1 (2*m+4) 0
+    simp only [Nat.zero_add, (by ring : 2 + m = m + 2),
+               (by ring : 1 + 2 * m = 2 * m + 1)] at h
+    exact h
+  have h := tail_cleanup (2*m+1) 1 (2*m+4)
+  simp only [(by ring : 1 + 1 = 2),
+             (by ring : 2 * (2 * m + 1) + 3 * 2 = 4 * m + 8),
+             (by ring : 2 * m + 4 + (2 * m + 1) = 4 * m + 5)] at h
+  exact h
 
 theorem nonhalt : ¬halts fm c₀ := by
   apply stepStar_not_halts_not_halts (c₂ := ⟨0, 0, 3, 0, 0⟩) (by execute fm 1)
-  apply progress_nonhalt_simple (fm := fm) (A := ℕ) (fun d ↦ ⟨0, 0, d + 3, d, 0⟩) 0
-  intro d
-  exact ⟨2 * d + 1, main_trans d⟩
+  apply progress_nonhalt_simple (fm := fm) (A := ℕ) (fun n ↦ ⟨0, 0, n+3, n, 0⟩) 0
+  intro n
+  rcases n with _ | n
+  · exists 1; execute fm 3
+  · rcases Nat.even_or_odd n with ⟨m, hm⟩ | ⟨m, hm⟩
+    · subst hm
+      exists 2*(2*m+1)+1
+      show ⟨0, 0, m+m+1+3, m+m+1, 0⟩ [fm]⊢⁺ ⟨0, 0, (2*(2*m+1)+1)+3, 2*(2*m+1)+1, 0⟩
+      simp only [(by ring : m + m + 1 = 2 * m + 1),
+                 (by ring : 2 * (2 * m + 1) + 1 = 4 * m + 3)]
+      exact main_trans_odd m
+    · subst hm
+      exists 2*(2*(m+1))+1
+      show ⟨0, 0, 2*m+1+1+3, 2*m+1+1, 0⟩ [fm]⊢⁺ ⟨0, 0, (2*(2*(m+1))+1)+3, 2*(2*(m+1))+1, 0⟩
+      simp only [(by ring : 2 * m + 1 + 1 + 3 = 2 * m + 5),
+                 (by ring : 2 * m + 1 + 1 = 2 * m + 2),
+                 (by ring : 2 * (2 * (m + 1)) + 1 = 4 * m + 5)]
+      exact main_trans_even m
+
+end Sz21_140_unofficial_15

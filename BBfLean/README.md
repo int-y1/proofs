@@ -28,11 +28,15 @@ The files numbered from `Sz21_140_unofficial_1.lean` to `Sz21_140_unofficial_140
 
 All 140 FMs have been proven to be non-halting.
 
-Among all Opus 4.6 proofs, the top 5 hardest FMs by token count are: #19 (193k tokens), #135 (192k tokens), #132 (158k tokens), #15 (158k tokens), #133 (146k tokens)
+Among all Opus 4.6 proofs, the top 2 hardest FMs by token count are: #19 (181k tokens), #15 (167k tokens). (Unfortunately, token count is influenced by LLM luck.)
+
+### Size 22
+
+There are 2003 FMs in `sz22_2003_unofficial.txt`, so this will take a lot of Opus 4.6 tokens.
 
 Prompt that I might use for size 22:
 ```
 Make sure the Lean environment is set up correctly, and that `~/proofs/BBfLean/BBfLean.lean` compiles. Afterwards, you should repeat this process until every `sorry` in `~/proofs/BBfLean/Size22/` is filled in:
-* Pick 7 random files in `~/proofs/BBfLean/Size22/` that contain a `sorry`.
-* Launch an agent on each of the random files to fill in the `sorry`. Give these additional instructions when launching the agent: Do not clone `~/proofs/`, and instead, work directly in `~/proofs/BBfLean/Size22/`. After you finish writing the proof, make sure that there are no warnings, no lint messages, no easy-to-fix info messages, and no useless comments.
+* Pick 10 files in `~/proofs/BBfLean/Size22/` that contain a `sorry`.
+* Launch an agent on each file to fill in the `sorry`. Give these additional instructions when launching the agent: Do not clone `~/proofs/`, and instead, work directly in `~/proofs/BBfLean/Size22/`. After you finish writing the proof, make sure that there are no warnings, no lint messages, no easy-to-fix info messages, and no rambling comments.
 ```
