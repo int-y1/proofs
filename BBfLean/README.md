@@ -6,7 +6,7 @@ Here is a summary of this directory:
 * `BBfLean.lean`: Contains all the proofs that do not have a `sorry`. Also contains the author of each proof.
 * `Size20`: Contains proofs of FMs of size 20.
 * `Size21`: Contains proofs of FMs of size 21.
-* `TUTORIAL.md`: A tutorial on how to write Lean proofs. This is entirely written by Claude Opus 4.6. Sorry in advance if this tutorial contains slop.
+* `CLAUDE.md`: A tutorial on how to write Lean proofs. This is entirely written by Claude Opus 4.6. Sorry in advance if this tutorial contains slop.
 
 ### Size 20
 
@@ -39,4 +39,5 @@ Prompt that I might use for size 22:
 Make sure the Lean environment is set up correctly, and that `~/proofs/BBfLean/BBfLean.lean` compiles. Afterwards, you should repeat this process until every `sorry` in `~/proofs/BBfLean/Size22/` is filled in:
 * Pick 10 files in `~/proofs/BBfLean/Size22/` that contain a `sorry`.
 * Launch an agent on each file to fill in the `sorry`. Give these additional instructions when launching the agent: Do not clone `~/proofs/`, and instead, work directly in `~/proofs/BBfLean/Size22/`. After you finish writing the proof, make sure that there are no warnings, no lint messages, no easy-to-fix info messages, and no rambling comments.
+* If an agent fails to fill in the `sorry`, you should make a 2nd attempt. If the agent still fails to fill in the `sorry`, you should give up on this file, and you should NOT make a 3rd attempt.
 ```
