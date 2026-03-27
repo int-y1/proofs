@@ -1,0 +1,127 @@
+import BBfLean.FM
+import Mathlib.Tactic.Ring
+
+/-!
+# sz22_2003_unofficial #56: [1/15, 9/77, 98/3, 5/49, 33/2]
+
+Vector representation:
+```
+ 0 -1 -1  0  0
+ 0  2  0 -1 -1
+ 1 -1  0  2  0
+ 0  0  1 -2  0
+-1  1  0  0  1
+```
+
+This Fractran program doesn't halt.
+
+Author: Claude Opus 4.6
+-/
+
+namespace Sz22_2003_unofficial_56
+
+def Q := ℕ × ℕ × ℕ × ℕ × ℕ
+def c₀ : Q := ⟨1, 0, 0, 0, 0⟩
+def fm : Q → Option Q := fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+2, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none
+
+theorem d_to_c : ⟨a, 0, c, d+2*k, 0⟩ [fm]⊢* ⟨a, 0, c+k, d, 0⟩ := by
+  have many_step : ∀ k c, ⟨a, 0, c, d+2*k, 0⟩ [fm]⊢* ⟨a, 0, c+k, d, 0⟩ := by
+    intro k; induction' k with k h <;> intro c
+    · exists 0
+    rw [Nat.mul_succ, ← Nat.add_assoc]
+    step fm
+    apply stepStar_trans (h _)
+    ring_nf; finish
+  exact many_step k c
+
+theorem ac_to_ae : ⟨a+k, 0, k, 0, e⟩ [fm]⊢* ⟨a, 0, 0, 0, e+k⟩ := by
+  have many_step : ∀ k a e, ⟨a+k, 0, k, 0, e⟩ [fm]⊢* ⟨a, 0, 0, 0, e+k⟩ := by
+    intro k; induction' k with k h <;> intro a e
+    · exists 0
+    rw [← Nat.add_assoc]
+    step fm; step fm
+    apply stepStar_trans (h _ _)
+    ring_nf; finish
+  exact many_step k a e
+
+theorem ae_step : ⟨a+1, 0, 0, 0, e⟩ [fm]⊢⁺ ⟨a+1, 0, 0, 2, e+1⟩ := by
+  step fm; step fm; finish
+
+theorem r3_chain : ⟨a, b+k, 0, d, 0⟩ [fm]⊢* ⟨a+k, b, 0, d+2*k, 0⟩ := by
+  have many_step : ∀ k a d, ⟨a, b+k, 0, d, 0⟩ [fm]⊢* ⟨a+k, b, 0, d+2*k, 0⟩ := by
+    intro k; induction' k with k h <;> intro a d
+    · exists 0
+    rw [show b + (k + 1) = (b + k) + 1 from by ring]
+    step fm
+    apply stepStar_trans (h _ _)
+    ring_nf; finish
+  exact many_step k a d
+
+theorem r2r3_phase_gen : ∀ E, ∀ A B, ⟨A, B, 0, 2, E⟩ [fm]⊢* ⟨A+B+2*E, 0, 0, 2*B+3*E+2, 0⟩ := by
+  intro E; induction' E using Nat.strongRecOn with E ih; intro A B
+  rcases E with _ | _ | E'
+  · have h := @r3_chain A 0 B 2; rw [Nat.zero_add] at h
+    refine stepStar_trans h ?_; ring_nf; finish
+  · step fm
+    have h := @r3_chain A 0 (B+2) 1; rw [Nat.zero_add] at h
+    refine stepStar_trans h ?_; ring_nf; finish
+  · step fm; step fm; step fm
+    apply stepStar_trans (ih E' (by omega) _ _)
+    ring_nf; finish
+
+theorem d3_trans : ⟨a+1, 0, 0, 3, 0⟩ [fm]⊢⁺ ⟨a+2, 0, 0, 4, 0⟩ := by
+  execute fm 6
+
+theorem d5_trans : ⟨a+1, 0, 0, 5, 0⟩ [fm]⊢⁺ ⟨a+1, 0, 0, 2, 0⟩ := by
+  execute fm 7
+
+theorem even_trans : ⟨m+k+2, 0, 0, 2*(k+1), 0⟩ [fm]⊢⁺ ⟨m+2*k+5, 0, 0, 3*k+8, 0⟩ := by
+  rw [show 2*(k+1) = 0 + 2*(k+1) from by ring]
+  apply stepStar_stepPlus_stepPlus d_to_c
+  simp only [Nat.zero_add]
+  rw [show m+k+2 = (m+1)+(k+1) from by ring]
+  apply stepStar_stepPlus_stepPlus ac_to_ae
+  apply stepPlus_stepStar_stepPlus ae_step
+  simp only [Nat.zero_add]
+  apply stepStar_trans (r2r3_phase_gen (k+2) (m+1) 0)
+  ring_nf; finish
+
+theorem odd_trans : ⟨m+j+3, 0, 0, 2*j+7, 0⟩ [fm]⊢⁺ ⟨m+2*j+4, 0, 0, 3*j+5, 0⟩ := by
+  rw [show 2*j+7 = 1 + 2*(j+3) from by ring]
+  apply stepStar_stepPlus_stepPlus d_to_c
+  simp only [Nat.zero_add]
+  step fm; step fm; step fm; step fm; step fm
+  rw [show m+j+2 = (m+2)+j from by ring]
+  apply stepStar_trans ac_to_ae
+  apply stepStar_trans (stepPlus_stepStar ae_step)
+  simp only [Nat.zero_add]
+  apply stepStar_trans (r2r3_phase_gen (j+1) (m+2) 0)
+  ring_nf; finish
+
+theorem nonhalt : ¬halts fm c₀ := by
+  apply stepStar_not_halts_not_halts (c₂ := ⟨3, 0, 0, 2, 0⟩)
+  · execute fm 12
+  apply progress_nonhalt (fm := fm)
+    (P := fun q ↦ ∃ a d, q = ⟨a, 0, 0, d, 0⟩ ∧ d ≥ 2 ∧ 2 * a ≥ d + 2)
+  · intro c ⟨a, d, hq, hd, ha⟩; subst hq
+    rcases Nat.even_or_odd d with ⟨K, hK⟩ | ⟨K, hK⟩
+    · rw [show K + K = 2 * K from by ring] at hK; subst hK
+      obtain ⟨k, rfl⟩ : ∃ k, K = k + 1 := ⟨K - 1, by omega⟩
+      obtain ⟨m, rfl⟩ : ∃ m, a = m + (k + 2) := ⟨a - (k + 2), by omega⟩
+      exact ⟨⟨m+2*k+5, 0, 0, 3*k+8, 0⟩, ⟨m+2*k+5, 3*k+8, rfl, by omega, by omega⟩, even_trans⟩
+    · subst hK
+      rcases (show K = 1 ∨ K = 2 ∨ K ≥ 3 from by omega) with rfl | rfl | hK3
+      · obtain ⟨m, rfl⟩ : ∃ m, a = m + 1 := ⟨a - 1, by omega⟩
+        exact ⟨⟨m+2, 0, 0, 4, 0⟩, ⟨m+2, 4, rfl, by omega, by omega⟩, d3_trans⟩
+      · obtain ⟨m, rfl⟩ : ∃ m, a = m + 1 := ⟨a - 1, by omega⟩
+        exact ⟨⟨m+1, 0, 0, 2, 0⟩, ⟨m+1, 2, rfl, by omega, by omega⟩, d5_trans⟩
+      · obtain ⟨j, rfl⟩ : ∃ j, K = j + 3 := ⟨K - 3, by omega⟩
+        obtain ⟨m, rfl⟩ : ∃ m, a = m + (j + 3) := ⟨a - (j + 3), by omega⟩
+        exact ⟨⟨m+2*j+4, 0, 0, 3*j+5, 0⟩, ⟨m+2*j+4, 3*j+5, rfl, by omega, by omega⟩, odd_trans⟩
+  · exact ⟨3, 2, rfl, by omega, by omega⟩
