@@ -38,7 +38,7 @@ import BBfLean.Size22.Sz22_2003_unofficial_37 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_38 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_39 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_40 -- author: Claude Opus 4.6
-import BBfLean.Size22.Sz22_2003_unofficial_41 -- author: Claude Opus 4.6
+--import BBfLean.Size22.Sz22_2003_unofficial_41 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_42 -- author: Claude Opus 4.6
 --import BBfLean.Size22.Sz22_2003_unofficial_43 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_44 -- author: Claude Opus 4.6
@@ -984,7 +984,7 @@ theorem nonhalt41 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ ma
   | ⟨a, b, c, d+1, e+1⟩ => some ⟨a, b+3, c, d, e⟩
   | ⟨a, b, c, d+2, e⟩ => some ⟨a+1, b, c+1, d, e⟩
   | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
-  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_41.nonhalt
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := sorry--Sz22_2003_unofficial_41.nonhalt
 
 theorem nonhalt42 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
   | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩

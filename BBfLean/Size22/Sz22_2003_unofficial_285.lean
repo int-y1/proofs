@@ -86,7 +86,7 @@ theorem loop (n C D E : ℕ) :
     rw [show C + 2 * (n + 1) = (C + 2) + 2 * n from by ring,
         show E + (n + 1) = (E + 1) + n from by ring]
     refine stepStar_trans (ih (C + 2) D (E + 1)) ?_
-    convert loop_round n C (D + 2 * n) E using 2 <;> ring
+    convert loop_round n C (D + 2 * n) E using 2; ring_nf
 
 private lemma r3r1_round (A B D : ℕ) :
     ⟨A+1, B+3, 0, D, 0⟩ [fm]⊢* ⟨A+3, B, (0 : ℕ), D+3, 0⟩ := by
@@ -102,7 +102,7 @@ theorem round_chain_r0 (N A D : ℕ) :
   | succ N ih =>
     rw [show 3 * (N + 1) = 3 * N + 3 from by ring]
     refine stepStar_trans (r3r1_round A (3 * N) D) ?_
-    convert ih (A + 2) (D + 3) using 2 <;> ring
+    convert ih (A + 2) (D + 3) using 2; ring_nf
 
 theorem round_chain_r2 (N A D : ℕ) :
     ⟨A+1, 3 * N + 2, 0, D, 0⟩ [fm]⊢* ⟨A + 1 + 2 * N, (2 : ℕ), 0, D + 3 * N, 0⟩ := by
@@ -111,7 +111,7 @@ theorem round_chain_r2 (N A D : ℕ) :
   | succ N ih =>
     rw [show 3 * (N + 1) + 2 = (3 * N + 2) + 3 from by ring]
     refine stepStar_trans (r3r1_round A (3 * N + 2) D) ?_
-    convert ih (A + 2) (D + 3) using 2 <;> ring
+    convert ih (A + 2) (D + 3) using 2; ring_nf
 
 private lemma tail_steps (A D : ℕ) :
     ⟨A+1, 2, 0, D, 0⟩ [fm]⊢* ⟨A+2, (0 : ℕ), 1, D+2, 0⟩ := by
@@ -129,12 +129,12 @@ theorem middle_even (m : ℕ) :
   · exact step_stepStar (step_r1 0 0 (2 * m + 2) 0 (2 * m + 1))
   apply stepStar_trans
   show ⟨1, 0, 2 * m + 2, 1, 2 * m + 1⟩ [fm]⊢* ⟨1 + m, (0 : ℕ), 2, 1 + 2 * m, m + 1⟩
-  · convert loop m 2 1 (m + 1) using 2 <;> ring
+  · convert loop m 2 1 (m + 1) using 2; ring_nf
   apply stepStar_trans
   show ⟨1 + m, 0, 2, 1 + 2 * m, m + 1⟩ [fm]⊢* ⟨m + 2, (0 : ℕ), 0, 1 + 2 * m + 2, m⟩
-  · convert loop_round m 0 (1 + 2 * m) m using 2 <;> ring
+  · convert loop_round m 0 (1 + 2 * m) m using 2; ring_nf
   show ⟨m + 2, 0, 0, 1 + 2 * m + 2, m⟩ [fm]⊢* ⟨(2 : ℕ), 2 * m, 0, 2 * m + 3, 0⟩
-  convert r2_drain m 2 0 (1 + 2 * m + 2) using 2 <;> ring
+  convert r2_drain m 2 0 (1 + 2 * m + 2) using 2; ring_nf
 
 theorem middle_odd (m : ℕ) :
     ⟨0, 0, 2 * m + 5, 0, 2 * m + 2⟩ [fm]⊢* ⟨(2 : ℕ), 2 * m + 1, 0, 2 * m + 4, 0⟩ := by
@@ -146,7 +146,7 @@ theorem middle_odd (m : ℕ) :
   · exact step_stepStar (step_r1 0 0 (2 * m + 3) 0 (2 * m + 2))
   apply stepStar_trans
   show ⟨1, 0, 2 * m + 3, 1, 2 * m + 2⟩ [fm]⊢* ⟨m + 2, (0 : ℕ), 1, 1 + 2 * (m + 1), m + 1⟩
-  · convert loop (m + 1) 1 1 (m + 1) using 2 <;> ring
+  · convert loop (m + 1) 1 1 (m + 1) using 2; ring_nf
   apply stepStar_trans
   show ⟨m + 2, 0, 1, 1 + 2 * (m + 1), m + 1⟩ [fm]⊢* ⟨m + 1, 2, 1, 1 + 2 * (m + 1), m⟩
   · exact step_stepStar (step_r2_b0 (m + 1) 1 (1 + 2 * (m + 1)) m)
@@ -154,7 +154,7 @@ theorem middle_odd (m : ℕ) :
   show ⟨m + 1, 2, 1, 1 + 2 * (m + 1), m⟩ [fm]⊢* ⟨m + 1 + 1, 1, 0, 1 + 2 * (m + 1) + 1, m⟩
   · exact step_stepStar (step_r1 (m + 1) 1 0 (1 + 2 * (m + 1)) m)
   show ⟨m + 1 + 1, 1, 0, 1 + 2 * (m + 1) + 1, m⟩ [fm]⊢* ⟨(2 : ℕ), 2 * m + 1, 0, 2 * m + 4, 0⟩
-  convert r2_drain m 2 1 (2 + 2 * (m + 1)) using 2 <;> ring
+  convert r2_drain m 2 1 (2 + 2 * (m + 1)) using 2; ring_nf
 
 theorem bootstrap : c₀ [fm]⊢* ⟨(2 : ℕ), 0, 0, 3, 0⟩ := by
   unfold c₀; execute fm 10
@@ -168,7 +168,7 @@ theorem main_trans (N : ℕ) :
   apply stepStar_trans
   show ⟨0, 0, 3 + 3 * (N + 1), 3 * (N + 1), 0⟩ [fm]⊢*
        ⟨(0 : ℕ), 0, 3 + 3 * (N + 1), 0, 3 * (N + 1)⟩
-  · convert r4_chain (3 * (N + 1)) (3 + 3 * (N + 1)) 0 using 2 <;> ring
+  · convert r4_chain (3 * (N + 1)) (3 + 3 * (N + 1)) 0 using 2; ring_nf
   -- Phase 3+: middle section and second half. Split on parity of N.
   -- Helper: chain stepStar proofs with arithmetic conversion
   -- Helper to bridge between non-definitionally-equal tuples in stepStar chains
@@ -181,7 +181,7 @@ theorem main_trans (N : ℕ) :
   · -- N = 2k (even case).
     suffices h : ⟨0, 0, 2 * (3 * k + 1) + 4, 0, 2 * (3 * k + 1) + 1⟩ [fm]⊢*
         ⟨1 + 1 + 2 * (4 * k + 2), (0 : ℕ), 0, 12 * k + 9 + 3 * (4 * k + 2), 0⟩ by
-      convert h using 2 <;> ring
+      convert h using 2; ring_nf
     exact stepStar_trans (middle_even (3 * k + 1))
       (stepStar_trans (bridge (round_chain_r2 (2 * k) 1 (2 * (3 * k + 1) + 3))
           (by ring) (by ring) (by ring) (by ring) (by ring))
@@ -198,7 +198,7 @@ theorem main_trans (N : ℕ) :
   · -- N = 2k+1 (odd case).
     suffices h : ⟨0, 0, 2 * (3 * k + 2) + 5, 0, 2 * (3 * k + 2) + 2⟩ [fm]⊢*
         ⟨1 + 1 + 2 * (4 * k + 4), (0 : ℕ), 0, 12 * k + 15 + 3 * (4 * k + 4), 0⟩ by
-      convert h using 2 <;> ring
+      convert h using 2; ring_nf
     exact stepStar_trans (middle_odd (3 * k + 2))
       (stepStar_trans (bridge (round_chain_r2 (2 * k + 1) 1 (2 * (3 * k + 2) + 4))
           (by ring) (by ring) (by ring) (by ring) (by ring))
@@ -218,6 +218,6 @@ theorem nonhalt : ¬halts fm c₀ := by
   apply progress_nonhalt_simple (fm := fm) (fun n ↦ ⟨4 * n + 2, 0, 0, 12 * n + 3, 0⟩) 0
   intro n
   refine ⟨4 * n + 1, ?_⟩
-  convert main_trans (4 * n) using 2; all_goals ring
+  convert main_trans (4 * n) using 2; all_goals ring_nf
 
 end Sz22_2003_unofficial_285

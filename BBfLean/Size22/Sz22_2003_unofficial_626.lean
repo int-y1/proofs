@@ -153,7 +153,7 @@ theorem odd_trans (m g : ℕ) :
         show 4*m+3 = (3*m+2)+(m+1) from by ring]
     have h := r1r1r3_chain (m+1) 0 0 0 (3*m+2) g
     simp only [Nat.zero_add] at h
-    convert h using 2; ring
+    convert h using 2; ring_nf
   apply stepStar_trans p3
   -- drain_a2
   have p4 : ⟨(2:ℕ), 0, m+1, 2*m+2, 3*m+2, g⟩ [fm]⊢*
@@ -161,7 +161,7 @@ theorem odd_trans (m g : ℕ) :
     rw [show m+1 = 0+(m+1) from by ring]
     have h := drain_a2 (m+1) 0 (2*m+2) (3*m+2) g
     simp only [Nat.zero_add] at h
-    convert h using 2; ring
+    convert h using 2; ring_nf
   apply stepStar_trans p4
   -- final R2, R2
   have p5 := final_r2r2 (2*m+2) (4*m+3) (g+2*m+2)
@@ -180,7 +180,7 @@ theorem nonhalt : ¬halts fm c₀ := by
       refine ⟨⟨0, 0, 0, m+m+1, 2*(m+m+1)+1, g+2*m+3⟩,
         ⟨m+m+1, g+2*m+3, rfl, by nlinarith⟩, ?_⟩
       have := even_trans m g
-      convert this using 2; ring
+      convert this using 2; ring_nf
     · -- d = 2*m + 1
       subst hm
       have hf1 : f ≥ 1 := by nlinarith
@@ -188,7 +188,7 @@ theorem nonhalt : ¬halts fm c₀ := by
       refine ⟨⟨0, 0, 0, 2*m+2, 2*(2*m+2)+1, g+2*m+4⟩,
         ⟨2*m+2, g+2*m+4, rfl, by nlinarith⟩, ?_⟩
       have := odd_trans m g
-      convert this using 2; ring
+      convert this using 2; ring_nf
   · exact ⟨0, 1, rfl, by omega⟩
 
 end Sz22_2003_unofficial_626
