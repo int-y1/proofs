@@ -40,7 +40,7 @@ import BBfLean.Size22.Sz22_2003_unofficial_39 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_40 -- author: Claude Opus 4.6
 --import BBfLean.Size22.Sz22_2003_unofficial_41 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_42 -- author: Claude Opus 4.6
---import BBfLean.Size22.Sz22_2003_unofficial_43 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_43 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_44 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_45 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_46 -- author: Claude Opus 4.6
@@ -82,7 +82,7 @@ import BBfLean.Size22.Sz22_2003_unofficial_81 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_82 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_83 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_84 -- author: Claude Opus 4.6
---import BBfLean.Size22.Sz22_2003_unofficial_85 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_85 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_86 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_87 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_88 -- author: Claude Opus 4.6
@@ -1000,7 +1000,7 @@ theorem nonhalt43 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ ma
   | ⟨a, b, c, d+1, e+1⟩ => some ⟨a+1, b+1, c, d, e⟩
   | ⟨a, b, c, d+2, e⟩ => some ⟨a, b, c+1, d, e⟩
   | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+3⟩
-  | _ => none) ⟨1, 0, 0, 0, 0⟩ := sorry--Sz22_2003_unofficial_43.nonhalt
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_43.nonhalt
 
 theorem nonhalt44 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
   | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
@@ -1339,7 +1339,7 @@ theorem nonhalt85 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ ma
   | ⟨a, b, c, d+1, e+1⟩ => some ⟨a+1, b, c, d, e⟩
   | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
   | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
-  | _ => none) ⟨1, 0, 0, 0, 0⟩ := sorry--Sz22_2003_unofficial_85.nonhalt
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_85.nonhalt
 
 theorem nonhalt86 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
   | ⟨a+1, b+1, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
