@@ -2,6 +2,7 @@ Random proofs in Lean 4. For a list of maintained files, see:
 
 * `BBfLean/Size20Summary.lean`
 * `BBfLean/Size21Summary.lean`
+* `BBfLean/Size22Summary.lean`
 * `BusyLean/BusyLean.lean`
 * `SquarePyramid/SquarePyramid.lean`
 
