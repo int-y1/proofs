@@ -48,7 +48,7 @@ Prompt that I used for size 22:
 ```
 Make sure the Lean environment is set up correctly, and that `~/proofs/BBfLean/Size21Summary.lean` compiles. Afterwards, you should repeat this process until every `sorry` in `~/proofs/BBfLean/Size22/` is filled in:
 * Pick a file in `~/proofs/BBfLean/Size22/` that contains a `sorry`.
-* Launch an agent on this file to fill in the `sorry`. Give these additional instructions when launching the agent: First, read `~/proofs/BBfLean/CLAUDE.md` for guidance on proofs. Do not clone `~/proofs/`, and instead, work directly in `~/proofs/BBfLean/Size22/`. After you finish writing the proof, make sure that there are no warnings, no lint messages, no easy-to-fix info messages, and no rambling comments.
+* Launch an agent on this file to fill in the `sorry`. Give these additional instructions when launching the agent: First, read `~/proofs/BBfLean/CLAUDE.md` for guidance on proofs. Do not clone `~/proofs/`, and instead, work directly in `~/proofs/BBfLean/Size22/`. After you finish writing the proof, make sure that there are no warnings, no lint messages, no easy-to-fix info messages, no uses of `set_option`, and no rambling comments.
 * Repeat until 2 agents are launched. If an agent finishes, you should launch a new agent to maintain 2 agents.
 * When an agent finishes, you should verify the proof using `lake`. If the proof fails verification, you should launch a 2nd agent to rewrite the proof. If the proof still fails verification, you should give up on this file, and you should NOT launch a 3rd agent.
 ```

@@ -20,11 +20,6 @@ Author: Claude Opus 4.6
 
 namespace Sz22_2003_unofficial_287
 
-set_option linter.unnecessarySeqFocus false
-set_option linter.unusedSimpArgs false
-set_option linter.unusedTactic false
-set_option linter.unreachableTactic false
-
 def Q := ℕ × ℕ × ℕ × ℕ × ℕ
 def c₀ : Q := ⟨1, 0, 0, 0, 0⟩
 def fm : Q → Option Q := fun q ↦ match q with
@@ -86,7 +81,7 @@ private theorem process_c0 (j d : ℕ) :
   have ht := tail_cleanup (2*d+2) (j+1) (2*j+2*d+4)
   simp only [show (j+1)+1 = j+2 from by ring] at ht
   have h := stepStar_trans hr ht
-  convert h using 2 <;> ring_nf
+  convert h using 2; ring_nf
 
 -- Helper: compose R2, R1, r2_chain, tail_cleanup for the c=1 base case
 private theorem process_c1 (j d : ℕ) :
@@ -103,11 +98,10 @@ private theorem process_c1 (j d : ℕ) :
   have ht := tail_cleanup (2*d+1) (j+1) (2*j+2*d+3)
   simp only [show (j+1)+1 = j+2 from by ring] at ht
   have h := stepStar_trans hr ht
-  convert h using 2 <;> ring_nf
+  convert h using 2; ring_nf
 
 -- (a+2, 0, c, 2*a+2, d) ->* (0, 0, c+3*a+d+6, 2*a+2*d+2, 0)
 -- with a+1 ≥ d
-set_option maxRecDepth 512 in
 private theorem process : ∀ n, ∀ a c d, c + d ≤ n → c + a ≥ d →
     ⟨a+2, 0, c, 2*a+2, d⟩ [fm]⊢* ⟨0, 0, c+3*a+d+6, 2*a+2*d+2, 0⟩ := by
   intro n; induction' n using Nat.strongRecOn with n IH; intro a c d hle hge
@@ -115,24 +109,24 @@ private theorem process : ∀ n, ∀ a c d, c + d ≤ n → c + a ≥ d →
   | 0, c =>
     have h := a_to_c (a+2) 0 c (2*a+2)
     simp only [Nat.zero_add] at h
-    convert h using 2 <;> ring
+    convert h using 2
   | d+1, 0 =>
     -- c=0: a ≥ d+1 (from 0 + a ≥ d+1, i.e., a ≥ d+1)
     obtain ⟨j, rfl⟩ : ∃ j, a = d + 1 + j := ⟨a - d - 1, by omega⟩
     have h := process_c0 j d
-    convert h using 2 <;> ring_nf
+    convert h using 2; ring_nf
   | d+1, 1 =>
     -- c=1: 1 + a ≥ d+1, i.e., a ≥ d
     obtain ⟨j, rfl⟩ : ∃ j, a = d + j := ⟨a - d, by omega⟩
     have h := process_c1 j d
-    convert h using 2 <;> ring_nf
+    convert h using 2; ring_nf
   | d+1, c+2 =>
     rw [show a+2 = (a+1)+1 from by ring,
         show c+2 = (c+1)+1 from by ring,
         show 2*a+2 = (2*a+1)+1 from by ring]
     step fm; step fm; step fm
     have h := IH (c+d) (by omega) (a+1) c d (by omega) (by omega)
-    convert h using 2 <;> ring_nf
+    convert h using 2; ring_nf
 
 theorem main_trans (d m : ℕ) (hm : m ≥ 3) :
     ⟨0, 0, d+m, d, 0⟩ [fm]⊢⁺ ⟨0, 0, 2*d+m+3, 2*d+2, 0⟩ := by
@@ -140,15 +134,14 @@ theorem main_trans (d m : ℕ) (hm : m ≥ 3) :
   apply stepStar_stepPlus_stepPlus
   · have h := d_to_e d (d+m'+3) 0 0
     simp only [Nat.zero_add] at h; exact h
-  simp only [show d+(m'+3) = (d+m'+2)+1 from by ring,
-             show 2*d+(m'+3)+3 = 2*d+m'+6 from by ring]
+  simp only [show 2*d+(m'+3)+3 = 2*d+m'+6 from by ring]
   step fm
   rw [show d+m'+2 = (d+m'+1)+1 from by ring]
   step fm
   rw [show d+m'+1 = (d+m')+1 from by ring]
   step fm
   have h := process (d+m'+d) 0 (d+m') d (by omega) (by omega)
-  convert h using 2 <;> ring_nf
+  convert h using 2; ring_nf
 
 theorem nonhalt : ¬halts fm c₀ := by
   apply stepStar_not_halts_not_halts (c₂ := ⟨0, 0, 3, 0, 0⟩) (by execute fm 1)
