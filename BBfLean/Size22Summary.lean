@@ -26,7 +26,7 @@ import BBfLean.Size22.Sz22_2003_unofficial_25 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_26 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_27 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_28 -- author: Claude Opus 4.6
---import BBfLean.Size22.Sz22_2003_unofficial_29 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_29 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_30 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_31 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_32 -- author: Claude Opus 4.6
@@ -38,7 +38,7 @@ import BBfLean.Size22.Sz22_2003_unofficial_37 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_38 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_39 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_40 -- author: Claude Opus 4.6
---import BBfLean.Size22.Sz22_2003_unofficial_41 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_41 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_42 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_43 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_44 -- author: Claude Opus 4.6
@@ -427,7 +427,7 @@ import BBfLean.Size22.Sz22_2003_unofficial_426 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_427 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_428 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_429 -- author: Claude Opus 4.6
---import BBfLean.Size22.Sz22_2003_unofficial_430 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_430 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_431 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_432 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_433 -- author: Claude Opus 4.6
@@ -655,6 +655,18 @@ import BBfLean.Size22.Sz22_2003_unofficial_650 -- author: Claude Opus 4.6
 Summary of all proofs in `Size22`.
 This file provides extra confidence that the FMs are properly stated.
 -/
+
+/-- This cryptid is equivalent to #29, #41, and #430. -/
+theorem hydra29
+    (a : ℕ → ℕ) (b : ℕ → ℤ)
+    (a_ini : a 0 = 1)
+    (a_rec : ∀ n, a (n + 1) = if a n % 2 = 0 then 5 * (a n / 2) + 2 else 5 * (a n / 2))
+    (b_ini : b 0 = 0)
+    (b_rec : ∀ n, b (n + 1) = if a n % 2 = 0 then b n - 1 else b n + 2) :
+    ∀ n, b n ≥ 0 := by
+  sorry
+
+/- All nonhalt theorems. -/
 
 theorem nonhalt1 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
   | ⟨a, b+1, c+1, d+1, e⟩ => some ⟨a, b, c, d, e⟩
@@ -886,7 +898,7 @@ theorem nonhalt29 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ ma
   | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
   | ⟨a, b, c, d+2, e⟩ => some ⟨a+1, b, c+1, d, e⟩
   | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
-  | _ => none) ⟨1, 0, 0, 0, 0⟩ := sorry--Sz22_2003_unofficial_29.nonhalt
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_29.nonhalt_iff_hydra.2 hydra29
 
 theorem nonhalt30 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
   | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
@@ -984,7 +996,7 @@ theorem nonhalt41 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ ma
   | ⟨a, b, c, d+1, e+1⟩ => some ⟨a, b+3, c, d, e⟩
   | ⟨a, b, c, d+2, e⟩ => some ⟨a+1, b, c+1, d, e⟩
   | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
-  | _ => none) ⟨1, 0, 0, 0, 0⟩ := sorry--Sz22_2003_unofficial_41.nonhalt
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_41.nonhalt_iff_hydra.2 hydra29
 
 theorem nonhalt42 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
   | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
@@ -4139,7 +4151,7 @@ theorem nonhalt430 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ m
   | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
   | ⟨a, b, c+2, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
   | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
-  | _ => none) ⟨1, 0, 0, 0, 0⟩ := sorry--Sz22_2003_unofficial_430.nonhalt
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_430.nonhalt_iff_hydra.2 hydra29
 
 theorem nonhalt431 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
   | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
