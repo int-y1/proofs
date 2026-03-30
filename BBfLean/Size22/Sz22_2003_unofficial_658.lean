@@ -147,4 +147,4 @@ theorem nonhalt : ¬halts fm c₀ := by
           show (g + 2 * m + 4) + 2 * (2 * m + 4) + 2 = g + 6 * m + 14 from by ring,
           show (g + 2 * m + 4) + 1 = g + 2 * m + 5 from by ring]
       exact trans_odd m
-  · exact ⟨2, 3, by ring, by omega⟩
+  · exact ⟨2, 3, by ring_nf, by omega⟩

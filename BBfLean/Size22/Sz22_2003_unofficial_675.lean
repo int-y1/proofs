@@ -149,23 +149,23 @@ theorem nonhalt : ¬halts fm c₀ := by
   · intro c ⟨b, e, hq⟩; subst hq
     rcases (show b ≤ e ∨ e < b from by omega) with hbe | hbe
     · obtain ⟨f, rfl⟩ : ∃ f, e = b + f := ⟨e - b, by omega⟩
-      refine ⟨⟨0, 6 * b + 3, 0, 0, f + 4 * b + 4⟩, ⟨3 * b + 1, b + f + 2, by ring⟩, ?_⟩
+      refine ⟨⟨0, 6 * b + 3, 0, 0, f + 4 * b + 4⟩, ⟨3 * b + 1, b + f + 2, by ring_nf⟩, ?_⟩
       apply stepPlus_stepStar_stepPlus (phase12 b (b + f))
       have key := phase3_a b f
-      convert key using 2; ring
+      convert key using 2; ring_nf
     · rcases Nat.even_or_odd (b - e) with ⟨p, hp⟩ | ⟨p, hp⟩
       · have hb : b = e + 2 * p := by omega
         subst hb
         refine ⟨⟨0, 6 * e + 12 * p + 3, 0, 0, 4 * e + 6 * p + 4⟩,
-          ⟨3 * e + 6 * p + 1, e + 2, by ring⟩, ?_⟩
+          ⟨3 * e + 6 * p + 1, e + 2, by ring_nf⟩, ?_⟩
         apply stepPlus_stepStar_stepPlus (phase12 (e + 2 * p) e)
         have key := phase3_b_even e p
-        convert key using 2; ring
+        convert key using 2; ring_nf
       · have hb : b = e + 2 * p + 1 := by omega
         subst hb
         refine ⟨⟨0, 6 * e + 12 * p + 9, 0, 0, 4 * e + 6 * p + 7⟩,
-          ⟨3 * e + 6 * p + 4, e + 2, by ring⟩, ?_⟩
+          ⟨3 * e + 6 * p + 4, e + 2, by ring_nf⟩, ?_⟩
         apply stepPlus_stepStar_stepPlus (phase12 (e + 2 * p + 1) e)
         have key := phase3_b_odd e p
-        convert key using 2; ring
-  · exact ⟨1, 3, by ring⟩
+        convert key using 2; ring_nf
+  · exact ⟨1, 3, by ring_nf⟩

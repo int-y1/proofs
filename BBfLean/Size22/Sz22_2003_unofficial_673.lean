@@ -145,10 +145,10 @@ theorem nonhalt : ¬halts fm c₀ := by
     rcases Nat.even_or_odd d with ⟨n, hn⟩ | ⟨n, hn⟩
     · rw [show n + n = 2 * n from by ring] at hn; subst hn
       refine ⟨⟨0, 0, 0, 6 * n + 4, 2 * n + e + 4⟩,
-        ⟨6 * n + 3, 2 * n + e + 2, by ring, by omega⟩,
+        ⟨6 * n + 3, 2 * n + e + 2, by ring_nf, by omega⟩,
         main_even n (by omega)⟩
     · subst hn
       refine ⟨⟨0, 0, 0, 6 * n + 7, 2 * n + e + 5⟩,
-        ⟨6 * n + 6, 2 * n + e + 3, by ring, by omega⟩,
+        ⟨6 * n + 6, 2 * n + e + 3, by ring_nf, by omega⟩,
         main_odd n (by omega)⟩
   · exact ⟨0, 0, rfl, by omega⟩
