@@ -1080,7 +1080,7 @@ import BBfLean.Size22.Sz22_2003_unofficial_1079 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_1080 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_1081 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_1082 -- author: Claude Opus 4.6
---import BBfLean.Size22.Sz22_2003_unofficial_1083 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1083 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_1084 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_1085 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_1086 -- author: Claude Opus 4.6
@@ -9910,7 +9910,7 @@ theorem nonhalt1083 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ 
   | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+2⟩
   | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
   | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
-  | _ => none) ⟨1, 0, 0, 0, 0⟩ := sorry--Sz22_2003_unofficial_1083.nonhalt
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1083.nonhalt
 
 theorem nonhalt1084 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
   | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
