@@ -39,8 +39,7 @@ The files numbered from `Sz22_2003_unofficial_1.lean` to `Sz22_2003_unofficial_1
 
 1145/1150 were proven to be non-halting. The rest are:
 * #29, #41, #430: Cryptids.
-* #1070: Halts in ??? steps. (TODO: get the exact number)
-* #1094: Halts in ??? steps. (TODO: get the exact number)
+* #1070, #1094: Halts in 1463418236 steps. (Thanks @Peacemaker II for the step count) (TODO: get a 2nd confirmation)
 
 ---
 
