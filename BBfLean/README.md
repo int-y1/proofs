@@ -11,6 +11,14 @@ Here is a summary of this directory:
 * `Size22`: Contains proofs of FMs of size 22.
 * `CLAUDE.md`: A tutorial on how to write Lean proofs. This is entirely written by Claude Opus 4.6. Sorry in advance if this tutorial contains slop.
 
+Here is a list of everything written by AI:
+
+* All proofs in `Size21`.
+* All proofs in `Size22`.
+* `CLAUDE.md`
+
+Everything else was not written by AI.
+
 ### Size 20
 
 In `Size20`, there is a proof that all 6 FMs in `sz20_6.txt` are nonhalting:
