@@ -1598,6 +1598,409 @@ import BBfLean.Size22.Sz22_2003_unofficial_1597 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_1598 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_1599 -- author: Claude Opus 4.6
 import BBfLean.Size22.Sz22_2003_unofficial_1600 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1601 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1602 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1603 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1604 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1605 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1606 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1607 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1608 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1609 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1610 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1611 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1612 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1613 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1614 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1615 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1616 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1617 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1618 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1619 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1620 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1621 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1622 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1623 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1624 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1625 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1626 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1627 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1628 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1629 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1630 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1631 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1632 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1633 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1634 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1635 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1636 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1637 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1638 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1639 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1640 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1641 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1642 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1643 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1644 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1645 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1646 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1647 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1648 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1649 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1650 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1651 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1652 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1653 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1654 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1655 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1656 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1657 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1658 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1659 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1660 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1661 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1662 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1663 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1664 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1665 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1666 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1667 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1668 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1669 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1670 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1671 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1672 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1673 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1674 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1675 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1676 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1677 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1678 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1679 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1680 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1681 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1682 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1683 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1684 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1685 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1686 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1687 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1688 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1689 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1690 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1691 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1692 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1693 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1694 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1695 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1696 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1697 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1698 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1699 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1700 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1701 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1702 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1703 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1704 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1705 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1706 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1707 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1708 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1709 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1710 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1711 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1712 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1713 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1714 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1715 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1716 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1717 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1718 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1719 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1720 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1721 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1722 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1723 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1724 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1725 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1726 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1727 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1728 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1729 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1730 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1731 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1732 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1733 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1734 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1735 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1736 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1737 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1738 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1739 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1740 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1741 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1742 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1743 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1744 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1745 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1746 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1747 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1748 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1749 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1750 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1751 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1752 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1753 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1754 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1755 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1756 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1757 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1758 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1759 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1760 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1761 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1762 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1763 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1764 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1765 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1766 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1767 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1768 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1769 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1770 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1771 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1772 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1773 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1774 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1775 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1776 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1777 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1778 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1779 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1780 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1781 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1782 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1783 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1784 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1785 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1786 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1787 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1788 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1789 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1790 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1791 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1792 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1793 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1794 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1795 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1796 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1797 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1798 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1799 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1800 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1801 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1802 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1803 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1804 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1805 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1806 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1807 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1808 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1809 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1810 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1811 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1812 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1813 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1814 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1815 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1816 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1817 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1818 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1819 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1820 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1821 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1822 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1823 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1824 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1825 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1826 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1827 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1828 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1829 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1830 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1831 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1832 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1833 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1834 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1835 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1836 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1837 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1838 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1839 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1840 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1841 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1842 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1843 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1844 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1845 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1846 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1847 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1848 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1849 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1850 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1851 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1852 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1853 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1854 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1855 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1856 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1857 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1858 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1859 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1860 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1861 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1862 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1863 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1864 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1865 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1866 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1867 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1868 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1869 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1870 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1871 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1872 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1873 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1874 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1875 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1876 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1877 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1878 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1879 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1880 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1881 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1882 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1883 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1884 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1885 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1886 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1887 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1888 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1889 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1890 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1891 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1892 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1893 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1894 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1895 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1896 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1897 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1898 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1899 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1900 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1901 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1902 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1903 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1904 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1905 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1906 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1907 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1908 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1909 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1910 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1911 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1912 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1913 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1914 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1915 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1916 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1917 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1918 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1919 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1920 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1921 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1922 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1923 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1924 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1925 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1926 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1927 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1928 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1929 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1930 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1931 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1932 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1933 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1934 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1935 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1936 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1937 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1938 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1939 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1940 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1941 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1942 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1943 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1944 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1945 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1946 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1947 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1948 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1949 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1950 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1951 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1952 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1953 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1954 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1955 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1956 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1957 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1958 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1959 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1960 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1961 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1962 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1963 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1964 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1965 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1966 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1967 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1968 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1969 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1970 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1971 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1972 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1973 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1974 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1975 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1976 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1977 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1978 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1979 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1980 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1981 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1982 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1983 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1984 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1985 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1986 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1987 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1988 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1989 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1990 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1991 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1992 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1993 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1994 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1995 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1996 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1997 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1998 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_1999 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_2000 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_2001 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_2002 -- author: Claude Opus 4.6
+import BBfLean.Size22.Sz22_2003_unofficial_2003 -- author: Claude Opus 4.6
 
 /-!
 # Size 22 summary
@@ -14142,7 +14545,7 @@ theorem nonhalt1553 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ 
   | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
   | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1553.nonhalt
 
-theorem nonhalt1554 : halts (Q := ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+theorem halt1554 : halts (Q := ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
   | ⟨a+1, b+1, c+1, d⟩ => some ⟨a, b, c, d+1⟩
   | ⟨a+1, b, c, d⟩ => some ⟨a, b+2, c, d⟩
   | ⟨a, b, c+1, d+1⟩ => some ⟨a+4, b, c, d⟩
@@ -14522,3 +14925,3231 @@ theorem nonhalt1600 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ 
   | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
   | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
   | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1600.nonhalt
+
+theorem nonhalt1601 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a+1, b, c+1, d, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1601.nonhalt
+
+theorem nonhalt1602 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a+1, b, c+1, d, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1602.nonhalt
+
+theorem nonhalt1603 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1603.nonhalt
+
+theorem nonhalt1604 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1604.nonhalt
+
+theorem nonhalt1605 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+2, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1605.nonhalt
+
+theorem nonhalt1606 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a+1, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d+1, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1606.nonhalt
+
+theorem nonhalt1607 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a+1, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+2, c+1, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1607.nonhalt
+
+theorem nonhalt1608 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a+1, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1608.nonhalt
+
+theorem nonhalt1609 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f+1⟩ => some ⟨a, b+3, c, d, e, f⟩
+  | ⟨a, b, c, d+1, e, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1609.nonhalt
+
+theorem nonhalt1610 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+2, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1610.nonhalt
+
+theorem nonhalt1611 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1611.nonhalt
+
+theorem nonhalt1612 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1612.nonhalt
+
+theorem nonhalt1613 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1613.nonhalt
+
+theorem nonhalt1614 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1614.nonhalt
+
+theorem nonhalt1615 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1615.nonhalt
+
+theorem nonhalt1616 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+3, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1616.nonhalt
+
+theorem nonhalt1617 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1617.nonhalt
+
+theorem nonhalt1618 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1618.nonhalt
+
+theorem nonhalt1619 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1619.nonhalt
+
+theorem nonhalt1620 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+3, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1620.nonhalt
+
+theorem nonhalt1621 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1621.nonhalt
+
+theorem nonhalt1622 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1622.nonhalt
+
+theorem nonhalt1623 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1623.nonhalt
+
+theorem nonhalt1624 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1624.nonhalt
+
+theorem nonhalt1625 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1625.nonhalt
+
+theorem nonhalt1626 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f+2⟩
+  | ⟨a, b, c, d, e+1, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d+1, e, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1626.nonhalt
+
+theorem nonhalt1627 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a+1, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1627.nonhalt
+
+theorem nonhalt1628 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+3, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1628.nonhalt
+
+theorem nonhalt1629 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1629.nonhalt
+
+theorem nonhalt1630 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c+1, d, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1630.nonhalt
+
+theorem nonhalt1631 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d+1, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1631.nonhalt
+
+theorem nonhalt1632 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1632.nonhalt
+
+theorem nonhalt1633 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+2, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1633.nonhalt
+
+theorem nonhalt1634 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1634.nonhalt
+
+theorem nonhalt1635 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+2, c+1, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1635.nonhalt
+
+theorem nonhalt1636 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d+1, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1636.nonhalt
+
+theorem nonhalt1637 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+2, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1637.nonhalt
+
+theorem nonhalt1638 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1638.nonhalt
+
+theorem nonhalt1639 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1639.nonhalt
+
+theorem nonhalt1640 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1640.nonhalt
+
+theorem nonhalt1641 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1641.nonhalt
+
+theorem nonhalt1642 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1642.nonhalt
+
+theorem nonhalt1643 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1643.nonhalt
+
+theorem nonhalt1644 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1644.nonhalt
+
+theorem nonhalt1645 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+3, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1645.nonhalt
+
+theorem nonhalt1646 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+3, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e+1, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1646.nonhalt
+
+theorem nonhalt1647 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1647.nonhalt
+
+theorem nonhalt1648 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+2, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1648.nonhalt
+
+theorem nonhalt1649 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1649.nonhalt
+
+theorem nonhalt1650 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1650.nonhalt
+
+theorem nonhalt1651 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1651.nonhalt
+
+theorem nonhalt1652 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1652.nonhalt
+
+theorem nonhalt1653 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1653.nonhalt
+
+theorem nonhalt1654 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1654.nonhalt
+
+theorem nonhalt1655 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e+1⟩ => some ⟨a, b+1, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1655.nonhalt
+
+theorem nonhalt1656 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+2⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1656.nonhalt
+
+theorem nonhalt1657 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+3, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1657.nonhalt
+
+theorem nonhalt1658 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1658.nonhalt
+
+theorem nonhalt1659 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1659.nonhalt
+
+theorem nonhalt1660 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1660.nonhalt
+
+theorem nonhalt1661 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1661.nonhalt
+
+theorem nonhalt1662 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1662.nonhalt
+
+theorem nonhalt1663 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1663.nonhalt
+
+theorem nonhalt1664 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1664.nonhalt
+
+theorem nonhalt1665 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1665.nonhalt
+
+theorem nonhalt1666 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+2, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1666.nonhalt
+
+theorem nonhalt1667 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+3, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1667.nonhalt
+
+theorem nonhalt1668 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b+1, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+3, d, e⟩
+  | ⟨a, b, c+1, d, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1668.nonhalt
+
+theorem nonhalt1669 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1669.nonhalt
+
+theorem nonhalt1670 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1670.nonhalt
+
+theorem nonhalt1671 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+3, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1671.nonhalt
+
+theorem nonhalt1672 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1672.nonhalt
+
+theorem nonhalt1673 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1673.nonhalt
+
+theorem nonhalt1674 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1674.nonhalt
+
+theorem nonhalt1675 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+3, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1675.nonhalt
+
+theorem nonhalt1676 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1676.nonhalt
+
+theorem nonhalt1677 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1677.nonhalt
+
+theorem nonhalt1678 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1678.nonhalt
+
+theorem nonhalt1679 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1679.nonhalt
+
+theorem nonhalt1680 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1680.nonhalt
+
+theorem nonhalt1681 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1681.nonhalt
+
+theorem nonhalt1682 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1682.nonhalt
+
+theorem nonhalt1683 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1683.nonhalt
+
+theorem nonhalt1684 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1684.nonhalt
+
+theorem nonhalt1685 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1685.nonhalt
+
+theorem nonhalt1686 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1686.nonhalt
+
+theorem nonhalt1687 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1687.nonhalt
+
+theorem nonhalt1688 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1688.nonhalt
+
+theorem nonhalt1689 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1689.nonhalt
+
+theorem nonhalt1690 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1690.nonhalt
+
+theorem nonhalt1691 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1691.nonhalt
+
+theorem nonhalt1692 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1692.nonhalt
+
+theorem nonhalt1693 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1693.nonhalt
+
+theorem nonhalt1694 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+3, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1694.nonhalt
+
+theorem nonhalt1695 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1695.nonhalt
+
+theorem nonhalt1696 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1696.nonhalt
+
+theorem nonhalt1697 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1697.nonhalt
+
+theorem nonhalt1698 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1698.nonhalt
+
+theorem nonhalt1699 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1699.nonhalt
+
+theorem nonhalt1700 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1700.nonhalt
+
+theorem nonhalt1701 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c+1, d, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1701.nonhalt
+
+theorem nonhalt1702 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d+1, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1702.nonhalt
+
+theorem nonhalt1703 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1703.nonhalt
+
+theorem nonhalt1704 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+2, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1704.nonhalt
+
+theorem nonhalt1705 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1705.nonhalt
+
+theorem nonhalt1706 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+2, c+1, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1706.nonhalt
+
+theorem nonhalt1707 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d+1, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1707.nonhalt
+
+theorem nonhalt1708 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+2, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1708.nonhalt
+
+theorem nonhalt1709 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+2⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1709.nonhalt
+
+theorem nonhalt1710 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d, e+1, f+2⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1710.nonhalt
+
+theorem nonhalt1711 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b, c, d+1, e, f+1⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+2, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1711.nonhalt
+
+theorem nonhalt1712 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1712.nonhalt
+
+theorem nonhalt1713 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1713.nonhalt
+
+theorem nonhalt1714 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1714.nonhalt
+
+theorem nonhalt1715 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1715.nonhalt
+
+theorem nonhalt1716 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1716.nonhalt
+
+theorem nonhalt1717 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+2, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1717.nonhalt
+
+theorem nonhalt1718 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+2, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1718.nonhalt
+
+theorem nonhalt1719 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+2, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b+1, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1719.nonhalt
+
+theorem nonhalt1720 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+2, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1720.nonhalt
+
+theorem nonhalt1721 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1721.nonhalt
+
+theorem nonhalt1722 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1722.nonhalt
+
+theorem nonhalt1723 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1723.nonhalt
+
+theorem nonhalt1724 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1724.nonhalt
+
+theorem nonhalt1725 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1725.nonhalt
+
+theorem nonhalt1726 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1726.nonhalt
+
+theorem nonhalt1727 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1727.nonhalt
+
+theorem nonhalt1728 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1728.nonhalt
+
+theorem nonhalt1729 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1729.nonhalt
+
+theorem nonhalt1730 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1730.nonhalt
+
+theorem nonhalt1731 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1731.nonhalt
+
+theorem nonhalt1732 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1732.nonhalt
+
+theorem nonhalt1733 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1733.nonhalt
+
+theorem nonhalt1734 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1734.nonhalt
+
+theorem nonhalt1735 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1735.nonhalt
+
+theorem nonhalt1736 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1736.nonhalt
+
+theorem nonhalt1737 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1737.nonhalt
+
+theorem nonhalt1738 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1738.nonhalt
+
+theorem nonhalt1739 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a+3, b, c, d, e, f⟩
+  | ⟨a+1, b, c, d+1, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e+1, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f+1⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b+1, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1739.nonhalt
+
+theorem nonhalt1740 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a+3, b, c, d, e, f⟩
+  | ⟨a+1, b, c, d+1, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1740.nonhalt
+
+theorem nonhalt1741 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a+3, b, c, d, e, f⟩
+  | ⟨a+1, b, c, d+1, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b+1, c, d+1, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1741.nonhalt
+
+theorem nonhalt1742 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a+3, b, c, d, e, f⟩
+  | ⟨a+1, b, c, d+1, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a+1, b, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1742.nonhalt
+
+theorem nonhalt1743 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a+3, b, c, d, e, f⟩
+  | ⟨a+1, b, c, d+1, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1743.nonhalt
+
+theorem nonhalt1744 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a+3, b, c, d, e, f⟩
+  | ⟨a+1, b, c, d+1, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e+1, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a+1, b, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1744.nonhalt
+
+theorem nonhalt1745 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e, f⟩ => some ⟨a+3, b, c, d, e, f⟩
+  | ⟨a+1, b, c, d+1, e, f⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e+1, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b+1, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1745.nonhalt
+
+theorem nonhalt1746 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1746.nonhalt
+
+theorem nonhalt1747 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1747.nonhalt
+
+theorem nonhalt1748 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b+2, c+1, d⟩ => some ⟨a+3, b, c, d⟩
+  | ⟨a+1, b, c, d⟩ => some ⟨a, b+1, c, d+2⟩
+  | ⟨a, b+1, c, d+3⟩ => some ⟨a, b, c, d⟩
+  | ⟨a, b, c, d+1⟩ => some ⟨a+1, b, c+2, d⟩
+  | _ => none) ⟨1, 0, 0, 0⟩ := Sz22_2003_unofficial_1748.nonhalt
+
+theorem nonhalt1749 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+4, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1749.nonhalt
+
+theorem nonhalt1750 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b+1, c+2, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1750.nonhalt
+
+theorem nonhalt1751 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+1, c, d+1, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1751.nonhalt
+
+theorem nonhalt1752 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+2, b, c, d+2, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d, e+2⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1752.nonhalt
+
+theorem nonhalt1753 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1753.nonhalt
+
+theorem nonhalt1754 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e+1⟩
+  | ⟨a, b, c, d+2, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1754.nonhalt
+
+theorem nonhalt1755 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b, c, d+1, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1755.nonhalt
+
+theorem nonhalt1756 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1756.nonhalt
+
+theorem nonhalt1757 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1757.nonhalt
+
+theorem nonhalt1758 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+2⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1758.nonhalt
+
+theorem nonhalt1759 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+4, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1759.nonhalt
+
+theorem nonhalt1760 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1760.nonhalt
+
+theorem nonhalt1761 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1761.nonhalt
+
+theorem nonhalt1762 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1762.nonhalt
+
+theorem nonhalt1763 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1763.nonhalt
+
+theorem nonhalt1764 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1764.nonhalt
+
+theorem nonhalt1765 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d+1, e, f⟩ => some ⟨a+1, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c, d+3, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b+1, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1765.nonhalt
+
+theorem nonhalt1766 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1766.nonhalt
+
+theorem nonhalt1767 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1767.nonhalt
+
+theorem nonhalt1768 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+4, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1768.nonhalt
+
+theorem nonhalt1769 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d+2, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1769.nonhalt
+
+theorem nonhalt1770 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d+2, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1770.nonhalt
+
+theorem nonhalt1771 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1771.nonhalt
+
+theorem nonhalt1772 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1772.nonhalt
+
+theorem nonhalt1773 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1773.nonhalt
+
+theorem nonhalt1774 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1774.nonhalt
+
+theorem nonhalt1775 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1775.nonhalt
+
+theorem nonhalt1776 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1776.nonhalt
+
+theorem nonhalt1777 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1777.nonhalt
+
+theorem nonhalt1778 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1778.nonhalt
+
+theorem nonhalt1779 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1779.nonhalt
+
+theorem nonhalt1780 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1780.nonhalt
+
+theorem nonhalt1781 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1781.nonhalt
+
+theorem nonhalt1782 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+3, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d+2, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1782.nonhalt
+
+theorem nonhalt1783 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c, d+3, e+1, f⟩
+  | ⟨a, b+1, c, d+1, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b+1, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1783.nonhalt
+
+theorem nonhalt1784 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1784.nonhalt
+
+theorem nonhalt1785 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1785.nonhalt
+
+theorem nonhalt1786 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1786.nonhalt
+
+theorem nonhalt1787 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1787.nonhalt
+
+theorem nonhalt1788 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1788.nonhalt
+
+theorem nonhalt1789 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1789.nonhalt
+
+theorem nonhalt1790 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1790.nonhalt
+
+theorem nonhalt1791 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d+1, e, f⟩ => some ⟨a+2, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c, d+1, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b+1, c+1, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1791.nonhalt
+
+theorem nonhalt1792 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d+1, e, f⟩ => some ⟨a+2, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c, d+1, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b+1, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1792.nonhalt
+
+theorem nonhalt1793 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1793.nonhalt
+
+theorem nonhalt1794 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1794.nonhalt
+
+theorem nonhalt1795 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1795.nonhalt
+
+theorem nonhalt1796 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1796.nonhalt
+
+theorem nonhalt1797 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1797.nonhalt
+
+theorem nonhalt1798 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b, c, d+1, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1798.nonhalt
+
+theorem nonhalt1799 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1799.nonhalt
+
+theorem nonhalt1800 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1800.nonhalt
+
+theorem nonhalt1801 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1801.nonhalt
+
+theorem nonhalt1802 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1802.nonhalt
+
+theorem nonhalt1803 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+2, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1803.nonhalt
+
+theorem nonhalt1804 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+2, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1804.nonhalt
+
+theorem nonhalt1805 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1805.nonhalt
+
+theorem nonhalt1806 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1806.nonhalt
+
+theorem nonhalt1807 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1807.nonhalt
+
+theorem nonhalt1808 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+3, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1808.nonhalt
+
+theorem nonhalt1809 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+3, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1809.nonhalt
+
+theorem nonhalt1810 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1810.nonhalt
+
+theorem nonhalt1811 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1811.nonhalt
+
+theorem nonhalt1812 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1812.nonhalt
+
+theorem nonhalt1813 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d+1, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1813.nonhalt
+
+theorem nonhalt1814 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+2, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1814.nonhalt
+
+theorem nonhalt1815 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1815.nonhalt
+
+theorem nonhalt1816 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1816.nonhalt
+
+theorem nonhalt1817 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1817.nonhalt
+
+theorem nonhalt1818 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1818.nonhalt
+
+theorem nonhalt1819 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1819.nonhalt
+
+theorem nonhalt1820 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1820.nonhalt
+
+theorem nonhalt1821 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1821.nonhalt
+
+theorem nonhalt1822 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1822.nonhalt
+
+theorem nonhalt1823 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1823.nonhalt
+
+theorem nonhalt1824 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1824.nonhalt
+
+theorem nonhalt1825 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1825.nonhalt
+
+theorem nonhalt1826 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1826.nonhalt
+
+theorem nonhalt1827 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1827.nonhalt
+
+theorem nonhalt1828 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1828.nonhalt
+
+theorem nonhalt1829 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+3, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1829.nonhalt
+
+theorem nonhalt1830 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e+2⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1830.nonhalt
+
+theorem nonhalt1831 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1831.nonhalt
+
+theorem nonhalt1832 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1832.nonhalt
+
+theorem nonhalt1833 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1833.nonhalt
+
+theorem nonhalt1834 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1834.nonhalt
+
+theorem nonhalt1835 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d+1, e, f⟩ => some ⟨a+2, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b+1, c+1, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1835.nonhalt
+
+theorem nonhalt1836 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c, d+1, e+1, f⟩
+  | ⟨a, b+1, c, d+1, e, f⟩ => some ⟨a+2, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b+1, c, d, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1836.nonhalt
+
+theorem nonhalt1837 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1837.nonhalt
+
+theorem nonhalt1838 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1838.nonhalt
+
+theorem nonhalt1839 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d+1, e+2⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1839.nonhalt
+
+theorem nonhalt1840 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+2, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d+2, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1840.nonhalt
+
+theorem nonhalt1841 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+2, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1841.nonhalt
+
+theorem nonhalt1842 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+2, b, c+1, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1842.nonhalt
+
+theorem nonhalt1843 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+2, c, d, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1843.nonhalt
+
+theorem nonhalt1844 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+1, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1844.nonhalt
+
+theorem nonhalt1845 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b, c+2, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1845.nonhalt
+
+theorem nonhalt1846 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1846.nonhalt
+
+theorem nonhalt1847 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1847.nonhalt
+
+theorem nonhalt1848 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+2⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | ⟨a+1, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1848.nonhalt
+
+theorem nonhalt1849 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+2⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1849.nonhalt
+
+theorem nonhalt1850 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e+2⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1850.nonhalt
+
+theorem nonhalt1851 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1851.nonhalt
+
+theorem nonhalt1852 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+2⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1852.nonhalt
+
+theorem nonhalt1853 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+3, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1853.nonhalt
+
+theorem nonhalt1854 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+3, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1854.nonhalt
+
+theorem nonhalt1855 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1855.nonhalt
+
+theorem nonhalt1856 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1⟩ => some ⟨a, b+2, c, d⟩
+  | ⟨a, b+1, c, d⟩ => some ⟨a+2, b, c+1, d⟩
+  | ⟨a+2, b, c+1, d⟩ => some ⟨a, b, c, d⟩
+  | ⟨a+1, b, c, d⟩ => some ⟨a, b, c, d+3⟩
+  | ⟨a, b, c, d+1⟩ => some ⟨a, b+1, c, d⟩
+  | _ => none) ⟨1, 0, 0, 0⟩ := Sz22_2003_unofficial_1856.nonhalt
+
+theorem nonhalt1857 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1⟩ => some ⟨a, b+2, c, d⟩
+  | ⟨a, b+1, c, d⟩ => some ⟨a+2, b, c+1, d⟩
+  | ⟨a+2, b, c+1, d⟩ => some ⟨a, b, c, d⟩
+  | ⟨a+1, b, c, d⟩ => some ⟨a, b, c, d+3⟩
+  | ⟨a, b, c, d+1⟩ => some ⟨a, b, c+1, d⟩
+  | _ => none) ⟨1, 0, 0, 0⟩ := Sz22_2003_unofficial_1857.nonhalt
+
+theorem nonhalt1858 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1⟩ => some ⟨a, b+2, c, d⟩
+  | ⟨a, b+1, c, d⟩ => some ⟨a+2, b, c+1, d⟩
+  | ⟨a+2, b, c+1, d⟩ => some ⟨a, b, c, d⟩
+  | ⟨a+1, b, c, d⟩ => some ⟨a, b, c, d+2⟩
+  | ⟨a, b, c, d+1⟩ => some ⟨a, b+1, c, d⟩
+  | _ => none) ⟨1, 0, 0, 0⟩ := Sz22_2003_unofficial_1858.nonhalt
+
+theorem nonhalt1859 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1⟩ => some ⟨a, b+2, c, d⟩
+  | ⟨a, b+1, c, d⟩ => some ⟨a+2, b, c+1, d⟩
+  | ⟨a+2, b, c+1, d⟩ => some ⟨a, b, c, d⟩
+  | ⟨a+1, b, c, d⟩ => some ⟨a, b, c, d+2⟩
+  | ⟨a, b, c, d+1⟩ => some ⟨a, b+2, c, d⟩
+  | _ => none) ⟨1, 0, 0, 0⟩ := Sz22_2003_unofficial_1859.nonhalt
+
+theorem nonhalt1860 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+3, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1860.nonhalt
+
+theorem nonhalt1861 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1861.nonhalt
+
+theorem nonhalt1862 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1862.nonhalt
+
+theorem nonhalt1863 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+2⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1863.nonhalt
+
+theorem nonhalt1864 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+2⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+2, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1864.nonhalt
+
+theorem nonhalt1865 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+2⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1865.nonhalt
+
+theorem nonhalt1866 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1866.nonhalt
+
+theorem nonhalt1867 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1867.nonhalt
+
+theorem nonhalt1868 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1868.nonhalt
+
+theorem nonhalt1869 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1869.nonhalt
+
+theorem nonhalt1870 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1870.nonhalt
+
+theorem nonhalt1871 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1871.nonhalt
+
+theorem nonhalt1872 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+3⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1872.nonhalt
+
+theorem nonhalt1873 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1873.nonhalt
+
+theorem nonhalt1874 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+2, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1874.nonhalt
+
+theorem nonhalt1875 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e+2⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1875.nonhalt
+
+theorem nonhalt1876 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+2, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1876.nonhalt
+
+theorem nonhalt1877 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+2⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1877.nonhalt
+
+theorem nonhalt1878 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+2⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1878.nonhalt
+
+theorem nonhalt1879 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1879.nonhalt
+
+theorem nonhalt1880 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+2, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1880.nonhalt
+
+theorem nonhalt1881 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1881.nonhalt
+
+theorem nonhalt1882 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+3⟩
+  | ⟨a, b, c, d, e+2⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1882.nonhalt
+
+theorem nonhalt1883 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+2⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1883.nonhalt
+
+theorem nonhalt1884 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1884.nonhalt
+
+theorem nonhalt1885 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+2, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1885.nonhalt
+
+theorem nonhalt1886 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+2, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1886.nonhalt
+
+theorem nonhalt1887 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1887.nonhalt
+
+theorem nonhalt1888 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1888.nonhalt
+
+theorem nonhalt1889 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1889.nonhalt
+
+theorem nonhalt1890 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1890.nonhalt
+
+theorem nonhalt1891 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1891.nonhalt
+
+theorem nonhalt1892 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+2⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1892.nonhalt
+
+theorem nonhalt1893 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+2⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1893.nonhalt
+
+theorem nonhalt1894 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1894.nonhalt
+
+theorem nonhalt1895 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1895.nonhalt
+
+theorem nonhalt1896 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+2, e, f+1⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1896.nonhalt
+
+theorem nonhalt1897 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+2, c, d, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1897.nonhalt
+
+theorem nonhalt1898 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c+1, d, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1898.nonhalt
+
+theorem nonhalt1899 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d+1, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1899.nonhalt
+
+theorem nonhalt1900 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d+1, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1900.nonhalt
+
+theorem nonhalt1901 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d+1, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1901.nonhalt
+
+theorem nonhalt1902 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1902.nonhalt
+
+theorem nonhalt1903 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d+1, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1903.nonhalt
+
+theorem nonhalt1904 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f+2⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1904.nonhalt
+
+theorem nonhalt1905 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+2, c, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1905.nonhalt
+
+theorem nonhalt1906 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+2, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1906.nonhalt
+
+theorem nonhalt1907 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e, f⟩
+  | ⟨a, b+1, c, d, e+1, f⟩ => some ⟨a, b, c+1, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+2, e, f⟩
+  | ⟨a, b, c, d, e, f+1⟩ => some ⟨a, b, c, d, e+1, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e, f+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1907.nonhalt
+
+theorem nonhalt1908 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1908.nonhalt
+
+theorem nonhalt1909 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1909.nonhalt
+
+theorem nonhalt1910 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1910.nonhalt
+
+theorem nonhalt1911 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1911.nonhalt
+
+theorem nonhalt1912 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1912.nonhalt
+
+theorem nonhalt1913 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1913.nonhalt
+
+theorem nonhalt1914 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1914.nonhalt
+
+theorem nonhalt1915 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1915.nonhalt
+
+theorem nonhalt1916 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1916.nonhalt
+
+theorem nonhalt1917 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e+1⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1917.nonhalt
+
+theorem nonhalt1918 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1918.nonhalt
+
+theorem nonhalt1919 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1919.nonhalt
+
+theorem nonhalt1920 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1920.nonhalt
+
+theorem nonhalt1921 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1921.nonhalt
+
+theorem nonhalt1922 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1922.nonhalt
+
+theorem nonhalt1923 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1923.nonhalt
+
+theorem nonhalt1924 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1924.nonhalt
+
+theorem nonhalt1925 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1925.nonhalt
+
+theorem nonhalt1926 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1926.nonhalt
+
+theorem nonhalt1927 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1927.nonhalt
+
+theorem nonhalt1928 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1928.nonhalt
+
+theorem nonhalt1929 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1929.nonhalt
+
+theorem nonhalt1930 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1930.nonhalt
+
+theorem nonhalt1931 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1931.nonhalt
+
+theorem nonhalt1932 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1932.nonhalt
+
+theorem nonhalt1933 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1933.nonhalt
+
+theorem nonhalt1934 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1934.nonhalt
+
+theorem nonhalt1935 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1935.nonhalt
+
+theorem nonhalt1936 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1936.nonhalt
+
+theorem nonhalt1937 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d+1, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1937.nonhalt
+
+theorem nonhalt1938 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d+1, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1938.nonhalt
+
+theorem nonhalt1939 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d+1, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+2, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1939.nonhalt
+
+theorem nonhalt1940 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1940.nonhalt
+
+theorem nonhalt1941 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1941.nonhalt
+
+theorem nonhalt1942 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1942.nonhalt
+
+theorem nonhalt1943 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1943.nonhalt
+
+theorem nonhalt1944 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1944.nonhalt
+
+theorem nonhalt1945 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1945.nonhalt
+
+theorem nonhalt1946 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1946.nonhalt
+
+theorem nonhalt1947 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+1, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1947.nonhalt
+
+theorem nonhalt1948 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1948.nonhalt
+
+theorem nonhalt1949 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1949.nonhalt
+
+theorem nonhalt1950 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b+1, c, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1950.nonhalt
+
+theorem nonhalt1951 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1951.nonhalt
+
+theorem nonhalt1952 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+2⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1952.nonhalt
+
+theorem nonhalt1953 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1953.nonhalt
+
+theorem nonhalt1954 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1954.nonhalt
+
+theorem nonhalt1955 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1955.nonhalt
+
+theorem nonhalt1956 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1956.nonhalt
+
+theorem nonhalt1957 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d+1, e+2⟩
+  | ⟨a, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1957.nonhalt
+
+theorem nonhalt1958 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+3, c+1, d+1, e⟩
+  | ⟨a, b, c+1, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+2, c, d+1, e⟩ => some ⟨a, b, c, d, e+2⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1958.nonhalt
+
+theorem nonhalt1959 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+3, c+1, d+1, e⟩
+  | ⟨a, b, c+1, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b+2, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1959.nonhalt
+
+theorem nonhalt1960 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+3, c+1, d+1, e⟩
+  | ⟨a, b, c+1, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+2, c, d+1, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1960.nonhalt
+
+theorem nonhalt1961 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1961.nonhalt
+
+theorem nonhalt1962 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1962.nonhalt
+
+theorem nonhalt1963 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1963.nonhalt
+
+theorem nonhalt1964 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1964.nonhalt
+
+theorem nonhalt1965 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d+1, e+1⟩ => some ⟨a, b, c, d, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1965.nonhalt
+
+theorem nonhalt1966 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c, d, e+1⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+2, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1966.nonhalt
+
+theorem nonhalt1967 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b+1, c, d, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1967.nonhalt
+
+theorem nonhalt1968 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1968.nonhalt
+
+theorem nonhalt1969 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1969.nonhalt
+
+theorem nonhalt1970 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1970.nonhalt
+
+theorem nonhalt1971 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1971.nonhalt
+
+theorem nonhalt1972 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b+1, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1972.nonhalt
+
+theorem nonhalt1973 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1973.nonhalt
+
+theorem nonhalt1974 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f+1⟩ => some ⟨a, b, c+2, d, e, f⟩
+  | ⟨a, b, c+1, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1974.nonhalt
+
+theorem nonhalt1975 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1975.nonhalt
+
+theorem nonhalt1976 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1976.nonhalt
+
+theorem nonhalt1977 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1977.nonhalt
+
+theorem nonhalt1978 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1978.nonhalt
+
+theorem nonhalt1979 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1979.nonhalt
+
+theorem nonhalt1980 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e+1, f⟩
+  | ⟨a, b, c+1, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+1⟩
+  | ⟨a, b+1, c, d, e, f+1⟩ => some ⟨a, b, c+2, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1980.nonhalt
+
+theorem nonhalt1981 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1981.nonhalt
+
+theorem nonhalt1982 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e+1, f⟩
+  | ⟨a, b, c+1, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+2⟩
+  | ⟨a, b+1, c, d, e, f+1⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1982.nonhalt
+
+theorem nonhalt1983 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e+1⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1983.nonhalt
+
+theorem nonhalt1984 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1984.nonhalt
+
+theorem nonhalt1985 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1985.nonhalt
+
+theorem nonhalt1986 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1986.nonhalt
+
+theorem nonhalt1987 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1987.nonhalt
+
+theorem nonhalt1988 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1988.nonhalt
+
+theorem nonhalt1989 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+2, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1989.nonhalt
+
+theorem nonhalt1990 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f+1⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a, b+1, c, d, e, f⟩ => some ⟨a+1, b, c, d+1, e, f⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d, e, f+1⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b+1, c, d, e+2, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1990.nonhalt
+
+theorem nonhalt1991 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e, f⟩ => some ⟨a, b+2, c, d, e+1, f⟩
+  | ⟨a, b+1, c, d, e, f+1⟩ => some ⟨a, b, c+1, d, e, f⟩
+  | ⟨a, b, c+1, d, e, f⟩ => some ⟨a+1, b, c, d, e, f+2⟩
+  | ⟨a, b, c, d, e+1, f⟩ => some ⟨a, b, c, d+1, e, f⟩
+  | ⟨a+1, b, c, d, e, f⟩ => some ⟨a, b, c+1, d, e+1, f⟩
+  | _ => none) ⟨1, 0, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1991.nonhalt
+
+theorem nonhalt1992 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1992.nonhalt
+
+theorem nonhalt1993 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1993.nonhalt
+
+theorem nonhalt1994 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+2, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1994.nonhalt
+
+theorem nonhalt1995 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1995.nonhalt
+
+theorem nonhalt1996 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+2, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1996.nonhalt
+
+theorem nonhalt1997 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+2, e+2⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a+1, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1997.nonhalt
+
+theorem nonhalt1998 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1998.nonhalt
+
+theorem nonhalt1999 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+3, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_1999.nonhalt
+
+theorem nonhalt2000 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b, c, d+1, e⟩ => some ⟨a+2, b, c, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_2000.nonhalt
+
+theorem nonhalt2001 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+3, b, c, d, e⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e+1⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_2001.nonhalt
+
+theorem nonhalt2002 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b, c+1, d, e⟩ => some ⟨a+3, b, c, d, e+1⟩
+  | ⟨a+1, b+1, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b, c+1, d, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_2002.nonhalt
+
+theorem nonhalt2003 : ¬halts (Q := ℕ × ℕ × ℕ × ℕ × ℕ) (fun q ↦ match q with
+  | ⟨a+1, b, c+1, d+1, e⟩ => some ⟨a, b+2, c, d, e+1⟩
+  | ⟨a, b+1, c+1, d, e⟩ => some ⟨a, b, c, d+1, e⟩
+  | ⟨a, b+1, c, d, e⟩ => some ⟨a+1, b, c, d, e+1⟩
+  | ⟨a, b, c, d, e+1⟩ => some ⟨a, b, c+1, d, e⟩
+  | ⟨a+1, b, c, d, e⟩ => some ⟨a, b+1, c, d+1, e⟩
+  | _ => none) ⟨1, 0, 0, 0, 0⟩ := Sz22_2003_unofficial_2003.nonhalt
