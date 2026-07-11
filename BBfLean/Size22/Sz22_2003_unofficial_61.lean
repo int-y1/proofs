@@ -111,6 +111,6 @@ theorem nonhalt : ¬halts fm c₀ := by
   apply progress_nonhalt_simple (fm := fm) (A := ℕ × ℕ)
     (fun ⟨a, e⟩ ↦ ⟨a+1, 0, 0, 0, e+3⟩) ⟨0, 0⟩
   intro ⟨a, e⟩
-  exact ⟨⟨a + e + 3, e + 3⟩, by convert main_trans a (e + 2) using 2⟩
+  exact ⟨⟨a + e + 3, e + 3⟩, by convert! main_trans a (e + 2) using 2⟩
 
 end Sz22_2003_unofficial_61

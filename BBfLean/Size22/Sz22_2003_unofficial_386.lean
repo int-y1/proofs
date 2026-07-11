@@ -65,7 +65,7 @@ theorem main_trans (n : ℕ) :
   have h1 : ⟨n+3, 0, 0, 0, n+2⟩ [fm]⊢* ⟨0, 0, 2*n+6, 0, n+2⟩ := by
     have := r3_repeat (n+3) 0 (n+2)
     simp only [Nat.zero_add] at this
-    convert this using 2
+    convert! this using 2
   -- Phase 2: R4 repeated (n+2) times
   have h2 : ⟨0, 0, 2*n+6, 0, n+2⟩ [fm]⊢* ⟨0, 0, 2*n+6, n+2, 0⟩ := by
     have := r4_repeat (n+2) (2*n+6) 0

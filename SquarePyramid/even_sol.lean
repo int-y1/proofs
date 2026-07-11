@@ -124,7 +124,7 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
       convert hxy_co using 1; simp only [mul_assoc, neg_mul_neg]
       convert hxyz using 1 <;> ring
       convert hxyw using 1; ring
-      convert hrs_add_odd.neg using 1; ring_nf
+      convert! hrs_add_odd.neg using 1; ring_nf
       rwa [gt_iff_lt, Left.neg_pos_iff]
     · simp at hy₀
   have hs₀ : s > 0 := pos_of_mul_pos_right hy₀ (mul_pos zero_lt_two hr₀).le
@@ -152,13 +152,13 @@ theorem pythagoreanTriple_area_ne_sq {x y w : ℤ} (hx₀ : x > 0) (hy₀ : y > 
     have ⟨abc, d, _, hd₀, habc, hd⟩ :
         ∃ x y, x > 0 ∧ y > 0 ∧ (r + s) * (r - s) * r = x ^ 2 ∧ s = y ^ 2 := by
       refine pos_sq_of_coprime ((IsCoprime.mul_left ?_ ?_).mul_left hrs_co) hxyw hpos₃ hs₀
-      convert hrs_co.add_mul_left_left 1; rw [mul_one]
-      convert hrs_co.add_mul_left_left (-1) using 1; ring
+      convert! hrs_co.add_mul_left_left 1; rw [mul_one]
+      convert! hrs_co.add_mul_left_left (-1) using 1; ring
     have ⟨ab, c, _, hc₀, hab, hc⟩ :
         ∃ x y, x > 0 ∧ y > 0 ∧ (r + s) * (r - s) = x ^ 2 ∧ r = y ^ 2 := by
       refine pos_sq_of_coprime (IsCoprime.mul_left ?_ ?_) habc hpos₂ hr₀
-      convert hrs_co.symm.mul_add_left_left 1; rw [mul_one]
-      convert (hrs_co.symm.add_mul_left_left (-1)).neg_left using 1; ring
+      convert! hrs_co.symm.mul_add_left_left 1; rw [mul_one]
+      convert! (hrs_co.symm.add_mul_left_left (-1)).neg_left using 1; ring
     have ⟨a, b, ha₀, hb₀, ha, hb⟩ := pos_sq_of_coprime hrs_sub_add_co.symm hab hpos₁ hrs₀
     exact ⟨⟨c, hc₀, hc⟩, ⟨d, hd₀, hd⟩, ⟨b, hb₀, hb⟩, ⟨a, ha₀, ha⟩⟩
   have hc_odd : Odd c := by
@@ -360,7 +360,7 @@ theorem two_mul_pow_four_add_one_ne_sq {x y : ℤ} (hxy : 2 * x ^ 4 + 1 = y ^ 2)
     by_contra h
     rw [ge_iff_le, not_le, Int.lt_iff_add_one_le] at h
     replace h := sub_le_sub_right (mul_nonpos_of_nonneg_of_nonpos (by decide : (0 : ℤ) ≤ 4) h) 3
-    replace h : v ^ 2 ≤ -3 := by rw [ha]; convert h using 1; ring
+    replace h : v ^ 2 ≤ -3 := by rw [ha]; convert! h using 1; ring
     have := le_trans (sq_nonneg v) h
     contradiction
   replace ha₀ : a > 0 := by
@@ -437,11 +437,11 @@ theorem eight_pow_four_add_one {x y : ℤ} (hxy : 8 * x ^ 4 + 1 = y ^ 2) (hx : x
     by_contra h
     rw [ge_iff_le, not_le, Int.lt_iff_add_one_le] at h
     replace h := sub_le_sub_right (mul_nonpos_of_nonneg_of_nonpos (by decide : (0 : ℤ) ≤ 2) h) 1
-    replace h : 2 * s + 1 ≤ -1 := by convert h using 1; ring
+    replace h : 2 * s + 1 ≤ -1 := by convert! h using 1; ring
     have := le_trans hs₀ h
     contradiction
   have hs1_2s1_co : IsCoprime (s + 1) (2 * s + 1) := by
-    convert (isCoprime_one_right (x := s + 1)).neg_right.mul_add_right_right 2 using 1; ring
+    convert! (isCoprime_one_right (x := s + 1)).neg_right.mul_add_right_right 2 using 1; ring
   have ⟨u, hu⟩ := exists_associated_pow_of_mul_eq_pow' hs1_2s1_co.symm (mul_comm (s + 1) _ ▸ hxy)
   replace hu := Int.eq_of_associated_of_nonneg hu (Even.pow_nonneg ⟨2, rfl⟩ u) (by positivity)
   have ⟨v, hv⟩ := exists_associated_pow_of_mul_eq_pow' hs1_2s1_co hxy
@@ -500,11 +500,11 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
       rw [hx'] at h ⊢
       linear_combination h
     have hco12 : IsCoprime (x + 1) (2 * x + 1) := by
-      convert (isCoprime_one_right (x := x + 1)).neg_right.mul_add_right_right 2 using 1; ring
+      convert! (isCoprime_one_right (x := x + 1)).neg_right.mul_add_right_right 2 using 1; ring
     have hco13 : IsCoprime (x + 1) x' := by
-      rw [hx']; convert (isCoprime_one_left (x := x')).mul_add_right_left 2 using 1; ring
+      rw [hx']; convert! (isCoprime_one_left (x := x')).mul_add_right_left 2 using 1; ring
     have hco23 : IsCoprime (2 * x + 1) x' := by
-      rw [hx']; convert (isCoprime_one_left (x := x')).mul_add_right_left 4 using 1; ring
+      rw [hx']; convert! (isCoprime_one_left (x := x')).mul_add_right_left 4 using 1; ring
     mod_cases hx3 : x % 3
     · exact Int.modEq_zero_iff_dvd.1 hx3
     · absurd mul_eq_three_sq (hco12.mul_right hco13) h (by positivity)
@@ -521,7 +521,7 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
   have hco12 : IsCoprime x (6 * x + 1) := isCoprime_one_right.mul_add_right_right _
   have hco13 : IsCoprime x (12 * x + 1) := isCoprime_one_right.mul_add_right_right _
   have hco23 : IsCoprime (6 * x + 1) (12 * x + 1) := by
-    convert (isCoprime_one_right (x := 6 * x + 1)).neg_right.mul_add_right_right 2 using 1; ring
+    convert! (isCoprime_one_right (x := 6 * x + 1)).neg_right.mul_add_right_right 2 using 1; ring
   have ⟨qp, r, hqp₀, hr₀, hqp, hr⟩ :=
     pos_sq_of_coprime (hco13.mul_left hco23) h (by positivity) (by positivity)
   have ⟨q, p, hq₀, hp₀, hq, hp⟩ := pos_sq_of_coprime hco12 hqp (by positivity) (by positivity)
@@ -561,7 +561,7 @@ theorem cannonball_even_24 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 
     rw [hr', hp', ← IsCoprime.add_mul_left_left_iff (z := 1), mul_one,
       sub_add_add_cancel, ← two_mul, IsCoprime.mul_left_iff] at hco23
     replace hco23 := hco23.2
-    convert hco23.mul_add_left_right (-1) using 1
+    convert! hco23.mul_add_left_right (-1) using 1
     ring
   -- and then do cases on `rp₁` and `rp₂`
   rcases Int.prime_two.dvd_or_dvd ⟨_, hqrp⟩ with h₂ | h₂ <;>

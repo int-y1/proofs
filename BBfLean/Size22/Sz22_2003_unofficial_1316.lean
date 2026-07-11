@@ -102,7 +102,7 @@ theorem trans_odd_to_even (m : ℕ) :
     have := r4_drain (2 * (m + 1)) 0 ((m + 2) * (2 * m + 3))
       (3 * (m + 1) * (2 * m + 3) + 1) (d := 0)
     simp only [Nat.zero_add] at this
-    convert this using 2
+    convert! this using 2
   -- Compose
   exact step_stepStar_stepPlus h1
     (stepStar_trans (step_stepStar h3)

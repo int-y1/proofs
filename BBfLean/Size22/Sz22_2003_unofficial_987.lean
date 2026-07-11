@@ -85,11 +85,11 @@ theorem main_trans (n g : ℕ) :
   -- Phase 4: R2-R1 chain (n+2 rounds)
   have h4 : ⟨3, 0, 2 * n + 2, n + 2, 0, g⟩ [fm]⊢* ⟨n + 5, 0, n, 0, n + 2, g⟩ := by
     have := r2r1_chain (n + 2) 2 n 0 0 g
-    simp only [] at this; convert this using 2; all_goals ring_nf
+    convert this using 2; all_goals ring_nf
   -- Phase 5: R3 chain (n+5 steps)
   have h5 : ⟨n + 5, 0, n, 0, n + 2, g⟩ [fm]⊢* ⟨0, 0, 2 * n + 5, 0, n + 2, n + 5 + g⟩ := by
     have := r3_chain (n + 5) n (n + 2) g
-    simp only [] at this; convert this using 2; all_goals ring_nf
+    convert this using 2; all_goals ring_nf
   -- Compose all phases
   show ⟨0, 0, 2 * n + 3, 0, n + 1, g + 1⟩ [fm]⊢⁺ ⟨0, 0, 2 * (n + 1) + 3, 0, (n + 1) + 1, g + n + 4 + 1⟩
   have h5' : ⟨n + 5, 0, n, 0, n + 2, g⟩ [fm]⊢* ⟨0, 0, 2 * (n + 1) + 3, 0, (n + 1) + 1, g + n + 4 + 1⟩ := by

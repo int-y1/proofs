@@ -29,7 +29,7 @@ theorem inner_loop : ∀ M, ∀ a D E F,
   · have h1 : fm ⟨a, 0, 3 * (M + 1), D, E + 1, F + (M + 1)⟩ =
       some ⟨a, 3, 3 * (M + 1), D, E, F + M⟩ := by simp [fm]
     have h2 : fm ⟨a, 3, 3 * (M + 1), D, E, F + M⟩ =
-      some ⟨a, 2, 3 * M + 2, D + 1, E + 1, F + M⟩ := by simp [fm]
+      some ⟨a, 2, 3 * M + 2, D + 1, E + 1, F + M⟩ := by rfl
     have h3 : fm ⟨a, 2, 3 * M + 2, D + 1, E + 1, F + M⟩ =
       some ⟨a, 1, 3 * M + 1, D + 2, E + 2, F + M⟩ := by simp [fm]
     have h4 : fm ⟨a, 1, 3 * M + 1, D + 2, E + 2, F + M⟩ =

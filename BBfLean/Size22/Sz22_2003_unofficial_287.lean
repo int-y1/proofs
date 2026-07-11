@@ -109,7 +109,7 @@ private theorem process : ∀ n, ∀ a c d, c + d ≤ n → c + a ≥ d →
   | 0, c =>
     have h := a_to_c (a+2) 0 c (2*a+2)
     simp only [Nat.zero_add] at h
-    convert h using 2
+    convert! h using 2
   | d+1, 0 =>
     -- c=0: a ≥ d+1 (from 0 + a ≥ d+1, i.e., a ≥ d+1)
     obtain ⟨j, rfl⟩ : ∃ j, a = d + 1 + j := ⟨a - d - 1, by omega⟩

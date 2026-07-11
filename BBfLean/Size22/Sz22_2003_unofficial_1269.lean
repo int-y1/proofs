@@ -191,6 +191,6 @@ theorem nonhalt : ¬halts fm c₀ := by
     convert h using 2; ring_nf
   · subst hm
     have h := main_transition_even (m + 1)
-    convert h using 2
+    convert! h using 2
 
 end Sz22_2003_unofficial_1269

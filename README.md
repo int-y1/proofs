@@ -1,11 +1,20 @@
-Random proofs in Lean 4. For a list of maintained files, see:
+Random proofs in Lean 4. Here is a script to build all of the maintained files:
 
-* `BBfLean/Size20Summary.lean`
-* `BBfLean/Size21Summary.lean`
-* `BBfLean/Size22Summary.lean`
-* `BBfLean/Size22HaltedSummary.lean`
-* `BusyLean/BusyLean.lean`
-* `SquarePyramid/SquarePyramid.lean`
+```
+lake build BBfLean.Size20Summary
+lake build BBfLean.Size21Summary
+lake build BBfLean.Size22Summary
+lake build BBfLean.Size22HaltedSummary
+lake build BusyLean.BusyLean
+lake build SquarePyramid.SquarePyramid
+```
+
+TODO: fix these files:
+
+```
+BBfLean.Size21.Sz21_140_unofficial_35
+BBfLean.Size22.Sz22_2003_unofficial_1550
+```
 
 ## tao_analysis_i
 

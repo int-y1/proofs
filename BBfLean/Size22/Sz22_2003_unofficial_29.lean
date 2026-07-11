@@ -294,7 +294,7 @@ theorem nonhalt_iff_hydra : ¬halts fm c₀ ↔ prop_hydra := by
     -- By contrapositive
     intro hnh n
     by_contra hlt
-    push_neg at hlt
+    push Not at hlt
     apply hnh
     -- Find the first index m with hydra_b(m) < 0
     have hexists : ∃ m, hydra_b m < 0 := ⟨n, hlt⟩

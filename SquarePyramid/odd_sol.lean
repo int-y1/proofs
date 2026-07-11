@@ -220,7 +220,7 @@ theorem lemma10 (h : ∃ M, u n = 4 * M ^ 2 + 3) : u n = 7 := by
     rcases hn' with rfl | rfl <;> [exact h₁; exact h₂]
   replace h_mod_2s : (2 * M) * (2 * M) ≡ -10 [ZMOD u (2 ^ s)] := by
     rw [huM, hk'_odd.neg_one_pow] at h_mod_2s
-    convert h_mod_2s.sub_right 3 using 1
+    convert! h_mod_2s.sub_right 3 using 1
     ring
   have ⟨m, hm⟩ : ∃ m : ℕ, m = u (2 ^ s) := ⟨Pell.xn _ _, rfl⟩
   have h2s_even : Even (2 ^ s) := by
@@ -255,11 +255,11 @@ theorem cannonball_odd_1 {x y : ℤ} (h : x * (x + 1) * (2 * x + 1) = 6 * y ^ 2)
     rw [hvv] at h
     linear_combination h
   have hco12 : IsCoprime x vv := by
-    convert (isCoprime_one_left (x := vv)).neg_left.mul_add_right_left 2 using 1
+    convert! (isCoprime_one_left (x := vv)).neg_left.mul_add_right_left 2 using 1
     linear_combination hvv
   have hco13 : IsCoprime x (2 * x + 1) := isCoprime_one_right.mul_add_right_right _
   have hco23 : IsCoprime vv (2 * x + 1) := by
-    convert (isCoprime_one_right (x := vv)).neg_right.mul_add_right_right 4 using 1
+    convert! (isCoprime_one_right (x := vv)).neg_right.mul_add_right_right 4 using 1
     linear_combination 2 * hvv
   have hx3 := mul_eq_three_sq (hco12.mul_right hco13) h hx.le
   have hvv3 : vv % 3 ≠ 2 :=

@@ -70,7 +70,7 @@ theorem b_r3_combined : ∀ b, ∀ a e,
   · -- b = 0: R3 drain
     have h := r3_drain (a + 1) 0 e
     simp only [Nat.zero_add] at h
-    convert h using 2
+    convert! h using 2
   · -- b = 1: R3, R1, then R3 drain
     step fm; step fm
     have h := r3_drain (a + 2) 1 (e + 1)

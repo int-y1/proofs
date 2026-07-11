@@ -192,8 +192,7 @@ theorem trans_mod0 : ∀ k, ∀ a, ⟨a, 0, 3*(k+1), 0, 0⟩ [fm]⊢⁺ ⟨a+7*k
   · have h := r3_chain (3*(k+1)) a 0 0
     simp only [Nat.zero_add] at h; exact h
   apply step_stepStar_stepPlus (c₂ := ⟨a+3*(k+1), 0, 0, 1, 3*k+2⟩)
-  · show fm ⟨a + 3 * (k + 1), 0, 0, 0, 3 * (k + 1)⟩ = some ⟨a + 3 * (k + 1), 0, 0, 1, 3 * k + 2⟩
-    simp [fm]
+  · rfl
   apply stepStar_trans (c₂ := ⟨a+3*(k+1), 0, 0, 3*(k+1), 0⟩)
   · have h := r4_chain (3*k+2) (a+3*(k+1)) 1 0
     simp only [Nat.zero_add] at h

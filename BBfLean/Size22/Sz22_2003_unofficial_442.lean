@@ -96,7 +96,7 @@ theorem main_trans (a d k : ℕ) :
     -- Phase 4: r3_chain (2*k+3)
     have h4 := r3_chain (2*k+3) a 0 d (k+2)
     rw [show 0 + (2*k+3) = 2*k+3 from by ring] at h4
-    convert h4 using 2
+    convert! h4 using 2
 
 theorem nonhalt : ¬halts fm c₀ := by
   apply stepStar_not_halts_not_halts (c₂ := ⟨3, 0, 0, 3, 0, 2⟩) (by execute fm 9)

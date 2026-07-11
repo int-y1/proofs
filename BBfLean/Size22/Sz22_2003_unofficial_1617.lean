@@ -60,7 +60,7 @@ theorem drain_even : ∀ k, ∀ A D E,
     have goal := ih A (D + 1) (E + 2)
     rw [show D + 1 + k + 1 = D + (k + 1) + 1 from by ring,
         show E + 2 + 2 * k = E + 2 * (k + 1) from by ring] at goal
-    convert goal using 2
+    convert! goal using 2
 
 -- Odd drain: k rounds of (R3,R1,R1) then (R3,R1,R2) for c=2k+1
 theorem drain_odd : ∀ k, ∀ A D E,

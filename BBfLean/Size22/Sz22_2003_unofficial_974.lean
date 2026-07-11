@@ -117,7 +117,6 @@ theorem main_trans_even (m : ℕ) :
   -- (3, 0, 2m, 3m+2, 0) →* (2m+3, 0, 0, m+2, 2m)
   have h4 : ⟨3, 0, 2*m, 3*m+2, 0⟩ [fm]⊢* ⟨2*m+3, 0, 0, m+2, 2*m⟩ := by
     have := r2r1_chain (2*m) 2 0 (m+2) 0
-    simp only [] at this
     convert this using 2; ring_nf
   -- Phase 5: R2 drain (m+2 steps)
   -- (2m+3, 0, 0, m+2, 2m) →* (m+1, m+2, 0, 0, 3m+2)

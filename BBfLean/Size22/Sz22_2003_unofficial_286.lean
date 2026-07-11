@@ -158,7 +158,7 @@ theorem main_trans (C D : ℕ) (h : C ≥ D) :
     have h3 := main_trans_easy (C - 2 * D) D
     simp only [show C - 2 * D + 2 * D = C from by omega] at h3
     exact h3
-  · push_neg at h2
+  · push Not at h2
     set K := C / 2
     have hCK : C = C % 2 + 2 * K := by omega
     have hDK : D ≥ K + 1 := by omega

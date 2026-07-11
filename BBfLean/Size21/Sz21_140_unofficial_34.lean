@@ -161,7 +161,7 @@ theorem main_trans : ∀ d f, ⟨0, 0, 0, d, d+1, f+1⟩ [fm]⊢⁺ ⟨0, 0, 0, 
       convert this using 1; ring_nf
   · subst hK
     have := main_trans_odd K f
-    convert this using 1
+    convert! this using 1
 
 theorem nonhalt : ¬halts fm c₀ := by
   apply stepStar_not_halts_not_halts (c₂ := ⟨0, 0, 0, 0, 1, 1⟩) (by execute fm 1)

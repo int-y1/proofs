@@ -143,7 +143,7 @@ theorem nonhalt : ¬halts fm c₀ := by
              ?_⟩
       · congr 1
       · have h := main_trans_odd m
-        convert h using 2
+        convert! h using 2
   · exact Or.inr ⟨0, by norm_num⟩
 
 end Sz21_140_unofficial_35

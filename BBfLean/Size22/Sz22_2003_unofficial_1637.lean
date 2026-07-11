@@ -158,7 +158,7 @@ theorem main_trans (A N : ℕ) :
         show A + 2 * m + 4 = A + (m + m + 1 + 1) + 2 from by ring,
         show 2 * m + 3 = (m + m + 1 + 1) + 1 from by ring,
         show 4 * m + 6 = 2 * ((m + m + 1 + 1) + 1) from by ring] at h
-    convert h using 2
+    convert! h using 2
   · subst hm
     have h := main_trans_n_odd m A
     rw [show 2 * m + 3 = 2 * m + 1 + 1 + 1 from by ring,
@@ -166,7 +166,7 @@ theorem main_trans (A N : ℕ) :
         show A + 2 * m + 5 = A + (2 * m + 1 + 1 + 1) + 2 from by ring,
         show 2 * m + 4 = (2 * m + 1 + 1 + 1) + 1 from by ring,
         show 4 * m + 8 = 2 * ((2 * m + 1 + 1 + 1) + 1) from by ring] at h
-    convert h using 2
+    convert! h using 2
 
 theorem nonhalt : ¬halts fm c₀ := by
   apply stepStar_not_halts_not_halts (c₂ := ⟨2, 0, 0, 0, 1, 2⟩) (by execute fm 3)

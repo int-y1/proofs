@@ -75,7 +75,7 @@ theorem main_trans (n F : ℕ) : (⟨n + 1, 0, 0, 0, 2 * n, F⟩ : Q) [fm]⊢⁺
   have h1 : (⟨n + 1, 0, 0, 0, 2 * n, F⟩ : Q) [fm]⊢* ⟨0, 0, 0, n + 1, 2 * n, F + n + 1⟩ := by
     have := r3_chain (n + 1) 0 0 F (e := 2 * n)
     simp only [Nat.zero_add] at this
-    convert this using 2
+    convert! this using 2
   -- Phase 2: R4 x 2n steps
   have h2 : (⟨0, 0, 0, n + 1, 2 * n, F + n + 1⟩ : Q) [fm]⊢* ⟨0, 2 * n, 0, n + 1, 0, F + n + 1⟩ := by
     have := r4_chain (2 * n) 0 0 (d := n + 1) (f := F + n + 1)

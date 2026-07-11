@@ -97,4 +97,4 @@ theorem nonhalt : ¬halts fm c₀ := by
     (fun ⟨c, e⟩ ↦ ⟨3 * e + 6, 0, c, 0, e + 2⟩) ⟨1, 3⟩
   intro ⟨c, e⟩; exact ⟨⟨c + e, e + 1⟩, by
     have := main_trans c e
-    convert this using 2⟩
+    convert! this using 2⟩

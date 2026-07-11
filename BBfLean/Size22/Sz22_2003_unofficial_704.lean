@@ -118,7 +118,7 @@ theorem main_trans (n e : ℕ) :
     convert this using 2
   · subst hk
     have := main_odd k e
-    convert this using 2
+    convert! this using 2
 
 theorem nonhalt : ¬halts fm c₀ := by
   apply stepStar_not_halts_not_halts (c₂ := ⟨3, 0, 0, 2, 3⟩) (by execute fm 8)

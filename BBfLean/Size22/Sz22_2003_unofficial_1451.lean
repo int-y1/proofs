@@ -149,7 +149,7 @@ theorem drain_phase : ∀ C, ∀ A D, C ≤ 7 * A + 6 →
     · -- C' + 7 < 7: impossible.
       exact absurd hC7 (by omega)
   · -- C ≥ 7: block step then IH. C ≤ 7A+6 and C ≥ 7 → A ≥ 1.
-    push_neg at hC7
+    push Not at hC7
     have hA1 : A ≥ 1 := by omega
     obtain ⟨A', rfl⟩ : ∃ A', A = A' + 1 := ⟨A - 1, by omega⟩
     have hC : C = (C - 7) + 7 := by omega

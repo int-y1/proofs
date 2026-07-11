@@ -75,7 +75,7 @@ private theorem second_half : ∀ c, ∀ a e,
     intro a e
     step fm; step fm
     have h := r3_drain (a + 1) 2 (e + 1)
-    convert h using 1
+    convert! h using 1
   · -- c = 2
     intro a e
     step fm; step fm; step fm

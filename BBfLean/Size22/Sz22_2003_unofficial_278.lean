@@ -88,4 +88,4 @@ theorem nonhalt : ¬halts fm c₀ := by
   · execute fm 7
   apply progress_nonhalt_simple (A := ℕ) (C := fun n ↦ (⟨n+2, 0, 0, 0, n+2⟩ : Q)) (i₀ := 0)
   intro n
-  exact ⟨2 * n + 1, by show _ [fm]⊢⁺ _; convert main_cycle (n := n + 1) using 1⟩
+  exact ⟨2 * n + 1, by show _ [fm]⊢⁺ _; convert! main_cycle (n := n + 1) using 1⟩

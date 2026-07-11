@@ -73,8 +73,8 @@ private theorem process_phase (a : ℕ) :
   have h1 := r1r1r2_chain a 0 2
   have h2 := r2_chain a 2 (2 * a + 2) 0
   apply stepStar_trans
-  · convert h1 using 1
-  · convert h2 using 1; ring_nf
+  · convert! h1 using 1
+  · convert! h2 using 1; ring_nf
 
 private theorem main_trans (a : ℕ) :
     ⟨a + 1, (0 : ℕ), 0, 2 * a, 0⟩ [fm]⊢⁺ ⟨2 * a + 2, 0, 0, 4 * a + 2, 0⟩ := by
@@ -97,7 +97,7 @@ private theorem main_trans (a : ℕ) :
     have h4 : ⟨(2 : ℕ), 2 * a + 2, 0, 2, 2 * a + 2⟩ [fm]⊢*
               ⟨2 * a + 4, 0, 0, 4 * a + 6, 0⟩ := by
       have := process_phase (a + 1)
-      convert this using 1
+      convert! this using 1
     rw [show 2 * (a + 1) + 2 = 2 * a + 4 from by ring,
         show 4 * (a + 1) + 2 = 4 * a + 6 from by ring]
     exact stepStar_stepPlus_stepPlus h1

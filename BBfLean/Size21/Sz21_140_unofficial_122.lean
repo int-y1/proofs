@@ -103,7 +103,7 @@ theorem main_trans : ⟨a, n+1, 0, 0, n+1, 0⟩ [fm]⊢⁺ ⟨a+n, n+2, 0, 0, n+
   apply stepStar_stepPlus_stepPlus (c₂ := ⟨a+n+1, 0, 0, 0, n+1, n+1⟩)
   · have h := b_to_af (n + 1) a 0 (n + 1) 0
     simp only [Nat.zero_add] at h
-    convert h using 2
+    convert! h using 2
   -- Phase 2: R4 x (n+1): →* (a+n+1, 0, n+1, 0, 0, n+1)
   apply stepStar_stepPlus_stepPlus (c₂ := ⟨a+n+1, 0, n+1, 0, 0, n+1⟩)
   · have h := e_to_c (n + 1) (a + n + 1) 0 0 (n + 1)

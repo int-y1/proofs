@@ -93,7 +93,7 @@ theorem main_trans : ∀ d, ⟨2, 0, 0, d + 4, 0⟩ [fm]⊢⁺ ⟨(2 : ℕ), 0, 
   rw [show 0 + 2 * (d + 6) = 2 + 2 * (d + 4 + 1) from by ring]
   have := r5r2_chain (d + 4 + 1) 2 0 0
   simp only [Nat.zero_add] at this
-  convert this using 2
+  convert! this using 2
 
 theorem nonhalt : ¬halts fm c₀ := by
   apply stepStar_not_halts_not_halts (c₂ := ⟨2, 0, 0, 4, 0⟩) (by execute fm 15)

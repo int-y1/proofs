@@ -172,28 +172,28 @@ private theorem full_trans (B E : ℕ) (hBE : 6 * E ≥ B) :
       · simp only [Nat.mul_zero, Nat.zero_add, Nat.add_zero]
         convert tail_r0 0 (w + 1) using 2; ring_nf
       · exact stepStar_stepPlus_stepPlus (hoc_star hj1)
-            (by convert tail_r0 j (w + 1) using 2)
+            (by convert! tail_r0 j (w + 1) using 2)
     , by omega⟩
   · exact ⟨6 * j + 3, 4 * j + w + 1, by
       rcases j.eq_zero_or_pos with rfl | hj1
       · simp only [Nat.mul_zero, Nat.zero_add, Nat.add_zero]
         convert tail_r1 0 (w + 1) using 2; ring_nf
       · exact stepStar_stepPlus_stepPlus (hoc_star hj1)
-            (by convert tail_r1 j (w + 1) using 2)
+            (by convert! tail_r1 j (w + 1) using 2)
     , by omega⟩
   · exact ⟨6 * j + 3, 4 * j + w + 2, by
       rcases j.eq_zero_or_pos with rfl | hj1
       · simp only [Nat.mul_zero, Nat.zero_add, Nat.add_zero]
         convert tail_r2 0 (w + 1) using 2; ring_nf
       · exact stepStar_stepPlus_stepPlus (hoc_star hj1)
-            (by convert tail_r2 j (w + 1) using 2)
+            (by convert! tail_r2 j (w + 1) using 2)
     , by omega⟩
   · exact ⟨6 * j + 4, 4 * j + w + 2, by
       rcases j.eq_zero_or_pos with rfl | hj1
       · simp only [Nat.mul_zero, Nat.zero_add, Nat.add_zero]
         convert tail_r3 0 (w + 1) using 2; ring_nf
       · exact stepStar_stepPlus_stepPlus (hoc_star hj1)
-            (by convert tail_r3 j (w + 1) using 2)
+            (by convert! tail_r3 j (w + 1) using 2)
     , by omega⟩
   · exact ⟨6 * j + 7, 4 * j + w + 3, by
       rcases j.eq_zero_or_pos with rfl | hj1

@@ -109,7 +109,7 @@ theorem phaseC_even (m : ℕ) : ⟨0, 2*m, 1, 0, e⟩ [fm]⊢* ⟨2*m+2, 0, 0, 0
     convert h using 2 ; ring_nf
   have h := r3_chain (m + 1) 0 0 e
   simp only [Nat.zero_add] at h
-  convert h using 2
+  convert! h using 2
 
 -- Phase C for odd b: (0, 2m+1, 1, 0, e) →* (2m+3, 0, 0, 0, e)
 theorem phaseC_odd (m : ℕ) : ⟨0, 2*m+1, 1, 0, e⟩ [fm]⊢* ⟨2*m+3, 0, 0, 0, e⟩ := by

@@ -81,7 +81,7 @@ theorem middle : ∀ n, ∀ c d F, ⟨0, n, c + 1, d, F + n + c + 1⟩ [fm]⊢* 
     step fm
     have key := ih n (by omega) (c + 1) (d + 2) F
     have key2 : ⟨0, n, c + 2, d + 2, F + n + c + 2⟩ [fm]⊢* ⟨n + 2 * c + 4, 0, 0, d + 2 + n, F⟩ := by
-      convert key using 2
+      convert! key using 2
     apply stepStar_trans key2
     ring_nf; finish
 

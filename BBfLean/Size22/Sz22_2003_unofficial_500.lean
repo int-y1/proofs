@@ -77,7 +77,7 @@ theorem main_trans (n d : ℕ) : ⟨0, 0, 2 * d + 2 * n + 6, d + 1, 0⟩ [fm]⊢
   apply stepStar_stepPlus_stepPlus (c₂ := ⟨0, 0, 2 * d + 2 * n + 6, 0, 2 * d + 2⟩)
   · have h := d_to_e (d + 1) (2 * d + 2 * n + 6) 0 0
     simp only [Nat.zero_add] at h
-    convert h using 2
+    convert! h using 2
   -- Phase 2: R5: (0, 0, 2d+2n+6, 0, 2d+2) → (1, 1, 2d+2n+5, 0, 2d+2)
   apply step_stepStar_stepPlus (c₂ := ⟨1, 1, 2 * d + 2 * n + 5, 0, 2 * d + 2⟩)
   · show fm ⟨0, 0, (2 * d + 2 * n + 5) + 1, 0, 2 * d + 2⟩ = some ⟨0 + 1, 0 + 1, 2 * d + 2 * n + 5, 0, 2 * d + 2⟩

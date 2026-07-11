@@ -233,7 +233,7 @@ theorem nonhalt : ¬halts fm c₀ := by
           refine ⟨_, ⟨a' + 6 * k + 7, 9 * k + 14, rfl, by omega⟩, ?_⟩
           apply stepStar_stepPlus_stepPlus
           · convert he using 3
-          · convert phase_r0 a' k using 3
+          · convert! phase_r0 a' k using 3
       · -- r=1
         have he := mk_he 1 (by omega)
         exact ⟨_, ⟨a' + 6 * k + 2, 9 * k + 6, rfl, by omega⟩,

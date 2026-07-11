@@ -169,7 +169,7 @@ theorem transition_even (D m : ℕ) :
     rw [show D2 + 2 * (2 * m + 2) = m + D2 + 3 * m + 4 from by ring,
         show 2 * m + 1 + 2 * (2 * m + 2) = 6 * m + 5 from by ring]; finish
   · -- D < m: R2^(D+1) then combined_tail
-    push_neg at hdm
+    push Not at hdm
     -- State: (0, 0, m+1, D+1, m). Rewrite for r2_chain.
     -- r2_chain(D+1) needs (0, b, c+(D+1), d+(D+1), e)
     -- c = m-D-1+1, d = 0, k = D+1. So c+k = m-D-1+1+D+1 = m+1. ✓
@@ -248,7 +248,7 @@ theorem transition_odd (D m' : ℕ) :
     rw [show D2 + 2 * (2 * m' + 3) = m' + D2 + 3 * m' + 6 from by ring,
         show 2 * m' + 2 + 2 * (2 * m' + 3) = 6 * m' + 8 from by ring]; finish
   · -- D < m': R2^(D+1) then combined_tail
-    push_neg at hdm
+    push Not at hdm
     -- State: (0, 1, m'+1, D+1, m'+1). Need r2_chain form.
     suffices h : ⟨(0 : ℕ), 1, (m' - D - 1 + 1) + (D + 1), 0 + (D + 1), m' + 1⟩ [fm]⊢*
         ⟨0, 0, 0, D + 3 * m' + 6, 6 * m' + 8⟩ by

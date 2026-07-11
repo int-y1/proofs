@@ -108,25 +108,21 @@ theorem main_trans (n f : ℕ) :
     have h4 : ⟨2, (0 : ℕ), n + 1, 2 * n + 2, 2, f⟩ [fm]⊢*
               ⟨n + 3, 0, 0, n + 1, n + 3, f⟩ := by
       have := r2r1_chain (n + 1) 1 0 (n + 1) 2 f
-      simp only [] at this
       convert this using 2; ring_nf
     -- Phase 5: R2 chain (n+1 rounds)
     have h5 : ⟨n + 3, (0 : ℕ), 0, n + 1, n + 3, f⟩ [fm]⊢*
               ⟨2, n + 1, 0, 0, 2 * n + 4, f⟩ := by
       have := r2_chain (n + 1) 2 0 (n + 3) f
-      simp only [] at this
       convert this using 2; ring_nf
     -- Phase 6: R3R1 chain (n+1 rounds)
     have h6 : ⟨2, n + 1, (0 : ℕ), 0, 2 * n + 4, f⟩ [fm]⊢*
               ⟨n + 3, 0, 0, 0, 2 * n + 4, f + n + 1⟩ := by
       have := r3r1_chain (n + 1) 1 0 (2 * n + 4) f
-      simp only [] at this
       convert this using 2; ring_nf
     -- Phase 7: R3 chain (n+3 rounds)
     have h7 : ⟨n + 3, (0 : ℕ), 0, 0, 2 * n + 4, f + n + 1⟩ [fm]⊢*
               ⟨0, 0, n + 3, 0, 2 * n + 4, f + 2 * n + 4⟩ := by
       have := r3_chain (n + 3) 0 (2 * n + 4) (f + n + 1)
-      simp only [] at this
       convert this using 2; ring_nf
     -- Compose
     exact stepStar_stepPlus_stepPlus h1

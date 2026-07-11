@@ -86,7 +86,7 @@ theorem main_trans (a d : ℕ) : ⟨a + 2, 0, 0, d + a + 3, 0⟩ [fm]⊢⁺ ⟨2
   · rw [show d + 2 * a + 5 = (d + 1) + 2 * (a + 2) from by ring]
     have h := r5r2_chain (a + 2) 0 (d + 1)
     simp only [Nat.zero_add] at h
-    convert h using 2
+    convert! h using 2
   -- Phase 4: R5 step
   apply step_stepStar_stepPlus (c₂ := ⟨1, 2 * a + 5, 0, d, 0⟩)
   · simp [fm]

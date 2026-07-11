@@ -146,8 +146,7 @@ theorem trans_even (a m : ℕ) :
     ⟨a + m + 2, 0, 0, 0, 2 * (m + 1)⟩ [fm]⊢⁺ ⟨a + 3 * m + 6, 0, 0, 0, 3 * m + 8⟩ := by
   -- R4 first step for ⊢⁺
   apply step_stepStar_stepPlus
-  · show fm ⟨a + m + 2, 0, 0, 0, 2 * (m + 1)⟩ = some ⟨a + m + 2, 0, 1, 0, 2 * m + 1⟩
-    simp [fm]
+  · rfl
   -- R4 remaining steps
   apply stepStar_trans (r4_chain (2 * m + 1) (a + m + 2) 1)
   -- Now at (a+m+2, 0, 1+(2*m+1), 0, 0) = (a+m+2, 0, 2*(m+1), 0, 0).

@@ -76,7 +76,7 @@ theorem r1r1r2_rounds : ∀ k, ∀ B C D E, ⟨2, B+2*k, C, D, E+k⟩ [fm]⊢* �
     step fm
     apply stepStar_trans (h B (C+1) (D+2) E)
     ring_nf; finish
-  convert step1 using 2
+  convert! step1 using 2
 
 -- R3 + R2 cleanup: (a+1, 0, 1, d, 0) →* (a+2, 0, 0, d, 0)
 theorem r3_r2_cleanup : ⟨a+1, 0, 1, d, 0⟩ [fm]⊢* ⟨a+2, 0, 0, d, 0⟩ := by
@@ -124,7 +124,7 @@ theorem phase4_odd (K : ℕ) : ⟨2, 2*K+2, 0, 0, 2*K+1⟩ [fm]⊢* ⟨2*K+3, 0,
     convert h using 2; ring_nf
   -- R3 + R2: (2(K+1), 0, 1, 2K+2, 0) → (2K+3, 0, 0, 2K+2, 0)
   have h := @r3_r2_cleanup (2*K+1) (2*K+2)
-  convert h using 2
+  convert! h using 2
 
 -- Main transition: (d+1, 0, 0, d, 0) ⊢⁺ (d+2, 0, 0, d+1, 0)
 theorem main_trans : ⟨d+1, 0, 0, d, 0⟩ [fm]⊢⁺ ⟨d+2, 0, 0, d+1, 0⟩ := by

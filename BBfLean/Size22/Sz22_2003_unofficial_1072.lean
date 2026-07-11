@@ -97,7 +97,7 @@ private theorem main_trans_succ (d e : ℕ) :
          some ⟨1, d + 1, 1, 0, e + d + 2⟩; rfl
   apply stepStar_trans
   · have h := interleave (d + 1) 0 0 0 e
-    convert h using 2
+    convert! h using 2
   have h := r3_drain (d + 4) (2 * d + 4) e
   convert h using 2; all_goals ring_nf
 
@@ -106,7 +106,7 @@ private theorem main_trans (d e : ℕ) :
   rcases d with _ | d'
   · exact main_trans_zero e
   · have h := main_trans_succ d' e
-    convert h using 2
+    convert! h using 2
 
 theorem nonhalt : ¬halts fm c₀ := by
   apply stepStar_not_halts_not_halts (c₂ := ⟨0, 0, 0, 0, 2⟩) (by execute fm 1)

@@ -117,7 +117,7 @@ theorem round_process : ∀ E, ∀ A C, A ≥ E / 7 + 1 →
   · have : E / 7 = 0 := by omega
     rw [this]; simp
     exact finish_phase E hE A C
-  · push_neg at hE
+  · push Not at hE
     apply stepStar_trans
     · have h := round_step (A - 1) C (E - 7)
       rw [show A - 1 + 1 = A from by omega, show E - 7 + 7 = E from by omega] at h; exact h

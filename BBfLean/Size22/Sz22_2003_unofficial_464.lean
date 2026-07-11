@@ -170,7 +170,7 @@ theorem main_trans (c d : ℕ) (hd : d ≥ 1) (hinv : 2 * c ≥ d + 3) :
         show 3 * (d' + 1) = 3 * d' + 3 from by ring]
     exact trans_ge r d'
   · -- Case 2/3: c < d
-    push_neg at hcd
+    push Not at hcd
     obtain ⟨c', rfl⟩ : ∃ c', c = c' + 1 := ⟨c - 1, by omega⟩
     have hgap : d - c' - 1 ≥ 1 := by omega
     rcases Nat.even_or_odd (d - c' - 1) with ⟨k, hk⟩ | ⟨k, hk⟩

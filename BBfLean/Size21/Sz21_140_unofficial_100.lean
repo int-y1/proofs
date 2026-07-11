@@ -93,8 +93,8 @@ theorem phase_bd : ∀ c : ℕ, ∀ a d,
     refine ⟨e', ?_, by omega, by omega⟩
     apply stepPlus_trans
     · have hb := phase_b_round a c d
-      convert hb using 2
-    · convert he' using 2; first | ring_nf
+      convert! hb using 2
+    · convert! he' using 2; first | ring_nf
 
 -- Full transition from canonical form
 -- ⟨a+e+1, 0, 0, 0, e⟩ →⁺ ⟨a+3*e+1, 0, 0, 0, e'⟩

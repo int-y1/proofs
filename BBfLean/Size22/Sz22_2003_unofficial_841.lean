@@ -129,7 +129,7 @@ theorem main_trans {D E : ℕ} (hD : D ≥ 2) (hE : E ≥ 1) (hDE : 2 * D ≥ E 
     have key := main_trans_ge g e
     convert key using 2; ring_nf
   · -- D < E case
-    push_neg at h
+    push Not at h
     obtain ⟨ep, rfl⟩ : ∃ ep, e = D + ep := ⟨e - D, by omega⟩
     obtain ⟨g, rfl⟩ : ∃ g, D = g + ep + 2 := ⟨2 * D - (D + ep) - 2, by omega⟩
     have key := main_trans_lt g ep

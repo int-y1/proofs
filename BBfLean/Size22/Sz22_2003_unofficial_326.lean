@@ -131,7 +131,7 @@ theorem nonhalt : ¬halts fm c₀ := by
       have := main_trans_A n m
       rwa [show (n + 1 : ℕ) = 1 + n from by ring,
            show n + m + 1 = 1 + n + m from by ring] at this
-    · push_neg at h
+    · push Not at h
       obtain ⟨p, rfl⟩ := Nat.exists_eq_add_of_le (show d + 1 ≤ a by omega)
       -- a = 1 + d + p
       obtain ⟨q, rfl⟩ := Nat.exists_eq_add_of_le (show p + 1 ≤ d by omega)

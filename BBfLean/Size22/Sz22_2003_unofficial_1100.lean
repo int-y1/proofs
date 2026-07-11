@@ -95,7 +95,7 @@ theorem combo : ∀ e b c d, b ≤ 3 * (e + 1) → c + b ≥ e + 1 →
       apply stepStar_trans (ih b' (c + 2) (d + 2) (by omega) (by omega))
       apply stepStar_of_eq; show (⟨_, _, _, _, _⟩ : ℕ × ℕ × ℕ × ℕ × ℕ) = ⟨_, _, _, _, _⟩
       ext <;> simp <;> omega
-    · push_neg at hb3
+    · push Not at hb3
       interval_cases b
       · rw [show c = (c - (e + 2)) + (e + 2) from by omega,
             show (e + 1 + 1 : ℕ) = e + 2 from by ring]

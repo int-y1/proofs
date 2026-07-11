@@ -65,7 +65,7 @@ theorem full_phase : ∀ b, ∀ c d E, ⟨0, b, c + 1, d, E + c + b + 1⟩ [fm]�
     step fm; step fm
     have key := r2_chain (c + 1) 1 (d + 1) E
     have h1 : ⟨1, 0, c + 1, d + 1, E + c + 1⟩ [fm]⊢* ⟨1 + 2 * (c + 1), 0, 0, d + 1, E⟩ := by
-      convert key using 2
+      convert! key using 2
     apply stepStar_trans h1
     ring_nf; finish
   · -- b = b + 2: R2, R1, R1 (one round), then IH with b

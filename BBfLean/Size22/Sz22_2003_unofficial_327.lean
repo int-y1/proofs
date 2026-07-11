@@ -175,7 +175,7 @@ theorem mid (a' d : ℕ) (hd : 2 * d + 1 ≥ 3 * a' + 3) :
         show d - (3 * a' + 2) + 1 + 6 * a' + 5 = d + 3 * a' + 4 from by omega] at h
     exact h
   · -- Case B: d <= 3a'+1
-    push_neg at hcase
+    push Not at hcase
     have hlt : d ≤ 3 * a' + 1 := by omega
     have h1 := r12_loop d 0 0 (3 * a' + 1 - d)
     rw [show 0 + d = d from by ring,

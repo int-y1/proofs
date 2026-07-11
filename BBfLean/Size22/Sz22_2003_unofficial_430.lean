@@ -321,7 +321,7 @@ theorem nonhalt_iff_hydra : ¬halts fm c₀ ↔ prop_hydra := by
   · -- Forward: ¬halts → ∀ n, hydra_b n ≥ 0
     intro hnh n
     by_contra hlt
-    push_neg at hlt
+    push Not at hlt
     apply hnh
     have hexists : ∃ m, hydra_b m < 0 := ⟨n, hlt⟩
     set m := Nat.find hexists with hm_def

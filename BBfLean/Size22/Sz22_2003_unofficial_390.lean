@@ -84,7 +84,7 @@ theorem main_trans (n f : ℕ) :
   · show (⟨1, 0, 2*(n+1), n+1, 0, f⟩ : Q) [fm]⊢* ⟨n+2, 0, 0, 0, n+1, f⟩
     have h := r2r1r1_chain (n+1) 0 0 0 0 f
     simp only [Nat.zero_add] at h
-    convert h using 2
+    convert! h using 2
   -- Phase 3: R3 x (n+2)
   apply stepStar_trans
   · have h := r3_chain (n+2) 0 0 (n+1) f

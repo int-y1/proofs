@@ -173,7 +173,7 @@ theorem cycle_step (g e : ℕ) :
   · rw [show g + e + 3 = (g - e) + 2 * e + 3 from by omega,
         show g + 2 * e + 6 = (g - e) + 3 * e + 6 from by omega]
     exact main_trans_A (g - e) e
-  · push_neg at he
+  · push Not at he
     rcases Nat.even_or_odd (g + e) with ⟨p, hp⟩ | ⟨p, hp⟩
     · rw [show g + e + 3 = 2 * p + 3 from by omega,
           show g + 2 * e + 6 = 2 * p + e + 6 from by omega]

@@ -150,7 +150,7 @@ theorem nonhalt : ¬halts fm c₀ := by
       · omega
       · refine ⟨⟨12 * K + 8, 0, 0, 0⟩, ⟨12 * K + 8, by omega, rfl⟩, ?_⟩
         have := transition_even K
-        convert this using 2
+        convert! this using 2
     · subst hK
       refine ⟨⟨12 * K + 2, 0, 0, 0⟩, ⟨12 * K + 2, by omega, rfl⟩, ?_⟩
       have := transition_odd K

@@ -226,7 +226,7 @@ theorem nonhalt : ¬halts fm c₀ := by
       ⟨c + 4 * e + 1, 4 * e + 1, rfl, by omega, by omega⟩, ?_⟩
     by_cases h : c ≥ 2 * e + 1
     · exact main_trans_simple c e he h
-    · push_neg at h
+    · push Not at h
       rcases Nat.even_or_odd c with ⟨m, hm⟩ | ⟨m, hm⟩
       · subst hm
         rw [show m + m = 2 * m from by ring,

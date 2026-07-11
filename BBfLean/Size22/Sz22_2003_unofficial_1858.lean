@@ -54,7 +54,7 @@ theorem r3_chain : ∀ k, ⟨a + 2 * k, 0, k, 0⟩ [fm]⊢* ⟨a, 0, 0, 0⟩ := 
   intro k; induction' k with k ih generalizing a
   · exists 0
   · have h : fm ⟨a + 2 * (k + 1), 0, k + 1, 0⟩ = some ⟨a + 2 * k, 0, k, 0⟩ := by
-      simp [fm]
+      rfl
     exact stepStar_trans (step_stepStar h) ih
 
 -- R4 chain: (k, 0, 0, d) →* (0, 0, 0, d + 2*k)
