@@ -75,9 +75,8 @@ theorem main_trans_even (m : ℕ) :
   · have h := d_to_b (2*m) 0 0 (e := 2*m+1) (f := (2*m+1)*(m+1))
     simp only [Nat.zero_add] at h; exact h
   apply step_stepStar_stepPlus (c₂ := ⟨0, 2*m+1, 1, 0, 2*m+1, m*(2*m+3)⟩)
-  · show fm ⟨0, 2*m, 0, 0, 2*m+1, (2*m+1)*(m+1)⟩ = some ⟨0, 2*m+1, 1, 0, 2*m+1, m*(2*m+3)⟩
-    simp [fm]
-    ring_nf
+  · unfold fm
+    grind only
   apply stepStar_trans (c₂ := ⟨2, 2*m+1, 0, 0, 2*m, m*(2*m+3)⟩)
   · step fm; finish
   apply stepStar_trans (c₂ := ⟨2, 1, m, 2*m, m, m*(2*m+3)⟩)
@@ -109,9 +108,8 @@ theorem main_trans_odd (m : ℕ) :
   · have h := d_to_b (2*m+1) 0 0 (e := 2*m+2) (f := (m+1)*(2*m+3))
     simp only [Nat.zero_add] at h; exact h
   apply step_stepStar_stepPlus (c₂ := ⟨0, 2*m+2, 1, 0, 2*m+2, (2*m+1)*(m+2)⟩)
-  · show fm ⟨0, 2*m+1, 0, 0, 2*m+2, (m+1)*(2*m+3)⟩ = some ⟨0, 2*m+2, 1, 0, 2*m+2, (2*m+1)*(m+2)⟩
-    simp [fm]
-    ring_nf
+  · unfold fm
+    grind only
   apply stepStar_trans (c₂ := ⟨2, 2*m+2, 0, 0, 2*m+1, (2*m+1)*(m+2)⟩)
   · step fm; finish
   apply stepStar_trans (c₂ := ⟨2, 0, m+1, 2*(m+1), m, (2*m+1)*(m+2)⟩)

@@ -9,13 +9,6 @@ lake build BusyLean.BusyLean
 lake build SquarePyramid.SquarePyramid
 ```
 
-TODO: fix these files:
-
-```
-BBfLean.Size21.Sz21_140_unofficial_35
-BBfLean.Size22.Sz22_2003_unofficial_1550
-```
-
 ## tao_analysis_i
 
 This is my attempt at formalizing Terence Tao's Analysis I.

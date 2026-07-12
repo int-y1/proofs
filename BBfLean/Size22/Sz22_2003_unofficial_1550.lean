@@ -36,7 +36,9 @@ theorem r2r2r3_chain : ∀ k j d,
   intro k; induction' k with k ih <;> intro j d
   · exists 0
   · rw [show d + 2 * (k + 1) = (d + 2 * k) + 2 from by ring]
-    step fm; step fm
+    refine stepPlus_stepStar ?_
+    apply step_stepStar_stepPlus (by simp [fm]; rfl)
+    step fm
     apply stepStar_trans
       (step_stepStar (show ⟨j+1+1, 2*j+1+1, 0, d+2*k, 0⟩ [fm]⊢
         ⟨j+1, 2*j+1+1, 0, d+2*k, 2⟩ from by simp [fm]))
@@ -101,7 +103,9 @@ theorem main_trans (n : ℕ) :
   apply stepStar_trans (r2r2r3_chain n 0 2)
   simp only [Nat.zero_add]
   -- Phase 3: Two R2 steps: (n, 2*n, 0, 2, 2) → (n+2, 2*n+2, 0, 0, 0)
-  step fm; step fm
+  refine stepPlus_stepStar ?_
+  apply step_stepStar_stepPlus (by simp [fm]; rfl)
+  step fm
   -- Phase 4: R3 drain (n+2 steps)
   -- State: (n+1+1, 2*n+1+1, 0, 0, 0)
   -- Need: (0+(n+2), 2*n+2, 0, 0, 0)
